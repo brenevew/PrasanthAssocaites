@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prasanth Associates
+
+Web application for **Prasanth Associates Construction & Architecture** — a
+Next.js site with three client enquiry forms that feed directly into Google
+Sheets.
+
+## Project Architecture
+
+```text
+PrasanthAssociates/
+├── frontend/                    # Next.js UI Web Application (React, Tailwind CSS, TypeScript)
+├── k8s/
+│   ├── dev/                     # Kubernetes manifests for Development
+│   └── prod/                    # Kubernetes manifests for Production (HPA, TLS, Secrets)
+├── scripts/
+│   ├── google-sheets-script.js  # Google Apps Script for form ingestion
+│   └── local-k8s-test.sh        # One-shot local Kubernetes deployment
+├── LOCAL_DEVELOPMENT.md
+├── KUBERNETES_DEPLOYMENT.md
+└── README.md
+```
+
+This is a **frontend-only** application. There is no backend server or database:
+form submissions are written straight to a Google Sheet through a Google Apps
+Script web app, and all site content is served from static data in
+`frontend/src/data/`.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+cd frontend
+cp .env.example .env.local    # then fill in the Google Sheets values
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The three enquiry forms are at `/contact`, `/request-quote` and `/plan-home`.
+They work without any configuration — if `GOOGLE_SHEETS_WEBHOOK_URL` is unset,
+submissions succeed and each lead is printed to the terminal instead of being
+written to the Sheet.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Each form also accepts up to 5 image/PDF attachments (plans, sketches, site
+photos) — 2 MB per file, 5 MB per submission — stored in Google Drive with links
+written into the Sheet. File uploads require `GOOGLE_SHEETS_WEBHOOK_URL` to be
+set.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Local Machine Setup**: [`LOCAL_DEVELOPMENT.md`](LOCAL_DEVELOPMENT.md)
+- **Google Sheets Form Integration**: [`GOOGLE_SHEETS_DEPLOYMENT.md`](GOOGLE_SHEETS_DEPLOYMENT.md)
+- **Deployment**: [`DEPLOYMENT_GUIDE.md`](DEPLOYMENT_GUIDE.md)
+- **Local Kubernetes Testing**: [`LOCAL_K8S_TESTING.md`](LOCAL_K8S_TESTING.md)
+- **Kubernetes Deployment (Dev & Prod)**: [`KUBERNETES_DEPLOYMENT.md`](KUBERNETES_DEPLOYMENT.md)

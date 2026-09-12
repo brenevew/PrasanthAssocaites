@@ -1,0 +1,1015 @@
+export interface ServiceQuoteSpec {
+  slug: string;
+  badge: string;
+  tagline: string;
+  sla: string;
+  slaLabel: string;
+  credentialBadge: string;
+  credentialLabel: string;
+  deliverablesHeading: string;
+  deliverables: { title: string; desc: string }[];
+  highlightBox: {
+    title: string;
+    description: string;
+    badges: string[];
+  };
+  steps: [
+    { n: string; title: string; body: string },
+    { n: string; title: string; body: string },
+    { n: string; title: string; body: string }
+  ];
+  guarantee: {
+    title: string;
+    body: string;
+  };
+  formDefaults: {
+    serviceCategory: string;
+    field1Label: string;
+    field1Options: { value: string; label: string }[];
+    field2Label: string;
+    field2Options: { value: string; label: string }[];
+    placeholder: string;
+  };
+}
+
+export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
+  "residential-construction": {
+    slug: "residential-construction",
+    badge: "Custom Residential Construction",
+    tagline: "Individual custom homes designed around your family lifestyle, Vastu compliance, and lifetime durability.",
+    sla: "8 to 12 Months Guaranteed",
+    slaLabel: "Milestone Schedule",
+    credentialBadge: "500+ Homes Completed",
+    credentialLabel: "Zero Structural Compromise",
+    deliverablesHeading: "What We Deliver For Your Home",
+    deliverables: [
+      { title: "100% Vastu Floor Plans", desc: "Scientific spatial alignment for entrance, Agni kitchen, master suite, and natural ventilation." },
+      { title: "Earthquake-Resilient RCC", desc: "Heavy Fe550D TMT reinforcement, 53-grade branded cement, and engineered foundation footings." },
+      { title: "Branded Material Selection", desc: "Kajaria/Somany vitrified tiles, Jaquar/Kohler sanitary fittings, and Asian Paints Royale." },
+      { title: "Multi-Layer Waterproofing", desc: "Chemical polymer barrier on roof slab, sunken wet areas, and subterranean foundation." },
+      { title: "Pre-Piped Rainwater & Solar", desc: "Integrated groundwater recharge percolation pit and conduit readiness for rooftop solar PV." },
+      { title: "Zero Surprise Pricing", desc: "Legally backed line-item Bill of Quantities fixing every rupee and material specification." },
+    ],
+    highlightBox: {
+      title: "Transparent Line-Item BoQ with Fixed Price Lock",
+      description: "We protect your hard-earned savings with a legally binding contract detailing exact brands, quantities, and milestone payments.",
+      badges: ["✓ 100% Vastu Compliant", "✓ Fe550D TMT Steel", "✓ Branded Bath & Electricals", "✓ 10-Year Waterproofing"],
+    },
+    steps: [
+      { n: "01", title: "Family Lifestyle & Vastu Layout", body: "Detailed discovery of room dimensions, sunlight orientation, ventilation corridors, and Vastu alignment." },
+      { n: "02", title: "Transparent BoQ & Price Lock", body: "Legally binding specification contract locking in your exact investment with zero hidden clauses." },
+      { n: "03", title: "Milestone-Supervised Construction", body: "Stage-by-stage civil execution verified through rigorous multi-point engineer inspection checklists." },
+    ],
+    guarantee: {
+      title: "100% Fixed Price Lock Guarantee",
+      body: "No mid-construction price hikes, no surprise escalation clauses, delivered strictly on schedule.",
+    },
+    formDefaults: {
+      serviceCategory: "residential",
+      field1Label: "Home Configuration *",
+      field1Options: [
+        { value: "2bhk-house", label: "2 BHK Independent House" },
+        { value: "3bhk-duplex", label: "3 BHK Duplex Residence" },
+        { value: "4bhk-luxury", label: "4 BHK Luxury Residence" },
+        { value: "multi-family", label: "Multi-Family Residential Building" },
+      ],
+      field2Label: "Approximate Built-up Area *",
+      field2Options: [
+        { value: "1500-2500", label: "1,500 – 2,500 sq ft" },
+        { value: "2500-4000", label: "2,500 – 4,000 sq ft" },
+        { value: "4000-6000", label: "4,000 – 6,000 sq ft" },
+        { value: "above-6000", label: "Above 6,000 sq ft" },
+      ],
+      placeholder: "Plot dimensions (e.g. 40x60 ft), facing direction, floor count preference, planned start date...",
+    },
+  },
+
+  "villa-construction": {
+    slug: "villa-construction",
+    badge: "Bespoke Luxury Villa Construction",
+    tagline: "Architectural residences blending contemporary aesthetics, private courtyards, and artisan craftsmanship.",
+    sla: "White-Glove Delivery",
+    slaLabel: "Artisan Craftsmanship",
+    credentialBadge: "Super-Luxury Execution",
+    credentialLabel: "Exclusive Mastercraft",
+    deliverablesHeading: "Signature Villa Specifications",
+    deliverables: [
+      { title: "Double-Height Grand Living", desc: "Dramatic architectural volumes with floor-to-ceiling panoramic glass and floating stairs." },
+      { title: "Imported Natural Marble & Teak", desc: "Hand-picked Italian Statuario/Bottochino marble and first-grade aged Burma/African teak." },
+      { title: "Private Courtyards & Pool", desc: "Integrated swimming pool, sunken deck lounges, vertical green walls, and water features." },
+      { title: "Thermal & Acoustic Shielding", desc: "Double-glazed thermal-break windows and acoustic ceiling dampening for serene privacy." },
+      { title: "Bespoke Millwork & Portals", desc: "Custom wooden portals, fluted paneling, brass inlay accents, and architectural hardware." },
+      { title: "Smart Automation Ready", desc: "Concealed conduits for VRV air-conditioning, smart motorized blinds, and architectural scene lighting." },
+    ],
+    highlightBox: {
+      title: "Crafted for Generations of Elevated Living",
+      description: "Every villa is treated as a unique work of architectural art, executed with zero compromise on material authenticity.",
+      badges: ["✓ Double-Height Architecture", "✓ Private Swimming Pool", "✓ Italian Marble & Teak", "✓ Landscaped Courtyards"],
+    },
+    steps: [
+      { n: "01", title: "Exclusive Lifestyle Discovery", body: "Understanding your family's entertaining habits, private retreats, spatial flow, and luxury tastes." },
+      { n: "02", title: "Bespoke 3D CGI & Material Selection", body: "Physical material sampling sessions and realistic 4K architectural visualizations before groundbreaking." },
+      { n: "03", title: "Artisan Construction & White-Glove Handover", body: "Flawless civil execution, precision marble bookmatching, and formal handover with complete documentation." },
+    ],
+    guarantee: {
+      title: "100% Luxury Quality Guarantee",
+      body: "Handcrafted by experienced master artisans using only Tier-1 imported materials and zero shortcuts.",
+    },
+    formDefaults: {
+      serviceCategory: "villa",
+      field1Label: "Villa Architectural Style *",
+      field1Options: [
+        { value: "contemporary-minimalist", label: "Contemporary Minimalist Villa" },
+        { value: "tropical-modern", label: "Tropical Modern (Courtyard Villa)" },
+        { value: "classical-mediterranean", label: "Classical Mediterranean Villa" },
+        { value: "heritage-luxury", label: "Heritage Chettinad / Kerala Luxury" },
+      ],
+      field2Label: "Estimated Villa Built-Up Scale *",
+      field2Options: [
+        { value: "3000-4500", label: "3,000 – 4,500 sq ft" },
+        { value: "4500-7000", label: "4,500 – 7,000 sq ft" },
+        { value: "7000-12000", label: "7,000 – 12,000 sq ft" },
+        { value: "above-12000", label: "Above 12,000 sq ft (Estate)" },
+      ],
+      placeholder: "Plot location, bedroom count, private pool preference, double-height ceiling requirements...",
+    },
+  },
+
+  "commercial-construction": {
+    slug: "commercial-construction",
+    badge: "Commercial & Institutional Engineering",
+    tagline: "High-traffic commercial spaces engineered for maximum floor efficiency, fire safety, and corporate distinction.",
+    sla: "Structured Milestone Timeline",
+    slaLabel: "On-Time Completion",
+    credentialBadge: "NBC Compliant",
+    credentialLabel: "Commercial Bylaws Specialist",
+    deliverablesHeading: "Commercial Engineering Deliverables",
+    deliverables: [
+      { title: "Column-Free Commercial Plates", desc: "Long structural spans providing maximum open area for flexible tenant layouts and partitions." },
+      { title: "NBC Fire Protection Network", desc: "Fire hydrant rings, automatic sprinkler systems, emergency escape stairways, and smoke extraction." },
+      { title: "Heavy Floor Load Ratings", desc: "Engineered concrete floor slabs rated for heavy retail inventory, server racks, and high footfalls." },
+      { title: "Acoustic Glass & ACP Facade", desc: "Energy-efficient structural glazing minimizing solar heat gain while creating striking street presence." },
+      { title: "Elevator & Service Chases", desc: "Pre-engineered passenger & service elevator shafts, central HVAC routes, and optical fiber raceways." },
+      { title: "Statutory Sanctions & NOC", desc: "Municipal planning permission, building completion certificates (CC), and commercial occupancy clearances." },
+    ],
+    highlightBox: {
+      title: "Engineered for Business & Rental Yield",
+      description: "Designed to optimize rentable Floor Area Ratio (FAR), visitor parking circulation, and low long-term maintenance.",
+      badges: ["✓ Corporate Offices", "✓ Retail Showrooms", "✓ Mixed-Use Plazas", "✓ Commercial Complexes"],
+    },
+    steps: [
+      { n: "01", title: "Site Feasibility & Bylaws Check", body: "We analyze road width, FAR limits, setback norms, and parking ratios to maximize usable commercial space." },
+      { n: "02", title: "Structural & MEP Engineering", body: "Heavy-duty RCC framing, electrical sub-station sizing, and comprehensive fire safety network planning." },
+      { n: "03", title: "Turnkey Commercial Execution", body: "Rapid-phase construction with strict safety protocols, high-grade finishes, and municipal handover." },
+    ],
+    guarantee: {
+      title: "100% Commercial Bylaws & Handover Guarantee",
+      body: "Zero regulatory deviations and fully compliant with national building codes and municipal standards.",
+    },
+    formDefaults: {
+      serviceCategory: "commercial",
+      field1Label: "Commercial Building Purpose *",
+      field1Options: [
+        { value: "corporate-office", label: "Corporate Office Headquarters" },
+        { value: "retail-showroom", label: "Retail Showroom / Commercial Mall" },
+        { value: "hospital-clinic", label: "Hospital / Healthcare Facility" },
+        { value: "mixed-use-plaza", label: "Mixed-Use Retail & Office Plaza" },
+        { value: "hotel-hospitality", label: "Hotel / Serviced Apartment Complex" },
+      ],
+      field2Label: "Approximate Commercial Floor Area *",
+      field2Options: [
+        { value: "under-5000", label: "Under 5,000 sq ft" },
+        { value: "5000-15000", label: "5,000 – 15,000 sq ft" },
+        { value: "15000-35000", label: "15,000 – 35,000 sq ft" },
+        { value: "above-35000", label: "Above 35,000 sq ft" },
+      ],
+      placeholder: "Number of floors, basement parking needed, passenger elevator count, road facing width...",
+    },
+  },
+
+  "turnkey-construction": {
+    slug: "turnkey-construction",
+    badge: "Single-Source Turnkey Delivery",
+    tagline: "From soil testing and architectural blueprints to final interior key handover — absolute peace of mind.",
+    sla: "Fixed Handover Date",
+    slaLabel: "Strict Timeline SLA",
+    credentialBadge: "Single-Point Accountability",
+    credentialLabel: "Zero Subcontractor Hassle",
+    deliverablesHeading: "Complete Turnkey Scope",
+    deliverables: [
+      { title: "Comprehensive Civil & RCC", desc: "Foundation, RCC framed superstructure, precision brick masonry, and structural waterproofing." },
+      { title: "Liaisoning & Sanctions", desc: "Complete handling of plan sanction, temporary power, permanent EB meters, and local occupancy." },
+      { title: "Complete Interior Joinery", desc: "Modular kitchen, designer wardrobes, vanity units, solid teak doors, and premium painting." },
+      { title: "Full MEP Network Integration", desc: "Concealed wiring, high-pressure CPVC plumbing lines, sanitary fixtures, and solar pre-plumbing." },
+      { title: "Fixed Price BoQ Guarantee", desc: "Legally binding contract with zero price escalations — we absorb raw material market spikes." },
+      { title: "Post-Handover Warranty", desc: "Multi-year structural stability and anti-termite warranty backed by written commitment." },
+    ],
+    highlightBox: {
+      title: "Zero Coordination Overhead for the Owner",
+      description: "You deal with one trusted engineering partner. No managing multiple masonry, carpentry, electrical, and plumbing vendors.",
+      badges: ["✓ Fixed Budget Lock", "✓ Dedicated Project Manager", "✓ Weekly Progress App", "✓ Key Handover"],
+    },
+    steps: [
+      { n: "01", title: "Unified Architecture & Budget Lock", body: "Finalize custom floor plan, 3D elevation, and fixed-price BoQ contract with transparent payment milestones." },
+      { n: "02", title: "Milestone-Driven Civil Execution", body: "Foundation to roof slab completed under the supervision of a dedicated resident site engineer." },
+      { n: "03", title: "Turnkey Finishing & Key Handover", body: "Deep cleaning, MEP testing, municipal connection verification, and white-glove key handover." },
+    ],
+    guarantee: {
+      title: "100% Single-Contract Delivery Guarantee",
+      body: "Guaranteed delivery on the agreed date with zero hidden cost extras and zero vendor finger-pointing.",
+    },
+    formDefaults: {
+      serviceCategory: "residential",
+      field1Label: "Turnkey Project Type *",
+      field1Options: [
+        { value: "turnkey-villa", label: "Turnkey Luxury Villa" },
+        { value: "turnkey-house", label: "Turnkey Independent Residence" },
+        { value: "turnkey-commercial", label: "Turnkey Commercial Building" },
+        { value: "turnkey-farmhouse", label: "Turnkey Farmhouse / Estate" },
+      ],
+      field2Label: "Target Handover Timeline *",
+      field2Options: [
+        { value: "within-6m", label: "Within 6 Months" },
+        { value: "6-9m", label: "6 – 9 Months" },
+        { value: "9-12m", label: "9 – 12 Months" },
+        { value: "12m-plus", label: "12+ Months" },
+      ],
+      placeholder: "Plot location, plot size, number of floors, preferred finish tier (Standard / Premium / Luxury)...",
+    },
+  },
+
+  "construction-work-consulting": {
+    slug: "construction-work-consulting",
+    badge: "Independent Engineering Advisory",
+    tagline: "Expert technical guidance, contractor bill auditing, and on-site quality control protecting your capital.",
+    sla: "On-Call & Scheduled Audits",
+    slaLabel: "Immediate Reporting",
+    credentialBadge: "Licensed Chartered Engineer",
+    credentialLabel: "Unbiased Quality Control",
+    deliverablesHeading: "Consulting & Inspection Scope",
+    deliverables: [
+      { title: "Contractor Tender Evaluation", desc: "Scrutinizing contractor bids and line items to unmask hidden exclusions, loopholes, and inflated rates." },
+      { title: "On-Site Structural Inspections", desc: "Checking column reinforcement spacing, shuttering verticality, cover blocks, and slab levels." },
+      { title: "Concrete Cube & Strength Tests", desc: "Conducting certified compression testing on concrete batches before curing to ensure M20/M25 compliance." },
+      { title: "Bill Verification & Measurement", desc: "Cross-measuring contractor claims on-site to the millimeter before authorizing payment releases." },
+      { title: "Material Procurement Advisory", desc: "Guiding owners on purchasing genuine 53-grade cement, Fe550D TMT steel, and certified MEP fittings." },
+      { title: "Milestone Stage Sign-Off", desc: "Providing written clearance certificates after each major pour and construction milestone." },
+    ],
+    highlightBox: {
+      title: "Prevent Cost Overruns & Substandard Workmanship",
+      description: "Our independent consulting saves owners 10–20% on project costs by preventing billing discrepancies and structural flaws.",
+      badges: ["✓ Contractor Bill Audit", "✓ Concrete Strength Check", "✓ Shuttering Inspection", "✓ Payment Certification"],
+    },
+    steps: [
+      { n: "01", title: "Contract & Drawing Review", body: "Auditing your architectural drawings, contractor bids, and rate quotes to identify vulnerabilities." },
+      { n: "02", title: "Scheduled Site Inspection Visits", body: "On-site quality audits during crucial excavation, footing, slab casting, and masonry stages." },
+      { n: "03", title: "Bill Certification & Sign-off", body: "Certifying contractor bills only for work verified accurate to the millimeter with zero overbilling." },
+    ],
+    guarantee: {
+      title: "100% Unbiased Technical Oversight",
+      body: "We represent solely your interests with zero contractor kickbacks and absolute technical independence.",
+    },
+    formDefaults: {
+      serviceCategory: "other",
+      field1Label: "Advisory Scope Needed *",
+      field1Options: [
+        { value: "full-supervision", label: "Full Project Oversight & Bill Certification" },
+        { value: "tender-eval", label: "Contractor Tender & Contract Evaluation" },
+        { value: "casting-inspection", label: "Critical Slab Casting & Reinforcement Inspection" },
+        { value: "defect-audit", label: "Quality Defect & Structural Health Audit" },
+      ],
+      field2Label: "Current Project Stage *",
+      field2Options: [
+        { value: "pre-construction", label: "Pre-construction / Planning Stage" },
+        { value: "foundation", label: "Foundation & Basement Stage" },
+        { value: "superstructure", label: "Superstructure / Slab Casting Stage" },
+        { value: "finishing", label: "Plastering / Finishing Stage" },
+      ],
+      placeholder: "Site location, current contractor status, specific disputes or areas needing independent audit...",
+    },
+  },
+
+  "renovation": {
+    slug: "renovation",
+    badge: "Structural Restoration & Remodeling",
+    tagline: "Transforming vintage properties and worn structures with contemporary aesthetics and reinforced engineering.",
+    sla: "Rapid Phased Renovation",
+    slaLabel: "Minimal Disruption",
+    credentialBadge: "Retrofit Specialists",
+    credentialLabel: "Structural Safety Assured",
+    deliverablesHeading: "Renovation & Remodeling Capabilities",
+    deliverables: [
+      { title: "Structural Health Audit", desc: "Non-destructive testing of existing columns, beams, load-bearing walls, and foundation integrity." },
+      { title: "Column & Beam Jacketing", desc: "Engineered micro-concrete jacketing to safely support additional floors or wider room openings." },
+      { title: "Spatial Wall Reconfiguration", desc: "Controlled removal of non-load bearing walls to create flowing open-plan living and dining spaces." },
+      { title: "Complete MEP Overhaul", desc: "Replacing rusted plumbing lines with CPVC and rewiring old electrical conduits with fire-retardant cables." },
+      { title: "Modern Facade Modernization", desc: "Transforming dated exteriors with architectural louvers, textured plaster, glass, and exterior lighting." },
+      { title: "Advanced Damp Remediation", desc: "Pressure chemical injection and polymer waterproofing permanently banishing wall efflorescence and moisture." },
+    ],
+    highlightBox: {
+      title: "Breathe New Life into Your Existing Property",
+      description: "Get the luxury and efficiency of a brand-new home while preserving the prime location and emotional value of your existing property.",
+      badges: ["✓ Structural Retrofitting", "✓ Floor Addition", "✓ Facade Modernization", "✓ Complete Interior Revamp"],
+    },
+    steps: [
+      { n: "01", title: "Structural Audit & Space Assessment", body: "Non-destructive inspection of existing beams, slab health, foundation settlement, and dampness ingress." },
+      { n: "02", title: "Demolition & Retrofit Engineering", body: "Controlled demolition and structural strengthening with zero vibration damage to adjacent structures." },
+      { n: "03", title: "Modern Fitout & Handover", body: "New flooring, high-end sanitaryware, modular joinery, fresh facade styling, and handover." },
+    ],
+    guarantee: {
+      title: "100% Structural Safety Guarantee",
+      body: "Retrofitting executed without compromising existing building integrity, fully verified by structural engineers.",
+    },
+    formDefaults: {
+      serviceCategory: "renovation",
+      field1Label: "Renovation Scope *",
+      field1Options: [
+        { value: "full-home-transformation", label: "Full Home Structural & Aesthetic Overhaul" },
+        { value: "additional-floor", label: "Adding an Additional Floor / Extension" },
+        { value: "interior-remodel", label: "Interior Remodeling & Reconfiguration" },
+        { value: "facade-makeover", label: "Exterior Facade & Elevation Makeover" },
+        { value: "commercial-renovation", label: "Commercial Space Renovation" },
+      ],
+      field2Label: "Age of Existing Structure *",
+      field2Options: [
+        { value: "under-10y", label: "Under 10 Years" },
+        { value: "10-20y", label: "10 – 20 Years" },
+        { value: "20-35y", label: "20 – 35 Years" },
+        { value: "above-35y", label: "Above 35 Years (Vintage/Heritage)" },
+      ],
+      placeholder: "Current property condition, planned changes (e.g. removing walls, adding floor, new kitchen), key concerns...",
+    },
+  },
+
+  "smart-homes": {
+    slug: "smart-homes",
+    badge: "Intelligent Home Automation",
+    tagline: "Concealed automation engineering uniting lighting, climate, security, and entertainment into one intuitive ecosystem.",
+    sla: "Wired During Construction",
+    slaLabel: "Turnkey Setup",
+    credentialBadge: "KNX & DALI Certified",
+    credentialLabel: "Enterprise-Grade Reliability",
+    deliverablesHeading: "Smart Automation Architecture",
+    deliverables: [
+      { title: "Architectural Scene Lighting", desc: "Dimmable warm scene control, magnetic track lights, and daylight harvesting presets." },
+      { title: "Motorized Shade Automation", desc: "Silent motorized curtains and blinds programmed to sunrise, sunset, and privacy schedules." },
+      { title: "Multi-Zone VRV Climate Control", desc: "Individual room temperature scheduling and remote cooling trigger from your smartphone." },
+      { title: "Biometric Keyless Security", desc: "Fingerprint/facial smart deadbolts, video doorbell intercom, and perimeter motion alarms." },
+      { title: "Smart Energy & Solar Metering", desc: "Live dashboard tracking solar generation, heavy appliance draw, and battery backup status." },
+      { title: "Distributed High-Res Audio", desc: "Multi-room streaming audio powered by invisible architectural in-wall and in-ceiling speakers." },
+    ],
+    highlightBox: {
+      title: "Planned from Construction Day One — Not an Afterthought",
+      description: "Concealed conduit planning eliminates messy external wires, Wi-Fi drops, and bulky wall adapters.",
+      badges: ["✓ Single App & Voice Control", "✓ KNX Wired Protocol", "✓ Biometric Security", "✓ Energy Optimization"],
+    },
+    steps: [
+      { n: "01", title: "Automation Discovery & Lifestyle Mapping", body: "Selecting lighting circuits, climate zones, motorized shades, and security access points." },
+      { n: "02", title: "Concealed Conduit & Low-Voltage Wiring", body: "Running high-speed shielded data cables during the brickwork and plastering phase." },
+      { n: "03", title: "Hardware Installation & Commissioning", body: "Mounting touch panels, programming scene automations, and mobile app pairing." },
+    ],
+    guarantee: {
+      title: "100% System Reliability Guarantee",
+      body: "Industrial-grade wired infrastructure designed for 15+ years of zero-lag, rock-solid operation.",
+    },
+    formDefaults: {
+      serviceCategory: "residential",
+      field1Label: "Desired Automation Scope *",
+      field1Options: [
+        { value: "full-home-automation", label: "Full Home (Lighting + Climate + Security + Audio)" },
+        { value: "lighting-climate", label: "Smart Lighting & Climate Control Only" },
+        { value: "security-access", label: "Biometric Security, Cameras & Access Control" },
+        { value: "home-theater-audio", label: "Home Theater & Multi-Zone Audio Only" },
+      ],
+      field2Label: "Current Construction Stage *",
+      field2Options: [
+        { value: "planning-stage", label: "Planning / Pre-construction" },
+        { value: "brickwork-stage", label: "Brickwork & Electrical Conduit Stage" },
+        { value: "finishing-stage", label: "Plastering / Finishing Stage" },
+        { value: "existing-home", label: "Existing Completed Home (Retrofit)" },
+      ],
+      placeholder: "Number of bedrooms, living zones, preferred voice ecosystem (Apple HomeKit / Google Home / Alexa)...",
+    },
+  },
+
+  "industrial-factory-construction": {
+    slug: "industrial-factory-construction",
+    badge: "Industrial & Manufacturing Engineering",
+    tagline: "Heavy-duty pre-engineered building (PEB) sheds, industrial plants, and factories with integrated safety NOCs.",
+    sla: "Rapid PEB Fabrication",
+    slaLabel: "Strict Safety SLA",
+    credentialBadge: "DISH & Factory NOC Ready",
+    credentialLabel: "Heavy Structural Steel",
+    deliverablesHeading: "Heavy Industrial Capabilities",
+    deliverables: [
+      { title: "Clear-Span PEB Steel Sheds", desc: "Long clear-span portals without obstructive interior columns, engineered for heavy wind and seismic loads." },
+      { title: "Overhead Gantry Crane Beams", desc: "Heavy gantry runway girders designed to accommodate 5-ton to 50-ton overhead cranes." },
+      { title: "Vacuum Dewatered (VDF) Flooring", desc: "Laser-leveled heavy industrial concrete flooring treated with metallic hardeners for heavy forklift loads." },
+      { title: "DISH Fire Protection Network", desc: "Certified fire hydrant ring mains, automatic ceiling sprinklers, and dedicated fire pump house." },
+      { title: "Industrial Ventilation & Louvers", desc: "Ridge monitors, natural turbo ventilators, and acoustic sound louvers meeting factory norms." },
+      { title: "Statutory Approvals & Clearances", desc: "Factory Inspectorate (DISH) plan sanction, Fire Department NOC, and Pollution Control Board clearances." },
+    ],
+    highlightBox: {
+      title: "Built for Heavy Machinery & Maximum Throughput",
+      description: "Engineered specifically for manufacturing vibration resistance, heavy forklift loads, and regulatory compliance.",
+      badges: ["✓ PEB Steel Structures", "✓ 5T-50T Gantry Support", "✓ VDF Heavy Duty Flooring", "✓ Fire Hydrant & DISH NOC"],
+    },
+    steps: [
+      { n: "01", title: "Industrial Workflow & Load Analysis", body: "Mapping manufacturing line layouts, crane tracks, heavy machinery footings, and vehicular turning radius." },
+      { n: "02", title: "PEB Fabrication & RCC Heavy Footings", body: "Precision factory fabrication of high-tensile steel members and casting heavy machine foundations." },
+      { n: "03", title: "Rapid Erection & Statutory NOC Delivery", body: "On-site crane erection, roof sheeting, fire fighting network installation, and final DISH sign-off." },
+    ],
+    guarantee: {
+      title: "100% Factory Compliance Guarantee",
+      body: "Complete statutory clearances and structural certifications ensuring uninterrupted industrial operations.",
+    },
+    formDefaults: {
+      serviceCategory: "industrial",
+      field1Label: "Industrial Facility Type *",
+      field1Options: [
+        { value: "peb-manufacturing", label: "Manufacturing Plant / Heavy Factory" },
+        { value: "peb-warehouse", label: "Logistics Warehouse / Storage Shed" },
+        { value: "fabrication-shed", label: "Engineering Fabrication Workshop" },
+        { value: "pharma-food-processing", label: "Food Processing / Cleanroom Facility" },
+      ],
+      field2Label: "Approximate Shed Covered Area *",
+      field2Options: [
+        { value: "under-10000", label: "Under 10,000 sq ft" },
+        { value: "10000-25000", label: "10,000 – 25,000 sq ft" },
+        { value: "25000-60000", label: "25,000 – 60,000 sq ft" },
+        { value: "above-60000", label: "Above 60,000 sq ft" },
+      ],
+      placeholder: "Eaves clear height requirement, overhead crane capacity needed, electricity load, plot dimensions...",
+    },
+  },
+
+  "architectural-designs": {
+    slug: "architectural-designs",
+    badge: "Bespoke Architectural Planning",
+    tagline: "Conceptual spatial layouts, 3D architectural elevations, and municipal approval CAD blueprints.",
+    sla: "7-10 Days First Concept",
+    slaLabel: "15 Days Full Pack",
+    credentialBadge: "Council of Architecture",
+    credentialLabel: "Vastu Integrated CAD",
+    deliverablesHeading: "Architectural Drawing Deliverables",
+    deliverables: [
+      { title: "2D Detailed Floor Plans", desc: "Exact dimensioned room sizes, door-window schedules, furniture placements, and circulation corridors." },
+      { title: "Photorealistic 4K 3D Elevations", desc: "Ultra-realistic CGI exterior renderings capturing day, sunset, and night lighting atmospheres." },
+      { title: "Structural CAD Working Drawings", desc: "Footing details, column orientation schedule, beam reinforcement cut-lengths, and slab reinforcement." },
+      { title: "Municipal Sanction Drawings", desc: "Formatted precisely for Local Corporation/DTCP/CMDA building permission with FAR calculations." },
+      { title: "Concealed MEP Layouts", desc: "Electrical conduit routing, switchboard elevations, sanitary drop pipes, and storm water drainage." },
+      { title: "Joinery & Window Cut Sheets", desc: "Detailed woodworking and aluminum/UPVC fabrication schedules with precise glass thicknesses." },
+    ],
+    highlightBox: {
+      title: "Blueprints That Blend Form, Function & Feasibility",
+      description: "Our architectural designs don't just look stunning on paper — they are structurally efficient and budget-optimized to build.",
+      badges: ["✓ 2D Spatial Floor Plans", "✓ 4K 3D Photorealistic Renders", "✓ Complete Structural CAD", "✓ Municipal Sanction Pack"],
+    },
+    steps: [
+      { n: "01", title: "Spatial Discovery & Site Analysis", body: "Studying plot dimensions, road orientation, setback rules, sunlight vectors, and family lifestyle." },
+      { n: "02", title: "3D Elevation & Conceptual Iterations", body: "Crafting and refining your 3D exterior until every angle, material texture, and shadow matches your dream." },
+      { n: "03", title: "Full Working Drawing Dossier", body: "Handing over the comprehensive contractor-ready architectural, structural, and MEP blueprint pack." },
+    ],
+    guarantee: {
+      title: "100% Design Satisfaction Guarantee",
+      body: "Iterative design refinements included until your blueprint and elevation are 100% approved by you.",
+    },
+    formDefaults: {
+      serviceCategory: "architectural",
+      field1Label: "Architectural Scope *",
+      field1Options: [
+        { value: "full-architecture-pack", label: "Full Architecture + Structural + 3D Elevation" },
+        { value: "floor-plans-3d", label: "Floor Plans & 3D Elevation Only" },
+        { value: "municipal-sanction", label: "Municipal Approval / Sanction Drawings" },
+        { value: "structural-cad", label: "Structural CAD Blueprints Only" },
+      ],
+      field2Label: "Plot / Built-Up Area *",
+      field2Options: [
+        { value: "under-2000", label: "Under 2,000 sq ft" },
+        { value: "2000-3500", label: "2,000 – 3,500 sq ft" },
+        { value: "3500-6000", label: "3,500 – 6,000 sq ft" },
+        { value: "above-6000", label: "Above 6,000 sq ft" },
+      ],
+      placeholder: "Plot dimensions (e.g. 40x60 ft), facing direction (North/East), floor count, preferred style (Modern/Traditional)...",
+    },
+  },
+
+  "interior-designs": {
+    slug: "interior-designs",
+    badge: "Custom Interior Architecture",
+    tagline: "Sophisticated interior styling, ergonomic space planning, modular joinery, and mood lighting layouts.",
+    sla: "10-14 Days Design Pack",
+    slaLabel: "Full 3D Walkthrough",
+    credentialBadge: "Luxury Interior Specialists",
+    credentialLabel: "Precision Joinery Codes",
+    deliverablesHeading: "Interior Design Deliverables",
+    deliverables: [
+      { title: "3D Photorealistic VR Visuals", desc: "Experience your living room, bedrooms, and kitchen in realistic virtual detail before execution." },
+      { title: "Ergonomic Modular Kitchen", desc: "Optimized kitchen work triangle, tandem box pullouts, tall pantry units, and quartz countertop specs." },
+      { title: "Custom Wardrobes & Joinery", desc: "Floor-to-ceiling wardrobes, walk-in closets, TV display consoles, and vanity mirror units." },
+      { title: "False Ceiling & Ambient Lighting", desc: "Indirect COB cove lighting, magnetic track lights, and multi-scene dimmer circuit layouts." },
+      { title: "Curated Material & Color Palette", desc: "Exact physical material specifications for veneers, laminates, fluted panels, and upholstery." },
+      { title: "Millimeter Carpentry Cut-Sheets", desc: "Detailed millimeter drawings ready for precision master carpenters and factory modular production." },
+    ],
+    highlightBox: {
+      title: "Seamless Balance of Ergonomics & Refined Aesthetics",
+      description: "We eliminate the guesswork by providing exact material codes, hardware models, and visual renders.",
+      badges: ["✓ 3D Virtual Walkthrough", "✓ Ergonomic Modular Kitchen", "✓ Custom Walk-in Wardrobes", "✓ Designer False Ceiling"],
+    },
+    steps: [
+      { n: "01", title: "Interior Lifestyle & Theme Brief", body: "Identifying your functional storage needs, color preferences, family lifestyle, and preferred luxury finish." },
+      { n: "02", title: "3D Photorealistic Visualizations", body: "Detailed room-by-room 3D renders with true lighting, textures, material samples, and finish previews." },
+      { n: "03", title: "Execution Drawings & Material Specs", body: "Handing over contractor cutting drawings, hardware codes, sanitary selections, and paint palettes." },
+    ],
+    guarantee: {
+      title: "100% Visual Fidelity Guarantee",
+      body: "What you see and approve in the 3D photorealistic renders is what gets delivered on-site with zero deviation.",
+    },
+    formDefaults: {
+      serviceCategory: "architectural",
+      field1Label: "Interior Scope *",
+      field1Options: [
+        { value: "complete-home-interiors", label: "Complete Home Interiors (All Rooms)" },
+        { value: "modular-kitchen-wardrobes", label: "Modular Kitchen & Wardrobes Only" },
+        { value: "living-dining-makeover", label: "Living, Dining & Foyer Makeover" },
+        { value: "commercial-office-interior", label: "Commercial Office / Retail Interior" },
+      ],
+      field2Label: "Property Status *",
+      field2Options: [
+        { value: "new-villa-under-construction", label: "New Villa Under Construction" },
+        { value: "new-apartment", label: "Newly Handed-Over Apartment" },
+        { value: "existing-home-remodel", label: "Existing Home Needing Interior Remodel" },
+        { value: "commercial-bare-shell", label: "Commercial Bare-Shell Space" },
+      ],
+      placeholder: "Number of rooms, current status of construction, preferred aesthetic (Minimalist / Neo-classical / Scandinavian)...",
+    },
+  },
+
+  "landscaping-designs": {
+    slug: "landscaping-designs",
+    badge: "Landscape Architecture & Outdoor Living",
+    tagline: "Harmonizing built architecture with nature through bespoke garden courtyards, terraces, and water sanctuaries.",
+    sla: "7-10 Days Masterplan",
+    slaLabel: "Flora Selection Included",
+    credentialBadge: "Horticulture Engineers",
+    credentialLabel: "Climate Resilient",
+    deliverablesHeading: "Landscape Architecture Scope",
+    deliverables: [
+      { title: "Outdoor Living & Gazebos", desc: "Pergolas, wooden gazebos, barbecue entertainment stations, and sunken courtyard seating." },
+      { title: "Native Flora Selection", desc: "Carefully curated climate-resilient trees, flowering shrubs, and lush lawn turf suited to local soil." },
+      { title: "Automated Drip Irrigation", desc: "Sensor-controlled timer drip lines and micro-sprinklers delivering precise water to root zones." },
+      { title: "Architectural Water Cascades", desc: "Calming cascading water walls, natural stone bubbler urns, and custom reflection koi ponds." },
+      { title: "Night Accent Illumination", desc: "Spike spotlights, warm pathway bollards, and dramatic tree uplighting creating evening magic." },
+      { title: "Hardscaping & Paver Layouts", desc: "Permeable grass pavers, cobble walking tracks, coping stones, and natural slate decking." },
+    ],
+    highlightBox: {
+      title: "Extend Your Living Experience Beyond Four Walls",
+      description: "Designed to boost property valuation, microclimate cooling, and create a serene green sanctuary at home.",
+      badges: ["✓ Garden Courtyards & Pergolas", "✓ Automated Drip Irrigation", "✓ Cascading Water Features", "✓ Nightscape Illumination"],
+    },
+    steps: [
+      { n: "01", title: "Site Topography & Sunlight Mapping", body: "Evaluating soil condition, natural shade, slope drainage, wind patterns, and water source availability." },
+      { n: "02", title: "3D Landscape Masterplan", body: "Visualizing greenery arrangements, water features, lighting moods, and outdoor living zones in 3D." },
+      { n: "03", title: "Planting Schedule & Hardscape Pack", body: "Delivering botanical species schedule, automated irrigation blueprints, and masonry specs." },
+    ],
+    guarantee: {
+      title: "100% Eco-Resilience Guarantee",
+      body: "Native, climate-adapted plant species and water-efficient irrigation built to thrive year-round with low maintenance.",
+    },
+    formDefaults: {
+      serviceCategory: "architectural",
+      field1Label: "Landscape Area Location *",
+      field1Options: [
+        { value: "villa-ground-garden", label: "Villa Ground Garden / Lawn" },
+        { value: "terrace-penthouse-garden", label: "Terrace Garden / Penthouse Deck" },
+        { value: "internal-open-courtyard", label: "Internal Open-to-Sky Courtyard" },
+        { value: "resort-estate-campus", label: "Commercial Campus / Resort Estate" },
+      ],
+      field2Label: "Key Outdoor Elements *",
+      field2Options: [
+        { value: "garden-gazebo-irrigation", label: "Lawn Garden + Gazebo + Auto Irrigation" },
+        { value: "water-feature-lighting", label: "Water Feature / Pond + Night Accent Lighting" },
+        { value: "vertical-garden-deck", label: "Vertical Green Wall + Wooden Decking" },
+        { value: "full-estate-masterplan", label: "Full Outdoor Estate Masterplan" },
+      ],
+      placeholder: "Approximate open area (sq ft), sunny vs shady zones, specific desires (fruit trees, zen garden, party deck)...",
+    },
+  },
+
+  "bank-valuation-report": {
+    slug: "bank-valuation-report",
+    badge: "Certified Property Valuation Report",
+    tagline: "Bank-approved, legally binding property valuation and appraisal reports accepted across all major financial institutions.",
+    sla: "24 to 48 Hours Express",
+    slaLabel: "Fast Turnaround",
+    credentialBadge: "IBBI Registered Valuer",
+    credentialLabel: "Wealth Tax Act Cat 1 Panel",
+    deliverablesHeading: "Bank Valuation Inclusions",
+    deliverables: [
+      { title: "Fair Market Value (FMV) Assessment", desc: "Scientific valuation balancing guideline value, recent registered sale transactions, and local market demand." },
+      { title: "Plinth Area & Depreciation Audit", desc: "Structural valuation applying official depreciation charts based on construction type, age, and maintenance." },
+      { title: "Pre-Approved for Major Banks", desc: "Accepted by SBI, HDFC Bank, ICICI Bank, Axis Bank, Canara Bank, Indian Bank, Kotak, and Union Bank." },
+      { title: "Official Registered Valuer Dossier", desc: "Legal appraisal dossier stamped and signed with IBBI registration number and professional valuer seal." },
+      { title: "Boundary & Measurement Verification", desc: "Physical site dimension cross-check against Field Measurement Book (FMB), patta, and sanctioned plan." },
+      { title: "Multi-Purpose Acceptance", desc: "Valid for Home Loans, Mortgage / LAP, Visa Net Worth Certification, Capital Gains, and Asset Division." },
+    ],
+    highlightBox: {
+      title: "Empaneled with Leading Financial Institutions",
+      description: "Our valuation reports follow strict Indian Banking Association (IBA) and SARFAESI compliance for seamless loan sanction.",
+      badges: ["✓ SBI, HDFC & ICICI Approved", "✓ 24-48 Hr Fast Turnaround", "✓ IBBI Registered Valuer Seal", "✓ Visa Net Worth Accepted"],
+    },
+    steps: [
+      { n: "01", title: "Document Verification", body: "Reviewing title deed, Patta/Chitta, parent documents, EC, and building sanction drawing." },
+      { n: "02", title: "On-Site Physical Inspection", body: "Physical measurements, structural age assessment, specification audit, and geo-tagged site photos." },
+      { n: "03", title: "Certified Report Handover", body: "Formal stamped valuation report delivered in hard copy and digital format for immediate bank submission." },
+    ],
+    guarantee: {
+      title: "100% Bank & Authority Acceptance Guarantee",
+      body: "Guaranteed acceptance across public sector and private banking institutions with zero documentation rejections.",
+    },
+    formDefaults: {
+      serviceCategory: "valuation",
+      field1Label: "Purpose of Valuation *",
+      field1Options: [
+        { value: "home-loan", label: "Bank Home Loan / Mortgage Sanction" },
+        { value: "lap-loan", label: "Loan Against Property (LAP) Appraisal" },
+        { value: "visa-networth", label: "Visa / Immigration Net Worth Certificate" },
+        { value: "capital-gains", label: "Capital Gains / Wealth Tax Assessment" },
+        { value: "property-sale-purchase", label: "Fair Market Price Advisory (Sale/Purchase)" },
+      ],
+      field2Label: "Property Type *",
+      field2Options: [
+        { value: "independent-house", label: "Residential Independent House / Villa" },
+        { value: "apartment-flat", label: "Residential Apartment / Flat" },
+        { value: "commercial-building", label: "Commercial Building / Shop / Office" },
+        { value: "vacant-land", label: "Vacant Residential / Industrial Plot" },
+        { value: "factory-shed", label: "Industrial Factory Land & Building" },
+      ],
+      placeholder: "Property address, bank name (if applying for loan), approximate plot/built-up area, document status...",
+    },
+  },
+
+  "structural-stability-certificate": {
+    slug: "structural-stability-certificate",
+    badge: "Structural Stability & Safety Certification",
+    tagline: "Certified structural safety audits, NDT testing, and official stability certificates issued by licensed Chartered Structural Engineers.",
+    sla: "2 to 4 Working Days",
+    slaLabel: "On-Site Non-Destructive Testing",
+    credentialBadge: "Chartered Structural Engineer",
+    credentialLabel: "DISH & High Court Panel",
+    deliverablesHeading: "Structural Safety Audit Scope",
+    deliverables: [
+      { title: "Non-Destructive Testing (NDT)", desc: "Rebound hammer concrete hardness test and Ultrasonic Pulse Velocity (UPV) concrete soundness audit." },
+      { title: "Statutory Form 1A & Form 1B", desc: "Official compliance certification for Factory Inspectorate (DISH) license renewal under the Factories Act." },
+      { title: "School & College Fitness NOC", desc: "Structural safety certificates required for CBSE, ICSE, Matriculation school and college recognition." },
+      { title: "Load-Bearing & Deflection Analysis", desc: "Verifying safety thresholds under equipment vibration, machinery load, wind, and seismic stresses." },
+      { title: "Foundation Settlement & Crack Audit", desc: "Diagnosing structural vs superficial cracks, spalling concrete, corroded rebar, and repair methods." },
+      { title: "Chartered Engineer Sign-Off", desc: "Signed and sealed by an empaneled Grade-1 Chartered Structural Engineer with legal validity." },
+    ],
+    highlightBox: {
+      title: "Legally Valid for Factory, School & Commercial Clearances",
+      description: "Mandatory compliance documentation for local municipal corporations, fire departments, and the Directorate of Industrial Safety.",
+      badges: ["✓ Form 1A / Form 1B Factory Clearance", "✓ Rebound Hammer & UPV Testing", "✓ School & College Affiliation NOC", "✓ Seismic Health Audit"],
+    },
+    steps: [
+      { n: "01", title: "Structural Drawing & Document Audit", body: "Examining approved structural blueprints, soil reports, load specifications, and previous fitness history." },
+      { n: "02", title: "On-Site Engineering Audit & NDT Tests", body: "Conducting rebound hammer, ultrasonic pulse velocity, and crack depth measurements across key columns and beams." },
+      { n: "03", title: "Certified Stability Dossier Handover", body: "Delivering official Form 1A/1B certificate with engineering calculation sheets and safety stamps." },
+    ],
+    guarantee: {
+      title: "100% Statutory Compliance Guarantee",
+      body: "Legally recognized by the Directorate of Industrial Safety & Health (DISH) and Municipal Corporations.",
+    },
+    formDefaults: {
+      serviceCategory: "valuation",
+      field1Label: "Premise / Structure Type *",
+      field1Options: [
+        { value: "factory-industrial", label: "Manufacturing Factory / Industrial Plant" },
+        { value: "school-college", label: "School / College Campus Building" },
+        { value: "commercial-mall", label: "Commercial Mall / Office Tower" },
+        { value: "apartment-complex", label: "Residential Apartment Complex" },
+        { value: "vintage-building", label: "Heritage / Vintage Building (Health Check)" },
+      ],
+      field2Label: "Certification Purpose *",
+      field2Options: [
+        { value: "dish-renewal", label: "Factory Inspectorate (DISH) Form 1A/1B Renewal" },
+        { value: "school-affiliation", label: "School / College Affiliation Clearance" },
+        { value: "municipal-oc", label: "Municipal Occupancy Certificate (OC)" },
+        { value: "structural-health-audit", label: "Structural Health & Renovation Fitness Audit" },
+      ],
+      placeholder: "Building location, total built-up area, approximate building age, number of floors, any visible structural concerns...",
+    },
+  },
+
+  "detailed-estimation-costing": {
+    slug: "detailed-estimation-costing",
+    badge: "Itemized Bill of Quantities (BOQ)",
+    tagline: "Micro-level quantity surveying, material take-offs, and rate analysis protecting you against 15–25% unexpected contractor cost escalations.",
+    sla: "3 to 5 Days Detailed BOQ",
+    slaLabel: "Line-Item Precision",
+    credentialBadge: "Certified Quantity Surveyors",
+    credentialLabel: "CPWD / State PWD Schedule of Rates",
+    deliverablesHeading: "Estimation & Costing Deliverables",
+    deliverables: [
+      { title: "Complete Line-Item BoQ", desc: "Exhaustive breakdown covering earthwork, PCC, RCC, masonry, plastering, waterproofing, joinery, and MEP." },
+      { title: "Material Quantity Take-Off", desc: "Exact calculation of steel tonnage, cement bag count, brick units, sand volume, and tile square meters." },
+      { title: "Contractor Tender Analysis", desc: "Unmasking hidden contractor markups, vague exclusions, and unfair contract terms before you award work." },
+      { title: "Milestone Cash Flow Forecast", desc: "Predicting exact capital outlay required at foundation, plinth, slab, masonry, and finishing stages." },
+      { title: "Rate Analysis Breakdown", desc: "Transparent pricing showing true labor wages, raw material purchase costs, and fair contractor profit." },
+      { title: "Material Specification Standards", desc: "Defining technical grade standards (Fe550D steel, 53-grade cement, 1:4 mortar, CPVC fittings)." },
+    ],
+    highlightBox: {
+      title: "Never Face Sudden Mid-Project Price Escalations",
+      description: "Over 80% of construction disputes stem from vague contractor contracts. Our detailed BoQ locks down every rupee in advance.",
+      badges: ["✓ Itemized Quantity Survey", "✓ Steel & Cement Take-offs", "✓ Contractor Bidding Protection", "✓ Cash Flow Milestone Plan"],
+    },
+    steps: [
+      { n: "01", title: "Architectural Drawing Ingestion", body: "Analyzing your 2D floor plans, elevations, cross-sections, and structural engineering blueprints." },
+      { n: "02", title: "Micro-Level Quantity Computation", body: "Calculating exact volumes of concrete, steel cut-lengths, masonry square meters, and surface areas." },
+      { n: "03", title: "Comprehensive BoQ & Tender Dossier", body: "Handing over the itemized Excel sheets, contractor agreement schedules, and milestone cash flow tables." },
+    ],
+    guarantee: {
+      title: "100% Quantity Survey Precision Guarantee",
+      body: "Verified against CPWD and State PWD standard Schedule of Rates to prevent inflated contractor claims.",
+    },
+    formDefaults: {
+      serviceCategory: "valuation",
+      field1Label: "Project Type for Estimation *",
+      field1Options: [
+        { value: "residential-house", label: "Independent Residential Home" },
+        { value: "luxury-villa", label: "Luxury Villa Project" },
+        { value: "commercial-building", label: "Commercial Office / Retail Complex" },
+        { value: "industrial-shed", label: "Industrial Factory / Shed Project" },
+        { value: "renovation-boq", label: "Renovation & Remodeling Project" },
+      ],
+      field2Label: "Current Drawing Status *",
+      field2Options: [
+        { value: "full-drawings-ready", label: "Full Architectural & Structural Drawings Ready" },
+        { value: "floor-plans-only", label: "2D Floor Plans Ready Only" },
+        { value: "concept-stage", label: "Concept Stage / Approximate Area Only" },
+        { value: "contractor-quotes-received", label: "Contractor Quotes Received (Need Verification)" },
+      ],
+      placeholder: "Project location, built-up area in sq ft, target budget (if any), specific finish preferences...",
+    },
+  },
+
+  "chartered-engineer-valuation": {
+    slug: "chartered-engineer-valuation",
+    badge: "Chartered Engineer & Technical Asset Valuation",
+    tagline: "Authoritative technical asset appraisals, plant and machinery valuation, and customs certifications for industrial enterprises.",
+    sla: "48 to 72 Hours Turnaround",
+    slaLabel: "Government Empaneled",
+    credentialBadge: "Chartered Engineer (India)",
+    credentialLabel: "Ministry of Commerce Approved",
+    deliverablesHeading: "Technical Valuation Scope",
+    deliverables: [
+      { title: "Plant & Heavy Machinery Valuation", desc: "Depreciated replacement cost appraisal for industrial production lines, boilers, transformers, and equipment." },
+      { title: "Customs & EPCG Scheme Clearance", desc: "Technical certification of imported capital goods for customs duty exemptions and EPCG compliance." },
+      { title: "Bank Collateral Asset Appraisal", desc: "Technical solvency and market worth reports for working capital facilities, term loans, and consortiums." },
+      { title: "Insurance Asset Reinstatement Value", desc: "Fair replacement valuation documentation for industrial fire, hazard, and machinery breakdown policies." },
+      { title: "Corporate Merger & Asset Liquidation", desc: "Impartial technical valuation for NCLT insolvency proceedings, mergers, acquisitions, and asset sales." },
+      { title: "Chartered Engineer Stamped Dossier", desc: "Certified under the Institution of Engineers (India) with formal seal, registration number, and calculations." },
+    ],
+    highlightBox: {
+      title: "Authoritative Technical Certification for Corporate & Regulatory Needs",
+      description: "Accepted by Customs Authorities, Income Tax Appellate Tribunals, Nationalized Banks, and Corporate Courts.",
+      badges: ["✓ Plant & Machinery Appraisal", "✓ Customs EPCG & Advance License", "✓ Bank Collateral Valuation", "✓ NCLT & Insolvency Certified"],
+    },
+    steps: [
+      { n: "01", title: "Asset Inventory & Invoices Audit", body: "Reviewing machinery purchase invoices, customs bill of entry, running hours, and asset depreciation registers." },
+      { n: "02", title: "On-Site Physical Technical Inspection", body: "Inspecting equipment operational status, physical condition, calibration records, and remaining useful life." },
+      { n: "03", title: "Chartered Engineer Dossier Handover", body: "Issuing the official stamped appraisal certificate with detailed technical valuation schedules." },
+    ],
+    guarantee: {
+      title: "100% Statutory Validity Guarantee",
+      body: "Fully certified under the Institution of Engineers (India) and recognized by government and financial bodies.",
+    },
+    formDefaults: {
+      serviceCategory: "valuation",
+      field1Label: "Valuation Objective *",
+      field1Options: [
+        { value: "customs-epcg", label: "Customs EPCG / Import Duty Exemption" },
+        { value: "bank-collateral", label: "Bank Collateral & Term Loan Security" },
+        { value: "machinery-fair-market", label: "Plant & Machinery Fair Market Valuation" },
+        { value: "insurance-reinstatement", label: "Insurance Reinstatement / Asset Value" },
+        { value: "asset-liquidation-nclt", label: "Asset Liquidation / NCLT / Insolvency" },
+      ],
+      field2Label: "Asset Category *",
+      field2Options: [
+        { value: "manufacturing-plant", label: "Industrial Manufacturing Plant & Lines" },
+        { value: "construction-equipment", label: "Heavy Construction & Earthmoving Equipment" },
+        { value: "textile-machinery", label: "Textile / Spinning / Weaving Machinery" },
+        { value: "engineering-cnc", label: "Precision Engineering / CNC / Tooling Equipment" },
+        { value: "it-datacenter", label: "IT & Data Center Infrastructure" },
+      ],
+      placeholder: "Company name, facility location, list of key equipment/machinery, purpose of certification, timeline requirement...",
+    },
+  },
+
+  "property-acquisition-advisory": {
+    slug: "property-acquisition-advisory",
+    badge: "Strategic Property Acquisition Advisory",
+    tagline: "Expert guidance for identifying, evaluating, and securing high-potential residential and commercial properties with complete legal protection.",
+    sla: "Dedicated Advisory Mandate",
+    slaLabel: "End-to-End Support",
+    credentialBadge: "Licensed Property Consultants",
+    credentialLabel: "RERA Registered",
+    deliverablesHeading: "Acquisition Advisory Deliverables",
+    deliverables: [
+      { title: "Curated Property Shortlisting", desc: "Handpicked properties matching your investment criteria, lifestyle preferences, and budget parameters." },
+      { title: "Legal Title & EC Verification", desc: "Comprehensive Encumbrance Certificate, parent deed chain, patta/chitta, and DTCP/CMDA approval verification." },
+      { title: "Fair Market Value Assessment", desc: "Independent valuation cross-referencing guideline value, recent registered transactions, and micro-market demand." },
+      { title: "Negotiation & Deal Structuring", desc: "Professional negotiation strategy to secure the best acquisition price with protective contract clauses." },
+      { title: "Registration & Documentation", desc: "Complete support through sale agreement drafting, stamp duty computation, and sub-registrar formalities." },
+      { title: "Post-Acquisition Development Plan", desc: "Feasibility analysis for construction, rental potential, and long-term value appreciation trajectory." },
+    ],
+    highlightBox: {
+      title: "Every Acquisition Decision Backed by Data & Due Diligence",
+      description: "We ensure zero legal risk and maximum value by conducting rigorous multi-layer verification before you commit a single rupee.",
+      badges: ["✓ Title Chain Verification", "✓ Fair Market Valuation", "✓ DTCP/CMDA Compliance", "✓ Registration Support"],
+    },
+    steps: [
+      { n: "01", title: "Investment Criteria & Location Mapping", body: "Understanding your budget, timeline, usage intent, and preferred micro-markets for targeted property sourcing." },
+      { n: "02", title: "Due Diligence & Valuation Report", body: "Comprehensive legal, technical, and market valuation audit ensuring the property is investment-grade." },
+      { n: "03", title: "Negotiation, Documentation & Closure", body: "Professional deal negotiation, sale deed preparation, and sub-registrar registration support." },
+    ],
+    guarantee: {
+      title: "100% Legal Clarity Guarantee",
+      body: "Every property acquisition backed by exhaustive title verification and legal due diligence with zero hidden encumbrances.",
+    },
+    formDefaults: {
+      serviceCategory: "realestate",
+      field1Label: "Property Interest Type *",
+      field1Options: [
+        { value: "residential-plot", label: "Residential Plot / Land" },
+        { value: "residential-house", label: "Residential House / Villa" },
+        { value: "apartment-flat", label: "Apartment / Flat" },
+        { value: "commercial-property", label: "Commercial Property / Office Space" },
+        { value: "industrial-land", label: "Industrial / Agricultural Land" },
+      ],
+      field2Label: "Investment Budget Range *",
+      field2Options: [
+        { value: "under-50l", label: "Under ₹50 Lakhs" },
+        { value: "50l-1cr", label: "₹50 Lakhs – ₹1 Crore" },
+        { value: "1cr-3cr", label: "₹1 Crore – ₹3 Crore" },
+        { value: "3cr-5cr", label: "₹3 Crore – ₹5 Crore" },
+        { value: "above-5cr", label: "Above ₹5 Crore" },
+      ],
+      placeholder: "Preferred locations (e.g. Coimbatore, Tiruppur), plot/built-up area requirement, timeline to close, any specific requirements...",
+    },
+  },
+
+  "land-plot-transactions": {
+    slug: "land-plot-transactions",
+    badge: "Premium Land & Plot Transaction Services",
+    tagline: "End-to-end facilitation of investment-grade land acquisitions and plot sales with comprehensive legal and regulatory verification.",
+    sla: "Transaction Lifecycle Support",
+    slaLabel: "Full Documentation",
+    credentialBadge: "DTCP Layout Specialists",
+    credentialLabel: "Sub-Registrar Experienced",
+    deliverablesHeading: "Land Transaction Services",
+    deliverables: [
+      { title: "Premium Plot Sourcing & Curation", desc: "Access to exclusive off-market DTCP-approved plots in high-growth residential and commercial corridors." },
+      { title: "Boundary Survey & FMB Verification", desc: "Licensed surveyor-conducted boundary verification against Field Measurement Book records and revenue maps." },
+      { title: "Encumbrance & Title Chain Audit", desc: "30-year EC verification, parent deed tracing, and legal opinion from empaneled property advocates." },
+      { title: "Zoning & Land-Use Compliance", desc: "Verification of DTCP layout approval, CRZ restrictions, agricultural land conversion status, and FSI eligibility." },
+      { title: "Sale Deed & Registration", desc: "Drafting of sale agreement, computation of stamp duty and registration fees, and sub-registrar coordination." },
+      { title: "Development Feasibility Analysis", desc: "Assessing plot potential for construction — FAR limits, setback norms, road width, and infrastructure proximity." },
+    ],
+    highlightBox: {
+      title: "Investment-Grade Land Transactions with Zero Legal Exposure",
+      description: "Every plot we facilitate comes with exhaustive legal verification, licensed boundary surveys, and clear title certification.",
+      badges: ["✓ DTCP Approved Plots", "✓ FMB Boundary Verified", "✓ 30-Year EC Clearance", "✓ Sub-Registrar Support"],
+    },
+    steps: [
+      { n: "01", title: "Requirement Mapping & Plot Sourcing", body: "Understanding your plot size, budget, location preference, and intended use for targeted property curation." },
+      { n: "02", title: "Legal Verification & Boundary Survey", body: "Complete EC audit, title chain analysis, physical boundary survey, and zoning compliance report." },
+      { n: "03", title: "Documentation, Registration & Handover", body: "Sale deed drafting, stamp duty processing, sub-registrar registration, and mutation completion." },
+    ],
+    guarantee: {
+      title: "100% Clear Title Guarantee",
+      body: "Every land transaction backed by thorough legal verification ensuring zero disputes, zero encumbrances, and complete ownership clarity.",
+    },
+    formDefaults: {
+      serviceCategory: "realestate",
+      field1Label: "Transaction Type *",
+      field1Options: [
+        { value: "buying-residential-plot", label: "Buying a Residential Plot" },
+        { value: "buying-commercial-land", label: "Buying Commercial / Industrial Land" },
+        { value: "selling-property", label: "Selling Land or Property" },
+        { value: "plot-development", label: "Plot Development / Layout Advisory" },
+      ],
+      field2Label: "Preferred Location Zone *",
+      field2Options: [
+        { value: "coimbatore-city", label: "Coimbatore City & Suburbs" },
+        { value: "tiruppur-region", label: "Tiruppur & Surrounding Towns" },
+        { value: "erode-salem", label: "Erode / Salem Corridor" },
+        { value: "other-tn", label: "Other Tamil Nadu Locations" },
+      ],
+      placeholder: "Preferred plot area (sq ft / cents / acres), budget range, specific localities of interest, intended purpose (construction / investment)...",
+    },
+  },
+
+  "real-estate-investment-consulting": {
+    slug: "real-estate-investment-consulting",
+    badge: "Institutional-Grade Investment Advisory",
+    tagline: "Data-driven real estate investment consulting delivering yield forecasting, risk analysis, and strategic portfolio positioning for maximum capital appreciation.",
+    sla: "Comprehensive Market Dossier",
+    slaLabel: "ROI Forecasting Included",
+    credentialBadge: "Certified Property Analysts",
+    credentialLabel: "NRI Investment Specialists",
+    deliverablesHeading: "Investment Consulting Deliverables",
+    deliverables: [
+      { title: "Micro-Market Growth Analysis", desc: "In-depth analysis of infrastructure development, population growth corridors, and price appreciation trends." },
+      { title: "Rental Yield & ROI Forecasting", desc: "Projected rental income, gross yield calculations, and 5-year capital appreciation modelling." },
+      { title: "NRI Investment Advisory", desc: "FEMA-compliant investment structuring, Power of Attorney management, and repatriation guidance for overseas buyers." },
+      { title: "Infrastructure Corridor Mapping", desc: "Identifying investment hotspots near upcoming highways, metro lines, IT parks, and industrial zones." },
+      { title: "Risk Assessment & Exit Strategy", desc: "Liquidity analysis, market cycle positioning, and optimal disposition timing for maximum capital gains." },
+      { title: "Diversified Portfolio Construction", desc: "Balanced allocation across residential, commercial, and land assets for risk-adjusted portfolio growth." },
+    ],
+    highlightBox: {
+      title: "Invest with Conviction — Not Speculation",
+      description: "Our data-backed advisory eliminates emotional decision-making and positions your capital in high-growth, verified opportunities.",
+      badges: ["✓ Growth Corridor Analysis", "✓ Rental Yield Modelling", "✓ NRI FEMA Compliance", "✓ Exit Strategy Planning"],
+    },
+    steps: [
+      { n: "01", title: "Investment Profiling & Goal Setting", body: "Understanding your capital availability, risk appetite, income requirements, and investment horizon." },
+      { n: "02", title: "Market Intelligence & Opportunity Mapping", body: "Delivering a comprehensive market dossier with growth zones, yield projections, and shortlisted opportunities." },
+      { n: "03", title: "Acquisition Execution & Portfolio Monitoring", body: "Supporting deal closure, documentation, and ongoing portfolio performance tracking with periodic reviews." },
+    ],
+    guarantee: {
+      title: "100% Data-Backed Investment Decisions",
+      body: "Every recommendation supported by verified market data, infrastructure growth plans, and transparent yield modelling — zero speculation.",
+    },
+    formDefaults: {
+      serviceCategory: "realestate",
+      field1Label: "Investment Objective *",
+      field1Options: [
+        { value: "capital-appreciation", label: "Long-Term Capital Appreciation" },
+        { value: "rental-income", label: "Steady Rental Income Generation" },
+        { value: "nri-investment", label: "NRI Property Investment in India" },
+        { value: "portfolio-diversification", label: "Real Estate Portfolio Diversification" },
+        { value: "commercial-investment", label: "Commercial / Retail Space Investment" },
+      ],
+      field2Label: "Investment Capital Range *",
+      field2Options: [
+        { value: "under-50l", label: "Under ₹50 Lakhs" },
+        { value: "50l-1cr", label: "₹50 Lakhs – ₹1 Crore" },
+        { value: "1cr-5cr", label: "₹1 Crore – ₹5 Crore" },
+        { value: "above-5cr", label: "Above ₹5 Crore" },
+      ],
+      placeholder: "Investment timeline, preferred property types, geographical preference, any existing portfolio details, NRI status if applicable...",
+    },
+  },
+
+  "property-portfolio-management": {
+    slug: "property-portfolio-management",
+    badge: "Comprehensive Property Portfolio Management",
+    tagline: "Full-spectrum stewardship of multi-property holdings — maximizing occupancy, rental yields, and asset value with zero owner overhead.",
+    sla: "Dedicated Portfolio Manager",
+    slaLabel: "Monthly Reporting",
+    credentialBadge: "Multi-Asset Managers",
+    credentialLabel: "Transparent Disbursement",
+    deliverablesHeading: "Portfolio Management Services",
+    deliverables: [
+      { title: "Tenant Sourcing & Screening", desc: "Pre-verified tenant acquisition with background checks, employment validation, and lease-ready documentation." },
+      { title: "Lease Documentation & Compliance", desc: "Legally binding rental agreements, e-registration, police verification, and periodic renewal management." },
+      { title: "Rent Collection & Disbursement", desc: "Automated rent collection, owner disbursement, TDS compliance, and arrears follow-up management." },
+      { title: "Property Inspection & Maintenance", desc: "Scheduled quarterly property inspections with photographic reports and coordinated repair management." },
+      { title: "Asset Performance Reporting", desc: "Monthly owner dashboard with occupancy rates, yield metrics, maintenance expenditure, and market benchmarks." },
+      { title: "Strategic Disposition Planning", desc: "Optimal timing advisory for property sales based on market cycles, capital gains optimization, and reinvestment strategy." },
+    ],
+    highlightBox: {
+      title: "Maximize Returns. Minimize Involvement.",
+      description: "Professional property management ensuring your assets generate optimal income without any day-to-day operational burden on you.",
+      badges: ["✓ Verified Tenant Placement", "✓ Automated Rent Collection", "✓ Quarterly Inspections", "✓ Performance Dashboard"],
+    },
+    steps: [
+      { n: "01", title: "Portfolio Audit & Onboarding", body: "Cataloguing your property holdings, existing lease status, current yields, and identifying optimization opportunities." },
+      { n: "02", title: "Tenant Placement & Lease Management", body: "Sourcing pre-verified tenants, executing rental agreements, and establishing automated collection workflows." },
+      { n: "03", title: "Ongoing Management & Performance Review", body: "Monthly reporting, maintenance coordination, lease renewals, and strategic advisory for portfolio growth." },
+    ],
+    guarantee: {
+      title: "100% Owner Transparency Guarantee",
+      body: "Complete visibility into tenant status, rental income, maintenance costs, and asset performance through dedicated monthly reporting.",
+    },
+    formDefaults: {
+      serviceCategory: "realestate",
+      field1Label: "Number of Properties *",
+      field1Options: [
+        { value: "single-property", label: "Single Property" },
+        { value: "2-5-properties", label: "2 – 5 Properties" },
+        { value: "5-10-properties", label: "5 – 10 Properties" },
+        { value: "above-10", label: "Above 10 Properties (Portfolio)" },
+      ],
+      field2Label: "Property Type Mix *",
+      field2Options: [
+        { value: "residential-only", label: "Residential Properties Only" },
+        { value: "commercial-only", label: "Commercial / Office Spaces Only" },
+        { value: "mixed-portfolio", label: "Mixed Residential & Commercial" },
+        { value: "land-vacant", label: "Vacant Land / Plots" },
+      ],
+      placeholder: "Property locations, current occupancy status, existing tenant details, specific management needs, any maintenance concerns...",
+    },
+  },
+};

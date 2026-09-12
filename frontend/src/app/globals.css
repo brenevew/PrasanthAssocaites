@@ -1,0 +1,522 @@
+@import "tailwindcss";
+
+/* ========================================================
+   PRASANTH ASSOCIATES — Neu-Glassmorphism Design System
+   The Synergy of Tactile Neumorphism + Frosted Glassmorphism
+   ======================================================== */
+
+:root {
+   /* Architectural Canvas & Base Tints */
+   --canvas-bg: #f7f5f0;
+   --color-background: var(--canvas-bg);
+
+   /* Neu-Glass Light Elements */
+   --ng-bg: rgba(255, 255, 255, 0.92);
+   --ng-bg-hover: rgba(255, 255, 255, 0.98);
+   --ng-sunken: rgba(239, 236, 230, 0.75);
+   --ng-border: rgba(255, 255, 255, 0.95);
+   --ng-border-subtle: rgba(229, 223, 213, 0.85);
+   --ng-light: rgba(255, 255, 255, 0.98);
+   --ng-shadow: rgba(140, 130, 115, 0.16);
+   --ng-shadow-dark: rgba(110, 100, 85, 0.24);
+   --ng-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+
+   /* Neu-Glass Dark Elements (Espresso surfaces) */
+   --ng-dark-bg: rgba(26, 23, 20, 0.92);
+   --ng-dark-surface: rgba(38, 34, 30, 0.95);
+   --ng-dark-sunken: rgba(18, 16, 14, 0.92);
+   --ng-dark-border: rgba(255, 255, 255, 0.12);
+   --ng-dark-light: rgba(70, 62, 54, 0.40);
+   --ng-dark-shadow: rgba(0, 0, 0, 0.55);
+   --ng-dark-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.20);
+
+   /* Architectural Deep Espresso — Headings & Pill Elements */
+   --color-charcoal: #1a1714;
+   --color-charcoal-light: #28231f;
+   --color-charcoal-mid: #3b3530;
+
+   /* Architectural Warm Light & Sands */
+   --color-warm-white: #ffffff;
+   --color-warm-white-dark: #faf8f5;
+   --color-linen: #efece6;
+
+   /* Architectural Muted Stone & Slate */
+   --color-concrete: #66615b;
+   --color-concrete-light: #8c867e;
+   --color-concrete-lighter: #b8b2aa;
+
+   /* Warm Architectural Bronze / Brass Accent */
+   --color-gold: #b88a44;
+   --color-gold-light: #d1a55c;
+   --color-gold-dark: #9a6f2c;
+
+   /* Warm Accent Terracotta */
+   --color-terracotta: #c86828;
+   --color-terracotta-light: #e07d3b;
+   --color-clay: #a34e18;
+
+   /* Functional Mappings */
+   --color-foreground: var(--color-charcoal);
+   --color-muted: var(--color-concrete);
+   --color-muted-light: var(--color-concrete-light);
+   --color-border: #eae5dd;
+   --color-surface: var(--ng-bg);
+   --color-surface-alt: var(--ng-sunken);
+   --color-overlay: rgba(26, 23, 20, 0.92);
+
+   /* Typography Scale */
+   --text-display: clamp(2.75rem, 6vw + 1rem, 5.5rem);
+   --text-h1: clamp(2.25rem, 4.5vw + 0.5rem, 4rem);
+   --text-h2: clamp(1.875rem, 3vw + 0.5rem, 2.875rem);
+   --text-h3: clamp(1.25rem, 2vw + 0.25rem, 1.625rem);
+   --text-h4: clamp(1.05rem, 1.5vw + 0.25rem, 1.2rem);
+   --text-body: 1rem;
+   --text-body-lg: 1.125rem;
+   --text-small: 0.875rem;
+   --text-xs: 0.75rem;
+
+   /* Spacing */
+   --section-padding-y: clamp(5rem, 10vw, 8.5rem);
+   --section-padding-x: clamp(1.25rem, 4vw, 2.5rem);
+   --container-max: 1320px;
+   --container-narrow: 960px;
+
+   /* Transitions */
+   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+   --transition-base: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Tailwind v4 Theme Integration ───────────────────────── */
+@theme inline {
+   --color-background: var(--color-background);
+   --color-foreground: var(--color-foreground);
+   --color-charcoal: var(--color-charcoal);
+   --color-charcoal-light: var(--color-charcoal-light);
+   --color-charcoal-mid: var(--color-charcoal-mid);
+   --color-warm-white: var(--color-warm-white);
+   --color-warm-white-dark: var(--color-warm-white-dark);
+   --color-linen: var(--color-linen);
+   --color-concrete: var(--color-concrete);
+   --color-concrete-light: var(--color-concrete-light);
+   --color-concrete-lighter: var(--color-concrete-lighter);
+   --color-gold: var(--color-gold);
+   --color-gold-light: var(--color-gold-light);
+   --color-gold-dark: var(--color-gold-dark);
+   --color-terracotta: var(--color-terracotta);
+   --color-terracotta-light: var(--color-terracotta-light);
+   --color-clay: var(--color-clay);
+   --color-muted: var(--color-muted);
+   --color-muted-light: var(--color-muted-light);
+   --color-border: var(--color-border);
+   --color-surface: var(--color-surface);
+   --color-surface-alt: var(--color-surface-alt);
+   --color-overlay: var(--color-overlay);
+   --font-heading: var(--font-cormorant);
+   --font-body: var(--font-inter);
+}
+
+/* ========================================================
+   Base Styles
+   ======================================================== */
+
+@layer base {
+   *, *::before, *::after { box-sizing: border-box; }
+
+   html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+   }
+
+   body {
+      background-color: var(--canvas-bg);
+      color: var(--color-foreground);
+      font-family: var(--font-body), system-ui, sans-serif;
+      font-size: var(--text-body);
+      line-height: 1.75;
+   }
+
+   h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading), Georgia, serif;
+      line-height: 1.15;
+      font-weight: 700;
+      color: var(--color-charcoal);
+      letter-spacing: -0.01em;
+   }
+
+   h1 { font-size: var(--text-h1); }
+   h2 { font-size: var(--text-h2); }
+   h3 { font-size: var(--text-h3); }
+   h4 { font-size: var(--text-h4); }
+
+   p {
+      color: var(--color-concrete);
+      line-height: 1.8;
+   }
+
+   a { color: inherit; text-decoration: none; }
+
+   img { display: block; }
+
+   /* Focus ring */
+   :focus-visible {
+      outline: 2px solid var(--color-gold);
+      outline-offset: 3px;
+   }
+
+   /* Neu-Glass Form Inputs Base */
+   input[type="text"],
+   input[type="email"],
+   input[type="tel"],
+   input[type="number"],
+   input[type="date"],
+   select,
+   textarea {
+      background: var(--ng-sunken);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: inset 4px 4px 8px var(--ng-shadow), inset -4px -4px 8px var(--ng-light);
+      border: 1px solid var(--ng-border-subtle);
+      border-radius: 1rem;
+      color: var(--color-charcoal);
+      transition: all var(--transition-base);
+   }
+
+   input[type="text"]:focus,
+   input[type="email"]:focus,
+   input[type="tel"]:focus,
+   input[type="number"]:focus,
+   input[type="date"]:focus,
+   select:focus,
+   textarea:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: inset 4px 4px 8px var(--ng-shadow), inset -4px -4px 8px var(--ng-light), 0 0 0 2px rgba(184, 138, 68, 0.35);
+      border-color: rgba(184, 138, 68, 0.6);
+   }
+}
+
+/* ========================================================
+   Layout Utilities
+   ======================================================== */
+
+@layer components {
+   .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--section-padding-x);
+      padding-right: var(--section-padding-x);
+   }
+
+   .container-narrow {
+      max-width: var(--container-narrow);
+   }
+
+   .section {
+      padding-top: var(--section-padding-y);
+      padding-bottom: var(--section-padding-y);
+   }
+}
+
+/* ========================================================
+   NEU-GLASSMORPHISM UTILITIES
+   Tactile Neumorphism (dual-shadow extrusion & deboss) 
+   + Frosted Glassmorphism (translucency & specular highlights)
+   ======================================================== */
+
+@layer utilities {
+   /* 1. Raised Frosted Neu-Glass (Standard Cards & Panels) */
+   .nm-raised,
+   .glass-card,
+   .neu-glass {
+      background: var(--ng-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--ng-border);
+      box-shadow:
+         8px 8px 22px var(--ng-shadow),
+         -8px -8px 22px var(--ng-light),
+         var(--ng-specular);
+      transition: all 320ms cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   .nm-raised:hover,
+   .glass-card:hover,
+   .neu-glass:hover {
+      background: var(--ng-bg-hover);
+      border-color: rgba(184, 138, 68, 0.4);
+      box-shadow:
+         12px 12px 28px var(--ng-shadow),
+         -12px -12px 28px var(--ng-light),
+         var(--ng-specular),
+         0 0 20px rgba(184, 138, 68, 0.15);
+      transform: translateY(-3px);
+   }
+
+   /* 2. Raised Frosted Neu-Glass Large (Hero/Main Containers) */
+   .nm-raised-lg,
+   .glass-panel,
+   .neu-glass-panel {
+      background: var(--ng-bg);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border: 1px solid var(--ng-border);
+      box-shadow:
+         14px 14px 32px var(--ng-shadow),
+         -14px -14px 32px var(--ng-light),
+         var(--ng-specular);
+   }
+
+   /* 3. Small Neu-Glass Elements (Badges & Chips) */
+   .nm-raised-sm,
+   .neu-glass-sm {
+      background: var(--ng-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--ng-border);
+      box-shadow:
+         4px 4px 10px var(--ng-shadow),
+         -4px -4px 10px var(--ng-light),
+         inset 0 1px 0 rgba(255, 255, 255, 0.9);
+   }
+
+   /* 4. Sunken / Inset Neu-Glass (Inputs, Wells, Sockets, Tracks) */
+   .nm-inset,
+   .nm-sunken,
+   .neu-glass-inset {
+      background: var(--ng-sunken);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--ng-border-subtle);
+      box-shadow:
+         inset 4px 4px 8px var(--ng-shadow),
+         inset -4px -4px 8px var(--ng-light);
+   }
+
+   .nm-inset-sm {
+      background: var(--ng-sunken);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--ng-border-subtle);
+      box-shadow:
+         inset 2px 2px 5px var(--ng-shadow),
+         inset -2px -2px 5px var(--ng-light);
+   }
+
+   .nm-inset-deep {
+      background: rgba(230, 225, 218, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow:
+         inset 5px 5px 12px var(--ng-shadow-dark),
+         inset -5px -5px 12px var(--ng-light);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+   }
+
+   /* 5. Interactive Tactile Neu-Glass (Pressable Cards & Buttons) */
+   .nm-interactive,
+   .neu-glass-button {
+      background: var(--ng-bg);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid var(--ng-border);
+      box-shadow:
+         6px 6px 16px var(--ng-shadow),
+         -6px -6px 16px var(--ng-light),
+         var(--ng-specular);
+      transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   .nm-interactive:hover,
+   .neu-glass-button:hover {
+      background: var(--ng-bg-hover);
+      box-shadow:
+         8px 8px 22px var(--ng-shadow),
+         -8px -8px 22px var(--ng-light),
+         var(--ng-specular);
+      transform: translateY(-2px);
+   }
+
+   .nm-interactive:active,
+   .neu-glass-button:active {
+      box-shadow:
+         inset 3px 3px 7px var(--ng-shadow),
+         inset -3px -3px 7px var(--ng-light);
+      transform: translateY(1px) scale(0.985);
+   }
+
+   /* 6. Warm Bronze / Gold Neu-Glass Accent */
+   .nm-gold-raised,
+   .neu-glass-gold {
+      background: var(--color-gold);
+      backdrop-filter: blur(12px) saturate(150%);
+      -webkit-backdrop-filter: blur(12px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow:
+         4px 4px 12px var(--ng-shadow),
+         -4px -4px 12px var(--ng-light),
+         inset 0 1px 1px rgba(255, 255, 255, 0.8),
+         0 0 12px rgba(184, 138, 68, 0.35);
+      color: #ffffff;
+      transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   .nm-gold-raised:hover,
+   .neu-glass-gold:hover {
+      background: var(--color-gold-light);
+      box-shadow:
+         6px 6px 16px var(--ng-shadow),
+         -6px -6px 16px var(--ng-light),
+         inset 0 1px 1px rgba(255, 255, 255, 0.9),
+         0 0 16px rgba(184, 138, 68, 0.5);
+      transform: translateY(-2px);
+   }
+
+   .nm-gold-raised:active,
+   .neu-glass-gold:active {
+      box-shadow:
+         inset 3px 3px 6px rgba(130, 95, 40, 0.6),
+         inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+      transform: translateY(1px) scale(0.985);
+   }
+
+   /* 7. Dark Neu-Glass (Rich Espresso Hero, CTA, Footer, Nav) */
+   .nm-dark-raised,
+   .glass-dark,
+   .neu-glass-dark {
+      background: var(--ng-dark-bg);
+      backdrop-filter: blur(22px) saturate(190%);
+      -webkit-backdrop-filter: blur(22px) saturate(190%);
+      border: 1px solid var(--ng-dark-border);
+      box-shadow:
+         10px 10px 28px var(--ng-dark-shadow),
+         -6px -6px 20px var(--ng-dark-light),
+         var(--ng-dark-specular);
+   }
+
+   .nm-dark-inset {
+      background: var(--ng-dark-sunken);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+         inset 4px 4px 10px var(--ng-dark-shadow),
+         inset -4px -4px 10px var(--ng-dark-light);
+   }
+
+   .nm-dark-interactive {
+      background: var(--ng-dark-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--ng-dark-border);
+      box-shadow:
+         6px 6px 18px var(--ng-dark-shadow),
+         -5px -5px 14px var(--ng-dark-light),
+         var(--ng-dark-specular);
+      transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   .nm-dark-interactive:hover {
+      background: var(--ng-dark-surface);
+      box-shadow:
+         8px 8px 24px var(--ng-dark-shadow),
+         -6px -6px 18px var(--ng-dark-light),
+         var(--ng-dark-specular);
+      transform: translateY(-2px);
+   }
+
+   .nm-dark-interactive:active {
+      box-shadow:
+         inset 3px 3px 8px var(--ng-dark-shadow),
+         inset -3px -3px 8px var(--ng-dark-light);
+      transform: translateY(1px) scale(0.985);
+   }
+
+   /* Floating Neu-Glass Liquid Glowing Orbs */
+   .liquid-glow {
+      position: absolute;
+      border-radius: 9999px;
+      background: radial-gradient(
+         circle,
+         rgba(184, 138, 68, 0.18) 0%,
+         rgba(239, 236, 230, 0.1) 50%,
+         rgba(184, 138, 68, 0) 70%
+      );
+      filter: blur(56px);
+      pointer-events: none;
+   }
+
+   /* Badges */
+   .badge-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold-dark);
+      background: #faf6ee;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid #ebdcc5;
+      box-shadow:
+         3px 3px 8px var(--ng-shadow),
+         -3px -3px 8px var(--ng-light),
+         inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+   }
+
+   /* Gold & Accent Lines */
+   .gold-line {
+      width: 2.75rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(184, 138, 68, 0.3);
+   }
+
+   .blueprint-grid {
+      background-image:
+         linear-gradient(rgba(184, 138, 68, 0.08) 1px, transparent 1px),
+         linear-gradient(90deg, rgba(184, 138, 68, 0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+   }
+
+   /* Scroll Reveal */
+   .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+   }
+
+   .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+   }
+
+   .reveal-delay-1 { transition-delay: 80ms; }
+   .reveal-delay-2 { transition-delay: 160ms; }
+   .reveal-delay-3 { transition-delay: 240ms; }
+   .reveal-delay-4 { transition-delay: 320ms; }
+   .reveal-delay-5 { transition-delay: 400ms; }
+
+   @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+   }
+}
+.bg-linen { background-color: var(--color-linen) !important; }
+.bg-slate { background-color: var(--color-concrete) !important; }
+.bg-slate-light { background-color: var(--color-concrete-light) !important; }
+.bg-gold { background-color: var(--color-gold) !important; }
+.bg-gold-light { background-color: var(--color-gold-light) !important; }
+.bg-gold-dark { background-color: var(--color-gold-dark) !important; }
+.text-gold-dark { color: var(--color-gold-dark) !important; }
+.text-slate { color: var(--color-concrete) !important; }
+.text-slate-light { color: var(--color-concrete-light) !important; }
+.border-gold { border-color: var(--color-gold) !important; }
+.border-slate { border-color: var(--color-concrete) !important; }
