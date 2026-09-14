@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Top Gold Beam -->
+  <polygon points="60,42 135,42 135,56 60,50" fill="#CCA028"/>
+  <!-- Main Navy P Structure -->
+  <path d="M 60 52 L 88 47 L 88 58 L 77 62 L 77 158 L 60 158 Z" fill="#0B1E3D"/>
+  <path d="M 60 122 L 148 76 L 148 42 L 133 42 L 133 70 L 60 108 Z" fill="#0B1E3D"/>
+</svg>

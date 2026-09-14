@@ -195,6 +195,47 @@
       box-shadow: inset 4px 4px 8px var(--ng-shadow), inset -4px -4px 8px var(--ng-light), 0 0 0 2px rgba(184, 138, 68, 0.35);
       border-color: rgba(184, 138, 68, 0.6);
    }
+
+}
+
+/* ========================================================
+   Mobile / touch affordances
+
+   Deliberately UNLAYERED: unlayered rules outrank every @layer, so these
+   still win over the Tailwind utilities (text-xs, text-sm) that the forms
+   set on individual inputs. Inside @layer base they were being overridden.
+   ======================================================== */
+
+/* iOS Safari zooms the viewport in whenever a focused form control has a
+   font-size under 16px, and never zooms back out — leaving the user stranded
+   mid-form. Several forms style inputs at 12-14px, so pin the computed size
+   to 16px on touch-sized screens only; desktop keeps the smaller type. */
+@media (max-width: 768px) {
+   input[type="text"],
+   input[type="email"],
+   input[type="tel"],
+   input[type="number"],
+   input[type="date"],
+   input[type="search"],
+   input[type="password"],
+   select,
+   textarea {
+      font-size: 16px;
+   }
+
+   /* At 16px the longer option labels no longer fit the narrow control, so
+      truncate them cleanly instead of clipping mid-character. */
+   select {
+      text-overflow: ellipsis;
+   }
+}
+
+/* Suppress the grey flash Android/iOS paint over tapped controls — the
+   components already carry their own :active / transition styling. */
+@media (pointer: coarse) {
+   a, button, [role="button"], input, select, textarea, summary {
+      -webkit-tap-highlight-color: transparent;
+   }
 }
 
 /* ========================================================
@@ -507,6 +548,32 @@
 
    @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
+   }
+
+   /* Running Testimonial Cards (Marquee) */
+   @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+   }
+
+   .marquee-track {
+      animation: marquee-scroll 42s linear infinite;
+   }
+
+   .marquee-track:hover,
+   .marquee-track:focus-within {
+      animation-play-state: paused;
+   }
+
+   .marquee-mask {
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+   }
+
+   @media (prefers-reduced-motion: reduce) {
+      .marquee-track {
+         animation: none;
+      }
    }
 }
 .bg-linen { background-color: var(--color-linen) !important; }

@@ -52,7 +52,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           </div>
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-full nm-interactive flex items-center justify-center text-charcoal hover:text-gold transition-colors focus:outline-none"
+            className="w-11 h-11 rounded-full nm-interactive flex items-center justify-center text-charcoal hover:text-gold transition-colors focus:outline-none"
             aria-label="Close menu"
           >
             <svg

@@ -5,14 +5,13 @@ import { Metadata } from "next";
 import { company } from "@/data/company";
 import { projects } from "@/data/projects";
 import { differentiators } from "@/data/quality";
-import { testimonials } from "@/data/testimonials";
 
 import Button from "@/components/ui/Button";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ProjectCard from "@/components/ui/ProjectCard";
-import TestimonialCard from "@/components/ui/TestimonialCard";
+import TestimonialsMarquee from "@/components/ui/TestimonialsMarquee";
 import CTABanner from "@/components/ui/CTABanner";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
@@ -308,13 +307,9 @@ export default function Home() {
             />
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.slice(0, 3).map((testimonial, index) => (
-              <ScrollReveal key={testimonial.name} delay={index * 120} className="h-full">
-                <TestimonialCard testimonial={testimonial} />
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal>
+            <TestimonialsMarquee />
+          </ScrollReveal>
         </div>
       </section>
 

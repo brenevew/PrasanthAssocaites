@@ -2,15 +2,18 @@
 
 import React from "react";
 import PlannerStepActions from "../PlannerStepActions";
-import { FloorRequirement, RoadLevelData } from "../types";
+import { FloorRequirement } from "../types";
 import BuildingStackVisualizer from "../BuildingStackVisualizer";
 
 interface StepFloorConfigProps {
   floors: FloorRequirement[];
-  roadLevel: RoadLevelData;
   onAddFloor: () => void;
   onRemoveFloor: (floorId: string) => void;
   onRenameFloor: (floorId: string, newName: string) => void;
+  onResetFloors?: () => void;
+  onRemoveBasement?: () => void;
+  onToggleBasementOption?: (option: "parking" | "custom") => void;
+  onUpdateFloor?: (floorId: string, updates: Partial<FloorRequirement>) => void;
   onNext: () => void;
   onBack?: () => void;
   nextLabel: string;
@@ -18,10 +21,13 @@ interface StepFloorConfigProps {
 
 export default function StepFloorConfig({
   floors,
-  roadLevel,
   onAddFloor,
   onRemoveFloor,
   onRenameFloor,
+  onResetFloors,
+  onRemoveBasement,
+  onToggleBasementOption,
+  onUpdateFloor,
   onNext,
   onBack,
   nextLabel,
@@ -49,10 +55,13 @@ export default function StepFloorConfig({
       <div className="">
         <BuildingStackVisualizer
           floors={floors}
-          hasBasement={roadLevel.hasBasement}
           onAddFloor={onAddFloor}
           onRemoveFloor={onRemoveFloor}
           onRenameFloor={onRenameFloor}
+          onResetFloors={onResetFloors}
+          onRemoveBasement={onRemoveBasement}
+          onToggleBasementOption={onToggleBasementOption}
+          onUpdateFloor={onUpdateFloor}
         />
       </div>
       <PlannerStepActions onBack={onBack} nextLabel={nextLabel} />

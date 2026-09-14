@@ -91,11 +91,13 @@ export default function PlanHomeClient() {
           {/* Secondary Experience Switcher (For Residential Mode) */}
           {category === "Residential" && (
             <div className="pt-2 animate-fadeIn">
-              <div className="inline-flex p-1.5 bg-warm-white/90 rounded-2xl border border-border/80 shadow-sm">
+              {/* Stacks below sm: the two labels are too long to sit side by side
+                  on a 320px screen, and inline-flex will not shrink to fit. */}
+              <div className="flex w-full flex-col sm:inline-flex sm:w-auto sm:flex-row p-1.5 bg-warm-white/90 rounded-2xl border border-border/80 shadow-sm">
                 <button
                   type="button"
                   onClick={() => setResMode("express")}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer ${
                     resMode === "express"
                       ? "bg-charcoal text-white shadow-md font-extrabold"
                       : "text-concrete hover:text-charcoal"
@@ -111,7 +113,7 @@ export default function PlanHomeClient() {
                 <button
                   type="button"
                   onClick={() => setResMode("detailed")}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer ${
                     resMode === "detailed"
                       ? "bg-charcoal text-white shadow-md font-extrabold"
                       : "text-concrete hover:text-charcoal"

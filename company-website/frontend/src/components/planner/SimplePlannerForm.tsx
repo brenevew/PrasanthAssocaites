@@ -21,6 +21,7 @@ import {
   AlertCircle,
   ArrowUp,
   ArrowDown,
+  RotateCcw,
 } from "lucide-react";
 import { serviceCategories, type ServiceItem } from "@/data/rateCards";
 import { signaturePackages } from "@/data/rateCardsLegacy";
@@ -136,6 +137,13 @@ export interface DynamicFloorLevel {
   kitchens: number;
   baths: number;
   livingHalls: number;
+  /** Pinned below Ground Floor; excluded from the sequential level numbering and from reordering. */
+  isBasement?: boolean;
+  /** Only meaningful when isBasement is true. Independent — a basement can have parking bays, custom rooms, or both. */
+  basementHasParking?: boolean;
+  basementHasCustomRooms?: boolean;
+  parkingCars?: number;
+  parkingTwoWheelers?: number;
 }
 
 const getArchitecturalFloorName = (index: number): string => {
@@ -203,8 +211,18 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
   const [plotWidth, setPlotWidth] = useState("50");
   const [projectName, setProjectName] = useState("");
 
-  /* Dynamic Floor Levels & Maximize/Minimize (Expanded/Collapsed) State */
-  const [floorLevels, setFloorLevels] = useState<DynamicFloorLevel[]>(initialFloorLevels);
+  /* Dynamic Floor Levels & Maximize/Minimize (Expanded/Collapsed) State
+     `list` and `nextLevel` are kept in one state object so every add/remove
+     is a single atomic, pure update — reading a plain ref for `nextLevel`
+     from inside a separate setState's updater caused it to skip a level
+     number (e.g. jump straight from 2nd Floor to 4th Floor) because React
+     can invoke that updater at a different time than the ref mutation. */
+  const [floorsState, setFloorsState] = useState<{ list: DynamicFloorLevel[]; nextLevel: number }>({
+    list: initialFloorLevels,
+    nextLevel: initialFloorLevels.length,
+  });
+  const floorLevels = floorsState.list;
+  const basementFloor = floorLevels.find((f) => f.isBasement);
   const [expandedFloorIds, setExpandedFloorIds] = useState<string[]>(["ground"]);
 
   /* Commercial Specifications */
@@ -215,8 +233,6 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
   const [commercialFacilities, setCommercialFacilities] = useState<string[]>(["Display Windows", "Customer Parking"]);
 
   /* Vehicle Parking & Road */
-  const [cars, setCars] = useState(2);
-  const [twoWheelers, setTwoWheelers] = useState(2);
   const [roadFacing, setRoadFacing] = useState("East");
   const [specialNotes, setSpecialNotes] = useState("");
 
@@ -295,13 +311,19 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
 
   const addFloorLevel = () => {
     const newId = `floor_${Date.now()}`;
-    setFloorLevels((prev) => {
-      const baseLength = prev[0]?.length || "30";
-      const baseBreadth = prev[0]?.breadth || "40";
+    setFloorsState((prev) => {
+      const ground = prev.list.find((f) => f.id === "ground") || prev.list.find((f) => !f.isBasement) || prev.list[0];
+      const baseLength = ground?.length || "30";
+      const baseBreadth = ground?.breadth || "40";
 
+      // Name the new floor by the next architectural level ever assigned —
+      // not by the current floor count — so a level name is never reused
+      // after an earlier floor at that level was deleted. Computed here,
+      // inside the single atomic update, so it can't desync from a
+      // separately-timed state/ref update.
       const newFloor: DynamicFloorLevel = {
         id: newId,
-        name: "",
+        name: getArchitecturalFloorName(prev.nextLevel),
         length: baseLength,
         breadth: baseBreadth,
         bedrooms: 2,
@@ -310,51 +332,102 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
         livingHalls: 1,
       };
 
-      const updated = [...prev, newFloor];
-      // Always re-index floor names in strict architectural order: Ground Floor, 1st Floor, 2nd Floor...
-      return updated.map((f, idx) => ({
-        ...f,
-        name: getArchitecturalFloorName(idx),
-      }));
+      return { list: [...prev.list, newFloor], nextLevel: prev.nextLevel + 1 };
     });
     setExpandedFloorIds((prev) => [...prev, newId]);
   };
 
   const removeFloorLevel = (id: string) => {
-    setFloorLevels((prev) => {
-      if (prev.length <= 1) return prev;
-      const filtered = prev.filter((f) => f.id !== id);
-      // Re-index remaining floors so level 0 is always Ground Floor, level 1 is 1st Floor, etc.
-      return filtered.map((f, idx) => ({
-        ...f,
-        name: getArchitecturalFloorName(idx),
-      }));
+    setFloorsState((prev) => {
+      if (prev.list.length <= 1) return prev;
+      // Only drop the targeted floor — remaining floors keep the names they
+      // already have (e.g. removing Ground Floor must not rename 1st Floor),
+      // and nextLevel is left untouched so a future "Add Floor" never
+      // reissues a level name that's already been used.
+      return { ...prev, list: prev.list.filter((f) => f.id !== id) };
     });
     setExpandedFloorIds((prev) => prev.filter((x) => x !== id));
   };
 
+  const resetFloorLevels = () => {
+    setFloorsState({ list: initialFloorLevels, nextLevel: initialFloorLevels.length });
+    setExpandedFloorIds(["ground"]);
+  };
+
+  // Basement is pinned below Ground Floor: it doesn't consume a sequential
+  // level number and isn't reorderable, so toggling it never shifts any
+  // other floor's name. Parking and Custom Rooms are independent — a
+  // basement can have either one, or both at once.
+  const removeBasement = () => {
+    setFloorsState((prev) => ({ ...prev, list: prev.list.filter((f) => !f.isBasement) }));
+  };
+
+  const toggleBasementOption = (option: "parking" | "custom") => {
+    setFloorsState((prev) => {
+      const existing = prev.list.find((f) => f.isBasement);
+      const key = option === "parking" ? "basementHasParking" : "basementHasCustomRooms";
+
+      if (existing) {
+        const nextValue = !existing[key];
+        const otherKey = option === "parking" ? "basementHasCustomRooms" : "basementHasParking";
+        if (!nextValue && !existing[otherKey]) {
+          // Neither option left selected — nothing to configure, so drop the basement.
+          return { ...prev, list: prev.list.filter((f) => !f.isBasement) };
+        }
+        return {
+          ...prev,
+          list: prev.list.map((f) => (f.isBasement ? { ...f, [key]: nextValue } : f)),
+        };
+      }
+
+      const ground = prev.list.find((f) => f.id === "ground") || prev.list[0];
+      const isCustom = option === "custom";
+      const basementFloor: DynamicFloorLevel = {
+        id: "basement",
+        name: "Basement",
+        length: ground?.length || "30",
+        breadth: ground?.breadth || "40",
+        bedrooms: isCustom ? 1 : 0,
+        kitchens: 0,
+        baths: isCustom ? 1 : 0,
+        livingHalls: isCustom ? 1 : 0,
+        isBasement: true,
+        basementHasParking: option === "parking",
+        basementHasCustomRooms: option === "custom",
+        parkingCars: option === "parking" ? 4 : 0,
+        parkingTwoWheelers: option === "parking" ? 4 : 0,
+      };
+      return { ...prev, list: [basementFloor, ...prev.list] };
+    });
+  };
+
   const moveFloorLevel = (fromIndex: number, toIndex: number) => {
-    setFloorLevels((prev) => {
-      if (fromIndex < 0 || fromIndex >= prev.length || toIndex < 0 || toIndex >= prev.length) return prev;
-      const copy = [...prev];
+    setFloorsState((prev) => {
+      const { list } = prev;
+      if (fromIndex < 0 || fromIndex >= list.length || toIndex < 0 || toIndex >= list.length) return prev;
+      // Basement is pinned — never reorder it or swap another floor into its slot.
+      if (list[fromIndex]?.isBasement || list[toIndex]?.isBasement) return prev;
+      const copy = [...list];
       const [movedItem] = copy.splice(fromIndex, 1);
       copy.splice(toIndex, 0, movedItem);
-      // Re-index names to maintain proper architectural floor order
-      return copy.map((f, idx) => ({
-        ...f,
-        name: getArchitecturalFloorName(idx),
-      }));
+      // Re-index names to maintain proper architectural floor order,
+      // numbering only the non-basement floors (basement keeps its own name).
+      const nonBasement = copy.filter((f) => !f.isBasement);
+      const reindexed = copy.map((f) =>
+        f.isBasement ? f : { ...f, name: getArchitecturalFloorName(nonBasement.indexOf(f)) }
+      );
+      return { ...prev, list: reindexed };
     });
   };
 
   const updateFloorLevel = (id: string, updates: Partial<DynamicFloorLevel>) => {
-    setFloorLevels((prev) => {
-      const copy = [...prev];
+    setFloorsState((prev) => {
+      const copy = [...prev.list];
       const idx = copy.findIndex(f => f.id === id);
       if (idx !== -1) {
         copy[idx] = { ...copy[idx], ...updates };
       }
-      return copy;
+      return { ...prev, list: copy };
     });
   };
 
@@ -398,9 +471,16 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
         selectedPackage: selectedPackage || undefined,
         selectedServices: selectedServices.length > 0 ? JSON.stringify(selectedServices.map(s => ({ id: s.item.id, title: s.item.service, qty: s.qty }))) : undefined,
         selectedFeatures: selectedChips.join(", "),
-        parkingCarsCount: cars,
-        parkingTwoWheelersCount: twoWheelers,
+        parkingCarsCount: basementFloor?.parkingCars || 0,
+        parkingTwoWheelersCount: basementFloor?.parkingTwoWheelers || 0,
         roadSide: roadFacing,
+        hasBasement: !!basementFloor,
+        basementSummary: basementFloor
+          ? [
+              basementFloor.basementHasParking ? `Parking (${basementFloor.parkingCars || 0} cars, ${basementFloor.parkingTwoWheelers || 0} two-wheelers)` : null,
+              basementFloor.basementHasCustomRooms ? "Custom Rooms" : null,
+            ].filter(Boolean).join(" + ")
+          : undefined,
         estimatedFee: grandTotal > 0 ? grandTotal : undefined,
         specialNotes: specialNotes || undefined,
         attachments,
@@ -465,7 +545,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
           <button
             type="button"
             onClick={() => {
-              const floorDetailsText = floorLevels.map((f, idx) => `  • ${getArchitecturalFloorName(idx)}: ${f.length}x${f.breadth} ft (${(parseFloat(f.length)||0)*(parseFloat(f.breadth)||0)} SFT)`).join('\n');
+              const floorDetailsText = floorLevels.map((f, idx) => `  • ${f.name || getArchitecturalFloorName(idx)}: ${f.length}x${f.breadth} ft (${(parseFloat(f.length)||0)*(parseFloat(f.breadth)||0)} SFT)`).join('\n');
               const msg = `*Project Plan Inquiry [Ref: ${refCode}]*\n\n*Client Name:* ${name || "Client"}\n*Phone:* ${phone || "Not specified"}\n*Project Type:* ${selectedProjectType}\n*Plot:* ${plotLength} x ${plotWidth} ft (${plotAreaNum.toLocaleString('en-IN')} SFT)\n*Total Floors:* ${floorLevels.length} Levels\n*Total Built-up:* ${totalAllFloorsSft.toLocaleString('en-IN')} SFT\n\n*Floor Breakdown:*\n${floorDetailsText}\n\n${selectedPackage ? `*Package:* ${selectedPackage}\n` : ''}${grandTotal > 0 ? `*Est. Fee:* ₹${grandTotal.toLocaleString('en-IN')}\n` : ''}\nReference: ${refCode}`;
               const url = `https://wa.me/919486038761?text=${encodeURIComponent(msg)}`;
               window.open(url, "_blank", "noopener,noreferrer");
@@ -582,8 +662,10 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
 
             {/* 3. Floor Layout & Room Details */}
             <div className="bg-warm-white/80 p-4 rounded-2xl border border-border/70 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+              {/* flex-wrap: the heading, the expand/collapse controls and the
+                  total badge do not fit on one line at 320px */}
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal/70 flex items-center gap-1.5">
                     <Layers size={13} className="text-gold-dark" /> 3. Floor Layout &amp; Room Details ({numFloorsCount} {numFloorsCount === 1 ? "Floor" : "Floors"})
                   </span>
@@ -615,12 +697,52 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                 </div>
               </div>
 
+              {/* Basement Options — Parking and Custom Rooms are independent; pick either or both */}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal/70">Basement:</span>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={removeBasement}
+                    className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border ${
+                      !basementFloor
+                        ? "bg-gold text-charcoal border-gold"
+                        : "bg-linen text-concrete border-border hover:border-gold/50"
+                    }`}
+                  >
+                    None
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => toggleBasementOption("parking")}
+                    className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border ${
+                      basementFloor?.basementHasParking
+                        ? "bg-gold text-charcoal border-gold"
+                        : "bg-linen text-concrete border-border hover:border-gold/50"
+                    }`}
+                  >
+                    Parking
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => toggleBasementOption("custom")}
+                    className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border ${
+                      basementFloor?.basementHasCustomRooms
+                        ? "bg-gold text-charcoal border-gold"
+                        : "bg-linen text-concrete border-border hover:border-gold/50"
+                    }`}
+                  >
+                    Custom Rooms
+                  </button>
+                </div>
+              </div>
+
               {/* Dynamic Collapsible Floor Cards List */}
               <div className="space-y-2.5">
                 {floorLevels.map((fl, flIdx) => {
                   const flSft = (parseFloat(fl.length) || 0) * (parseFloat(fl.breadth) || 0);
                   const isExpanded = expandedFloorIds.includes(fl.id);
-                  const floorDisplayName = getArchitecturalFloorName(flIdx);
+                  const floorDisplayName = fl.name || getArchitecturalFloorName(flIdx);
 
                   return (
                     <div
@@ -632,9 +754,9 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                       {/* Card Header Toggle Bar */}
                       <div
                         onClick={() => toggleFloorExpand(fl.id)}
-                        className="flex items-center justify-between cursor-pointer select-none"
+                        className="flex flex-wrap items-center justify-between gap-2 cursor-pointer select-none"
                       >
-                        <div className="flex items-center gap-2.5">
+                        <div className="flex min-w-0 items-center gap-2.5">
                           <button
                             type="button"
                             className="w-6 h-6 rounded-lg bg-linen/80 flex items-center justify-center text-charcoal hover:bg-gold/20 transition-colors"
@@ -663,10 +785,10 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                             {flSft.toLocaleString("en-IN")} SFT
                           </span>
 
-                          {/* Move Floor Up/Down controls */}
-                          {floorLevels.length > 1 && (
+                          {/* Move Floor Up/Down controls (Basement is pinned — never reorderable) */}
+                          {floorLevels.length > 1 && !fl.isBasement && (
                             <div className="flex items-center gap-0.5">
-                              {flIdx > 0 && (
+                              {flIdx > 0 && !floorLevels[flIdx - 1]?.isBasement && (
                                 <button
                                   type="button"
                                   onClick={() => moveFloorLevel(flIdx, flIdx - 1)}
@@ -741,8 +863,31 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                             </div>
                           </div>
 
-                          {/* Room Counters */}
-                          {selectedProjectType === "Residential" ? (
+                          {/* Basement: Parking bays — independent of, and may sit alongside, Custom Rooms below */}
+                          {fl.isBasement && fl.basementHasParking && (
+                            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-border/40 text-center">
+                              <div className="bg-linen/40 p-2 rounded-xl border border-border/50">
+                                <span className="block text-[9px] font-bold uppercase text-concrete mb-1">Car Parking Bays</span>
+                                <div className="flex items-center justify-center gap-1">
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { parkingCars: Math.max(0, (fl.parkingCars || 0) - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                                  <span className="text-xs font-bold font-mono text-charcoal w-4">{fl.parkingCars || 0}</span>
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { parkingCars: (fl.parkingCars || 0) + 1 })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
+                                </div>
+                              </div>
+
+                              <div className="bg-linen/40 p-2 rounded-xl border border-border/50">
+                                <span className="block text-[9px] font-bold uppercase text-concrete mb-1">Two-Wheeler Bays</span>
+                                <div className="flex items-center justify-center gap-1">
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { parkingTwoWheelers: Math.max(0, (fl.parkingTwoWheelers || 0) - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                                  <span className="text-xs font-bold font-mono text-charcoal w-4">{fl.parkingTwoWheelers || 0}</span>
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { parkingTwoWheelers: (fl.parkingTwoWheelers || 0) + 1 })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Room Counters — shown for every non-basement floor, and for a basement only when Custom Rooms is on */}
+                          {(!fl.isBasement || fl.basementHasCustomRooms) && (selectedProjectType === "Residential" ? (
                             <div className="grid grid-cols-4 gap-2 pt-2 border-t border-border/40 text-center">
                               <div className="bg-linen/40 p-2 rounded-xl border border-border/50">
                                 <span className="block text-[9px] font-bold uppercase text-concrete mb-1">Bedrooms</span>
@@ -809,7 +954,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                                 </div>
                               </div>
                             </div>
-                          )}
+                          ))}
                         </div>
                       )}
                     </div>
@@ -817,15 +962,30 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                 })}
               </div>
 
-              {/* Add Floor Button */}
-              <button
-                type="button"
-                onClick={addFloorLevel}
-                className="w-full py-2.5 border-2 border-dashed border-gold/60 hover:border-gold hover:bg-gold/10 text-gold-dark rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Plus size={15} />
-                <span>+ Add Another Floor</span>
-              </button>
+              {/* Add Floor / Reset Floors Buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={addFloorLevel}
+                  className="flex-1 py-2.5 border-2 border-dashed border-gold/60 hover:border-gold hover:bg-gold/10 text-gold-dark rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Plus size={15} />
+                  <span>+ Add Another Floor</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (window.confirm("Reset floors to the default Ground Floor + 1st Floor setup? This will discard any floors you've added or removed.")) {
+                      resetFloorLevels();
+                    }
+                  }}
+                  title="Reset floors to default"
+                  className="py-2.5 px-3 border-2 border-dashed border-border hover:border-red-300 hover:bg-red-50 text-concrete hover:text-red-600 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <RotateCcw size={14} />
+                  <span>Reset</span>
+                </button>
+              </div>
             </div>
 
             {/* 4. Commercial Details */}
@@ -959,7 +1119,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
               <div className="space-y-1.5 pt-2 border-t border-white/10 text-xs">
                 {floorLevels.map((fl, flIdx) => {
                   const flSft = (parseFloat(fl.length) || 0) * (parseFloat(fl.breadth) || 0);
-                  const floorDisplayName = getArchitecturalFloorName(flIdx);
+                  const floorDisplayName = fl.name || getArchitecturalFloorName(flIdx);
                   return (
                     <div key={fl.id} className="flex justify-between text-[11px] text-white/70">
                       <span>{floorDisplayName} ({fl.length || 0} × {fl.breadth || 0} ft)</span>
@@ -1218,7 +1378,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
               <button
                 type="button"
                 onClick={() => {
-                  const floorDetailsText = floorLevels.map((f, idx) => `  • ${getArchitecturalFloorName(idx)}: ${f.length}x${f.breadth} ft (${(parseFloat(f.length)||0)*(parseFloat(f.breadth)||0)} SFT)`).join('\n');
+                  const floorDetailsText = floorLevels.map((f, idx) => `  • ${f.name || getArchitecturalFloorName(idx)}: ${f.length}x${f.breadth} ft (${(parseFloat(f.length)||0)*(parseFloat(f.breadth)||0)} SFT)`).join('\n');
                   const msg = `*Project Plan Inquiry - Prasanth Associates*\n\n*Client Name:* ${name || "Client"}\n*Phone:* ${phone || "Not specified"}\n*Project Type:* ${selectedProjectType}\n*Plot Dimensions:* ${plotLength} x ${plotWidth} ft (${plotAreaNum.toLocaleString('en-IN')} SFT)\n*Total Floors:* ${numFloorsCount} Levels\n*Total Built-up Area:* ${totalAllFloorsSft.toLocaleString('en-IN')} SFT\n\n*Floor Breakdown:*\n${floorDetailsText}\n\n${selectedPackage ? `*Selected Package:* ${selectedPackage}\n` : ''}${grandTotal > 0 ? `*Est. Design Fee:* ₹${grandTotal.toLocaleString('en-IN')}\n` : ''}\nI would like to discuss this plan with your senior architect.`;
                   const url = `https://wa.me/919486038761?text=${encodeURIComponent(msg)}`;
                   window.open(url, "_blank", "noopener,noreferrer");

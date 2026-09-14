@@ -102,10 +102,9 @@ export const company: CompanyInfo = {
     sunday: "Closed",
   },
   social: {
-    instagram: "https://instagram.com/prasanthassociates", // [PLACEHOLDER]
-    facebook: "https://facebook.com/prasanthassociates", // [PLACEHOLDER]
+    instagram: "https://www.instagram.com/prasanthassociates.in/", // [PLACEHOLDER]
+    facebook: "https://www.facebook.com/prasanthconstruction/", // [PLACEHOLDER]
     linkedin: "https://linkedin.com/company/prasanthassociates", // [PLACEHOLDER]
-    youtube: "https://youtube.com/@prasanthassociates", // [PLACEHOLDER]
   },
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2737!2d76.9662768!3d11.017756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8590064684247%3A0xf6131f07c6935a32!2sPrasanth%20Associates!5e0!3m2!1sen!2sin!4v1700000000000", // [PLACEHOLDER]

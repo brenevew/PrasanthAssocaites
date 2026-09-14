@@ -131,8 +131,6 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
     return "Plot dimensions, number of floors, preferred finish package, planned start date...";
   };
 
-  const quickLocations = ["RS Puram", "Gandhipuram", "Peelamedu", "Saravanampatti", "Coimbatore"];
-
   /* ── Form ───────────────────────────────────────────────────────── */
   return (
     <div className={`neu-glass rounded-3xl relative overflow-hidden border border-white/90 shadow-xl ${isEstimate ? "p-5 md:p-6" : "p-7 md:p-10"}`}>
@@ -298,24 +296,6 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
                 className={`${inputClass} pl-9 py-2.5 text-xs`}
                 placeholder="e.g. RS Puram, Coimbatore"
               />
-            </div>
-            {/* 1-Click Location Chips */}
-            <div className="flex flex-wrap items-center gap-1 mt-1.5">
-              <span className="text-[9px] uppercase font-bold text-concrete-light mr-0.5">Quick:</span>
-              {quickLocations.map((loc) => (
-                <button
-                  key={loc}
-                  type="button"
-                  onClick={() => setLocation(loc)}
-                  className={`text-[10px] px-2 py-0.5 rounded-lg transition-all duration-150 cursor-pointer ${
-                    location === loc
-                      ? "nm-gold-raised text-charcoal font-bold"
-                      : "nm-inset text-concrete hover:text-charcoal bg-white/50"
-                  }`}
-                >
-                  {loc}
-                </button>
-              ))}
             </div>
             {result?.errors?.location && <p className="text-[10px] text-red-600 mt-1 font-medium">{result.errors.location}</p>}
           </div>

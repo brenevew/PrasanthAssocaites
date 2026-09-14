@@ -12,7 +12,6 @@ import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
 import { serviceCategories, plannableSlugs, designSlugs } from "@/data/serviceCategories";
 import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import Link from "next/link";
 import CTABanner from "@/components/ui/CTABanner";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
@@ -179,21 +178,9 @@ export default function ServicesPageClient() {
                       </span>
                     </div>
 
-                    {/* Service Badge Tag */}
-                    {spec?.badge && (
-                      <div className="mb-2">
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-gold-dark bg-gold/10 border border-gold/25 px-2.5 py-0.5 rounded-full">
-                          <Sparkles size={10} className="text-gold" />
-                          {spec.badge}
-                        </span>
-                      </div>
-                    )}
-
                     {/* Title */}
                     <h2 className="text-xl font-heading font-bold text-charcoal mb-2.5 leading-snug">
-                      <Link href={`/services/${service.slug}`} className="hover:text-gold-dark transition-colors">
-                        {service.title}
-                      </Link>
+                      {service.title}
                     </h2>
 
                     {/* SLA & Credential Badges */}

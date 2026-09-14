@@ -121,6 +121,36 @@ const initialUpperFloor: FloorRequirement = {
   parkingTwoWheelersCount: 0,
 };
 
+// Parking and Custom Rooms are independent — a basement can have either,
+// or both at once. A basement with Custom Rooms on starts unconfigured and
+// goes through the same per-floor wizard as any other floor; a Parking-only
+// basement needs no room configuration, so it's marked configured right away.
+const buildBasementFloor = (hasParking: boolean, hasCustomRooms: boolean): FloorRequirement => ({
+  floorId: "basement",
+  floorName: "Basement",
+  technicalName: "Basement",
+  isConfigured: !hasCustomRooms,
+  builtUpSft: 1800,
+  basementHasParking: hasParking,
+  basementHasCustomRooms: hasCustomRooms,
+  masterBedroomsCount: 0,
+  normalBedroomsCount: hasCustomRooms ? 1 : 0,
+  bedroomCustomizations: [],
+  attachedBathsCount: 0,
+  commonBathsCount: hasCustomRooms ? 1 : 0,
+  hasGuestPowderRoom: false,
+  hasKitchen: false,
+  kitchenType: "Open",
+  hasUtilityWash: false,
+  hasPantry: false,
+  hasDiningArea: false,
+  kitchenLocation: "User Decides",
+  livingSpaces: hasParking && !hasCustomRooms ? ["Storage"] : [],
+  otherFeatures: [],
+  parkingCarsCount: hasParking ? 4 : 0,
+  parkingTwoWheelersCount: hasParking ? 4 : 0,
+});
+
 export default function ApplePlannerApp() {
   const plannerRef = useRef<HTMLDivElement>(null);
 
@@ -165,6 +195,7 @@ export default function ApplePlannerApp() {
       hasBasement: false,
     },
     floors: [initialFloor, initialUpperFloor],
+    nextFloorLevel: 2,
     lastSavedAt: new Date().toLocaleTimeString(),
   });
 
@@ -338,27 +369,24 @@ export default function ApplePlannerApp() {
   // Add new floor level
   const handleAddFloor = () => {
     setState((prev) => {
+      // Name the new floor by the next architectural level ever assigned —
+      // not by the current floor count — so a level name is never reused
+      // after an earlier floor at that level was deleted.
+      const name = getArchitecturalFloorName(prev.nextFloorLevel);
       const newFl: FloorRequirement = {
         ...initialUpperFloor,
         floorId: `floor_${Date.now()}`,
-        floorName: "",
-        technicalName: "",
+        floorName: name,
+        technicalName: name,
         isConfigured: false,
         builtUpSft: Math.round(prev.footprint.length * prev.footprint.width),
       };
 
-      const updated = [...prev.floors, newFl];
-      // Always re-index floor names in strict architectural order: Ground Floor, 1st Floor, 2nd Floor...
-      const reindexed = updated.map((fl, idx) => {
-        const name = getArchitecturalFloorName(idx);
-        return {
-          ...fl,
-          floorName: name,
-          technicalName: name,
-        };
-      });
-
-      return { ...prev, floors: reindexed };
+      return {
+        ...prev,
+        floors: [...prev.floors, newFl],
+        nextFloorLevel: prev.nextFloorLevel + 1,
+      };
     });
   };
 
@@ -366,24 +394,84 @@ export default function ApplePlannerApp() {
   const handleRemoveFloor = (floorId: string) => {
     setState((prev) => {
       if (prev.floors.length <= 1) return prev;
+      // Only drop the targeted floor — remaining floors keep the names they
+      // already have (e.g. removing Ground Floor must not rename First Floor),
+      // and nextFloorLevel is left untouched so a future "Add Floor" never
+      // reissues a level name that's already been used.
       const filtered = prev.floors.filter((f) => f.floorId !== floorId);
-      // Re-index remaining floors so level 0 is always Ground Floor, level 1 is 1st Floor, etc.
-      const reindexed = filtered.map((fl, idx) => {
-        const name = getArchitecturalFloorName(idx);
-        return {
-          ...fl,
-          floorName: name,
-          technicalName: name,
-        };
-      });
       return {
         ...prev,
-        floors: reindexed,
-        activeFloorId: reindexed.some((f) => f.floorId === prev.activeFloorId)
+        floors: filtered,
+        activeFloorId: filtered.some((f) => f.floorId === prev.activeFloorId)
           ? prev.activeFloorId
-          : reindexed[0]?.floorId,
+          : filtered[0]?.floorId,
       };
     });
+  };
+
+  // Reset floors back to the default Ground + First Floor setup
+  const handleResetFloors = () => {
+    setState((prev) => ({
+      ...prev,
+      floors: [initialFloor, initialUpperFloor],
+      nextFloorLevel: 2,
+      activeFloorId: "ground",
+    }));
+  };
+
+  // Basement sits below Ground Floor: it doesn't consume a sequential level
+  // number, so toggling it never renames any other floor. Parking and
+  // Custom Rooms are independent — a basement can have either, or both.
+  const handleRemoveBasement = () => {
+    setState((prev) => {
+      const filtered = prev.floors.filter((f) => f.floorId !== "basement");
+      return {
+        ...prev,
+        floors: filtered,
+        activeFloorId: prev.activeFloorId === "basement" ? filtered[0]?.floorId : prev.activeFloorId,
+      };
+    });
+  };
+
+  const handleToggleBasementOption = (option: "parking" | "custom") => {
+    setState((prev) => {
+      const existing = prev.floors.find((f) => f.floorId === "basement");
+      const hasParking = option === "parking" ? !existing?.basementHasParking : !!existing?.basementHasParking;
+      const hasCustomRooms = option === "custom" ? !existing?.basementHasCustomRooms : !!existing?.basementHasCustomRooms;
+
+      if (!hasParking && !hasCustomRooms) {
+        // Neither option left selected — nothing to configure, so drop the basement.
+        const filtered = prev.floors.filter((f) => f.floorId !== "basement");
+        return {
+          ...prev,
+          floors: filtered,
+          activeFloorId: prev.activeFloorId === "basement" ? filtered[0]?.floorId : prev.activeFloorId,
+        };
+      }
+
+      if (existing) {
+        return {
+          ...prev,
+          floors: prev.floors.map((f) =>
+            f.floorId === "basement"
+              ? { ...f, basementHasParking: hasParking, basementHasCustomRooms: hasCustomRooms, isConfigured: !hasCustomRooms }
+              : f
+          ),
+        };
+      }
+
+      const withoutBasement = prev.floors.filter((f) => f.floorId !== "basement");
+      return { ...prev, floors: [buildBasementFloor(hasParking, hasCustomRooms), ...withoutBasement] };
+    });
+  };
+
+  // Update any floor by id (not just the active one) — used for inline edits
+  // like the basement's parking bay counters on the floors_config screen.
+  const handleUpdateFloor = (floorId: string, updates: Partial<FloorRequirement>) => {
+    setState((prev) => ({
+      ...prev,
+      floors: prev.floors.map((fl) => (fl.floorId === floorId ? { ...fl, ...updates } : fl)),
+    }));
   };
 
   // Update Active Floor Object
@@ -492,9 +580,12 @@ export default function ApplePlannerApp() {
             {state.currentStep === "floors_config" && (
               <StepFloorConfig
                 floors={state.floors}
-                roadLevel={state.roadLevel}
                 onAddFloor={handleAddFloor}
                 onRemoveFloor={handleRemoveFloor}
+                onResetFloors={handleResetFloors}
+                onRemoveBasement={handleRemoveBasement}
+                onToggleBasementOption={handleToggleBasementOption}
+                onUpdateFloor={handleUpdateFloor}
                 onRenameFloor={() => {}}
                 onNext={handleNextStep}
                 onBack={handlePrevStep}

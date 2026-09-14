@@ -300,7 +300,7 @@ export default function Header() {
 
             {/* Mobile Hamburger */}
             <button
-              className="lg:hidden w-10 h-10 rounded-full bg-white border border-border shadow-xs flex items-center justify-center text-charcoal hover:text-gold-dark transition-colors focus:outline-none"
+              className="lg:hidden w-11 h-11 rounded-full bg-white border border-border shadow-xs flex items-center justify-center text-charcoal hover:text-gold-dark transition-colors focus:outline-none"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open menu"
             >

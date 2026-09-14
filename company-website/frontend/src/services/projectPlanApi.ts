@@ -22,6 +22,8 @@ export interface ProjectPlanPayload {
   roadWidth?: number;
   roadLevel?: string;
   hasBasement?: boolean;
+  /** e.g. "Parking (4 cars, 4 two-wheelers) + Custom Rooms" — only set when hasBasement is true. */
+  basementSummary?: string;
 
   frontSetback?: number;
   rearSetback?: number;
@@ -167,6 +169,7 @@ export async function saveProjectPlan(payload: ProjectPlanPayload): Promise<Proj
     const detailsList = [
       payload.totalBuiltUpSft ? `Built-up Area: ${payload.totalBuiltUpSft} sq ft` : null,
       payload.numFloors ? `Floors: ${payload.numFloors}` : null,
+      payload.hasBasement ? `Basement: ${payload.basementSummary || "Yes"}` : null,
       payload.selectedPackage ? `Package: ${payload.selectedPackage}` : null,
       payload.selectedFeatures ? `Features: ${payload.selectedFeatures}` : null,
       payload.parkingCarsCount ? `Cars: ${payload.parkingCarsCount}` : null,
@@ -260,6 +263,14 @@ export function buildPayloadFromPlannerState(
   const twoWheelers = state.floors.reduce((sum, f) => sum + (f.parkingTwoWheelersCount || 0), 0);
   const estimatedCost = totalBuiltUp * 2200;
 
+  const basementFloor = state.floors.find((f) => f.floorId === "basement");
+  const basementSummary = basementFloor
+    ? [
+        basementFloor.basementHasParking ? `Parking (${basementFloor.parkingCarsCount || 0} cars, ${basementFloor.parkingTwoWheelersCount || 0} two-wheelers)` : null,
+        basementFloor.basementHasCustomRooms ? "Custom Rooms" : null,
+      ].filter(Boolean).join(" + ")
+    : undefined;
+
   return {
     name: contact.name,
     email: contact.email,
@@ -284,7 +295,8 @@ export function buildPayloadFromPlannerState(
     roadSide: state.road.roadSide,
     roadWidth: state.road.roadWidth,
     roadLevel: state.roadLevel.level,
-    hasBasement: state.roadLevel.hasBasement,
+    hasBasement: !!basementFloor,
+    basementSummary,
     frontSetback: state.road.frontSetback,
     rearSetback: state.road.rearSetback,
     leftSetback: state.road.leftSetback,

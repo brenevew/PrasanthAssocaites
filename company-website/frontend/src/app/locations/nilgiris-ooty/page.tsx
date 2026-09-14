@@ -275,7 +275,7 @@ export default function NilgirisOotyLocationPage() {
 
                 <div className="pt-4 border-t border-border">
                   <Link
-                    href="/services/villa-construction"
+                    href="/services#villa-construction"
                     className="flex items-center justify-between p-3 rounded-2xl bg-linen hover:bg-gold/15 border border-border transition-colors text-xs font-bold text-charcoal"
                   >
                     <span>View Luxury Villa Construction Capabilities</span>

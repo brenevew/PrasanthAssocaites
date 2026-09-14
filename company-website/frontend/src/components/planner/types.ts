@@ -70,6 +70,9 @@ export interface FloorRequirement {
   technicalName: string;
   isConfigured: boolean;
   builtUpSft: number;
+  /** Only meaningful for the basement floor. Independent — a basement can have parking, custom rooms (via the full per-floor wizard), or both. */
+  basementHasParking?: boolean;
+  basementHasCustomRooms?: boolean;
 
   // Bedrooms
   masterBedroomsCount: number;
@@ -119,6 +122,8 @@ export interface PlannerState {
   road: RoadData;
   roadLevel: RoadLevelData;
   floors: FloorRequirement[];
+  /** Next architectural level to assign when a floor is added (never reused, even after removals). */
+  nextFloorLevel: number;
   /** Site sketches / photos uploaded to Drive during the wizard. */
   attachments: Attachment[];
   lastSavedAt: string;

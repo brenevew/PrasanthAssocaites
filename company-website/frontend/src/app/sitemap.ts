@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
-import { services } from "@/data/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://prasanthassociates.com";
@@ -70,14 +69,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic service routes (15 services)
-  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
-    url: `${baseUrl}/services/${service.slug}`,
-    lastModified,
-    changeFrequency: "weekly",
-    priority: 0.85,
-  }));
-
   // Dynamic project routes
   const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
@@ -86,5 +77,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...projectRoutes];
+  return [...staticRoutes, ...projectRoutes];
 }
