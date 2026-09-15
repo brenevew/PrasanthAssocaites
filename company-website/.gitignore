@@ -57,3 +57,7 @@ yarn-error.log*
 # vercel
 .vercel
 
+
+# Original full-size photos, kept out of the app bundle.
+# The served WebP versions live in frontend/public/images/.
+frontend/image-originals/
