@@ -164,7 +164,9 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
         {/* Bottom Info Overlay */}
         <div className="absolute bottom-3 left-3 right-3 p-4 rounded-xl nm-dark-raised text-white transition-all duration-300">
           <p className="text-[10px] text-gold font-bold tracking-widest uppercase mb-1">
-            {project.type} · {project.area}
+            {[project.type, project.area]
+              .filter((v) => v && v !== "To be confirmed")
+              .join(" · ")}
           </p>
           <h3 className="text-lg font-heading font-bold text-warm-white mb-1 leading-snug">
             {project.title}

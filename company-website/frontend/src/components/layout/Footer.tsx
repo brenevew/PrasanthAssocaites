@@ -20,9 +20,14 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3.5 group text-charcoal select-none">
               <img src="/images/logo.svg" alt="Prasanth Associates Logo" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
-              <div className="flex items-center gap-1.5 font-heading">
-                <span className="font-bold text-xl text-charcoal tracking-tight">Prasanth</span>
-                <span className="font-medium text-xl text-gold-dark group-hover:text-gold transition-colors tracking-tight">Associates</span>
+              <div className="flex flex-col leading-tight">
+                <div className="flex items-center gap-1.5 font-heading">
+                  <span className="font-bold text-xl text-charcoal tracking-tight">Prasanth</span>
+                  <span className="font-bold text-xl text-charcoal tracking-tight">Associates</span>
+                </div>
+                <span className="mt-1 text-[10px] font-semibold text-gold-dark/85 tracking-[0.1em] uppercase">
+                  {company.disciplines}
+                </span>
               </div>
             </Link>
             <p className="text-concrete leading-relaxed text-sm max-w-xs">

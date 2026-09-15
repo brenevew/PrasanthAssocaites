@@ -15,6 +15,8 @@ export interface OfficeLocation {
 export interface CompanyInfo {
   name: string;
   tagline: string;
+  /** Disciplines line from the logo lockup, shown under the wordmark. */
+  disciplines: string;
   description: string;
   phone: string;
   email: string;
@@ -53,6 +55,7 @@ export interface CompanyInfo {
 export const company: CompanyInfo = {
   name: "Prasanth Associates",
   tagline: "Building Spaces That Last for Generations",
+  disciplines: "Engineers | Architects | Real Estate Developers",
   description:
     "From architectural design to final handover, we deliver thoughtfully engineered homes and commercial spaces with uncompromising quality.",
   phone: "+91 94860 38761", // [PLACEHOLDER]

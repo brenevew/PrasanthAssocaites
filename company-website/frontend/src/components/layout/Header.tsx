@@ -9,6 +9,7 @@ import {
   Compass, Palette, Trees, Landmark, ShieldCheck, FileCheck,
   MapPin, Map, TrendingUp, LayoutDashboard
 } from "lucide-react";
+import { company } from "@/data/company";
 import { mainNavItems } from "@/data/navigation";
 import { serviceCategories, plannableSlugs, designSlugs } from "@/data/serviceCategories";
 import { Service, services } from "@/data/services";
@@ -85,12 +86,17 @@ export default function Header() {
                 alt="Prasanth Associates Logo"
                 className="w-8 h-8 md:w-9 md:h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]"
               />
-              <div className="flex items-center gap-1.5 leading-tight">
-                <span className="font-heading font-bold text-xl text-charcoal tracking-tight">
-                  Prasanth
-                </span>
-                <span className="font-heading font-medium text-xl text-gold-dark tracking-tight group-hover:text-gold transition-colors duration-300">
-                  Associates
+              <div className="flex flex-col leading-tight">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-heading font-bold text-xl text-charcoal tracking-tight">
+                    Prasanth
+                  </span>
+                  <span className="font-heading font-bold text-xl text-charcoal tracking-tight">
+                    Associates
+                  </span>
+                </div>
+                <span className="hidden sm:block mt-0.5 text-[9px] md:text-[10px] font-semibold text-gold-dark/85 tracking-[0.1em] uppercase whitespace-nowrap">
+                  {company.disciplines}
                 </span>
               </div>
             </Link>

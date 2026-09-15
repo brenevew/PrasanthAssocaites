@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { company } from "@/data/company";
 import { mainNavItems } from "@/data/navigation";
 import { serviceCategories } from "@/data/serviceCategories";
 import { services } from "@/data/services";
@@ -45,9 +46,14 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
         <div className="flex items-center justify-between p-5 border-b border-border/70">
           <div className="flex items-center gap-3 select-none">
               <img src="/images/logo.svg" alt="Logo" className="w-8 h-8 object-contain filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
-              <div className="flex items-center gap-1.5 font-heading">
-                <span className="font-bold text-lg text-charcoal tracking-tight">Prasanth</span>
-                <span className="text-gold-dark font-medium text-lg tracking-tight">Associates</span>
+              <div className="flex flex-col leading-tight">
+                <div className="flex items-center gap-1.5 font-heading">
+                  <span className="font-bold text-lg text-charcoal tracking-tight">Prasanth</span>
+                  <span className="font-bold text-lg text-charcoal tracking-tight">Associates</span>
+                </div>
+                <span className="mt-0.5 text-[8.5px] font-semibold text-gold-dark/85 tracking-[0.06em] uppercase whitespace-nowrap">
+                  {company.disciplines}
+                </span>
               </div>
           </div>
           <button
