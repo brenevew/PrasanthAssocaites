@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { blurProps } from "@/data/imageBlur";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { projects } from "@/data/projects";
@@ -56,6 +57,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             className="object-cover"
             priority
             sizes="100vw"
+            {...blurProps(project.image)}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,26,26,0.9)] via-[rgba(26,26,26,0.4)] to-transparent" />
         </div>
@@ -138,6 +140,8 @@ export default async function ProjectDetailPage({ params }: Props) {
                       fill
                       className="object-cover border border-border"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy"
+                      {...blurProps(img)}
                     />
                   </div>
                 ))}

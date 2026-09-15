@@ -145,10 +145,7 @@ export default function PropertyInvestmentPage() {
         <div className="container max-w-6xl relative z-10">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-gold-dark nm-raised px-4.5 py-1.5 rounded-full mb-6 backdrop-blur-md border border-border shadow-xs">
-                <Sparkles size={11} className="text-gold-dark" />4 Specialized
-                Solutions
-              </span>
+
               <h2
                 className="font-heading font-bold text-charcoal mb-4 leading-tight"
                 style={{ fontSize: "var(--text-h2)" }}

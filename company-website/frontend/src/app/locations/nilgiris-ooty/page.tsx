@@ -66,7 +66,7 @@ export default function NilgirisOotyLocationPage() {
         "@type": "HomeAndConstructionBusiness",
         "@id": `${canonicalUrl}#localbusiness`,
         name: `${company.name} - Nilgiris & Gudalur Branch Office`,
-        image: "https://prasanthassociates.com/images/projects/lakeside-interior.png",
+        image: "https://prasanthassociates.com/images/projects/Villa/manjushree-1.webp",
         telephone: nilgirisOffice.phone,
         email: nilgirisOffice.email,
         url: canonicalUrl,

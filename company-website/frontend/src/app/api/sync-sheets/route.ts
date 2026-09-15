@@ -1,8 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { FORM_TYPES, sendToGoogleSheet, type FormType } from "@/lib/googleSheets";
 import type { Attachment } from "@/lib/attachments";
+import { rateLimit, getClientIp } from "@/lib/rateLimit";
+
+const SYNC_LIMIT = 15;
+const SYNC_WINDOW_MS = 10 * 60 * 1000;
 
 export async function POST(req: NextRequest) {
+  const ip = getClientIp(req);
+  const limitResult = rateLimit(`sync-sheets:${ip}`, SYNC_LIMIT, SYNC_WINDOW_MS);
+  if (!limitResult.success) {
+    return NextResponse.json(
+      { success: false, error: "Too many submissions. Please wait a bit before trying again." },
+      { status: 429, headers: { "Retry-After": String(limitResult.retryAfterSeconds) } }
+    );
+  }
+
   try {
     const contentType = req.headers.get("content-type") || "";
     if (!contentType.includes("application/json")) {

@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { company } from "@/data/company";
-import { projects } from "@/data/projects";
 import ContactForm from "@/components/ui/ContactForm";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABanner from "@/components/ui/CTABanner";
@@ -52,7 +51,6 @@ export const metadata: Metadata = {
 export default function CoimbatoreLocationPage() {
   const canonicalUrl = "https://prasanthassociates.com/locations/coimbatore";
   const coimbatoreOffice = company.offices.find((o) => o.label === "Coimbatore") || company.offices[0];
-  const coimbatoreProjects = projects.filter((p) => p.location.includes("Coimbatore"));
 
   const coimbatoreNeighborhoods = [
     { name: "Gandhipuram", desc: "Headquarters location; commercial hubs, retail complexes, and urban residential developments." },
@@ -70,7 +68,7 @@ export default function CoimbatoreLocationPage() {
         "@type": "HomeAndConstructionBusiness",
         "@id": `${canonicalUrl}#localbusiness`,
         name: `${company.name} - Coimbatore Head Office`,
-        image: "https://prasanthassociates.com/images/hero/hero-main.png",
+        image: "https://prasanthassociates.com/images/hero/hero-main.webp",
         telephone: coimbatoreOffice.phone,
         email: coimbatoreOffice.email,
         url: canonicalUrl,
@@ -329,67 +327,7 @@ export default function CoimbatoreLocationPage() {
         </div>
       </section>
 
-      {/* ── 4. Coimbatore Projects Portfolio Showcase ─────────────────── */}
-      {coimbatoreProjects.length > 0 && (
-        <section className="py-20 bg-linen border-y border-border">
-          <div className="container max-w-5xl space-y-10">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="badge-gold mb-2 inline-flex">Completed Works</span>
-                <h3 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
-                  Recent Projects Completed in Coimbatore
-                </h3>
-              </div>
-              <Link
-                href="/projects"
-                className="text-xs font-bold text-gold-dark hover:text-charcoal uppercase tracking-wider flex items-center gap-1"
-              >
-                <span>View Full Portfolio</span>
-                <ArrowRight size={13} />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {coimbatoreProjects.slice(0, 3).map((proj) => (
-                <div
-                  key={proj.slug}
-                  className="bg-white rounded-3xl overflow-hidden border border-border shadow-xs group"
-                >
-                  <div className="h-48 relative overflow-hidden bg-slate-100">
-                    <img
-                      src={proj.image}
-                      alt={`${proj.title} Coimbatore`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-charcoal/80 text-white text-[10px] font-bold uppercase">
-                      {proj.type}
-                    </span>
-                  </div>
-                  <div className="p-5 space-y-2">
-                    <h4 className="font-heading font-bold text-charcoal text-base group-hover:text-gold-dark transition-colors">
-                      {proj.title}
-                    </h4>
-                    <p className="text-concrete text-xs line-clamp-2 leading-relaxed">
-                      {proj.shortDescription}
-                    </p>
-                    <div className="pt-2">
-                      <Link
-                        href={`/projects/${proj.slug}`}
-                        className="text-xs font-bold text-gold-dark hover:text-charcoal flex items-center gap-1 uppercase tracking-wider"
-                      >
-                        <span>Case Study</span>
-                        <ArrowRight size={11} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── 5. Local Lead Form Section ────────────────────────────────── */}
+      {/* ── 4. Local Lead Form Section ────────────────────────────────── */}
       <section className="section bg-[var(--canvas-bg)]" id="local-contact-form">
         <div className="container max-w-3xl">
           <div className="neu-glass rounded-3xl p-8 md:p-10 border border-white/90 shadow-2xl">

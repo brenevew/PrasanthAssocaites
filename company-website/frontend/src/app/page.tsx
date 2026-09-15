@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Image from "next/image";
+import { blurProps } from "@/data/imageBlur";
 import Link from "next/link";
 import { Metadata } from "next";
 import { company } from "@/data/company";
@@ -51,12 +52,13 @@ export default function Home() {
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero/hero-main.png"
+            src="/images/hero/hero-main.webp"
             alt="Prasanth Associates — premium construction and architecture"
             fill
             className="object-cover"
             priority
             sizes="100vw"
+            {...blurProps("/images/hero/hero-main.webp")}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[rgba(247,245,240,0.95)] via-[rgba(247,245,240,0.85)] to-[rgba(247,245,240,0.45)]" />
           {/* Bottom fade into Neu-Glass canvas */}
@@ -143,11 +145,12 @@ export default function Home() {
                 {/* Neu-Glass shadow back-drop */}
                 <div className="absolute inset-0 nm-dark-raised translate-x-4 translate-y-4 rounded-3xl z-0" />
                 <Image
-                  src="/images/projects/lakeside-interior.png"
+                  src="/images/projects/Designs/hall-1.webp"
                   alt="Premium construction craftsmanship"
                   fill
                   className="object-cover z-10 rounded-3xl border border-white/60 shadow-xl"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  {...blurProps("/images/projects/Designs/hall-1.webp")}
                 />
                 {/* Floating Neu-Glass badge */}
                 <div className="absolute -bottom-5 -right-5 z-20 neu-glass rounded-2xl px-5 py-4">

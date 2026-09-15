@@ -46,7 +46,7 @@ export default function StepProjectSetup({
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto max-w-xl animate-fadeIn space-y-6 rounded-3xl border border-border/80 bg-white p-6 shadow-xl"
+      className="mx-auto max-w-3xl animate-fadeIn space-y-6 rounded-3xl border border-border/80 bg-white p-6 shadow-xl"
     >
       {/* Step Heading */}
       <div className="space-y-2 text-left">

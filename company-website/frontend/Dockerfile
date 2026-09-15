@@ -36,6 +36,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# The image optimizer writes resized photos to .next/cache/images. If that path
+# isn't writable by the runtime user, every request re-optimizes from scratch
+# and photos crawl in. Create it up front, owned by the non-root user.
+RUN mkdir -p /app/.next/cache/images && chown -R nextjs:nodejs /app/.next
+
 USER nextjs
 
 EXPOSE 3000

@@ -143,12 +143,12 @@ export default function PlanHomeClient() {
         <div className="flex-1 py-8 px-4 md:px-6">
           {category === "Residential" ? (
             /* 2. RESIDENTIAL EXPRESS FORM */
-            <div className="container max-w-5xl mx-auto">
+            <div className="container max-w-6xl mx-auto">
               <SimplePlannerForm forcedType="Residential" />
             </div>
           ) : (
             /* 3. COMMERCIAL FRAME */
-            <div className="container max-w-5xl mx-auto animate-fadeIn">
+            <div className="container max-w-6xl mx-auto animate-fadeIn">
               <SimplePlannerForm forcedType="Commercial" />
             </div>
           )}

@@ -3,6 +3,10 @@
 import { sendToGoogleSheet } from "@/lib/googleSheets";
 import { generateRefCode, saveSubmission } from "@/lib/db";
 import type { Attachment } from "@/lib/attachments";
+import { rateLimit, getClientIpFromHeaders } from "@/lib/rateLimit";
+
+const LEAD_FORM_LIMIT = 5;
+const LEAD_FORM_WINDOW_MS = 10 * 60 * 1000;
 
 export interface ActionResult {
   success: boolean;
@@ -14,6 +18,15 @@ export interface ActionResult {
 
 export async function submitContactForm(formData: FormData): Promise<ActionResult> {
   try {
+    const ip = await getClientIpFromHeaders();
+    const limitResult = rateLimit(`contact-form:${ip}`, LEAD_FORM_LIMIT, LEAD_FORM_WINDOW_MS);
+    if (!limitResult.success) {
+      return {
+        success: false,
+        message: `Too many submissions from this device. Please try again in ${Math.ceil(limitResult.retryAfterSeconds / 60)} minute(s).`,
+      };
+    }
+
     const name = formData.get("name")?.toString().trim();
     const phone = formData.get("phone")?.toString().trim();
     const email = formData.get("email")?.toString().trim();
@@ -141,6 +154,15 @@ export async function submitCalculatedEstimate(estimateData: {
   attachments?: Attachment[];
 }): Promise<ActionResult> {
   try {
+    const ip = await getClientIpFromHeaders();
+    const limitResult = rateLimit(`estimate-form:${ip}`, LEAD_FORM_LIMIT, LEAD_FORM_WINDOW_MS);
+    if (!limitResult.success) {
+      return {
+        success: false,
+        message: `Too many submissions from this device. Please try again in ${Math.ceil(limitResult.retryAfterSeconds / 60)} minute(s).`,
+      };
+    }
+
     if (!estimateData.name || !estimateData.phone || !estimateData.location) {
       return {
         success: false,

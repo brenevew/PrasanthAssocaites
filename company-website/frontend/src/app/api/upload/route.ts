@@ -6,6 +6,12 @@ import {
   isAllowedMimeType,
 } from "@/lib/attachments";
 import { FORM_TYPES, type FormType } from "@/lib/googleSheets";
+import { rateLimit, getClientIp } from "@/lib/rateLimit";
+
+// File uploads are the most expensive/abusable endpoint here (they proxy to
+// Google Drive), so the budget is the tightest of the three form endpoints.
+const UPLOAD_LIMIT = 10;
+const UPLOAD_WINDOW_MS = 10 * 60 * 1000;
 
 // Drive round-trips can be slow; give the request room beyond the platform default.
 export const maxDuration = 60;
@@ -19,6 +25,15 @@ export const maxDuration = 60;
  * this Route Handler keeps the Server Action payload down to a few short URLs.
  */
 export async function POST(req: NextRequest) {
+  const ip = getClientIp(req);
+  const limitResult = rateLimit(`upload:${ip}`, UPLOAD_LIMIT, UPLOAD_WINDOW_MS);
+  if (!limitResult.success) {
+    return NextResponse.json(
+      { success: false, error: "Too many uploads. Please wait a bit before trying again." },
+      { status: 429, headers: { "Retry-After": String(limitResult.retryAfterSeconds) } }
+    );
+  }
+
   const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
 
   if (!webhookUrl) {

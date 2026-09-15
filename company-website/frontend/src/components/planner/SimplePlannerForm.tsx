@@ -157,8 +157,8 @@ const getArchitecturalFloorName = (index: number): string => {
 const defaultFloorNames = ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor", "7th Floor"];
 
 const initialFloorLevels: DynamicFloorLevel[] = [
-  { id: "ground", name: "Ground Floor", length: "30", breadth: "40", bedrooms: 2, kitchens: 1, baths: 2, livingHalls: 1 },
-  { id: "floor_1", name: "1st Floor", length: "30", breadth: "40", bedrooms: 2, kitchens: 1, baths: 2, livingHalls: 1 },
+  { id: "ground", name: "Ground Floor", length: "0", breadth: "0", bedrooms: 2, kitchens: 1, baths: 2, livingHalls: 1 },
+  { id: "floor_1", name: "1st Floor", length: "0", breadth: "0", bedrooms: 2, kitchens: 1, baths: 2, livingHalls: 1 },
 ];
 
 const residentialRequirementChips = [
@@ -207,8 +207,8 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
   const [phone, setPhone] = useState("");
 
   /* Plot Length, Width & Reference Title */
-  const [plotLength, setPlotLength] = useState("30");
-  const [plotWidth, setPlotWidth] = useState("50");
+  const [plotLength, setPlotLength] = useState("0");
+  const [plotWidth, setPlotWidth] = useState("0");
   const [projectName, setProjectName] = useState("");
 
   /* Dynamic Floor Levels & Maximize/Minimize (Expanded/Collapsed) State
@@ -313,8 +313,8 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
     const newId = `floor_${Date.now()}`;
     setFloorsState((prev) => {
       const ground = prev.list.find((f) => f.id === "ground") || prev.list.find((f) => !f.isBasement) || prev.list[0];
-      const baseLength = ground?.length || "30";
-      const baseBreadth = ground?.breadth || "40";
+      const baseLength = ground?.length || "0";
+      const baseBreadth = ground?.breadth || "0";
 
       // Name the new floor by the next architectural level ever assigned —
       // not by the current floor count — so a level name is never reused
@@ -385,8 +385,8 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
       const basementFloor: DynamicFloorLevel = {
         id: "basement",
         name: "Basement",
-        length: ground?.length || "30",
-        breadth: ground?.breadth || "40",
+        length: ground?.length || "0",
+        breadth: ground?.breadth || "0",
         bedrooms: isCustom ? 1 : 0,
         kitchens: 0,
         baths: isCustom ? 1 : 0,
@@ -572,7 +572,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
   }
 
   return (
-    <div ref={formTopRef} className="max-w-5xl mx-auto space-y-6">
+    <div ref={formTopRef} className="max-w-6xl mx-auto space-y-6">
       <form onSubmit={handleSubmit} className="bg-white/90 backdrop-blur-xl rounded-[32px] border border-border/80 shadow-2xl p-6 md:p-8 space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 

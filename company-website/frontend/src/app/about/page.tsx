@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/ui/CTABanner";
@@ -58,7 +57,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ── Hero Banner ──────────────────────────────────────────────── */}
-      <section className="relative pt-36 pb-24 bg-gradient-to-b from-[#FAF8F5] to-[var(--canvas-bg)] text-charcoal border-b border-border overflow-hidden">
+      <section className="relative pt-28 pb-16 bg-gradient-to-b from-[#FAF8F5] to-[var(--canvas-bg)] text-charcoal border-b border-border overflow-hidden">
         {/* Blueprint grid */}
         <div className="absolute inset-0 blueprint-grid opacity-10" />
         {/* Ambient glow */}
@@ -71,7 +70,7 @@ export default function AboutPage() {
 
         <div className="container relative z-10 text-center max-w-3xl">
           <ScrollReveal>
-            <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-gold-dark nm-raised border border-border px-4 py-1.5 rounded-full shadow-2xs mb-8">
+            <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-gold-dark nm-raised border border-border px-4 py-1.5 rounded-full shadow-2xs mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-dark" />
               Established &amp; Trusted
             </span>
@@ -92,73 +91,47 @@ export default function AboutPage() {
       </section>
 
       {/* ── Brand Story ──────────────────────────────────────────────── */}
-      <section className="section bg-background">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-            {/* Image */}
-            <ScrollReveal className="relative">
-              <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal to-charcoal-mid translate-x-4 translate-y-4 rounded-3xl z-0" />
-                <Image
-                  src="/images/projects/heritage-house.png"
-                  alt="Architectural construction details"
-                  fill
-                  className="object-cover z-10 rounded-3xl border border-border"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                {/* Floating years badge */}
-                <div className="absolute -top-4 -left-4 z-20 glass-panel rounded-2xl px-5 py-4">
-                  <p className="text-3xl font-heading font-bold text-charcoal leading-none">
-                    {new Date().getFullYear() - 2010}+
-                  </p>
-                  <p className="text-xs text-concrete mt-1 font-medium">Years of Excellence</p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Text */}
-            <ScrollReveal delay={150}>
-              <span className="badge-gold mb-6 inline-flex">
-                <span className="w-1 h-1 rounded-full bg-gold inline-block" />
-                Our Philosophy
-              </span>
-              <h2
-                className="font-heading font-bold text-charcoal mb-7 leading-tight"
-                style={{ fontSize: "var(--text-h2)" }}
-              >
-                Engineering is
-                <br />
-                a{" "}
-                <em className="text-gold not-italic">human responsibility</em>
-              </h2>
-              <div className="space-y-5 text-concrete text-sm md:text-base leading-relaxed mb-8">
-                <p>
-                  In an industry often marked by project delays, hidden costs, and compromised
-                  quality, Prasanth Associates was established with a singular focus: making
-                  construction professional, transparent, and strictly engineering-led.
-                </p>
-                <p>
-                  We don&apos;t act merely as builders, but as long-term construction partners.
-                  From structural soil analysis to final handovers, every decision is guided by
-                  structural safety, aesthetic clarity, and lasting value.
-                </p>
-                <p>
-                  Our team combines architects, structural engineers, and project managers under
-                  one roof, serving residential, villa, commercial, and industrial clients with
-                  consistent technical oversight.
-                </p>
-              </div>
-              <Button href="/contact" variant="primary" size="md">
-                Talk to Our Team
-                <ArrowRight size={16} />
-              </Button>
-            </ScrollReveal>
-          </div>
+          <ScrollReveal className="max-w-3xl mx-auto text-center">
+            <span className="badge-gold mb-5 inline-flex">
+              <span className="w-1 h-1 rounded-full bg-gold inline-block" />
+              Our Philosophy
+            </span>
+            <h2
+              className="font-heading font-bold text-charcoal mb-6 leading-tight"
+              style={{ fontSize: "var(--text-h2)" }}
+            >
+              Engineering is a{" "}
+              <em className="text-gold not-italic">human responsibility</em>
+            </h2>
+            <div className="space-y-4 text-concrete text-sm md:text-base leading-relaxed mb-7">
+              <p>
+                In an industry often marked by project delays, hidden costs, and compromised
+                quality, Prasanth Associates was established with a singular focus: making
+                construction professional, transparent, and strictly engineering-led.
+              </p>
+              <p>
+                We don&apos;t act merely as builders, but as long-term construction partners.
+                From structural soil analysis to final handovers, every decision is guided by
+                structural safety, aesthetic clarity, and lasting value.
+              </p>
+              <p>
+                Our team combines architects, structural engineers, and project managers under
+                one roof, serving residential, villa, commercial, and industrial clients with
+                consistent technical oversight.
+              </p>
+            </div>
+            <Button href="/contact" variant="primary" size="md">
+              Talk to Our Team
+              <ArrowRight size={16} />
+            </Button>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ── Stats ────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-linen border-y border-border relative overflow-hidden">
+      <section className="py-14 bg-linen border-y border-border relative overflow-hidden">
         <div className="absolute inset-0 blueprint-grid opacity-10" />
         <div
           className="liquid-glow"
@@ -181,7 +154,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── How It Works / Architectural Review & Delivery Process ──── */}
-      <section id="how-it-works" className="section bg-[var(--canvas-bg)] relative overflow-hidden scroll-mt-24">
+      <section id="how-it-works" className="py-16 md:py-20 bg-[var(--canvas-bg)] relative overflow-hidden scroll-mt-24">
         {/* Ambient liquid glow */}
         <div className="liquid-glow" style={{ width: 550, height: 450, top: "15%", right: "-10%", opacity: 0.3 }} />
         <div className="liquid-glow" style={{ width: 500, height: 400, bottom: "10%", left: "-5%", opacity: 0.25 }} />
@@ -279,7 +252,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Engineering Capabilities ─────────────────────────────────── */}
-      <section className="section bg-linen border-b border-border">
+      <section className="py-16 md:py-20 bg-linen border-b border-border">
         <div className="container max-w-6xl">
           <ScrollReveal>
             <SectionHeading

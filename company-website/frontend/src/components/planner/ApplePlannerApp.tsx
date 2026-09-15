@@ -57,7 +57,7 @@ const initialFloor: FloorRequirement = {
   floorName: "Ground Floor",
   technicalName: "Ground Floor",
   isConfigured: false,
-  builtUpSft: 1800,
+  builtUpSft: 0,
   masterBedroomsCount: 1,
   normalBedroomsCount: 1,
   bedroomCustomizations: [
@@ -102,7 +102,7 @@ const initialUpperFloor: FloorRequirement = {
   floorName: "First Floor",
   technicalName: "1st Floor",
   isConfigured: false,
-  builtUpSft: 1800,
+  builtUpSft: 0,
   masterBedroomsCount: 2,
   normalBedroomsCount: 1,
   bedroomCustomizations: [],
@@ -130,7 +130,7 @@ const buildBasementFloor = (hasParking: boolean, hasCustomRooms: boolean): Floor
   floorName: "Basement",
   technicalName: "Basement",
   isConfigured: !hasCustomRooms,
-  builtUpSft: 1800,
+  builtUpSft: 0,
   basementHasParking: hasParking,
   basementHasCustomRooms: hasCustomRooms,
   masterBedroomsCount: 0,
@@ -172,23 +172,23 @@ export default function ApplePlannerApp() {
       notes: "Modern 2-story residence with ample green ventilation.",
     },
     plot: {
-      length: 60,
-      width: 40,
+      length: 0,
+      width: 0,
       unit: "ft",
     },
     footprint: {
-      length: 45,
-      width: 30,
+      length: 0,
+      width: 0,
     },
     road: {
       roadSide: "East",
       knowRoadWidth: "Yes",
-      roadWidth: 30,
+      roadWidth: 0,
       knowSetbacks: "Not Sure",
-      frontSetback: 5,
-      rearSetback: 4,
-      leftSetback: 3,
-      rightSetback: 3,
+      frontSetback: 0,
+      rearSetback: 0,
+      leftSetback: 0,
+      rightSetback: 0,
     },
     roadLevel: {
       level: "Same as Road Level",
@@ -497,7 +497,7 @@ export default function ApplePlannerApp() {
     >
       {/* Three-Column Layout: step rail left, inputs centre, live summary right */}
       {/* a <div>, not <main>: the app-router layout already renders the page's <main> */}
-      <div className="container max-w-[1400px] flex-1 px-4 py-8 md:px-6">
+      <div className="container max-w-[1600px] flex-1 px-4 py-8 md:px-6">
         {/* no items-start: columns must stretch to the row height, otherwise the sticky
             rail/summary have zero scroll range and just scroll away with the page */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
@@ -514,7 +514,7 @@ export default function ApplePlannerApp() {
           <div
             className={
               showSidePanels
-                ? "min-w-0 lg:col-span-9 xl:col-span-6"
+                ? "min-w-0 lg:col-span-9 xl:col-span-7"
                 : "lg:col-span-12"
             }
           >
@@ -685,7 +685,7 @@ export default function ApplePlannerApp() {
 
           {/* Right Column: Live Summary Widget (desktop) + Bottom Sheet (mobile) */}
           {showSidePanels && (
-            <div className="min-w-0 xl:col-span-4">
+            <div className="min-w-0 xl:col-span-3">
               <PlannerLiveSummary
                 state={state}
                 warnings={warnings}

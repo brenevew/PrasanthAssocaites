@@ -1,25 +1,35 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { Search, X } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectFilter from "@/components/ui/ProjectFilter";
+import DesignGallery from "@/components/ui/DesignGallery";
+import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/ui/CTABanner";
-import { projects, type ProjectCategory } from "@/data/projects";
+import type { Project, ProjectCategory } from "@/data/projects";
 
-export default function ProjectsClient() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+interface ProjectsClientProps {
+  allProjects: Project[];
+  initialCategory: ProjectCategory | "all";
+  initialSearch: string;
+}
 
-  const currentCategory = (searchParams.get("category") as ProjectCategory | "all") || "all";
-  const currentSearch = searchParams.get("q") || "";
+export default function ProjectsClient({
+  allProjects,
+  initialCategory,
+  initialSearch,
+}: ProjectsClientProps) {
+  // Filters live in local state, seeded from the URL the server rendered with.
+  // Keeping them out of useSearchParams() is what lets this page prerender —
+  // and filtering locally keeps typing in the search box instant.
+  const [currentCategory, setCurrentCategory] = useState<ProjectCategory | "all">(initialCategory);
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
+  const currentSearch = searchTerm;
 
-  const [searchTerm, setSearchTerm] = useState(currentSearch);
-
-  const updateQueryParams = (newCategory: string, newSearch: string) => {
+  // Keep the URL shareable/bookmarkable without triggering a re-render round trip.
+  const syncUrl = (newCategory: string, newSearch: string) => {
     const params = new URLSearchParams();
     if (newCategory && newCategory !== "all") {
       params.set("category", newCategory);
@@ -28,28 +38,27 @@ export default function ProjectsClient() {
       params.set("q", newSearch.trim());
     }
     const queryString = params.toString();
-    startTransition(() => {
-      router.push(queryString ? `/projects?${queryString}` : "/projects", { scroll: false });
-    });
+    window.history.replaceState(null, "", queryString ? `/projects?${queryString}` : "/projects");
   };
 
   const handleCategoryChange = (cat: ProjectCategory | "all") => {
-    updateQueryParams(cat, searchTerm);
+    setCurrentCategory(cat);
+    syncUrl(cat, searchTerm);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     setSearchTerm(val);
-    updateQueryParams(currentCategory, val);
+    syncUrl(currentCategory, val);
   };
 
   const clearSearch = () => {
     setSearchTerm("");
-    updateQueryParams(currentCategory, "");
+    syncUrl(currentCategory, "");
   };
 
   // Filter projects dynamically
-  const filteredProjects = projects.filter((p) => {
+  const filteredProjects = allProjects.filter((p) => {
     const matchesCategory =
       currentCategory === "all" || p.category === currentCategory;
     const q = currentSearch.toLowerCase().trim();
@@ -126,16 +135,15 @@ export default function ProjectsClient() {
           {/* Results Counter */}
           <div className="flex justify-between items-center mb-8 pb-4 border-b border-border text-xs text-concrete">
             <span>
-              Showing <strong className="text-charcoal font-semibold">{filteredProjects.length}</strong> of {projects.length} Projects
+              Showing <strong className="text-charcoal font-semibold">{filteredProjects.length}</strong> of {allProjects.length} Projects
             </span>
-            {isPending && <span className="text-gold font-medium animate-pulse">Updating results...</span>}
           </div>
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredProjects.map((project, index) => (
               <ScrollReveal key={project.slug} delay={(index % 6) * 100}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} priority={index < 3} />
               </ScrollReveal>
             ))}
           </div>
@@ -149,7 +157,8 @@ export default function ProjectsClient() {
               <button
                 onClick={() => {
                   setSearchTerm("");
-                  updateQueryParams("all", "");
+                  setCurrentCategory("all");
+                  syncUrl("all", "");
                 }}
                 className="px-5 py-2.5 bg-charcoal text-warm-white text-xs uppercase tracking-wider font-semibold hover:bg-gold hover:text-charcoal transition-colors"
               >
@@ -157,6 +166,22 @@ export default function ProjectsClient() {
               </button>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Interior Design & Finishes Gallery */}
+      <section className="section bg-[var(--canvas-bg)] border-t border-border/70">
+        <div className="container">
+          <ScrollReveal>
+            <SectionHeading
+              badge="Design & Finishes"
+              title="Interior Design Highlights"
+              subtitle="A closer look at the finishing details, kitchens, bathrooms and interiors we've delivered across projects."
+            />
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <DesignGallery />
+          </ScrollReveal>
         </div>
       </section>
 
