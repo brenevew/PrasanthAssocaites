@@ -6,9 +6,9 @@ metadata:
 type: Opaque
 stringData:
   # Deployed Google Apps Script web app URL (ends in /exec).
-  GOOGLE_SHEETS_WEBHOOK_URL: "CHANGE_ME_https://script.google.com/macros/s/DEPLOYMENT_ID/exec"
+  GOOGLE_SHEETS_WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbwmL0mzQhzlj-jnVboQVDMupbPrqQ0TltwGEu8AnUteiXc5TItbHYTr0scGwGnXW72LWQ/exec"
   # Must match the SHARED_SECRET script property in the Apps Script project.
-  GOOGLE_SHEETS_SHARED_SECRET: "CHANGE_ME_LONG_RANDOM_TOKEN"
+  GOOGLE_SHEETS_SHARED_SECRET: "0be1bfd6b573bc3b31e8644179d02ed4db75c4043ff39100"
   # Stable across every replica, or Server Action payloads fail after a scale-out.
   # Generate with: openssl rand -base64 32
   NEXT_SERVER_ACTIONS_ENCRYPTION_KEY: "CHANGE_ME_BASE64_32_BYTE_KEY"
