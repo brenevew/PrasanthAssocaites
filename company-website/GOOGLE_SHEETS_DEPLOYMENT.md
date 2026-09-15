@@ -7,6 +7,7 @@ Scope: the `frontend/` Next.js application only. No backend, database or paid
 third-party service (Zapier, Make) is involved. Uploaded files are stored in
 Google Drive under the same Google account.
 
+
 ---
 
 ## Table of Contents
