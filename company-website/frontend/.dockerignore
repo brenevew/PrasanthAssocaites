@@ -1,9 +1,0 @@
-node_modules
-.next
-.git
-.DS_Store
-.env.development
-.env.local
-
-# Original full-size photos — the app serves the WebP versions in public/.
-image-originals

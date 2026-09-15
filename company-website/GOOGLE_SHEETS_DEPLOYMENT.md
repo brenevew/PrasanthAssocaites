@@ -18,12 +18,10 @@ Google Drive under the same Google account.
 5. [Rate limiting](#5-rate-limiting)
 6. [Secrets & environment variables](#6-secrets--environment-variables)
 7. [Hosting & deployment](#7-hosting--deployment)
-   - [Kubernetes (the configured path)](#kubernetes-the-configured-path)
-   - [Docker / Docker Compose](#docker--docker-compose)
+   - [Cloudflare Workers (the live path)](#cloudflare-workers-the-live-path)
    - [VPS / EC2 / DigitalOcean (plain Node)](#vps--ec2--digitalocean-plain-node)
    - [Vercel](#vercel)
    - [Netlify](#netlify)
-   - [Cloudflare Pages / Workers](#cloudflare-pages--workers)
 8. [Verifying a deployment](#8-verifying-a-deployment)
 9. [Troubleshooting](#9-troubleshooting)
 10. [Operational notes](#10-operational-notes)
@@ -39,7 +37,7 @@ If you are starting from nothing, the order is:
 | 3 | Paste in the Apps Script | Sheet → Extensions | [3](#step-3--install-the-apps-script) |
 | 4 | Store the secret script-side | Apps Script settings | [3](#step-4--store-the-secret-in-the-script) |
 | 5 | Publish the web app, copy the `/exec` URL | Apps Script → Deploy | [3](#step-5--deploy-the-web-app) |
-| 6 | Put the URL + secret into your host's env vars | hosting dashboard / `kubectl` | [6](#6-secrets--environment-variables), [7](#7-hosting--deployment) |
+| 6 | Put the URL + secret into your host's env vars | Cloudflare dashboard | [6](#6-secrets--environment-variables), [7](#7-hosting--deployment) |
 | 7 | Submit a test lead and confirm the row | the live site | [8](#8-verifying-a-deployment) |
 
 Steps 1–5 are done once, by hand, in Google. Step 6 is repeated per environment
@@ -372,14 +370,20 @@ oversight:
 - It is enough to blunt casual abuse (a bot hammering the form, a broken retry
   loop) without adding an external dependency for a lead-volume site.
 
-**The limitation:** counters are per-process, not shared. With Kubernetes
-running more than one replica (see the deployment note under
-`NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` below), a visitor's effective limit is
-`limit × replica count`, since each pod tracks its own counters independently.
-That is acceptable here — the goal is deterring abuse, not enforcing an exact
-global cap. If a shared, exact limit ever becomes necessary, swap the counter
-storage in `rateLimit.ts` for Redis/Upstash; the call sites (`rateLimit(key,
-limit, windowMs)`) would not need to change.
+**The limitation:** counters are per-process, not shared, so a visitor's
+effective limit is `limit × the number of server processes`. That is acceptable
+when the goal is deterring abuse rather than enforcing an exact global cap.
+
+> [!WARNING]
+> **On Cloudflare Workers — the current production host — this limiter is
+> effectively inert.** Requests are spread across many short-lived isolates,
+> each starting with empty counters, so per-IP limits rarely accumulate.
+> `getClientIp()` also reads `X-Forwarded-For` then `X-Real-IP`, while
+> Cloudflare supplies the true client IP in `CF-Connecting-IP` — so even within
+> one isolate the key may not identify the visitor. If rate limiting matters,
+> use Cloudflare's own WAF rate-limiting rules in front of `/api/*`, or back
+> the counter with Workers KV or a Durable Object. The call sites
+> (`rateLimit(key, limit, windowMs)`) would not need to change.
 
 ### Adjusting the limits
 
@@ -407,7 +411,7 @@ restart. The Server Actions key is different — see the note below the table.
 |----------|----------|---------|---------------|---------|
 | `GOOGLE_SHEETS_WEBHOOK_URL` | Yes | Runtime | `https://script.google.com/macros/s/AKfycbx.../exec` | The `/exec` URL from [Step 5](#step-5--deploy-the-web-app) |
 | `GOOGLE_SHEETS_SHARED_SECRET` | Strongly recommended | Runtime | `9f2c1a7e4b8d...` (48 hex chars) | Must match `SHARED_SECRET` in the Apps Script |
-| `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` | Yes, when self-hosting >1 replica | **Build** | `Ux3k9...=` (base64, 32 bytes) | Stable key shared by every replica |
+| `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` | Yes, when more than one server process serves traffic | **Build** | `Ux3k9...=` (base64, 32 bytes) | Stable key shared by every server process |
 
 Generate the two you create yourself:
 
@@ -439,8 +443,7 @@ The Contact and Request Quote forms are Server Actions. Next.js encrypts the
 variables an action closes over, using a key generated at build time. If two
 server instances hold different keys, one cannot decrypt what the other
 encrypted and submissions fail intermittently with "Failed to find Server
-Action" — typically after a scale-out or during a rolling deploy. Production
-runs `replicas: 2` with an HPA up to 8.
+Action" — typically after a scale-out or during a rolling deploy.
 
 > [!IMPORTANT]
 > **This is a build-time variable, not a runtime one.** Next.js embeds the key
@@ -460,17 +463,16 @@ Generate it once and store it with your other long-lived secrets:
 openssl rand -base64 32
 ```
 
-Keep the **same value across rebuilds**, and make sure every replica is running
-the same build.
+Keep the **same value across rebuilds**, and make sure every server process is
+running the same build.
 
-> **Why the current Kubernetes setup still works.** The `Dockerfile` does not
-> receive this key at build time, so each image build bakes in a *different*
-> random key. That is survivable today only because every pod runs the same
-> image tag, so they all share one key. It breaks the moment two image versions
-> serve traffic simultaneously — which is exactly what a rolling update does.
-> To close that gap, pass the key as a build arg in `frontend/Dockerfile` and
-> supply the same value on every build. The runtime secret entries below are
-> harmless to keep, but are not what makes this work.
+> **On Cloudflare Workers this is lower-risk than on a self-hosted cluster.**
+> Every isolate runs the same deployed build, so they share whatever key that
+> build baked in, and a deploy swaps them over together. Setting the variable
+> explicitly still helps if you ever need two deployments live at once (a
+> gradual rollout, or preview traffic against production data) — on Workers it
+> must be set as a **build**-time variable in the project's build configuration,
+> not as a runtime secret.
 
 ### Local development
 
@@ -504,80 +506,98 @@ Wherever the site runs, the job is the same: get the three variables from
 [section 6](#6-secrets--environment-variables) into the **server's runtime
 environment**, then restart. Only the mechanism differs.
 
-| Platform | Secrets go in | Works out of the box? |
-|----------|---------------|----------------------|
-| [Kubernetes](#kubernetes-the-configured-path) | `frontend-prod-secret` | Yes — this repo is configured for it |
-| [Docker / Compose](#docker--docker-compose) | `-e` flags or `env_file` | Yes |
-| [VPS / EC2 / DigitalOcean](#vps--ec2--digitalocean-plain-node) | `.env` + process manager | Yes |
-| [Vercel](#vercel) | Project → Settings → Environment Variables | Yes |
-| [Netlify](#netlify) | Site configuration → Environment variables | Yes |
-| [Cloudflare](#cloudflare-pages--workers) | Pages env vars / `wrangler secret` | **Needs an adapter** — read the caveats |
+| Platform | Secrets go in | Status |
+|----------|---------------|--------|
+| [Cloudflare Workers](#cloudflare-workers-the-live-path) | Settings → Variables and Secrets | **This is what production runs** |
+| [VPS / EC2 / DigitalOcean](#vps--ec2--digitalocean-plain-node) | `.env` + process manager | Alternative |
+| [Vercel](#vercel) | Project → Settings → Environment Variables | Alternative |
+| [Netlify](#netlify) | Site configuration → Environment variables | Alternative |
 
-The `frontend/Dockerfile` needs no change for any of these: build args are only
-for `NEXT_PUBLIC_*` values, which these deliberately are not.
+None of these are build-time values, so none of them belong in a build
+argument or a committed file — they go into the host's runtime environment or
+secret store.
 
-### Kubernetes (the configured path)
+### Cloudflare Workers (the live path)
 
-Secrets are delivered through `frontend-prod-secret`, defined at the top of
-`k8s/prod/03-frontend.yaml` and mounted via `envFrom`.
+`prasanthassociates.com` is served by **Cloudflare Workers** through the
+[`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) adapter — the
+live responses carry `x-opennext: 1` and `server: cloudflare`. The deployment is
+wired up in the Cloudflare dashboard against the GitHub repository; there is no
+`wrangler.toml` or `open-next.config.ts` in this repo, so **the settings below
+are changed in the dashboard, not in version control.**
 
-**Do not commit real secrets.** Either edit the manifest locally without
-committing it, or replace the placeholders imperatively:
+> [!IMPORTANT]
+> **Deploying the code does not configure it.** `.env*` files are gitignored, so
+> local values never travel with a push. A site can be running the newest commit
+> and still write nothing to the Sheet. The variables below are the only thing
+> that makes lead capture work, and they are set in the dashboard.
 
-```bash
-kubectl create secret generic frontend-prod-secret \
-  --namespace prasanth-prod \
-  --from-literal=GOOGLE_SHEETS_WEBHOOK_URL='https://script.google.com/macros/s/YOUR_ID/exec' \
-  --from-literal=GOOGLE_SHEETS_SHARED_SECRET='your-token' \
-  --from-literal=NEXT_SERVER_ACTIONS_ENCRYPTION_KEY="$(openssl rand -base64 32)" \
-  --dry-run=client -o yaml | kubectl apply -f -
-```
+#### Making lead capture work in production
 
-Apply and roll out:
+**Step 1 — Rotate the shared secret if it has ever been committed.**
 
-```bash
-kubectl apply -f k8s/prod/03-frontend.yaml
-kubectl rollout restart deployment/frontend-prod -n prasanth-prod
-kubectl rollout status  deployment/frontend-prod -n prasanth-prod
-```
-
-Confirm the variables reached the pods:
+Check before you start; a token that reached a public repository must be
+replaced, not reused:
 
 ```bash
-kubectl exec -n prasanth-prod deploy/frontend-prod -- \
-  sh -c 'echo "URL set: ${GOOGLE_SHEETS_WEBHOOK_URL:+yes}; secret set: ${GOOGLE_SHEETS_SHARED_SECRET:+yes}"'
+git log -S'your-current-token' --oneline
 ```
 
-The dev overlay uses `frontend-dev-secret` in `k8s/dev/03-frontend.yaml`, blank
-by default so dev never writes to the production Sheet.
-
-> **`NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` is in this Secret for completeness, but
-> it is applied at image build time, not here.** Read
-> [the note in section 6](#about-next_server_actions_encryption_key) before
-> relying on it during a rolling update.
-
-### Docker / Docker Compose
-
-Pass the variables at **run** time, not build time:
+If that prints anything, generate a replacement and update the
+`SHARED_SECRET` **script property** in Apps Script (Project Settings → Script
+Properties) to the new value:
 
 ```bash
-docker run -p 3000:3000 \
-  -e GOOGLE_SHEETS_WEBHOOK_URL='https://script.google.com/macros/s/YOUR_ID/exec' \
-  -e GOOGLE_SHEETS_SHARED_SECRET='your-token' \
-  -e NEXT_SERVER_ACTIONS_ENCRYPTION_KEY='your-base64-key' \
-  prasanth-frontend:latest
+openssl rand -hex 24
 ```
 
-With Docker Compose, keep them out of `docker-compose.yml` itself:
+**Step 2 — Set the variables in Cloudflare.**
 
-```yaml
-services:
-  frontend:
-    image: prasanth-frontend:latest
-    ports: ["3000:3000"]
-    env_file: .env.production   # gitignored
-    restart: unless-stopped
+**Workers & Pages → your project → Settings → Variables and Secrets**, under the
+**Production** environment:
+
+| Variable | Value | Type |
+|----------|-------|------|
+| `GOOGLE_SHEETS_WEBHOOK_URL` | your `/exec` URL | Secret |
+| `GOOGLE_SHEETS_SHARED_SECRET` | the token from Step 1 | **Secret** |
+| `NEXT_PUBLIC_SITE_URL` | `https://prasanthassociates.com` | Plaintext |
+
+**Step 3 — Redeploy.**
+
+Workers reads these at deploy time, not live, so adding a variable to an
+existing deployment changes nothing until it rebuilds. Trigger a deployment from
+the dashboard, or push a commit.
+
+**Step 4 — Verify.** Run the checks in
+[section 8](#8-verifying-a-deployment). The fastest signal:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' -X POST https://prasanthassociates.com/api/upload \
+  -H 'Content-Type: application/json' -d '{}'
 ```
+
+`503` means `GOOGLE_SHEETS_WEBHOOK_URL` is still unset. Anything else means the
+variable arrived.
+
+**Step 5 — Update every other copy of the secret.** If you rotated in Step 1,
+the old value is now dead everywhere else: `frontend/.env.development` on each
+developer's machine, and the **Preview** environment if you use branch
+deployments. Point Preview at a throwaway Sheet so test submissions never reach
+the real lead log.
+
+> [!WARNING]
+> A missing or mismatched secret is **invisible from the front end**. Pages
+> serve, forms show the client a success screen, reference codes are still
+> issued — and every lead is dropped. Never assume it works because the site
+> loads; run Step 4 after each deploy.
+
+Two behavioural differences to keep in mind on Workers:
+
+- **The in-process rate limiter is effectively inert** — see the warning in
+  [section 5](#5-rate-limiting). Use Cloudflare WAF rate-limiting rules in front
+  of `/api/*` if you need real limits.
+- **Client IPs arrive in `CF-Connecting-IP`**, which `getClientIp()` in
+  `frontend/src/lib/rateLimit.ts` does not currently read.
 
 ### VPS / EC2 / DigitalOcean (plain Node)
 
@@ -612,8 +632,15 @@ ExecStart=/usr/bin/node /srv/prasanth/frontend/.next/standalone/server.js
 Restart=always
 ```
 
-Remember to copy `public/` and `.next/static` next to `server.js` — the
-standalone bundle does not include them (the `Dockerfile` does this for you).
+`next.config.ts` sets `output: "standalone"`, so the build produces a
+self-contained server at `.next/standalone/server.js`. That bundle does **not**
+include static assets — copy them alongside it yourself, or the site serves
+HTML with no CSS, JS or images:
+
+```bash
+cp -r public .next/standalone/public
+cp -r .next/static .next/standalone/.next/static
+```
 
 ### Vercel
 
@@ -649,56 +676,6 @@ writes test rows into the production lead log.
 
 Netlify runs Next.js through `@netlify/plugin-nextjs`. Server Actions and Route
 Handlers both work, so all three forms behave as they do on Node.
-
-### Cloudflare Pages / Workers
-
-> [!WARNING]
-> Cloudflare does not run a standard Node.js server. This project is configured
-> with `output: "standalone"` (Node), so it **will not deploy to Cloudflare
-> unchanged** — it needs the [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare)
-> adapter and `nodejs_compat` enabled. Treat the steps below as the
-> secrets-configuration half of that migration, not a complete recipe. If you
-> are choosing a host now and want the least work, any Node platform above is a
-> better fit.
-
-Once the adapter is in place, the secrets go in as follows.
-
-**Pages (site + API together):**
-
-1. **Workers & Pages → your project → Settings → Environment variables.**
-2. Under **Production**, **Add variables**:
-
-   | Variable | Value | Type |
-   |----------|-------|------|
-   | `GOOGLE_SHEETS_WEBHOOK_URL` | your `/exec` URL | Plaintext |
-   | `GOOGLE_SHEETS_SHARED_SECRET` | your token | **Encrypt** |
-   | `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` | your base64 key | **Encrypt** |
-   | `NODE_VERSION` | `22` | Plaintext |
-
-3. Repeat for **Preview** if you use branch deployments, pointing at a
-   throwaway Sheet.
-4. Save, then **redeploy** — variables are read at deploy time.
-
-**Workers (via Wrangler):**
-
-```bash
-npx wrangler secret put GOOGLE_SHEETS_WEBHOOK_URL
-npx wrangler secret put GOOGLE_SHEETS_SHARED_SECRET
-npx wrangler secret put NEXT_SERVER_ACTIONS_ENCRYPTION_KEY
-npx wrangler deploy
-```
-
-Two behavioural differences to expect on Cloudflare:
-
-- **Rate limiting weakens.** The limiter in [section 5](#5-rate-limiting) counts
-  in process memory. Cloudflare spreads requests across many short-lived
-  isolates, so per-IP counters stop being meaningful. If you move here, back the
-  limiter with Workers KV or Durable Objects, or use Cloudflare's own WAF rate
-  limiting in front of the routes.
-- **Client IPs arrive differently.** Cloudflare sets `CF-Connecting-IP`;
-  `getClientIp()` in `frontend/src/lib/rateLimit.ts` reads `X-Forwarded-For`
-  then `X-Real-IP`, so it would need that header added to keep per-IP limits
-  working.
 
 ---
 
@@ -749,7 +726,7 @@ Expected: `{"success":true,"attachment":{...,"url":"https://drive.google.com/...
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
-| `{"success":false,"skipped":true}` | `GOOGLE_SHEETS_WEBHOOK_URL` not set in the running environment | Set it and redeploy/restart. Env changes need a pod restart |
+| `{"success":false,"skipped":true}` | `GOOGLE_SHEETS_WEBHOOK_URL` not set in the running environment | Set it in the host's environment, then **redeploy**. Env changes are read at deploy/start time, never live |
 | Works locally, silently does nothing once deployed | Variables added in the hosting dashboard but the deployment was never rebuilt | Redeploy. Every platform in [section 7](#7-hosting--deployment) reads env vars at deploy/start time, not live |
 | `Apps Script error: {"status":"unauthorized"}` | `GOOGLE_SHEETS_SHARED_SECRET` ≠ `SHARED_SECRET` script property | Make the two identical; re-check for trailing whitespace |
 | Webhook works in your browser but never from the server | The `/dev` URL was copied instead of `/exec` | `/dev` only authorises the signed-in editor. Use the `/exec` URL from **Deploy → Manage deployments** |
@@ -759,7 +736,7 @@ Expected: `{"success":true,"attachment":{...,"url":"https://drive.google.com/...
 | `HTTP 401` / `HTTP 403` | Web app not published as "Anyone", or authorisation never completed | Redeploy with **Who has access: Anyone** and finish the consent screen |
 | Form succeeds but no row appears | Script edited without publishing a new version | **Deploy → Manage deployments → edit → Version: New version.** Saving alone does not publish |
 | Rows land in the wrong tab | Unrecognised `formType` falls back to `Inquiry` | Check the `formType` sent; must be one of the four in `FORM_TYPES` |
-| Contact/Quote fail intermittently ("Failed to find Server Action"), planner is fine | Replicas running builds with different Server Actions keys — commonly mid-rolling-update | Rebuild with a fixed `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` at **build** time; see [section 6](#about-next_server_actions_encryption_key). Setting it only at runtime is not sufficient |
+| Contact/Quote fail intermittently ("Failed to find Server Action"), planner is fine | Two builds with different Server Actions keys serving traffic at once — a gradual rollout, or preview traffic hitting production | Rebuild with a fixed `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` at **build** time; see [section 6](#about-next_server_actions_encryption_key). Setting it only at runtime is not sufficient |
 | Upload returns `HTTP 503`, "uploads are not configured" | `GOOGLE_SHEETS_WEBHOOK_URL` is unset | Same fix as above — uploads use the same webhook as form rows |
 | Upload returns `HTTP 502`, "rejected by the storage service" | Apps Script threw while writing to Drive | Check **Executions** in the Apps Script editor. Usually Drive is out of storage, or `UPLOAD_FOLDER_ID` names a folder the script owner cannot write to |
 | "still N MB after compression" | A detailed image did not come under 2 MB even at reduced quality, or a PDF/HEIC was already over | HEIC and PDF are not compressed in the browser — ask the client to send a JPG. To change the ceiling, edit `MAX_FILE_BYTES` in `frontend/src/lib/attachments.ts` (and `MAX_UPLOAD_BYTES` in the Apps Script to match) |
@@ -774,8 +751,16 @@ Expected: `{"success":true,"attachment":{...,"url":"https://drive.google.com/...
 Every failure is logged server-side with the complete lead payload, so no
 enquiry is ever lost even when the Sheet is unreachable:
 
+On Cloudflare, open **Workers & Pages → your project → Logs**, or stream them:
+
 ```bash
-kubectl logs -n prasanth-prod deploy/frontend-prod --tail=200 | grep -i "GoogleSheets\|sync failed"
+npx wrangler tail --format pretty
+```
+
+On a VPS running the systemd unit, read the service journal instead:
+
+```bash
+journalctl -u prasanth -n 200 --no-pager | grep -i "GoogleSheets\|sync failed"
 ```
 
 Look for `Google Sheets sync failed for REF-…` followed by the JSON payload —
@@ -788,9 +773,14 @@ its status and any thrown error.
 
 ## 10. Operational notes
 
-- **Rotating the secret.** Update the `SHARED_SECRET` script property and
-  `GOOGLE_SHEETS_SHARED_SECRET` together; briefly mismatched values cause
-  rejected writes, so do it during a quiet period.
+- **Rotating the secret.** Update the `SHARED_SECRET` script property and every
+  copy of `GOOGLE_SHEETS_SHARED_SECRET` together; briefly mismatched values cause
+  rejected writes, so do it during a quiet period. The copies are: the Cloudflare
+  **Production** environment, the **Preview** environment if used, and each
+  developer's `frontend/.env.development`. Rotate immediately if the token has
+  ever been committed — `git log -S'<token>' --oneline` will tell you. Deleting
+  it from the file is not enough, because it remains in history; only changing
+  the value in Apps Script actually revokes it.
 - **Re-deploying the script.** Any change to `scripts/google-sheets-script.js`
   requires publishing a **new version** of the deployment. The `/exec` URL stays
   the same when you edit the existing deployment; creating a *new* deployment

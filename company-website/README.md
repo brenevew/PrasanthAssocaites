@@ -9,14 +9,11 @@ Sheets.
 ```text
 PrasanthAssociates/
 ├── frontend/                    # Next.js UI Web Application (React, Tailwind CSS, TypeScript)
-├── k8s/
-│   ├── dev/                     # Kubernetes manifests for Development
-│   └── prod/                    # Kubernetes manifests for Production (HPA, TLS, Secrets)
 ├── scripts/
-│   ├── google-sheets-script.js  # Google Apps Script for form ingestion
-│   └── local-k8s-test.sh        # One-shot local Kubernetes deployment
+│   └── google-sheets-script.js  # Google Apps Script for form ingestion
 ├── LOCAL_DEVELOPMENT.md
-├── KUBERNETES_DEPLOYMENT.md
+├── GOOGLE_SHEETS_DEPLOYMENT.md
+├── DEPLOYMENT_GUIDE.md
 └── README.md
 ```
 
@@ -24,6 +21,11 @@ This is a **frontend-only** application. There is no backend server or database:
 form submissions are written straight to a Google Sheet through a Google Apps
 Script web app, and all site content is served from static data in
 `frontend/src/data/`.
+
+**Production** runs on **Cloudflare Workers** (via the OpenNext adapter) at
+[prasanthassociates.com](https://prasanthassociates.com). Environment variables
+are configured in the Cloudflare dashboard — see
+[`GOOGLE_SHEETS_DEPLOYMENT.md` §7](GOOGLE_SHEETS_DEPLOYMENT.md#7-hosting--deployment).
 
 ## Getting Started
 
@@ -51,7 +53,5 @@ set.
 ## Documentation
 
 - **Local Machine Setup**: [`LOCAL_DEVELOPMENT.md`](LOCAL_DEVELOPMENT.md)
-- **Google Sheets Form Integration**: [`GOOGLE_SHEETS_DEPLOYMENT.md`](GOOGLE_SHEETS_DEPLOYMENT.md)
+- **Google Sheets Form Integration & Hosting**: [`GOOGLE_SHEETS_DEPLOYMENT.md`](GOOGLE_SHEETS_DEPLOYMENT.md)
 - **Deployment**: [`DEPLOYMENT_GUIDE.md`](DEPLOYMENT_GUIDE.md)
-- **Local Kubernetes Testing**: [`LOCAL_K8S_TESTING.md`](LOCAL_K8S_TESTING.md)
-- **Kubernetes Deployment (Dev & Prod)**: [`KUBERNETES_DEPLOYMENT.md`](KUBERNETES_DEPLOYMENT.md)

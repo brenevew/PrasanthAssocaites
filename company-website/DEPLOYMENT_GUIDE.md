@@ -12,8 +12,9 @@ This guide covers everything needed to deploy the **Prasanth Associates** websit
 1. [Architecture Overview](#1-architecture-overview)
 2. [Google Sheets 2-Minute Setup](#2-google-sheets-2-minute-setup)
 3. [Deployment Options](#3-deployment-options)
-   - [Option A: Vercel (Recommended — Free, 1-Click & Global CDN)](#option-a-vercel-recommended--free-1-click--global-cdn)
-   - [Option B: Single VPS (Hostinger, DigitalOcean, Hetzner, AWS EC2)](#option-b-single-vps-with-docker--free-ssl)
+   - [Option A: Cloudflare Workers (what production runs today)](#option-a-cloudflare-workers-what-production-runs-today)
+   - [Option B: Vercel (Free, 1-Click & Global CDN)](#option-b-vercel-free-1-click--global-cdn)
+   - [Option C: Single VPS (Hostinger, DigitalOcean, Hetzner, AWS EC2)](#option-c-single-vps-with-nginx--free-ssl)
 4. [Custom Domain & SSL Setup](#4-custom-domain--ssl-setup)
 5. [Environment Variables Reference](#5-environment-variables-reference)
 6. [Post-Deployment Verification](#6-post-deployment-verification)
@@ -57,7 +58,7 @@ This guide covers everything needed to deploy the **Prasanth Associates** websit
 ### Step 2: Add the Apps Script Code
 1. In the top menu, click: **Extensions > Apps Script**.
 2. Delete any default code in the editor.
-3. Open [`scripts/google-sheets-script.js`](file:///Users/winstonbreneve/Documents/PrasanthAssociates/scripts/google-sheets-script.js) in this project, copy all lines, and paste them into the Apps Script editor.
+3. Open [`scripts/google-sheets-script.js`](scripts/google-sheets-script.js) in this project, copy all lines, and paste them into the Apps Script editor.
 4. Click **Save** (disk icon or `Cmd+S` / `Ctrl+S`).
 
 ### Step 3: Deploy as Web App
@@ -82,7 +83,56 @@ Done! Any time a client fills out any form on your website, a new row appears in
 
 ## 3. Deployment Options
 
-### Option A: Vercel (Recommended — Free, 1-Click & Global CDN)
+### Option A: Cloudflare Workers (what production runs today)
+
+*`prasanthassociates.com` is already deployed this way, via the
+[`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare) adapter. The
+project is connected to the GitHub repository from the Cloudflare dashboard, so
+a push to `main` triggers a build — there is no deployment config in this repo.*
+
+> [!IMPORTANT]
+> **Pushing code does not configure it.** `.env*` files are gitignored, so your
+> local values never travel with a deploy. The site can be running the newest
+> commit and still write nothing to the Sheet.
+
+1. **Rotate the shared secret** if it has ever been committed to the repository —
+   `git log -S'your-token' --oneline` will tell you. Generate a replacement with
+   `openssl rand -hex 24` and update the `SHARED_SECRET` script property in Apps
+   Script. A token that reached a public repo must be replaced, not reused.
+2. **Workers & Pages → your project → Settings → Variables and Secrets.**
+3. Under the **Production** environment, add:
+
+   | Variable | Value | Type |
+   |---|---|---|
+   | `GOOGLE_SHEETS_WEBHOOK_URL` | `https://script.google.com/macros/s/.../exec` | Secret |
+   | `GOOGLE_SHEETS_SHARED_SECRET` | the token from step 1 | Secret |
+   | `NEXT_PUBLIC_SITE_URL` | `https://prasanthassociates.com` | Plaintext |
+
+4. **Redeploy.** Variables are read at deploy time, so an existing deployment
+   will not pick them up on its own.
+5. **Verify** — the fastest check that the variables actually arrived:
+
+   ```bash
+   curl -s -o /dev/null -w '%{http_code}\n' -X POST https://prasanthassociates.com/api/upload \
+     -H 'Content-Type: application/json' -d '{}'
+   ```
+
+   `503` means `GOOGLE_SHEETS_WEBHOOK_URL` is still unset.
+6. **Update the other copies of the secret** if you rotated: your local
+   `frontend/.env.development`, and the Preview environment if you use one.
+
+> [!WARNING]
+> Without `GOOGLE_SHEETS_WEBHOOK_URL` the site looks completely healthy — pages
+> serve, forms show a success screen, reference codes are issued — while every
+> lead is silently dropped. Always run the verification in
+> [section 6](#6-post-deployment-verification) after a deploy.
+
+Full detail, including the Preview environment and rotation caveats, is in
+[`GOOGLE_SHEETS_DEPLOYMENT.md` §7](GOOGLE_SHEETS_DEPLOYMENT.md#cloudflare-workers-the-live-path).
+
+---
+
+### Option B: Vercel (Free, 1-Click & Global CDN)
 *Vercel was created by the creators of Next.js and provides automatic SSL, global CDN, and zero maintenance.*
 
 1. Push your project code to **GitHub**, **GitLab**, or **Bitbucket**.
@@ -100,15 +150,15 @@ Done! Any time a client fills out any form on your website, a new row appears in
 
 ---
 
-### Option B: Single VPS with Docker & Free SSL
+### Option C: Single VPS with Nginx & Free SSL
 *If you prefer hosting on your own VPS (Hostinger, DigitalOcean Droplet, Linode, AWS EC2, Hetzner):*
 
 #### 1. Server Setup
-SSH into your VPS and install Docker & Nginx:
+SSH into your VPS and install Node.js 20, Nginx and Certbot:
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y docker.io git nginx certbot python3-certbot-nginx
-sudo systemctl enable --now docker
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs git nginx certbot python3-certbot-nginx
 ```
 
 #### 2. Clone Repository
@@ -117,17 +167,37 @@ git clone https://github.com/your-username/PrasanthAssociates.git /var/www/prasa
 cd /var/www/prasanth/frontend
 ```
 
-#### 3. Build & Run Docker Container
-Create `.env.production` inside `frontend/`:
+#### 3. Build & Run the App
+Create `/etc/prasanth-frontend.env` (`chmod 600`, owned by the service user) —
+keep secrets out of the repo and out of `ps` output:
 ```env
 NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/.../exec
+GOOGLE_SHEETS_SHARED_SECRET=your-token
 ```
 
-Build and run:
+Build, then copy the static assets next to the standalone server (the bundle
+does not include them):
 ```bash
-docker build -t prasanth-website .
-docker run -d --restart always -p 127.0.0.1:3000:3000 --name prasanth-app prasanth-website
+npm ci && npm run build
+cp -r public .next/standalone/public
+cp -r .next/static .next/standalone/.next/static
+```
+
+Run it under systemd so it survives reboots — `/etc/systemd/system/prasanth.service`:
+```ini
+[Service]
+EnvironmentFile=/etc/prasanth-frontend.env
+Environment=PORT=3000 HOSTNAME=127.0.0.1
+ExecStart=/usr/bin/node /var/www/prasanth/frontend/.next/standalone/server.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl enable --now prasanth
 ```
 
 #### 4. Configure Host Nginx & Free SSL
@@ -164,8 +234,11 @@ In your domain registrar (GoDaddy, Namecheap, Google Domains, Cloudflare):
 
 | Type | Name / Host | Value / Destination | Purpose |
 |---|---|---|---|
-| **A** | `@` | `76.76.21.21` (if Vercel) or `Your VPS IP` | Primary apex domain |
-| **CNAME** | `www` | `cname.vercel-dns.com` (if Vercel) or `yourdomain.com` | WWW subdomain |
+| **A / CNAME** | `@` | Managed by Cloudflare (current setup), `76.76.21.21` for Vercel, or your VPS IP | Primary apex domain |
+| **CNAME** | `www` | `yourdomain.com` (or `cname.vercel-dns.com` for Vercel) | WWW subdomain |
+
+> `www.prasanthassociates.com` currently has **no DNS record** — only the apex
+> resolves. Add the `www` record above if you want both to work.
 
 ---
 
@@ -174,7 +247,13 @@ In your domain registrar (GoDaddy, Namecheap, Google Domains, Cloudflare):
 | Variable | Required | Description |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | Yes | Canonical site URL (e.g., `https://prasanthassociates.com`) |
-| `GOOGLE_SHEETS_WEBHOOK_URL` | Recommended | Google Apps Script Web App URL for direct sheet synchronization |
+| `GOOGLE_SHEETS_WEBHOOK_URL` | Yes | Google Apps Script Web App URL. Without it, leads are silently dropped and file uploads return `HTTP 503` |
+| `GOOGLE_SHEETS_SHARED_SECRET` | Yes | Must match the `SHARED_SECRET` script property in Apps Script. A mismatch makes the script reject every write as `unauthorized` |
+
+> Both Google values are **server-side secrets**. Never prefix them with
+> `NEXT_PUBLIC_`, and never commit them — store them in your host's secret
+> manager. Full detail in
+> [`GOOGLE_SHEETS_DEPLOYMENT.md` §6](GOOGLE_SHEETS_DEPLOYMENT.md#6-secrets--environment-variables).
 
 ---
 
