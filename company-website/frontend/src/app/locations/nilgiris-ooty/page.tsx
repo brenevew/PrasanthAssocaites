@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Builders in Nilgiris & Ooty | Hillside House Construction Contractors",
+  title: "Hillside Builders in Nilgiris & Ooty",
   description:
     "Expert builders and construction company in The Nilgiris, Ooty, Gudalur & Coonoor. Specialized in hillside pile foundations, slope stability engineering, cold-weather curing & luxury mountain residences.",
   keywords: [

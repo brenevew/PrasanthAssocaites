@@ -31,11 +31,14 @@ export const serviceCategories: ServiceCategory[] = [
     id: "design",
     label: "Design & Architecture",
     shortLabel: "Design & Arch",
-    description: "Architectural blueprints, bespoke interior styling & landscape design",
+    description: "Architectural blueprints, structural & MEP drawings, interior styling & landscape design",
     iconName: "Compass",
-    badge: "3 Disciplines",
+    badge: "6 Disciplines",
     slugs: [
       "architectural-designs",
+      "structural-drawings",
+      "electrical-drawings",
+      "plumbing-drawings",
       "interior-designs",
       "landscaping-designs",
     ],
@@ -83,6 +86,9 @@ export const plannableSlugs = [
 
 export const designSlugs = [
   "architectural-designs",
+  "structural-drawings",
+  "electrical-drawings",
+  "plumbing-drawings",
   "interior-designs",
   "landscaping-designs",
 ];

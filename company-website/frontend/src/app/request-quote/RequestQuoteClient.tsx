@@ -9,6 +9,7 @@ import {
   Building2, Landmark, Compass, Calculator, ChevronDown,
   Building, Home, Key, Hammer, Cpu, Factory, Palette,
   Trees, ClipboardList, FileCheck, ArrowRight, Repeat2,
+  PencilRuler, Zap, Droplets,
 } from "lucide-react";
 import { services, type Service } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
@@ -16,14 +17,14 @@ import { submitContactForm, type ActionResult } from "@/app/actions/contactActio
 import ImageUpload from "@/components/ui/ImageUpload";
 import type { Attachment } from "@/lib/attachments";
 import CostCalculator from "@/components/ui/CostCalculator";
+import OptionCards from "@/components/ui/OptionCards";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
   Home, Building2, Building, Key, Hammer, Cpu, Factory, Compass, Palette, Trees, ClipboardList,
   Landmark, ShieldCheck, Calculator, FileCheck,
   MapPin, Map: MapPin, TrendingUp: Building2, LayoutDashboard: Building,
+  PencilRuler, Zap, Droplets,
 };
-
-const quickLocations = ["Coimbatore", "RS Puram", "Gandhipuram", "Peelamedu", "Saravanampatti"];
 
 const FALLBACK_SLUG = "residential-construction";
 
@@ -55,64 +56,6 @@ function FormSection({
   );
 }
 
-/** Accessible single-select card group built on real radios (free keyboard nav). */
-function OptionCards({
-  name,
-  legend,
-  options,
-  value,
-  onChange,
-}: {
-  name: string;
-  legend: string;
-  options: { value: string; label: string }[];
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <fieldset>
-      <legend className="mb-2 text-xs font-bold uppercase tracking-wider text-concrete">
-        {legend}
-      </legend>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-        {options.map((opt) => {
-          // Driven from state, not peer-checked: the dot is a *descendant* of the
-          // input's sibling, which peer-* variants cannot reach.
-          const isSelected = value === opt.value;
-          return (
-            <label key={opt.value} className="relative cursor-pointer">
-              <input
-                type="radio"
-                name={name}
-                value={opt.value}
-                checked={isSelected}
-                onChange={() => onChange(opt.value)}
-                className="peer sr-only"
-              />
-              <span
-                className={`flex h-full items-center gap-2.5 rounded-xl border px-3.5 py-3 text-sm transition-all peer-focus-visible:ring-2 peer-focus-visible:ring-gold peer-focus-visible:ring-offset-2 ${
-                  isSelected
-                    ? "border-gold bg-gold/10 font-bold text-charcoal"
-                    : "border-border bg-white/80 font-medium text-concrete hover:border-charcoal/30 hover:bg-white"
-                }`}
-              >
-                <span
-                  className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full border transition-colors ${
-                    isSelected ? "border-gold bg-white" : "border-border bg-white"
-                  }`}
-                >
-                  <span className={`h-2 w-2 rounded-full transition-colors ${isSelected ? "bg-gold" : "bg-transparent"}`} />
-                </span>
-                <span className="leading-snug">{opt.label}</span>
-              </span>
-            </label>
-          );
-        })}
-      </div>
-    </fieldset>
-  );
-}
-
 const inputClass =
   "w-full rounded-xl border border-border bg-white/90 py-3 pl-10 pr-3.5 text-base text-charcoal transition-all placeholder:text-concrete-lighter focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/25 sm:text-sm";
 
@@ -134,12 +77,25 @@ export default function RequestQuoteClient() {
     [queryService]
   );
 
-  const [selectedField1, setSelectedField1] = useState<string>(
-    () => spec?.formDefaults?.field1Options?.[0]?.value || ""
-  );
-  const [selectedField2, setSelectedField2] = useState<string>(
-    () => spec?.formDefaults?.field2Options?.[0]?.value || ""
-  );
+  // Multi-select fields start empty so the visitor states what they actually
+  // want; single-select fields keep a sensible default.
+  // ?f1=/?f2= carry the picks made in the Services-page card, so the visitor
+  // does not restate them here. Unknown values are dropped.
+  const preset = (param: string, opts: { value: string }[]) => {
+    const raw = searchParams.get(param);
+    if (!raw) return null;
+    const valid = raw.split(",").filter((v) => opts.some((o) => o.value === v));
+    return valid.length ? valid : null;
+  };
+  const initialField1 = (s: typeof spec) =>
+    preset("f1", s?.formDefaults?.field1Options || []) ??
+    (s?.formDefaults?.field1Multi ? [] : [s?.formDefaults?.field1Options?.[0]?.value].filter(Boolean) as string[]);
+  const initialField2 = (s: typeof spec) =>
+    preset("f2", s?.formDefaults?.field2Options || []) ??
+    (s?.formDefaults?.field2Multi ? [] : [s?.formDefaults?.field2Options?.[0]?.value].filter(Boolean) as string[]);
+
+  const [selectedField1, setSelectedField1] = useState<string[]>(() => initialField1(spec));
+  const [selectedField2, setSelectedField2] = useState<string[]>(() => initialField2(spec));
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [result, setResult] = useState<ActionResult | null>(null);
@@ -151,8 +107,8 @@ export default function RequestQuoteClient() {
   const [prevSlug, setPrevSlug] = useState(queryService);
   if (prevSlug !== queryService) {
     setPrevSlug(queryService);
-    setSelectedField1(spec?.formDefaults?.field1Options?.[0]?.value || "");
-    setSelectedField2(spec?.formDefaults?.field2Options?.[0]?.value || "");
+    setSelectedField1(initialField1(spec));
+    setSelectedField2(initialField2(spec));
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -166,8 +122,8 @@ export default function RequestQuoteClient() {
     formData.append("serviceSlug", currentService.slug);
     formData.append("serviceTitle", currentService.title);
     formData.append("projectType", spec?.formDefaults?.serviceCategory || "residential");
-    if (selectedField1) formData.set("budget", selectedField1);
-    if (selectedField2) formData.set("timeline", selectedField2);
+    if (selectedField1.length) formData.set("budget", selectedField1.join(", "));
+    if (selectedField2.length) formData.set("timeline", selectedField2.join(", "));
     if (attachments.length > 0) {
       formData.append("attachments", JSON.stringify(attachments));
     }
@@ -210,8 +166,8 @@ export default function RequestQuoteClient() {
   );
   const field1Label = spec.formDefaults.field1Label.replace(/\s*\*\s*$/, "");
   const field2Label = spec.formDefaults.field2Label.replace(/\s*\*\s*$/, "");
-  const selected1 = spec.formDefaults.field1Options.find((o) => o.value === selectedField1);
-  const selected2 = spec.formDefaults.field2Options.find((o) => o.value === selectedField2);
+  const selected1 = spec.formDefaults.field1Options.filter((o) => selectedField1.includes(o.value));
+  const selected2 = spec.formDefaults.field2Options.filter((o) => selectedField2.includes(o.value));
 
   return (
     // overflow-x-clip contains the decorative glows below (they are wider than a phone
@@ -326,6 +282,7 @@ export default function RequestQuoteClient() {
                         options={spec.formDefaults.field1Options}
                         value={selectedField1}
                         onChange={setSelectedField1}
+                        multi={spec.formDefaults.field1Multi}
                       />
                       <OptionCards
                         name="field2"
@@ -333,6 +290,7 @@ export default function RequestQuoteClient() {
                         options={spec.formDefaults.field2Options}
                         value={selectedField2}
                         onChange={setSelectedField2}
+                        multi={spec.formDefaults.field2Multi}
                       />
                     </div>
                   </FormSection>
@@ -405,7 +363,6 @@ export default function RequestQuoteClient() {
                         </div>
                       </div>
 
-                      {/* Location gets its own row so the quick-picks don't skew the grid */}
                       <div>
                         <label htmlFor="location" className={labelClass}>
                           Project location <span className="text-gold-dark">*</span>
@@ -424,23 +381,6 @@ export default function RequestQuoteClient() {
                             className={inputClass}
                             placeholder="RS Puram, Coimbatore"
                           />
-                        </div>
-                        <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                          {quickLocations.map((loc) => (
-                            <button
-                              key={loc}
-                              type="button"
-                              onClick={() => setLocation(loc)}
-                              aria-pressed={location === loc}
-                              className={`cursor-pointer rounded-lg border px-2.5 py-1 text-xs transition-all ${
-                                location === loc
-                                  ? "border-gold bg-gold/15 font-bold text-charcoal"
-                                  : "border-border bg-white text-concrete hover:border-charcoal/30 hover:text-charcoal"
-                              }`}
-                            >
-                              {loc}
-                            </button>
-                          ))}
                         </div>
                         {result?.errors?.location && (
                           <p className="mt-1.5 text-xs text-red-600">{result.errors.location}</p>
@@ -475,16 +415,11 @@ export default function RequestQuoteClient() {
                       <span className="rounded-lg bg-white px-2.5 py-1 font-semibold shadow-xs">
                         {currentService.title}
                       </span>
-                      {selected1 && (
-                        <span className="rounded-lg bg-white px-2.5 py-1 font-semibold shadow-xs">
-                          {selected1.label}
+                      {[...selected1, ...selected2].map((opt) => (
+                        <span key={opt.value} className="rounded-lg bg-white px-2.5 py-1 font-semibold shadow-xs">
+                          {opt.label}
                         </span>
-                      )}
-                      {selected2 && (
-                        <span className="rounded-lg bg-white px-2.5 py-1 font-semibold shadow-xs">
-                          {selected2.label}
-                        </span>
-                      )}
+                      ))}
                     </div>
                   </div>
 

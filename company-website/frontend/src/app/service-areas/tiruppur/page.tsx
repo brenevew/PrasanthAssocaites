@@ -22,7 +22,7 @@ import {
 const CANONICAL_URL = "https://prasanthassociates.com/service-areas/tiruppur";
 
 export const metadata: Metadata = {
-  title: "Commercial & Industrial Building Contractors Serving Tiruppur",
+  title: "Factory & Commercial Builders, Tiruppur",
   description:
     "Commercial, factory and warehouse construction across Tiruppur, delivered from our Coimbatore head office. PEB industrial sheds, ZLD-compliant dyeing unit civil works, TNPCB and Factories Act coordination, itemized BoQ pricing.",
   keywords: [

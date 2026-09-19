@@ -251,10 +251,13 @@ export default function Header() {
                                       const SvcIcon = iconMap[svc.icon] || Building2;
 
                                       return (
-                                        <Link
+                                        <button
                                           key={svc.slug}
-                                          href={`/services#${svc.slug}`}
-                                          onClick={() => setIsServicesOpen(false)}
+                                          type="button"
+                                          onClick={() => {
+                                            setIsServicesOpen(false);
+                                            setSelectedServiceModal(svc);
+                                          }}
                                           className="p-3 rounded-xl border border-[#EAE5DD] bg-white hover:bg-[#FAF8F5] hover:border-gold transition-all duration-200 group flex items-start gap-3 shadow-xs hover:shadow-md text-left cursor-pointer w-full"
                                         >
                                           <div className="w-8 h-8 rounded-lg bg-[#FAF6EE] border border-[#EBDCC5] text-gold-dark flex items-center justify-center flex-shrink-0 group-hover:bg-[#1A1714] group-hover:text-white transition-all">
@@ -272,7 +275,7 @@ export default function Header() {
                                               <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />
                                             </div>
                                           </div>
-                                        </Link>
+                                        </button>
                                       );
                                     })}
                                   </div>
@@ -328,7 +331,11 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileNav isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+      <MobileNav
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        onServiceSelect={setSelectedServiceModal}
+      />
 
       {/* Detailed Service Card Modal: Opened when selecting any card */}
       <ServiceDetailModal

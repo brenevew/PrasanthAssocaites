@@ -6,15 +6,17 @@ import { usePathname } from "next/navigation";
 import { company } from "@/data/company";
 import { mainNavItems } from "@/data/navigation";
 import { serviceCategories } from "@/data/serviceCategories";
-import { services } from "@/data/services";
+import { services, type Service } from "@/data/services";
 import Button from "../ui/Button";
 
 interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
+  /** Opens the service card; the header owns that state. */
+  onServiceSelect?: (service: Service) => void;
 }
 
-export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
+export default function MobileNav({ isOpen, onClose, onServiceSelect }: MobileNavProps) {
   const [servicesExpanded, setServicesExpanded] = useState(false);
   const [mobileCategory, setMobileCategory] = useState("construction");
   const pathname = usePathname();
@@ -146,17 +148,20 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                             (serviceCategories.find((c) => c.id === mobileCategory) || serviceCategories[0]).slugs.includes(s.slug)
                           )
                           .map((s) => (
-                            <Link
+                            <button
                               key={s.slug}
-                              href={`/services#${s.slug}`}
-                              onClick={onClose}
-                              className="px-3 py-2 rounded-xl text-xs font-semibold text-charcoal hover:text-gold-dark hover:bg-white/60 flex items-center justify-between transition-colors"
+                              type="button"
+                              onClick={() => {
+                                onClose();
+                                onServiceSelect?.(s);
+                              }}
+                              className="px-3 py-2 rounded-xl text-xs font-semibold text-charcoal hover:text-gold-dark hover:bg-white/60 flex items-center justify-between transition-colors text-left w-full"
                             >
                               <span className="truncate">{s.title}</span>
                               <span className="text-[9px] font-bold text-gold uppercase ml-2 flex-shrink-0">
                                 View →
                               </span>
-                            </Link>
+                            </button>
                           ))}
                       </div>
                     </div>

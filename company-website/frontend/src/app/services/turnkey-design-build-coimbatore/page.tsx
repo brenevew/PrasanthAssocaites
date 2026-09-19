@@ -21,7 +21,7 @@ import {
 const CANONICAL_URL = "https://prasanthassociates.com/services/turnkey-design-build-coimbatore";
 
 export const metadata: Metadata = {
-  title: "Turnkey Design & Build Contractors — Coimbatore",
+  title: "Turnkey Design & Build, Coimbatore",
   description:
     "DTCP/LPA-compliant turnkey design and build contractors in Coimbatore. Single-contract delivery from soil investigation to handover, with Fe 550D TMT steel, M20/M25 mix design, and itemized BoQ pricing.",
   keywords: [

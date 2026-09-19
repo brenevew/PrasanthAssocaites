@@ -161,9 +161,23 @@ const initialFloorLevels: DynamicFloorLevel[] = [
   { id: "floor_1", name: "1st Floor", length: "0", breadth: "0", bedrooms: 2, kitchens: 1, baths: 2, livingHalls: 1 },
 ];
 
-const residentialRequirementChips = [
-  "Master Bedroom", "Attached Baths", "Open Kitchen", "Pooja Room",
-  "Car Parking", "Study / Office", "Vastu Compliant", "Balcony",
+const residentialRequirementGroups: { label: string; chips: string[] }[] = [
+  {
+    label: "🏠 Core Layout & Spaces",
+    chips: ["Master Bedroom", "Attached Baths", "Open Kitchen", "Pooja Room", "Guest Bedroom"],
+  },
+  {
+    label: "🚗 Entrance & Outdoor Zones",
+    chips: ["Foyer Space", "Balcony", "Car Parking", "Terrace Garden", "Utility Yard / Washing Area"],
+  },
+  {
+    label: "💼 Specialized & Flex Rooms",
+    chips: ["Study / Home Office", "Home Theater / Media Room", "Servant Quarter", "Walk-in Wardrobe"],
+  },
+  {
+    label: "✨ Design Preference",
+    chips: ["Vastu Compliant"],
+  },
 ];
 
 const commercialRequirementChips = [
@@ -1074,8 +1088,8 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
               <span className="text-[10px] font-bold uppercase tracking-wider text-charcoal/70 block">
                 {selectedProjectType === "Commercial" ? "5. Commercial Features & Preferences" : "5. Preferred Room Features"}
               </span>
-              <div className="flex flex-wrap gap-1.5">
-                {(selectedProjectType === "Commercial" ? commercialRequirementChips : residentialRequirementChips).map(chip => {
+              {(() => {
+                const chipButton = (chip: string) => {
                   const active = selectedChips.includes(chip);
                   return (
                     <button
@@ -1089,8 +1103,25 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                       {active ? `✓ ${chip}` : `+ ${chip}`}
                     </button>
                   );
-                })}
-              </div>
+                };
+
+                if (selectedProjectType === "Commercial") {
+                  return <div className="flex flex-wrap gap-1.5">{commercialRequirementChips.map(chipButton)}</div>;
+                }
+
+                return (
+                  <div className="space-y-3">
+                    {residentialRequirementGroups.map((group) => (
+                      <div key={group.label} className="space-y-1.5">
+                        <span className="block text-[10px] font-semibold uppercase tracking-wider text-charcoal/50">
+                          {group.label}
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">{group.chips.map(chipButton)}</div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
 
           </div>

@@ -26,8 +26,11 @@ export interface ServiceQuoteSpec {
     serviceCategory: string;
     field1Label: string;
     field1Options: { value: string; label: string }[];
+    /** Options combine rather than exclude — renders checkboxes instead of radios. */
+    field1Multi?: boolean;
     field2Label: string;
     field2Options: { value: string; label: string }[];
+    field2Multi?: boolean;
     placeholder: string;
   };
 }
@@ -278,6 +281,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "casting-inspection", label: "Critical Slab Casting & Reinforcement Inspection" },
         { value: "defect-audit", label: "Quality Defect & Structural Health Audit" },
       ],
+      field1Multi: true,
       field2Label: "Current Project Stage *",
       field2Options: [
         { value: "pre-construction", label: "Pre-construction / Planning Stage" },
@@ -330,6 +334,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "facade-makeover", label: "Exterior Facade & Elevation Makeover" },
         { value: "commercial-renovation", label: "Commercial Space Renovation" },
       ],
+      field1Multi: true,
       field2Label: "Age of Existing Structure *",
       field2Options: [
         { value: "under-10y", label: "Under 10 Years" },
@@ -381,6 +386,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "security-access", label: "Biometric Security, Cameras & Access Control" },
         { value: "home-theater-audio", label: "Home Theater & Multi-Zone Audio Only" },
       ],
+      field1Multi: true,
       field2Label: "Current Construction Stage *",
       field2Options: [
         { value: "planning-stage", label: "Planning / Pre-construction" },
@@ -483,6 +489,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "municipal-sanction", label: "Municipal Approval / Sanction Drawings" },
         { value: "structural-cad", label: "Structural CAD Blueprints Only" },
       ],
+      field1Multi: true,
       field2Label: "Plot / Built-Up Area *",
       field2Options: [
         { value: "under-2000", label: "Under 2,000 sq ft" },
@@ -491,6 +498,162 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "above-6000", label: "Above 6,000 sq ft" },
       ],
       placeholder: "Plot dimensions (e.g. 40x60 ft), facing direction (North/East), floor count, preferred style (Modern/Traditional)...",
+    },
+  },
+
+  "structural-drawings": {
+    slug: "structural-drawings",
+    badge: "Stamped RCC Structural Detailing",
+    tagline: "Footing schedules, column layouts, beam and slab reinforcement drawings ready for site execution.",
+    sla: "5-7 Days Working Drawings",
+    slaLabel: "10 Days Full Structural Pack",
+    credentialBadge: "Chartered Structural Engineer",
+    credentialLabel: "IS 456 / IS 1893 Compliant",
+    deliverablesHeading: "Structural Drawing Deliverables",
+    deliverables: [
+      { title: "Foundation & Footing Layout", desc: "Footing sizes, depths and layout set against the safe bearing capacity returned by your soil test." },
+      { title: "Column Layout & Schedule", desc: "Column positions, orientation, size schedule and reinforcement details floor by floor." },
+      { title: "Beam Reinforcement Drawings", desc: "Beam sizing, main and distribution steel, stirrup spacing, and lap and anchorage lengths." },
+      { title: "Slab Reinforcement & BBS", desc: "Slab thickness, two-way or one-way reinforcement layout, and cut-length bar-bending schedules." },
+      { title: "Retaining Wall & Staircase Details", desc: "Where the site demands them — drainage-detailed retaining walls and staircase waist slab design." },
+      { title: "Stamped Sanction Drawings", desc: "Engineer-stamped set formatted for DTCP, LPA or Corporation plan sanction and bank submission." },
+    ],
+    highlightBox: {
+      title: "Designed Against Your Soil, Not a Standard Template",
+      description: "Every member is sized from your site's actual bearing capacity and load path — the difference between a structure that lasts and one that cracks.",
+      badges: ["✓ Footing & Column Schedules", "✓ Complete Bar-Bending Schedule", "✓ Fe 550D Specification", "✓ Engineer-Stamped for Sanction"],
+    },
+    steps: [
+      { n: "01", title: "Soil Data & Architectural Review", body: "Reviewing your SBC test, bore log and architectural layout to establish the load path and foundation type." },
+      { n: "02", title: "Structural Analysis & Member Sizing", body: "Analysing dead, live and seismic loads to size footings, columns, beams and slabs to IS code." },
+      { n: "03", title: "Working Drawings & BBS Issue", body: "Issuing the stamped drawing set with bar-bending schedules your site team can build from directly." },
+    ],
+    guarantee: {
+      title: "Code-Compliant & Sanction-Ready",
+      body: "Drawings are issued IS 456 and IS 1893 compliant, engineer-stamped, and revised free until plan sanction is granted.",
+    },
+    formDefaults: {
+      serviceCategory: "architectural",
+      field1Label: "Structural Scope *",
+      field1Options: [
+        { value: "full-structural-pack", label: "Full Structural Pack + BBS" },
+        { value: "foundation-only", label: "Foundation & Footing Design Only" },
+        { value: "sanction-structural", label: "Stamped Drawings for Plan Sanction" },
+        { value: "retrofit-assessment", label: "Existing Structure Assessment / Retrofit" },
+      ],
+      field1Multi: true,
+      field2Label: "Built-Up Area *",
+      field2Options: [
+        { value: "under-2000", label: "Under 2,000 sq ft" },
+        { value: "2000-3500", label: "2,000 – 3,500 sq ft" },
+        { value: "3500-6000", label: "3,500 – 6,000 sq ft" },
+        { value: "above-6000", label: "Above 6,000 sq ft" },
+      ],
+      placeholder: "Number of floors, plot dimensions, whether a soil test (SBC/bore log) is already done, architectural drawings available...",
+    },
+  },
+
+  "electrical-drawings": {
+    slug: "electrical-drawings",
+    badge: "Load-Calculated Electrical Design",
+    tagline: "Point-wise conduit routing, distribution board sizing, earthing design and single-line diagrams.",
+    sla: "4-6 Days Point Layout",
+    slaLabel: "8 Days Full MEP Electrical",
+    credentialBadge: "Licensed Electrical Engineer",
+    credentialLabel: "IS 732 / NEC Compliant",
+    deliverablesHeading: "Electrical Drawing Deliverables",
+    deliverables: [
+      { title: "Point-Wise Lighting & Power Layout", desc: "Every switch, socket, fan and fixture positioned on plan before conduit is laid." },
+      { title: "Connected Load Calculation", desc: "Room-by-room load tabulation feeding DB sizing and the EB sanctioned-load application." },
+      { title: "Distribution Board Schedule", desc: "DB positions, circuit allocation, MCB ratings and ELCB protection for each circuit group." },
+      { title: "Conduit Routing & Switchboard Elevations", desc: "Concealed PVC conduit runs and switchboard heights coordinated against the architectural layout." },
+      { title: "Earthing & Lightning Protection", desc: "Earth pit positioning, conductor sizing and, where building height requires it, lightning arrestor design." },
+      { title: "Single-Line Diagram (SLD)", desc: "Formatted for electrical inspectorate approval and EB service connection." },
+    ],
+    highlightBox: {
+      title: "Designed Before the Slab, Not Chased Into It Afterwards",
+      description: "Electrical points fixed at drawing stage mean no broken walls, no surface conduit, and no distribution board running at its limit.",
+      badges: ["✓ Point-Wise Layouts", "✓ Calculated Load & DB Sizing", "✓ Earthing Design", "✓ Solar & Inverter Provisioning"],
+    },
+    steps: [
+      { n: "01", title: "Requirement & Appliance Mapping", body: "Walking through room use, appliance inventory, HVAC plans and any solar or automation intent." },
+      { n: "02", title: "Load Calculation & Circuit Design", body: "Tabulating connected load, segregating circuits and sizing distribution boards with protection devices." },
+      { n: "03", title: "Drawing Issue & Site Coordination", body: "Releasing point layouts, conduit routing and SLD, coordinated with the structural and plumbing drawings." },
+    ],
+    guarantee: {
+      title: "Safety-Compliant & Inspection-Ready",
+      body: "Designs follow IS 732 wiring practice with correct earthing and protection, issued ready for inspectorate approval.",
+    },
+    formDefaults: {
+      serviceCategory: "architectural",
+      field1Label: "Electrical Scope *",
+      field1Options: [
+        { value: "full-electrical-design", label: "Full Electrical Design + SLD" },
+        { value: "point-layout-only", label: "Point Layout & Conduit Routing Only" },
+        { value: "load-db-design", label: "Load Calculation & DB Sizing" },
+        { value: "solar-automation", label: "Solar / Inverter / Smart Home Provisioning" },
+      ],
+      field1Multi: true,
+      field2Label: "Built-Up Area *",
+      field2Options: [
+        { value: "under-2000", label: "Under 2,000 sq ft" },
+        { value: "2000-3500", label: "2,000 – 3,500 sq ft" },
+        { value: "3500-6000", label: "3,500 – 6,000 sq ft" },
+        { value: "above-6000", label: "Above 6,000 sq ft" },
+      ],
+      placeholder: "Number of floors, AC points required, solar or inverter plans, three-phase or single-phase supply, automation requirements...",
+    },
+  },
+
+  "plumbing-drawings": {
+    slug: "plumbing-drawings",
+    badge: "Water Supply & Drainage Design",
+    tagline: "CPVC/UPVC supply routing, slope-calculated waste lines, sump and OHT sizing, rainwater harvesting design.",
+    sla: "4-6 Days Layout Drawings",
+    slaLabel: "8 Days Full Plumbing Pack",
+    credentialBadge: "Public Health Engineer",
+    credentialLabel: "IS 1172 / NBC Compliant",
+    deliverablesHeading: "Plumbing Drawing Deliverables",
+    deliverables: [
+      { title: "Water Supply Schematic", desc: "CPVC hot and UPVC cold line routing with pipe diameters sized against fixture unit demand." },
+      { title: "Soil, Waste & Vent Layout", desc: "Drainage lines drawn to calculated fall, with vent stacks positioned to prevent trap siphonage." },
+      { title: "Sump & Overhead Tank Sizing", desc: "Capacities calculated from actual occupancy and storage days rather than a flat assumption." },
+      { title: "Inspection Chamber & Manhole Plan", desc: "Chamber positions, invert levels and connection route to the municipal sewer or septic system." },
+      { title: "Rainwater Harvesting Design", desc: "Percolation pit sizing and terrace collection routing to the recharge norms mandated for your plot area." },
+      { title: "Fixture & Pressure-Test Schedule", desc: "Wet-point positions with the pre-concealment pressure-test protocol site must follow before closing walls." },
+    ],
+    highlightBox: {
+      title: "Every Wet Point Fixed Before the First Slab",
+      description: "Pipe runs and fixture positions settled at drawing stage are what prevent chased walls, re-laid flooring and leaks behind finished surfaces.",
+      badges: ["✓ CPVC / UPVC Supply Design", "✓ Slope-Calculated Drainage", "✓ Sump & OHT Sizing", "✓ Rainwater Harvesting"],
+    },
+    steps: [
+      { n: "01", title: "Fixture Schedule & Occupancy Review", body: "Establishing wet points, fixture types, occupancy load and available municipal water pressure." },
+      { n: "02", title: "Supply & Drainage Design", body: "Sizing supply lines to demand, setting drainage falls, and calculating sump and overhead tank capacity." },
+      { n: "03", title: "Drawing Issue & Test Protocol", body: "Releasing layouts coordinated with structural and electrical drawings, plus the pressure-test schedule." },
+    ],
+    guarantee: {
+      title: "Leak-Free Detailing, Tested Before Concealment",
+      body: "Every concealed line is issued with a pressure-test protocol to be signed off before walls are closed.",
+    },
+    formDefaults: {
+      serviceCategory: "architectural",
+      field1Label: "Plumbing Scope *",
+      field1Options: [
+        { value: "full-plumbing-design", label: "Full Plumbing Design (Supply + Drainage)" },
+        { value: "supply-only", label: "Water Supply Layout Only" },
+        { value: "drainage-sewer", label: "Drainage, Sewer & Chamber Design" },
+        { value: "rainwater-harvesting", label: "Rainwater Harvesting Design" },
+      ],
+      field1Multi: true,
+      field2Label: "Built-Up Area *",
+      field2Options: [
+        { value: "under-2000", label: "Under 2,000 sq ft" },
+        { value: "2000-3500", label: "2,000 – 3,500 sq ft" },
+        { value: "3500-6000", label: "3,500 – 6,000 sq ft" },
+        { value: "above-6000", label: "Above 6,000 sq ft" },
+      ],
+      placeholder: "Number of bathrooms and kitchens, floors, municipal water connection or borewell, septic tank or sewer connection, solar water heater...",
     },
   },
 
@@ -534,6 +697,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "living-dining-makeover", label: "Living, Dining & Foyer Makeover" },
         { value: "commercial-office-interior", label: "Commercial Office / Retail Interior" },
       ],
+      field1Multi: true,
       field2Label: "Property Status *",
       field2Options: [
         { value: "new-villa-under-construction", label: "New Villa Under Construction" },
@@ -585,6 +749,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "internal-open-courtyard", label: "Internal Open-to-Sky Courtyard" },
         { value: "resort-estate-campus", label: "Commercial Campus / Resort Estate" },
       ],
+      field1Multi: true,
       field2Label: "Key Outdoor Elements *",
       field2Options: [
         { value: "garden-gazebo-irrigation", label: "Lawn Garden + Gazebo + Auto Irrigation" },
@@ -592,6 +757,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "vertical-garden-deck", label: "Vertical Green Wall + Wooden Decking" },
         { value: "full-estate-masterplan", label: "Full Outdoor Estate Masterplan" },
       ],
+      field2Multi: true,
       placeholder: "Approximate open area (sq ft), sunny vs shady zones, specific desires (fruit trees, zen garden, party deck)...",
     },
   },
@@ -697,6 +863,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "municipal-oc", label: "Municipal Occupancy Certificate (OC)" },
         { value: "structural-health-audit", label: "Structural Health & Renovation Fitness Audit" },
       ],
+      field2Multi: true,
       placeholder: "Building location, total built-up area, approximate building age, number of floors, any visible structural concerns...",
     },
   },
@@ -802,6 +969,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "engineering-cnc", label: "Precision Engineering / CNC / Tooling Equipment" },
         { value: "it-datacenter", label: "IT & Data Center Infrastructure" },
       ],
+      field2Multi: true,
       placeholder: "Company name, facility location, list of key equipment/machinery, purpose of certification, timeline requirement...",
     },
   },
@@ -847,6 +1015,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "commercial-property", label: "Commercial Property / Office Space" },
         { value: "industrial-land", label: "Industrial / Agricultural Land" },
       ],
+      field1Multi: true,
       field2Label: "Investment Budget Range *",
       field2Options: [
         { value: "under-50l", label: "Under ₹50 Lakhs" },
@@ -906,6 +1075,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "erode-salem", label: "Erode / Salem Corridor" },
         { value: "other-tn", label: "Other Tamil Nadu Locations" },
       ],
+      field2Multi: true,
       placeholder: "Preferred plot area (sq ft / cents / acres), budget range, specific localities of interest, intended purpose (construction / investment)...",
     },
   },
@@ -951,6 +1121,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "portfolio-diversification", label: "Real Estate Portfolio Diversification" },
         { value: "commercial-investment", label: "Commercial / Retail Space Investment" },
       ],
+      field1Multi: true,
       field2Label: "Investment Capital Range *",
       field2Options: [
         { value: "under-50l", label: "Under ₹50 Lakhs" },

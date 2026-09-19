@@ -30,7 +30,7 @@ const iconMap: Record<
 };
 
 export const metadata: Metadata = {
-  title: "Property & Investment Advisory in Coimbatore",
+  title: "Property & Investment Advisory, Coimbatore",
   description:
     "Expert property acquisition advisory, land & plot transactions, real estate investment consulting, and portfolio management services in Coimbatore & Tamil Nadu. Data-driven, legally verified, and professionally managed.",
   keywords: [

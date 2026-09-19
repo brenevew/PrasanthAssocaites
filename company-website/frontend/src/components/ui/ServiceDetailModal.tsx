@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   X, CheckCircle2, Calculator, ArrowRight, Sparkles, Clock, ShieldCheck,
@@ -11,6 +11,7 @@ import { Service } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
 import { plannableSlugs, designSlugs } from "@/data/serviceCategories";
 import Button from "@/components/ui/Button";
+import OptionCards from "@/components/ui/OptionCards";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
   Home, Building2, Building, Key, Factory, Cpu, Hammer, ClipboardList,
@@ -29,23 +30,52 @@ export default function ServiceDetailModal({
   isOpen,
   onClose,
 }: ServiceDetailModalProps) {
+  // onClose arrives inline from the caller, so reading it through a ref keeps
+  // the effect keyed on `isOpen` alone. Writing body.overflow on every parent
+  // render (the header re-renders on scroll) would stomp other scroll locks.
+  const onCloseRef = useRef(onClose);
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") onClose();
-      };
-      window.addEventListener("keydown", handleKeyDown);
-      return () => {
-        document.body.style.overflow = "";
-        window.removeEventListener("keydown", handleKeyDown);
-      };
-    } else {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onCloseRef.current();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
       document.body.style.overflow = "";
-    }
-  }, [isOpen, onClose]);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
+  const openSpec = service ? serviceQuoteSpecs[service.slug] : undefined;
+  const defaults = (opts?: { value: string }[], multi?: boolean) =>
+    multi ? [] : ([opts?.[0]?.value].filter(Boolean) as string[]);
+
+  const [field1, setField1] = useState<string[]>([]);
+  const [field2, setField2] = useState<string[]>([]);
+  const [pickedFor, setPickedFor] = useState<string | null>(null);
+
+  // Reset the pickers when the card switches to a different service.
+  if (service && service.slug !== pickedFor) {
+    setPickedFor(service.slug);
+    setField1(defaults(openSpec?.formDefaults?.field1Options, openSpec?.formDefaults?.field1Multi));
+    setField2(defaults(openSpec?.formDefaults?.field2Options, openSpec?.formDefaults?.field2Multi));
+  }
 
   if (!isOpen || !service) return null;
+
+  // Picks ride along so the quote form opens already configured.
+  const quoteHref = () => {
+    const p = new URLSearchParams({ service: service.slug });
+    if (field1.length) p.set("f1", field1.join(","));
+    if (field2.length) p.set("f2", field2.join(","));
+    return `/request-quote?${p.toString()}`;
+  };
+  const legend = (raw?: string) => (raw || "").replace(/\s*\*\s*$/, "");
 
   const IconComponent = iconMap[service.icon] || Building2;
   const spec = serviceQuoteSpecs[service.slug];
@@ -127,6 +157,30 @@ export default function ServiceDetailModal({
           </ul>
         </div>
 
+        {/* Configure the request without leaving the card */}
+        {spec && (
+          <div className="space-y-4 mb-6 relative z-10">
+            <OptionCards
+              compact
+              name="modal-field1"
+              legend={legend(spec.formDefaults.field1Label)}
+              options={spec.formDefaults.field1Options}
+              value={field1}
+              onChange={setField1}
+              multi={spec.formDefaults.field1Multi}
+            />
+            <OptionCards
+              compact
+              name="modal-field2"
+              legend={legend(spec.formDefaults.field2Label)}
+              options={spec.formDefaults.field2Options}
+              value={field2}
+              onChange={setField2}
+              multi={spec.formDefaults.field2Multi}
+            />
+          </div>
+        )}
+
         {/* CTA Actions Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-border relative z-10">
           <Link
@@ -139,41 +193,26 @@ export default function ServiceDetailModal({
           </Link>
 
           <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto order-1 sm:order-2">
-            {isDesignService ? (
+            <Button
+              href={quoteHref()}
+              variant="outline"
+              onClick={onClose}
+              className="w-full sm:w-auto text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 py-3 px-5"
+            >
+              <span>Request Quote</span>
+              <ArrowRight size={14} />
+            </Button>
+
+            {(isPlannable || isDesignService) && (
               <Button
                 href="/plan-home"
                 variant="primary"
                 onClick={onClose}
-                className="w-full sm:w-auto text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 py-3 px-6 shadow-md"
+                className="w-full sm:w-auto text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 py-3 px-5 shadow-md"
               >
-                <Compass size={15} />
+                {isDesignService ? <Compass size={14} /> : <Calculator size={14} />}
                 <span>Building Planner</span>
-                <ArrowRight size={14} />
               </Button>
-            ) : (
-              <>
-                <Button
-                  href={`/request-quote?service=${service.slug}`}
-                  variant="outline"
-                  onClick={onClose}
-                  className="w-full sm:w-auto text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 py-3 px-5"
-                >
-                  <span>Request Quote</span>
-                  <ArrowRight size={14} />
-                </Button>
-
-                {isPlannable && (
-                  <Button
-                    href="/plan-home"
-                    variant="primary"
-                    onClick={onClose}
-                    className="w-full sm:w-auto text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 py-3 px-5 shadow-md"
-                  >
-                    <Calculator size={14} />
-                    <span>Building Planner</span>
-                  </Button>
-                )}
-              </>
             )}
           </div>
         </div>

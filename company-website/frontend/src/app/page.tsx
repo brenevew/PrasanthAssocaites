@@ -17,7 +17,7 @@ import CTABanner from "@/components/ui/CTABanner";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Leading Construction Company in Coimbatore & Turnkey Builders | Prasanth Associates",
+  title: "Construction Company in Coimbatore | Prasanth Associates",
   description:
     "Prasanth Associates — #1 construction company in Coimbatore, Tamil Nadu. 15+ years, 250+ projects, 2M+ sq. ft. built. Residential, commercial & turnkey construction with fixed BoQ. Get a free quote today.",
   keywords: [

@@ -5,7 +5,8 @@ import {
   CheckCircle2, Home, Building2, Building, Key, Hammer, Cpu,
   Factory, Compass, Palette, Trees, ClipboardList, ArrowRight, Sparkles,
   Landmark, ShieldCheck, Calculator, FileCheck, Clock,
-  MapPin, Map, TrendingUp, LayoutDashboard
+  MapPin, Map, TrendingUp, LayoutDashboard,
+  PencilRuler, Zap, Droplets
 } from "lucide-react";
 import { services } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
@@ -13,11 +14,13 @@ import { serviceCategories, plannableSlugs, designSlugs } from "@/data/serviceCa
 import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABanner from "@/components/ui/CTABanner";
+import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
   Home, Building2, Building, Key, Hammer, Cpu, Factory, Compass, Palette, Trees, ClipboardList,
   Landmark, ShieldCheck, Calculator, FileCheck,
-  MapPin, Map, TrendingUp, LayoutDashboard, Clock
+  MapPin, Map, TrendingUp, LayoutDashboard, Clock,
+  PencilRuler, Zap, Droplets
 };
 
 interface FilterCategory {
@@ -38,6 +41,7 @@ const filterCategories: FilterCategory[] = [
 export default function ServicesPageClient() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
 
   // Sync with URL hash (e.g., #residential-construction from dropdown)
   useEffect(() => {
@@ -153,7 +157,18 @@ export default function ServicesPageClient() {
                 <ScrollReveal key={service.slug} delay={(index % 2) * 90}>
                   <div
                     id={service.slug}
-                    className={`neu-glass group relative rounded-3xl p-8 h-full flex flex-col scroll-mt-32 transition-all duration-500 ${
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Configure ${service.title}`}
+                    onClick={() => setOpenSlug(service.slug)}
+                    onKeyDown={(e) => {
+                      if (e.target !== e.currentTarget) return;
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setOpenSlug(service.slug);
+                      }
+                    }}
+                    className={`neu-glass group relative rounded-3xl p-8 h-full flex flex-col scroll-mt-32 transition-all duration-500 cursor-pointer hover:shadow-xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none ${
                       isHighlighted
                         ? "ring-2 ring-gold/90 shadow-2xl shadow-gold/25 scale-[1.015] border-gold/60 bg-gold/[0.04]"
                         : ""
@@ -221,8 +236,11 @@ export default function ServicesPageClient() {
                       </ul>
                     </div>
 
-                    {/* CTA Actions */}
-                    <div className="mt-auto pt-4 border-t border-border/60 space-y-2">
+                    {/* CTA Actions — direct shortcuts, so they must not also open the card */}
+                    <div
+                      className="mt-auto pt-4 border-t border-border/60 space-y-2"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <div className="flex flex-col sm:flex-row items-center gap-2">
                         <Button
                           href={`/request-quote?service=${service.slug}`}
@@ -254,6 +272,12 @@ export default function ServicesPageClient() {
       </section>
 
       <CTABanner />
+
+      <ServiceDetailModal
+        service={services.find((s) => s.slug === openSlug) || null}
+        isOpen={openSlug !== null}
+        onClose={() => setOpenSlug(null)}
+      />
     </>
   );
 }

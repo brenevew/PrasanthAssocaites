@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Construction Company in Coimbatore | Building Contractors & Turnkey Builders",
+  title: "Building Contractors in Coimbatore",
   description:
     "Top-rated construction company & building contractors in Coimbatore. Head office at Gandhipuram. Specializing in individual house construction, luxury villas, commercial buildings & turnkey contracts across Coimbatore.",
   keywords: [

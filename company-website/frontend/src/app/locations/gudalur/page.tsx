@@ -26,7 +26,7 @@ const CANONICAL_URL = "https://prasanthassociates.com/locations/gudalur";
 const BRANCH_ID = "https://prasanthassociates.com#gudalur-branch";
 
 export const metadata: Metadata = {
-  title: "Individual House Contractors in Gudalur | Branch Office",
+  title: "Individual House Contractors in Gudalur",
   description:
     "Building contractors in Gudalur, The Nilgiris. Our branch office on Ooty Main Road builds individual houses and estate bungalows engineered for 2,500mm+ monsoon rainfall, sloping laterite terrain and Nilgiris hill-area building rules.",
   keywords: [

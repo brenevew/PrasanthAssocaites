@@ -177,6 +177,57 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "structural-drawings",
+    title: "Structural Drawings",
+    shortDescription:
+      "Stamped RCC structural drawings — footing schedules, column layouts, beam and slab reinforcement details ready for site execution.",
+    description:
+      "Structural drawings translate an architectural concept into something a site team can actually build safely. Our engineers size every member against the soil bearing capacity returned by your SBC test and the load path of the building, then issue fully detailed RCC drawings — footing schedules, column orientation, beam reinforcement cut-lengths, and slab bar-bending schedules. Drawings are formatted for municipal plan sanction and carry the engineer's stamp lenders and approval authorities require.",
+    icon: "PencilRuler",
+    features: [
+      "Footing & foundation layout schedules",
+      "Column orientation & reinforcement details",
+      "Beam and slab bar-bending schedules (BBS)",
+      "Fe 550D TMT specification with lap and anchorage detailing",
+      "Designed against site-specific SBC and bore log data",
+      "Stamped drawings formatted for DTCP/LPA/CCMC sanction",
+    ],
+  },
+  {
+    slug: "electrical-drawings",
+    title: "Electrical Drawings",
+    shortDescription:
+      "Concealed conduit routing, load-calculated distribution boards, earthing layouts, and point-wise electrical schematics.",
+    description:
+      "An electrical layout drawn after the walls are up is a retrofit, not a design. We prepare point-wise electrical drawings before casting — conduit routing, switchboard elevations, DB positions, and circuit segregation — with distribution boards sized against calculated connected load rather than a rule of thumb. Layouts include dedicated circuits for kitchen, HVAC and utility loads, ELCB/MCB protection schedules, earthing design, and conduit provisioning for solar, inverter and smart-home systems.",
+    icon: "Zap",
+    features: [
+      "Point-wise lighting, power & switchboard layouts",
+      "Connected load calculation & DB sizing schedule",
+      "Circuit segregation with ELCB/MCB protection design",
+      "Earthing and lightning protection layouts",
+      "Conduit provisioning for solar, inverter & automation",
+      "Single-line diagrams (SLD) for sanction and EB connection",
+    ],
+  },
+  {
+    slug: "plumbing-drawings",
+    title: "Plumbing Drawings",
+    shortDescription:
+      "Water supply, drainage and sanitary layouts with CPVC/UPVC routing, slope-calculated waste lines and rainwater harvesting design.",
+    description:
+      "Plumbing drawings fix the position of every wet point, pipe run and inspection chamber before the first slab is cast, which is what prevents the chased walls and re-laid floors that follow guesswork. We produce water supply schematics on CPVC for hot lines and UPVC for cold and drainage, waste and soil lines drawn to calculated fall, and sump and overhead tank capacities sized against actual occupancy. Rainwater harvesting pits are designed to the recharge norms mandated for your plot area.",
+    icon: "Droplets",
+    features: [
+      "Water supply schematics (CPVC hot / UPVC cold)",
+      "Soil, waste & vent lines drawn to calculated slope",
+      "Sump and OHT capacity sized against occupancy",
+      "Inspection chamber and manhole positioning",
+      "Rainwater harvesting and percolation pit design",
+      "Pressure-test and pre-concealment inspection schedule",
+    ],
+  },
+  {
     slug: "landscaping-designs",
     title: "Landscaping Designs",
     shortDescription:

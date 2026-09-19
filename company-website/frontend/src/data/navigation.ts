@@ -33,11 +33,12 @@ export const footerServiceLinks: NavItem[] = [
 ];
 
 export const footerLocationLinks: NavItem[] = [
-  { label: "Construction in Coimbatore (HQ)", href: "/locations/coimbatore" },
-  { label: "Construction in Nilgiris & Ooty", href: "/locations/nilgiris-ooty" },
+  { label: "Coimbatore (HQ)", href: "/locations/coimbatore" },
+  { label: "Gudalur", href: "/locations/nilgiris-ooty" },
 ];
 
 export const footerServiceAreaLinks: NavItem[] = [
-  { label: "House Construction in Gudalur", href: "/locations/gudalur" },
-  { label: "Industrial & Commercial Construction in Tiruppur", href: "/service-areas/tiruppur" },
+  { label: "Coimbatore", href: "/locations/coimbatore" },
+  { label: "The Nilgiris", href: "/locations/gudalur" },
+  { label: "Tiruppur", href: "/service-areas/tiruppur" },
 ];

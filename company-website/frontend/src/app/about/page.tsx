@@ -9,7 +9,7 @@ import { qualityCapabilities } from "@/data/quality";
 import { ShieldCheck, ArrowRight, Upload, Compass, Send, CheckCircle2, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us | Philosophy, Track Record & Architectural Process",
+  title: "About Us | Our Engineering Philosophy",
   description:
     "Learn about Prasanth Associates, our engineering philosophy, our rigorous 3-step design process, and our commitment to building generational structures.",
   alternates: {
