@@ -70,7 +70,7 @@ Every submission is written **twice**: once to the combined `All Inquiries` tab
 | Location | |
 | Estimated Cost / Budget | Indian formatting, e.g. `₹ 45,00,000` |
 | Details & Specifications | Form-specific fields: built-up area, floors, basement (Parking / Custom Rooms / both, with bay counts), package, features, message, timeline |
-| Attachments | One `filename: Drive link` per uploaded file, newline-separated |
+| Attachments | One clickable filename per uploaded file, newline-separated. The file name carries the Drive link — clicking it opens the file in a new tab |
 
 ---
 
@@ -288,6 +288,17 @@ and disables itself once either ceiling is reached.
 3. The Apps Script re-checks the 2 MB ceiling, writes the file to Google Drive
    and returns a link.
 4. On submit, only the **links** go into the Sheet's `Attachments` column.
+
+The cell is written as **rich text**: each line shows the file name, and the
+name itself is the hyperlink. Clicking one opens that file in a new browser tab.
+The raw Drive URLs are never displayed, which keeps the column narrow and
+readable when a submission carries several files.
+
+> Rows written before this behaviour existed still hold plain
+> `filename: url` text. To convert them, open the Apps Script editor, choose
+> **`relinkExistingAttachments`** from the function dropdown and press **Run**.
+> It walks every tab, is safe to run more than once, and reports how many cells
+> it changed. No deployment is needed — it operates on the Sheet directly.
 
 Uploading separately is deliberate: Next.js caps Server Action request bodies at
 1MB, and the Contact and Request Quote forms are Server Actions. Routing file
@@ -742,6 +753,7 @@ Expected: `{"success":true,"attachment":{...,"url":"https://drive.google.com/...
 | "still N MB after compression" | A detailed image did not come under 2 MB even at reduced quality, or a PDF/HEIC was already over | HEIC and PDF are not compressed in the browser — ask the client to send a JPG. To change the ceiling, edit `MAX_FILE_BYTES` in `frontend/src/lib/attachments.ts` (and `MAX_UPLOAD_BYTES` in the Apps Script to match) |
 | "would exceed the 5.0 MB total limit" | The submission's files already add up to nearly 5 MB | Expected behaviour. Adjust `MAX_TOTAL_BYTES` in `frontend/src/lib/attachments.ts` if the business needs more |
 | Drive links in the Sheet say "You need access" | Files are private to the script owner (the default) | Share the Drive upload folder with whoever needs it, or set `PUBLIC_FILE_LINKS` — read the warning in section 4 first |
+| Attachment cells show raw `filename: url` text instead of clickable names | The row predates the rich-text linking, or the script was updated without publishing a new version | Run `relinkExistingAttachments` from the Apps Script editor for old rows; for new ones, publish a **new version** of the deployment |
 | `Attachments` column missing on an existing Sheet | Sheet predates the upload feature | The script adds the column automatically on the next submission. Publish a **new version** of the deployment first |
 | `HTTP 429` with `{"success":false,"error":"Too many ..."}` and a `Retry-After` header | The site's own per-IP rate limiter (see section 5) tripped — a real visitor rarely hits this | Wait for the window to elapse, or raise the limit constant for that endpoint if legitimate traffic is being blocked |
 | `HTTP 429` / sustained timeouts with no `Retry-After` header, or an HTML response instead of JSON | Apps Script daily quota exceeded (consumer Google accounts have lower limits than Workspace ones) | Check **Executions** in the Apps Script editor for quota errors; unlikely at this lead volume |

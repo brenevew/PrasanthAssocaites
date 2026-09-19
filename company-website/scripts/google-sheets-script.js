@@ -111,6 +111,53 @@ function getOrCreateSheet_(ss, sheetName) {
   return sheet;
 }
 
+/**
+ * Attachments arrive from the website as one "filename: https://drive..." line
+ * per file. Written verbatim that is an unclickable wall of text, so the cell is
+ * rebuilt as rich text: one line per file, the filename itself carrying the
+ * link. Google Sheets opens such links in a new tab on click.
+ *
+ * Returns null when there is nothing to linkify, so the caller can leave the
+ * plain value in place.
+ */
+function buildAttachmentsRichText_(raw) {
+  if (!raw || raw === "-" || raw === "N/A") return null;
+
+  var lines = String(raw).split("\n");
+  var names = [];
+  var urls = [];
+  var found = false;
+
+  for (var i = 0; i < lines.length; i++) {
+    // Anchor on the URL at the end of the line, so filenames containing ": "
+    // are still split at the right place.
+    var m = lines[i].match(/^(.*?):\s*(https?:\/\/\S+)\s*$/);
+    if (m) {
+      names.push(m[1]);
+      urls.push(m[2]);
+      found = true;
+    } else {
+      names.push(lines[i]);
+      urls.push(null);
+    }
+  }
+
+  if (!found) return null;
+
+  var builder = SpreadsheetApp.newRichTextValue().setText(names.join("\n"));
+  var pos = 0;
+  for (var j = 0; j < names.length; j++) {
+    var start = pos;
+    var end = pos + names[j].length;
+    if (urls[j] && end > start) {
+      builder.setLinkUrl(start, end, urls[j]);
+    }
+    pos = end + 1; // +1 for the newline separating the lines
+  }
+
+  return builder.build();
+}
+
 function appendRow_(sheet, row) {
   sheet.appendRow(row);
 
@@ -121,7 +168,14 @@ function appendRow_(sheet, row) {
   sheet.getRange(lastRow, 5).setNumberFormat("@"); // keep phone numbers as text
 
   // Attachments can hold several links; wrap rather than spill across columns.
-  sheet.getRange(lastRow, HEADERS.length).setWrap(true);
+  var attachmentCell = sheet.getRange(lastRow, HEADERS.length);
+  attachmentCell.setWrap(true);
+
+  // Replace the raw "name: url" text with clickable filenames.
+  var richText = buildAttachmentsRichText_(row[HEADERS.length - 1]);
+  if (richText) {
+    attachmentCell.setRichTextValue(richText);
+  }
 
   for (var col = 1; col <= HEADERS.length; col++) {
     sheet.autoResizeColumn(col);
@@ -271,4 +325,41 @@ function doGet() {
     publicFileLinks: props.getProperty("PUBLIC_FILE_LINKS") === "true",
     timestamp: new Date().toISOString()
   });
+}
+
+/**
+ * ONE-OFF MAINTENANCE — converts attachment cells written before this script
+ * gained rich-text links from plain "filename: url" text into clickable
+ * filenames. Safe to run repeatedly; rows that are already links are skipped.
+ *
+ * Run it from the Apps Script editor: pick relinkExistingAttachments from the
+ * function dropdown and press Run. It does not need a deployment.
+ */
+function relinkExistingAttachments() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheets = ss.getSheets();
+  var updated = 0;
+
+  for (var s = 0; s < sheets.length; s++) {
+    var sheet = sheets[s];
+    var lastRow = sheet.getLastRow();
+    if (lastRow < 2 || sheet.getLastColumn() < HEADERS.length) continue;
+
+    var range = sheet.getRange(2, HEADERS.length, lastRow - 1, 1);
+    var values = range.getValues();
+
+    for (var r = 0; r < values.length; r++) {
+      var richText = buildAttachmentsRichText_(values[r][0]);
+      if (!richText) continue;
+      sheet.getRange(r + 2, HEADERS.length).setRichTextValue(richText);
+      updated++;
+    }
+  }
+
+  SpreadsheetApp.getActiveSpreadsheet().toast(
+    "Re-linked " + updated + " attachment cell(s).",
+    "Done",
+    5
+  );
+  return updated;
 }
