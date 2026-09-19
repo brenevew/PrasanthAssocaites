@@ -13,9 +13,6 @@ import {
   Zap,
   FileCheck2,
   ClipboardList,
-  Building2,
-  Home,
-  Factory,
   Ruler,
   CheckCircle2,
   Landmark,
@@ -24,7 +21,7 @@ import {
 const CANONICAL_URL = "https://prasanthassociates.com/services/turnkey-design-build-coimbatore";
 
 export const metadata: Metadata = {
-  title: "Prasanth Associates | Turnkey Design & Build — Coimbatore",
+  title: "Turnkey Design & Build Contractors — Coimbatore",
   description:
     "DTCP/LPA-compliant turnkey design and build contractors in Coimbatore. Single-contract delivery from soil investigation to handover, with Fe 550D TMT steel, M20/M25 mix design, and itemized BoQ pricing.",
   keywords: [
@@ -49,6 +46,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Prasanth Associates",
+    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
   },
 };
 
@@ -233,7 +231,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
       />
 
       {/* ── 1. Hero ──────────────────────────────────────────────────── */}
-      <section className="relative pt-36 pb-20 bg-gradient-to-b from-[#FAF8F5] to-[var(--canvas-bg)] text-charcoal border-b border-border overflow-hidden">
+      <section className="relative pt-32 pb-14 bg-gradient-to-b from-[#FAF8F5] to-[var(--canvas-bg)] text-charcoal border-b border-border overflow-hidden">
         <div className="absolute inset-0 blueprint-grid opacity-10" />
         <div
           className="liquid-glow"
@@ -323,7 +321,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
       </section>
 
       {/* ── 2. What "Turnkey" Actually Means Here ───────────────────── */}
-      <section className="section bg-linen border-b border-border">
+      <section className="py-14 md:py-20 bg-linen border-b border-border">
         <div className="container max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5">
             <span className="badge-gold mb-3 inline-flex">Single-Point Accountability</span>
@@ -358,8 +356,8 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
       </section>
 
       {/* ── 3. Engineering Specification Detail ─────────────────────── */}
-      <section className="section bg-[var(--canvas-bg)]">
-        <div className="container max-w-5xl space-y-12">
+      <section className="py-14 md:py-20 bg-[var(--canvas-bg)]">
+        <div className="container max-w-5xl space-y-8">
           <div className="text-center max-w-2xl mx-auto">
             <span className="badge-gold mb-2 inline-flex">Engineering-First Philosophy</span>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
@@ -371,7 +369,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {structuralPillars.map((pillar) => (
               <ScrollReveal key={pillar.title}>
                 <div className="p-6 rounded-3xl bg-white border border-border shadow-2xs hover:border-gold transition-colors h-full">
@@ -388,8 +386,8 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
       </section>
 
       {/* ── 4. Local Relevance — Coimbatore Micro-Markets ───────────── */}
-      <section className="section bg-linen border-y border-border">
-        <div className="container max-w-5xl space-y-10">
+      <section className="py-14 md:py-20 bg-linen border-y border-border">
+        <div className="container max-w-5xl space-y-8">
           <div className="text-center max-w-2xl mx-auto">
             <span className="badge-gold mb-2 inline-flex">Local Site Knowledge</span>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
@@ -419,8 +417,8 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
       </section>
 
       {/* ── 5. Delivery Workflow ─────────────────────────────────────── */}
-      <section className="section bg-[var(--canvas-bg)]">
-        <div className="container max-w-5xl space-y-10">
+      <section className="py-14 md:py-20 bg-[var(--canvas-bg)]">
+        <div className="container max-w-5xl space-y-8">
           <div className="text-center max-w-2xl mx-auto">
             <span className="badge-gold mb-2 inline-flex">Project Management Workflow</span>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
@@ -440,42 +438,9 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
         </div>
       </section>
 
-      {/* ── 6. Project Gallery Placeholders ──────────────────────────── */}
-      <section className="section bg-linen border-y border-border">
-        <div className="container max-w-5xl space-y-10">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="badge-gold mb-2 inline-flex">Delivered in Coimbatore</span>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
-              Turnkey Projects Across Residential, Commercial &amp; Industrial
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: Home, alt: "[Image: Completed G+2 luxury villa with landscaped courtyard - Residential Client - Vadavalli, Coimbatore]" },
-              { icon: Building2, alt: "[Image: Commercial office tower facade under construction - Commercial Client - Gandhipuram, Coimbatore]" },
-              { icon: Factory, alt: "[Image: Pre-engineered industrial warehouse shed with RCC foundation - Industrial Client - Sulur, Coimbatore]" },
-              { icon: Home, alt: "[Image: Interior-fitted duplex living room with smart home panel - Residential Client - Saravanampatti, Coimbatore]" },
-              { icon: Building2, alt: "[Image: Retail fit-out storefront on ground floor commercial unit - Commercial Client - Avinashi Road, Coimbatore]" },
-              { icon: Ruler, alt: "[Image: Site engineer reviewing structural drawings on active RCC framework - Residential Client - Thudiyalur, Coimbatore]" },
-            ].map((img, i) => (
-              <div
-                key={i}
-                role="img"
-                aria-label={img.alt}
-                className="aspect-[4/3] rounded-3xl bg-white border border-border border-dashed flex flex-col items-center justify-center gap-3 text-center p-6"
-              >
-                <img.icon size={28} className="text-gold-dark/60" />
-                <span className="text-[10px] text-concrete-lighter leading-relaxed px-2">{img.alt}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7. FAQ ───────────────────────────────────────────────────── */}
-      <section className="section bg-[var(--canvas-bg)]">
-        <div className="container max-w-3xl space-y-10">
+      {/* ── 6. FAQ ───────────────────────────────────────────────────── */}
+      <section className="py-14 md:py-20 bg-linen border-y border-border">
+        <div className="container max-w-3xl space-y-8">
           <div className="text-center">
             <span className="badge-gold mb-2 inline-flex">Frequently Asked Questions</span>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
@@ -504,10 +469,10 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
       </section>
 
       {/* ── 8. Feasibility Consultation Form ─────────────────────────── */}
-      <section className="section bg-[var(--canvas-bg)]" id="feasibility-consultation">
+      <section className="py-14 md:py-20 bg-[var(--canvas-bg)]" id="feasibility-consultation">
         <div className="container max-w-3xl">
-          <div className="neu-glass rounded-3xl p-8 md:p-10 border border-white/90 shadow-2xl">
-            <div className="text-center max-w-xl mx-auto mb-8">
+          <div>
+            <div className="text-center max-w-xl mx-auto mb-6">
               <span className="badge-gold mb-2 inline-flex">Book a Site Visit</span>
               <h3 className="font-heading text-2xl font-bold text-charcoal">
                 Book a Site Feasibility Consultation or Structural Brief Review

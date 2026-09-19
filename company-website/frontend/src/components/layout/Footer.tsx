@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { company } from "@/data/company";
-import { footerNavItems, footerServiceLinks, footerLocationLinks } from "@/data/navigation";
+import { footerNavItems, footerServiceLinks, footerLocationLinks, footerServiceAreaLinks } from "@/data/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
@@ -61,6 +61,23 @@ export default function Footer() {
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
                     <span>{loc.label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Areas served without a local office */}
+            <div className="pt-2">
+              <h5 className="text-[11px] font-bold text-gold-dark tracking-widest uppercase mb-2">Areas We Serve</h5>
+              <div className="flex flex-col gap-1.5">
+                {footerServiceAreaLinks.map((area) => (
+                  <Link
+                    key={area.label}
+                    href={area.href}
+                    className="text-xs text-charcoal/80 hover:text-gold-dark font-medium flex items-center gap-1.5 transition-colors"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
+                    <span>{area.label}</span>
                   </Link>
                 ))}
               </div>

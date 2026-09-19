@@ -39,6 +39,7 @@ export const metadata: Metadata = {
       "15+ years of trusted civil construction in Coimbatore & Tamil Nadu. Houses, villas, commercial spaces & turnkey projects. Fixed BoQ, no hidden costs.",
     url: "https://prasanthassociates.com/",
     type: "website",
+    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
   },
 };
 

@@ -22,13 +22,13 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Builders in Nilgiris & Ooty | Hillside House Construction Contractors | Prasanth Associates",
+  title: "Builders in Nilgiris & Ooty | Hillside House Construction Contractors",
   description:
     "Expert builders and construction company in The Nilgiris, Ooty, Gudalur & Coonoor. Specialized in hillside pile foundations, slope stability engineering, cold-weather curing & luxury mountain residences.",
   keywords: [
     "builders in Nilgiris",
     "house construction in Ooty",
-    "building contractors Gudalur",
+    "hill station builders Ooty",
     "villa construction Ooty",
     "hill station builders Tamil Nadu",
     "civil contractors Nilgiris",
@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Prasanth Associates",
+    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
   },
 };
 
@@ -64,7 +65,7 @@ export default function NilgirisOotyLocationPage() {
     "@graph": [
       {
         "@type": "HomeAndConstructionBusiness",
-        "@id": `${canonicalUrl}#localbusiness`,
+        "@id": "https://prasanthassociates.com#gudalur-branch",
         name: `${company.name} - Nilgiris & Gudalur Branch Office`,
         image: "https://prasanthassociates.com/images/projects/Villa/manjushree-1.webp",
         telephone: nilgirisOffice.phone,
@@ -401,6 +402,26 @@ export default function NilgirisOotyLocationPage() {
           </div>
         </section>
       )}
+
+      <section className="pb-4 bg-[var(--canvas-bg)]">
+        <div className="container max-w-5xl">
+          <Link
+            href="/locations/gudalur"
+            className="flex items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-border hover:border-gold transition-colors"
+          >
+            <div>
+              <h3 className="font-heading font-bold text-charcoal text-base">
+                Building in Gudalur specifically?
+              </h3>
+              <p className="text-concrete text-xs mt-1">
+                Our Gudalur branch office page covers individual house construction at lower elevation —
+                heavier monsoon exposure, sloping laterite plots and ghat-road material logistics.
+              </p>
+            </div>
+            <ArrowRight size={18} className="text-gold-dark flex-shrink-0" />
+          </Link>
+        </div>
+      </section>
 
       {/* ── 5. Local Lead Form Section ────────────────────────────────── */}
       <section className="section bg-[var(--canvas-bg)]" id="local-contact-form">

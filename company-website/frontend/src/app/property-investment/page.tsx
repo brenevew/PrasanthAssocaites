@@ -30,8 +30,7 @@ const iconMap: Record<
 };
 
 export const metadata: Metadata = {
-  title:
-    "Property & Investment Advisory in Coimbatore | Prasanth Associates",
+  title: "Property & Investment Advisory in Coimbatore",
   description:
     "Expert property acquisition advisory, land & plot transactions, real estate investment consulting, and portfolio management services in Coimbatore & Tamil Nadu. Data-driven, legally verified, and professionally managed.",
   keywords: [
@@ -53,6 +52,7 @@ export const metadata: Metadata = {
       "From property acquisition to portfolio management — institutional-grade real estate advisory in Coimbatore & Tamil Nadu.",
     url: "https://prasanthassociates.com/property-investment",
     type: "website",
+    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
   },
 };
 

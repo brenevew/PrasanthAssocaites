@@ -35,5 +35,9 @@ export const footerServiceLinks: NavItem[] = [
 export const footerLocationLinks: NavItem[] = [
   { label: "Construction in Coimbatore (HQ)", href: "/locations/coimbatore" },
   { label: "Construction in Nilgiris & Ooty", href: "/locations/nilgiris-ooty" },
-  { label: "Civil Contracting across Tamil Nadu", href: "/contact" },
+];
+
+export const footerServiceAreaLinks: NavItem[] = [
+  { label: "House Construction in Gudalur", href: "/locations/gudalur" },
+  { label: "Industrial & Commercial Construction in Tiruppur", href: "/service-areas/tiruppur" },
 ];
