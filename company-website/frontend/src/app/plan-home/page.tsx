@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Plan Your Project — Residential & Commercial Building Planner",
   description:
     "Plan your residential house or commercial building construction. Choose plot dimensions, floor layout, rooms, commercial facilities, parking, and design packages.",
+  alternates: {
+    canonical: "https://prasanthassociates.com/plan-home",
+  },
 };
 
 export default function PlanHomePage() {

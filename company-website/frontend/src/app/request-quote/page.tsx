@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Request a Quote & Cost Estimation",
   description:
     "Request specialized quotes for Bank Valuation Reports, Structural Stability Certificates, Architectural Designs, and Residential or Commercial Construction.",
+  alternates: {
+    canonical: "https://prasanthassociates.com/request-quote",
+  },
 };
 
 export default function RequestQuotePage() {

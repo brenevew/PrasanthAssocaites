@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Our Services",
   description:
     "Comprehensive construction and design services including residential, villa, commercial, industrial, factory, architectural, interior, and landscaping projects.",
+  alternates: {
+    canonical: "https://prasanthassociates.com/services",
+  },
 };
 
 export default function ServicesPage() {

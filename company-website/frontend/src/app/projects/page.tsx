@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Our Projects",
   description:
     "Explore our portfolio of completed and ongoing construction developments across residential, villa, commercial, and industrial segments.",
+  alternates: {
+    canonical: "https://prasanthassociates.com/projects",
+  },
 };
 
 interface ProjectsPageProps {
