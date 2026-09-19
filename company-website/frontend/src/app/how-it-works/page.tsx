@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function HowItWorksPage() {
-  redirect("/about#how-it-works");
+  permanentRedirect("/about#how-it-works");
 }

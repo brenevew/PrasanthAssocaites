@@ -23,13 +23,13 @@ export const footerNavItems: NavItem[] = [
 ];
 
 export const footerServiceLinks: NavItem[] = [
-  { label: "Residential House Construction", href: "/services/residential-construction" },
-  { label: "Luxury Villa Construction", href: "/services/villa-construction" },
-  { label: "Commercial Building Contracting", href: "/services/commercial-construction" },
-  { label: "Turnkey Design & Build", href: "/services/turnkey-construction" },
-  { label: "Industrial & Factory Construction", href: "/services/industrial-factory-construction" },
-  { label: "Structural Stability Certificate", href: "/services/structural-stability-certificate" },
-  { label: "Bank Valuation Reports", href: "/services/bank-valuation-report" },
+  { label: "Residential House Construction", href: "/services#residential-construction" },
+  { label: "Luxury Villa Construction", href: "/services#villa-construction" },
+  { label: "Commercial Building Contracting", href: "/services#commercial-construction" },
+  { label: "Turnkey Design & Build", href: "/services/turnkey-design-build-coimbatore" },
+  { label: "Industrial & Factory Construction", href: "/services#industrial-factory-construction" },
+  { label: "Structural Stability Certificate", href: "/services#structural-stability-certificate" },
+  { label: "Bank Valuation Reports", href: "/services#bank-valuation-report" },
 ];
 
 export const footerLocationLinks: NavItem[] = [

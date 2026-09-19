@@ -327,6 +327,25 @@ export default function CoimbatoreLocationPage() {
         </div>
       </section>
 
+      <section className="pb-4 bg-[var(--canvas-bg)]">
+        <div className="container max-w-5xl">
+          <Link
+            href="/services/turnkey-design-build-coimbatore"
+            className="flex items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-border hover:border-gold transition-colors"
+          >
+            <div>
+              <h3 className="font-heading font-bold text-charcoal text-base">
+                Turnkey Design &amp; Build in Coimbatore
+              </h3>
+              <p className="text-concrete text-xs mt-1">
+                One contract from soil investigation and DTCP/LPA approval to handover, with itemized BoQ pricing.
+              </p>
+            </div>
+            <ArrowRight size={18} className="text-gold-dark flex-shrink-0" />
+          </Link>
+        </div>
+      </section>
+
       {/* ── 4. Local Lead Form Section ────────────────────────────────── */}
       <section className="section bg-[var(--canvas-bg)]" id="local-contact-form">
         <div className="container max-w-3xl">
