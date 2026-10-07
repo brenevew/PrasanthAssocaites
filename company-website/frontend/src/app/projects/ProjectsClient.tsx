@@ -87,13 +87,13 @@ export default function ProjectsClient({
         <div className="container relative z-10 text-center max-w-3xl">
           <ScrollReveal>
             <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-gold-dark nm-raised border border-border shadow-2xs mb-4">
-              Architectural Portfolio
+              Portfolio
             </span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-charcoal font-bold mb-6 leading-tight">
               Selected Projects
             </h1>
             <p className="text-lg text-concrete leading-relaxed">
-              Explore our portfolio of completed and ongoing construction developments across residential, villa, commercial, and industrial segments.
+              Completed and ongoing work: homes, villas, commercial buildings and factories.
             </p>
           </ScrollReveal>
         </div>
@@ -176,7 +176,7 @@ export default function ProjectsClient({
             <SectionHeading
               badge="Design & Finishes"
               title="Interior Design Highlights"
-              subtitle="A closer look at the finishing details, kitchens, bathrooms and interiors we've delivered across projects."
+              subtitle="Kitchens, bathrooms and finishing details from our projects."
             />
           </ScrollReveal>
           <ScrollReveal delay={100}>
@@ -186,8 +186,8 @@ export default function ProjectsClient({
       </section>
 
       <CTABanner
-        headline="See a project that inspires you?"
-        subtitle="Talk with our engineering & design team about bringing a similar level of quality to your build."
+        headline="Want something similar?"
+        subtitle="Tell us about your plot and we'll talk you through it."
       />
     </>
   );

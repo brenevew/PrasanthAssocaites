@@ -57,7 +57,7 @@ export const company: CompanyInfo = {
   tagline: "Building Spaces That Last for Generations",
   disciplines: "Engineers | Architects | Real Estate Developers",
   description:
-    "From architectural design to final handover, we deliver thoughtfully engineered homes and commercial spaces with uncompromising quality.",
+    "Homes and commercial buildings, designed and built by one team, from the first drawing to the keys.",
   phone: "+91 94860 38761", // [PLACEHOLDER]
   email: "info@prasanthassociates.com", // [PLACEHOLDER]
   address: {
@@ -104,10 +104,14 @@ export const company: CompanyInfo = {
     saturday: "9:00 AM – 6:00 PM",
     sunday: "Closed",
   },
+  // Confirmed profile URLs. These are published as schema.org `sameAs`, which is
+  // how Google ties the website and these accounts to one business entity, so
+  // they must be the canonical URL of a live profile — a dead or wrong entry
+  // weakens the match rather than adding to it.
   social: {
-    instagram: "https://www.instagram.com/prasanthassociates.in/", // [PLACEHOLDER]
-    facebook: "https://www.facebook.com/prasanthconstruction/", // [PLACEHOLDER]
-    linkedin: "https://linkedin.com/company/prasanthassociates-in", // [PLACEHOLDER]
+    instagram: "https://www.instagram.com/prasanthassociates.in/",
+    facebook: "https://www.facebook.com/prasanthconstruction/", // [UNVERIFIED] see CLAUDE.md
+    linkedin: "https://www.linkedin.com/company/prasanthassociates-in/",
   },
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2737!2d76.9662768!3d11.017756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8590064684247%3A0xf6131f07c6935a32!2sPrasanth%20Associates!5e0!3m2!1sen!2sin!4v1700000000000", // [PLACEHOLDER]

@@ -1,14 +1,20 @@
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import ProjectsClient from "./ProjectsClient";
 import { projects, type ProjectCategory } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Our Projects",
+  title: "Construction Projects in Coimbatore",
   description:
-    "Explore our portfolio of completed and ongoing construction developments across residential, villa, commercial, and industrial segments.",
+    "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in and around Coimbatore.",
   alternates: {
-    canonical: "https://prasanthassociates.com/projects",
+    canonical: `${SITE_URL}/projects`,
   },
+  openGraph: pageOpenGraph(
+    "/projects",
+    "Construction Projects in Coimbatore | Prasanth Associates",
+    "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in and around Coimbatore."
+  ),
 };
 
 interface ProjectsPageProps {

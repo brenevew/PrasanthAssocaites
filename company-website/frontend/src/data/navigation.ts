@@ -36,9 +36,3 @@ export const footerLocationLinks: NavItem[] = [
   { label: "Coimbatore (HQ)", href: "/locations/coimbatore" },
   { label: "Gudalur", href: "/locations/nilgiris-ooty" },
 ];
-
-export const footerServiceAreaLinks: NavItem[] = [
-  { label: "Coimbatore", href: "/locations/coimbatore" },
-  { label: "The Nilgiris", href: "/locations/gudalur" },
-  { label: "Tiruppur", href: "/service-areas/tiruppur" },
-];

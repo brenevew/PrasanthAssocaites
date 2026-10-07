@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { company } from "@/data/company";
 import ContactForm from "@/components/ui/ContactForm";
@@ -28,7 +29,7 @@ const BRANCH_ID = "https://prasanthassociates.com#gudalur-branch";
 export const metadata: Metadata = {
   title: "Individual House Contractors in Gudalur",
   description:
-    "Building contractors in Gudalur, The Nilgiris. Our branch office on Ooty Main Road builds individual houses and estate bungalows engineered for 2,500mm+ monsoon rainfall, sloping laterite terrain and Nilgiris hill-area building rules.",
+    "Building contractors in Gudalur, The Nilgiris. Our Ooty Main Road branch builds houses and estate bungalows for heavy monsoon rain and sloping terrain.",
   keywords: [
     "individual house contractors in Gudalur",
     "building contractors Gudalur",
@@ -38,18 +39,13 @@ export const metadata: Metadata = {
     "home builders Gudalur Tamil Nadu",
   ],
   alternates: {
-    canonical: CANONICAL_URL,
+    canonical: `${SITE_URL}/locations/gudalur`,
   },
-  openGraph: {
-    title: "Individual House Contractors in Gudalur | Prasanth Associates",
-    description:
-      "Our Nilgiris branch office builds individual houses and estate bungalows across Gudalur, engineered for heavy monsoon exposure and sloping hill terrain.",
-    url: CANONICAL_URL,
-    type: "website",
-    locale: "en_IN",
-    siteName: "Prasanth Associates",
-    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
-  },
+  openGraph: pageOpenGraph(
+    "/locations/gudalur",
+    "Individual House Contractors in Gudalur | Prasanth Associates",
+    "Our Nilgiris branch builds individual houses and estate bungalows across Gudalur, designed for heavy monsoon rain and sloping hill terrain."
+  ),
 };
 
 const climateEngineering = [
@@ -81,7 +77,7 @@ const climateEngineering = [
     icon: FileCheck2,
     title: "Nilgiris Hill Area Approvals",
     body:
-      "The Nilgiris is a regulated hill district, and construction here carries constraints that do not apply in Coimbatore — gradient and site coverage restrictions, height limits, and additional scrutiny for plots near reserve forest boundaries, which matters around Gudalur given its proximity to Mudumalai. We verify patta and land classification, confirm what the Gudalur municipal and district authorities require for your specific plot, and prepare the sanction drawings accordingly.",
+      "The Nilgiris is a regulated hill district, and construction here carries constraints that do not apply in Coimbatore, gradient and site coverage restrictions, height limits, and additional scrutiny for plots near reserve forest boundaries, which matters around Gudalur given its proximity to Mudumalai. We verify patta and land classification, confirm what the Gudalur municipal and district authorities require for your specific plot, and prepare the sanction drawings accordingly.",
   },
   {
     icon: Truck,
@@ -109,7 +105,7 @@ const faqs = [
   },
   {
     q: "How long does a house take to build in Gudalur?",
-    a: "Typically 10–14 months for an individual house, against 8–11 months for equivalent work in Coimbatore. The difference is largely monsoon scheduling — certain activities such as external plastering, painting and roof waterproofing need dry windows, so the programme is built around the rainfall calendar rather than assuming continuous working.",
+    a: "Typically 10–14 months for an individual house, against 8–11 months for equivalent work in Coimbatore. The difference is largely monsoon scheduling, certain activities such as external plastering, painting and roof waterproofing need dry windows, so the programme is built around the rainfall calendar rather than assuming continuous working.",
   },
   {
     q: "Can you build on a steeply sloping plot?",
@@ -117,7 +113,7 @@ const faqs = [
   },
   {
     q: "Do you handle approvals for Nilgiris hill area plots?",
-    a: "Yes. We verify patta and land classification, establish which authority has jurisdiction over your plot, and prepare and file the sanction drawings. Nilgiris hill-area rules are stricter than plains rules on gradient, coverage and height, and plots near reserve forest boundaries attract additional scrutiny — we confirm these constraints during feasibility rather than discovering them after design.",
+    a: "Yes. We verify patta and land classification, establish which authority has jurisdiction over your plot, and prepare and file the sanction drawings. Nilgiris hill-area rules are stricter than plains rules on gradient, coverage and height, and plots near reserve forest boundaries attract additional scrutiny - we confirm these constraints during feasibility rather than discovering them after design.",
   },
   {
     q: "Do you also work in Ooty, Coonoor and Kotagiri?",
@@ -131,7 +127,7 @@ const gudalurSchema = {
     {
       "@type": "HomeAndConstructionBusiness",
       "@id": BRANCH_ID,
-      name: `${company.name} — Gudalur Branch Office`,
+      name: `${company.name} - Gudalur Branch Office`,
       image: "https://prasanthassociates.com/images/hero/hero-main.webp",
       url: CANONICAL_URL,
       priceRange: "₹₹₹",
@@ -416,7 +412,7 @@ export default function GudalurLocationPage() {
           <div className="text-center">
             <span className="badge-gold mb-2 inline-flex">Frequently Asked Questions</span>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
-              Building a House in Gudalur — Common Questions
+              Building a House in Gudalur - Common Questions
             </h2>
           </div>
 

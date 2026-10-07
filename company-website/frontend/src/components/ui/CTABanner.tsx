@@ -10,8 +10,8 @@ interface CTABannerProps {
 }
 
 export default function CTABanner({
-  headline = "Planning to Build Your Dream Space?",
-  subtitle = "Let's turn your vision into a thoughtfully designed, professionally engineered reality. Our team is ready to listen.",
+  headline = "Planning to build?",
+  subtitle = "Tell us about your plot and what you have in mind. We'll get back to you.",
   primaryCTA = { label: "Book a Free Consultation", href: "/contact" },
   secondaryCTA = null,
 }: CTABannerProps) {
@@ -33,7 +33,7 @@ export default function CTABanner({
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <span className="inline-flex items-center gap-2 text-[0.72rem] font-bold tracking-[0.2em] uppercase text-gold-dark nm-raised px-4.5 py-1.5 rounded-full border border-border shadow-xs">
             <Phone size={12} className="text-gold-dark" />
-            Start Your Project Today
+            Free consultation
           </span>
 
           <h2

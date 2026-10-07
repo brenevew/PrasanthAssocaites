@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { company } from "@/data/company";
 import { services } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
@@ -32,7 +33,7 @@ const iconMap: Record<
 export const metadata: Metadata = {
   title: "Property & Investment Advisory, Coimbatore",
   description:
-    "Expert property acquisition advisory, land & plot transactions, real estate investment consulting, and portfolio management services in Coimbatore & Tamil Nadu. Data-driven, legally verified, and professionally managed.",
+    "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and Tamil Nadu.",
   keywords: [
     "property advisory Coimbatore",
     "land transactions Coimbatore",
@@ -44,16 +45,13 @@ export const metadata: Metadata = {
     "real estate consulting Tamil Nadu",
   ],
   alternates: {
-    canonical: "https://prasanthassociates.com/property-investment",
+    canonical: `${SITE_URL}/property-investment`,
   },
-  openGraph: {
-    title: "Property & Investment Advisory | Prasanth Associates",
-    description:
-      "From property acquisition to portfolio management — institutional-grade real estate advisory in Coimbatore & Tamil Nadu.",
-    url: "https://prasanthassociates.com/property-investment",
-    type: "website",
-    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
-  },
+  openGraph: pageOpenGraph(
+    "/property-investment",
+    "Property & Investment Advisory | Prasanth Associates",
+    "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and Tamil Nadu."
+  ),
 };
 
 // The 4 real estate service slugs
@@ -146,18 +144,13 @@ export default function PropertyInvestmentPage() {
           <ScrollReveal>
             <div className="text-center mb-16">
 
-              <h2
+              <h1
                 className="font-heading font-bold text-charcoal mb-4 leading-tight"
                 style={{ fontSize: "var(--text-h2)" }}
               >
                 Our Property &amp; Investment{" "}
                 <em className="text-gold-dark not-italic">Services</em>
-              </h2>
-              <p className="text-concrete text-base max-w-2xl mx-auto leading-relaxed">
-                Comprehensive real estate advisory covering every stage — from
-                initial property identification to ongoing portfolio management
-                and strategic exits.
-              </p>
+              </h1>
             </div>
           </ScrollReveal>
 
@@ -247,14 +240,14 @@ export default function PropertyInvestmentPage() {
 
       {/* ── 3. CTA Banner ───────────────────────────────────────────── */}
       <CTABanner
-        headline="Ready to Make Your Next Property Move?"
-        subtitle="Connect with our licensed property consultants for a confidential, no-obligation discussion about your investment goals."
+        headline="Buying, selling or investing?"
+        subtitle="Talk it through with our licensed property consultants. Confidential, and no obligation."
         primaryCTA={{
           label: "Book a Free Consultation",
           href: "/contact",
         }}
         secondaryCTA={{
-          label: "Explore All Services",
+          label: "All services",
           href: "/services#realestate",
         }}
       />

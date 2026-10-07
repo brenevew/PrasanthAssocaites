@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { Suspense } from "react";
 import PlanHomeClient from "./PlanHomeClient";
 
 export const metadata: Metadata = {
   title: "Residential & Commercial Building Planner",
   description:
-    "Plan your residential house or commercial building construction. Choose plot dimensions, floor layout, rooms, commercial facilities, parking, and design packages.",
+    "Plan your house or commercial building: plot size, floors, rooms, parking and design packages. An architect reviews every plan within 24 hours.",
   alternates: {
-    canonical: "https://prasanthassociates.com/plan-home",
+    canonical: `${SITE_URL}/plan-home`,
   },
+  openGraph: pageOpenGraph(
+    "/plan-home",
+    "Residential & Commercial Building Planner | Prasanth Associates",
+    "Plan your house or commercial building: plot size, floors, rooms, parking and design packages. An architect reviews every plan within 24 hours."
+  ),
 };
 
 export default function PlanHomePage() {

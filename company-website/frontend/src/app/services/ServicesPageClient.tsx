@@ -98,7 +98,7 @@ export default function ServicesPageClient() {
           <ScrollReveal>
             <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-gold-dark nm-raised px-4.5 py-1.5 rounded-full mb-8 backdrop-blur-md border border-border shadow-xs">
               <Sparkles size={11} className="text-gold-dark" />
-              Comprehensive Capabilities
+              Services
             </span>
             <h1
               className="font-heading font-bold text-charcoal mb-6 leading-tight"
@@ -108,7 +108,7 @@ export default function ServicesPageClient() {
               <em className="text-gold-dark not-italic">Design</em> Services
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
-              From individual luxury residences to large-scale commercial &amp; industrial developments — delivered with precision, transparency, and architectural distinction.
+              Homes, villas, commercial buildings and factories, plus the drawings, valuations and property advice that go with them.
             </p>
           </ScrollReveal>
         </div>
@@ -224,7 +224,7 @@ export default function ServicesPageClient() {
                     {/* Sunken Key Capabilities Box */}
                     <div className="nm-inset rounded-2xl p-5 mb-6">
                       <h4 className="text-[10px] font-bold uppercase tracking-widest text-charcoal/70 mb-3">
-                        Key Capabilities &amp; Specifications
+                        What&apos;s included
                       </h4>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {service.features.map((feature) => (

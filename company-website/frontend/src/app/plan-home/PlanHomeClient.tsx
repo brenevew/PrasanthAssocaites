@@ -26,10 +26,10 @@ export default function PlanHomeClient() {
               <Sparkles size={12} /> Design &amp; Planning Studio
             </span>
             <h1 className="font-heading font-bold text-3xl md:text-4xl text-charcoal leading-tight">
-              Plan Your Dream Building Project
+              Plan your building
             </h1>
             <p className="text-concrete text-xs md:text-sm max-w-lg mx-auto text-center leading-relaxed">
-              Select your project type and customize your plot dimensions, floor plans, and room specifications.
+              Pick a project type, then set your plot size, floors and rooms.
             </p>
           </div>
 

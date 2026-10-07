@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/ui/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -9,49 +10,54 @@ import { qualityCapabilities } from "@/data/quality";
 import { ShieldCheck, ArrowRight, Upload, Compass, Send, CheckCircle2, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us | Our Engineering Philosophy",
+  title: { absolute: "About Prasanth Associates | Engineers & Builders, Coimbatore" },
   description:
-    "Learn about Prasanth Associates, our engineering philosophy, our rigorous 3-step design process, and our commitment to building generational structures.",
+    "Prasanth Associates is a Coimbatore construction and design firm run by engineers. See how we work and our 3-step design process.",
   alternates: {
-    canonical: "https://prasanthassociates.com/about",
+    canonical: `${SITE_URL}/about`,
   },
+  openGraph: pageOpenGraph(
+    "/about",
+    "About Us, Engineers & Builders in Coimbatore | Prasanth Associates",
+    "Prasanth Associates is a Coimbatore construction and design firm run by engineers. See how we work and our 3-step design process."
+  ),
 };
 
 const howItWorksSteps = [
   {
     number: "01",
-    title: "Submit Requirements & Rough Plans",
+    title: "Send your requirements",
     description:
-      "Provide your plot measurements, preferred configuration (1BHK–Custom), and functional requirements. If you already have a hand-drawn sketch, floor plan photo, or inspiration image, upload it directly — a rough sketch is perfectly fine.",
+      "Plot size, number of rooms and anything else you need. A hand-drawn sketch, a photo of a floor plan or a picture you like is enough to start.",
     icon: Upload,
     highlights: [
       "Drag-and-drop sketch upload (JPG, PNG, PDF, HEIC)",
-      "Simple, non-technical spatial inputs",
-      "No automated price pressure",
+      "No technical knowledge needed",
+      "No automated quotes",
     ],
   },
   {
     number: "02",
-    title: "24-Hour Architect Review",
+    title: "An architect reviews it",
     description:
-      "Our in-house architectural team conducts a thorough feasibility assessment analyzing plot dimensions, Vastu alignment, setback implications, natural lighting opportunities, and structural complexity before preparing your project-specific quotation.",
+      "Within 24 hours, one of our architects checks your plot size, Vastu, setbacks, daylight and structural complexity, then prices the design for your project.",
     icon: Compass,
     highlights: [
-      "Human architectural expertise on every project",
-      "Custom fixed design fee calculation",
-      "Detailed structural feasibility assessment",
+      "Reviewed by a person, not software",
+      "Fixed design fee",
+      "Structural feasibility check",
     ],
   },
   {
     number: "03",
-    title: "Design Delivery & Project Confirmation",
+    title: "Quote, then design",
     description:
-      "Within 24 hours, you receive your formal project quotation and design brief via email. Once confirmed, our principal architects proceed with your complete 2D CAD floor plans and 3D visualization assets.",
+      "You get the quote and design brief by email within 24 hours. Once you confirm, our principal architects start on the 2D floor plans and 3D views.",
     icon: Send,
     highlights: [
-      "Direct email delivery to your inbox",
-      "Line-item transparent design scope",
-      "Dedicated lead architect assignment",
+      "Sent to your email",
+      "Itemized design scope",
+      "One lead architect throughout",
     ],
   },
 ];
@@ -75,19 +81,18 @@ export default function AboutPage() {
           <ScrollReveal>
             <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-gold-dark nm-raised border border-border px-4 py-1.5 rounded-full shadow-2xs mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-dark" />
-              Established &amp; Trusted
+              About us
             </span>
             <h1
               className="font-heading font-bold text-charcoal mb-6 leading-tight"
               style={{ fontSize: "var(--text-h1)" }}
             >
-              Building Beyond
+              Run by
               <br />
-              <em className="text-gold-dark not-italic">The Surface</em>
+              <em className="text-gold-dark not-italic">engineers</em>
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
-              An engineering-driven construction and design firm dedicated to creating structures
-              that stand the test of time through rigorous quality control and precise execution.
+              We design and build homes, villas, commercial buildings and factories, and check the work at every stage.
             </p>
           </ScrollReveal>
         </div>
@@ -110,19 +115,16 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-concrete text-sm md:text-base leading-relaxed mb-7">
               <p>
-                In an industry often marked by project delays, hidden costs, and compromised
-                quality, Prasanth Associates was established with a singular focus: making
-                construction professional, transparent, and strictly engineering-led.
+                Delays, hidden costs and poor workmanship are common in construction.
+                Prasanth Associates was set up to build without them, with engineers making the decisions.
               </p>
               <p>
-                We don&apos;t act merely as builders, but as long-term construction partners.
-                From structural soil analysis to final handovers, every decision is guided by
-                structural safety, aesthetic clarity, and lasting value.
+                From the soil test to the handover, each decision comes down to three
+                questions: is it safe, does it look right, and will it last?
               </p>
               <p>
-                Our team combines architects, structural engineers, and project managers under
-                one roof, serving residential, villa, commercial, and industrial clients with
-                consistent technical oversight.
+                Architects, structural engineers and project managers work in one office,
+                on homes, villas, commercial buildings and factories.
               </p>
             </div>
             <Button href="/contact" variant="primary" size="md">
@@ -167,7 +169,7 @@ export default function AboutPage() {
             <div className="text-center max-w-2xl mx-auto mb-14">
               <span className="badge-gold mb-3 inline-flex">
                 <Clock size={12} className="text-gold" />
-                Considered Design &amp; Delivery Process
+                Our process
               </span>
               <h2
                 className="font-heading font-bold text-charcoal leading-tight"
@@ -175,10 +177,6 @@ export default function AboutPage() {
               >
                 How We Deliver <em className="text-gold not-italic">Your Project</em>
               </h2>
-              <p className="text-concrete text-xs md:text-sm leading-relaxed mt-2.5">
-                &quot;Your building deserves a considered engineering design, not an automated estimate.&quot;
-                Discover our rigorous 3-step architectural review and delivery process.
-              </p>
             </div>
           </ScrollReveal>
 
@@ -236,10 +234,10 @@ export default function AboutPage() {
                   <ShieldCheck size={24} strokeWidth={1.75} />
                 </div>
                 <h3 className="font-heading text-xl md:text-2xl font-bold text-charcoal mb-2">
-                  Ready to start your building journey?
+                  Ready to start?
                 </h3>
                 <p className="text-concrete text-xs md:text-sm max-w-lg mx-auto leading-relaxed mb-6">
-                  Submit your plot measurements, design preferences, or rough sketch. Our architectural team reviews every input within 24 hours.
+                  Send your plot size, preferences or a rough sketch. An architect reviews it within 24 hours.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-4">
                   <Button href="/plan-home" variant="secondary" size="md" className="nm-gold-raised">
@@ -260,8 +258,8 @@ export default function AboutPage() {
           <ScrollReveal>
             <SectionHeading
               badge="Engineering Rigour"
-              title="Built On Technical Excellence"
-              subtitle="Beautiful design requires an unyielding structural foundation. We enforce strict engineering checks across every stage."
+              title="What we check"
+              subtitle="Engineering checks at every stage of the build."
             />
           </ScrollReveal>
 
@@ -287,7 +285,7 @@ export default function AboutPage() {
 
       <CTABanner
         headline="Ready to discuss your project?"
-        subtitle="Schedule a consultation with our engineering and architectural team. No pressure, just clarity."
+        subtitle="Book a free consultation with our engineers and architects."
       />
     </>
   );

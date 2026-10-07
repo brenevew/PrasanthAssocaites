@@ -2,6 +2,8 @@ import Image from "next/image";
 import { blurProps } from "@/data/imageBlur";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import { projects } from "@/data/projects";
 import CTABanner from "@/components/ui/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -26,14 +28,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  // shortDescription still holds placeholder copy for most projects, so the
+  // search snippet is built from the project's facts instead.
+  const description = `${project.title}: ${project.type.toLowerCase()} built by Prasanth Associates in ${project.location}. Photos and project details.`;
+
   return {
     title: project.title,
-    description: project.shortDescription,
-    openGraph: {
-      title: project.title,
-      description: project.shortDescription,
-      images: [project.image],
+    description,
+    alternates: {
+      canonical: `${SITE_URL}/projects/${project.slug}`,
     },
+    openGraph: pageOpenGraph(
+      `/projects/${project.slug}`,
+      `${project.title} | Prasanth Associates`,
+      description,
+      [{ url: project.image, alt: project.title }]
+    ),
   };
 }
 
@@ -45,14 +55,25 @@ export default async function ProjectDetailPage({ params }: Props) {
     notFound();
   }
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/projects` },
+      { "@type": "ListItem", position: 3, name: project.title, item: `${SITE_URL}/projects/${project.slug}` },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] mt-[-104px]">
         <div className="absolute inset-0 z-0">
           <Image
             src={project.image}
-            alt={project.title}
+            alt={`${project.title}, ${project.type.toLowerCase()} by Prasanth Associates`}
             fill
             className="object-cover"
             priority
@@ -136,7 +157,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   <div key={idx} className="relative aspect-[4/3] w-full group">
                     <Image
                       src={img}
-                      alt={`${project.title} gallery image ${idx + 1}`}
+                      alt={`${project.title}, ${project.type.toLowerCase()} by Prasanth Associates (gallery photo ${idx + 1})`}
                       fill
                       className="object-cover border border-border"
                       sizes="(max-width: 768px) 100vw, 50vw"

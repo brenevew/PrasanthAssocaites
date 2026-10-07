@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
 import Link from "next/link";
 import { company } from "@/data/company";
 import ContactForm from "@/components/ui/ContactForm";
@@ -24,7 +25,7 @@ import {
 export const metadata: Metadata = {
   title: "Building Contractors in Coimbatore",
   description:
-    "Top-rated construction company & building contractors in Coimbatore. Head office at Gandhipuram. Specializing in individual house construction, luxury villas, commercial buildings & turnkey contracts across Coimbatore.",
+    "Building contractors in Coimbatore with a head office in Gandhipuram. Individual houses, luxury villas, commercial buildings and turnkey contracts.",
   keywords: [
     "construction company in Coimbatore",
     "builders in Coimbatore",
@@ -35,18 +36,13 @@ export const metadata: Metadata = {
     "residential construction Coimbatore Gandhipuram",
   ],
   alternates: {
-    canonical: "https://prasanthassociates.com/locations/coimbatore",
+    canonical: `${SITE_URL}/locations/coimbatore`,
   },
-  openGraph: {
-    title: "Construction Company in Coimbatore | Prasanth Associates",
-    description:
-      "Leading civil contractors and building construction firm in Coimbatore. 15+ years experience, 250+ projects delivered with zero cost escalation.",
-    url: "https://prasanthassociates.com/locations/coimbatore",
-    type: "website",
-    locale: "en_IN",
-    siteName: "Prasanth Associates",
-    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
-  },
+  openGraph: pageOpenGraph(
+    "/locations/coimbatore",
+    "Construction Company in Coimbatore | Prasanth Associates",
+    "Civil contractors in Coimbatore. 15+ years and 250+ projects delivered with no cost escalation."
+  ),
 };
 
 export default function CoimbatoreLocationPage() {
@@ -66,9 +62,10 @@ export default function CoimbatoreLocationPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "HomeAndConstructionBusiness",
-        "@id": `${canonicalUrl}#localbusiness`,
-        name: `${company.name} - Coimbatore Head Office`,
+        "@type": "GeneralContractor",
+        // Same entity as the site-wide organisation; this page adds local detail.
+        "@id": ORG_ID,
+        name: company.name,
         image: "https://prasanthassociates.com/images/hero/hero-main.webp",
         telephone: coimbatoreOffice.phone,
         email: coimbatoreOffice.email,
@@ -188,9 +185,9 @@ export default function CoimbatoreLocationPage() {
             </h1>
 
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-3xl mb-8">
-              From our headquarters on Sathy Road, Gandhipuram, Prasanth Associates has delivered over 250+
-              landmark homes, luxury villas, and commercial buildings across Coimbatore. We combine rigorous
-              civil engineering, CCMC municipal approval management, and legally binding fixed-price BoQ contracts.
+              From our head office on Sathy Road, Gandhipuram, we have built 250+ homes, villas and commercial
+              buildings across Coimbatore. We handle the engineering and the CCMC approvals, and every job runs on a
+              signed, fixed-price BoQ.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -367,7 +364,7 @@ export default function CoimbatoreLocationPage() {
       </section>
 
       <CTABanner
-        headline="Ready to build your dream home in Coimbatore?"
+        headline="Building in Coimbatore?"
         subtitle="Visit our Gandhipuram office or book an on-site engineer visit today."
       />
     </>

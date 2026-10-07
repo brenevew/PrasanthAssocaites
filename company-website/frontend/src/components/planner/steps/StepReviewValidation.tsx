@@ -81,7 +81,7 @@ export default function StepReviewValidation({
     <div className="max-w-3xl mx-auto space-y-6 animate-fadeIn pb-6">
       <div className="space-y-2 text-left">
         <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gold-dark bg-gold/15 px-3 py-1 rounded-full">
-          Comprehensive Audit
+          Final check
         </span>
         <h2 className="font-heading font-bold text-2xl md:text-4xl text-charcoal">
           Review Your Home

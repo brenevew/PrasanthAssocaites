@@ -35,7 +35,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
     const unique = all.filter((src, idx) => all.indexOf(src) === idx);
     return unique.map((src, i) => ({
       src,
-      caption: unique.length > 1 ? `${project.title} — Photo ${i + 1} of ${unique.length}` : project.title,
+      caption: unique.length > 1 ? `${project.title} - Photo ${i + 1} of ${unique.length}` : project.title,
     }));
   }, [project.image, project.galleryImages, project.title]);
 
@@ -92,7 +92,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
             <Image
               key={img.src}
               src={img.src}
-              alt={img.caption}
+              alt={`${project.title}, ${project.type.toLowerCase()} by Prasanth Associates${images.length > 1 ? ` (photo ${i + 1})` : ""}`}
               fill
               className={`object-cover transition-opacity duration-500 ${
                 i === index ? "opacity-100" : "opacity-0"

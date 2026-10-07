@@ -47,7 +47,7 @@ export default function MobileNav({ isOpen, onClose, onServiceSelect }: MobileNa
       <nav className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-[var(--ng-bg)] nm-raised-lg flex flex-col h-full overflow-y-auto border-l border-white/40">
         <div className="flex items-center justify-between p-5 border-b border-border/70">
           <div className="flex items-center gap-3 select-none">
-              <img src="/images/logo.svg" alt="Logo" className="w-8 h-8 object-contain filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
+              <img src="/images/logo.svg" alt="Prasanth Associates logo" className="w-8 h-8 object-contain filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
               <div className="flex flex-col leading-tight">
                 <div className="flex items-center gap-1.5 font-heading">
                   <span className="font-bold text-lg text-charcoal tracking-tight">Prasanth</span>

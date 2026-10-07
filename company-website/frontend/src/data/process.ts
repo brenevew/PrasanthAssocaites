@@ -10,7 +10,7 @@ export const processSteps: ProcessStep[] = [
     number: "01",
     title: "Consultation",
     description:
-      "We begin with a detailed conversation to understand your vision, requirements, budget expectations, and timeline. This is a no-obligation discussion to assess feasibility and establish mutual fit.",
+      "We talk through what you want to build, your budget and your timeline. There is no obligation.",
     details: [
       "Understanding your vision and requirements",
       "Site visit and initial assessment",
@@ -23,7 +23,7 @@ export const processSteps: ProcessStep[] = [
     number: "02",
     title: "Site Evaluation",
     description:
-      "Our engineering team evaluates the site — soil conditions, topography, access, orientation, and regulatory constraints — to inform the design and structural approach.",
+      "Our engineers check the soil, slope, access, orientation and local rules. The design and structure are based on what they find.",
     details: [
       "Soil testing and analysis",
       "Topographic survey",
@@ -36,7 +36,7 @@ export const processSteps: ProcessStep[] = [
     number: "03",
     title: "Architectural Design",
     description:
-      "Our architects develop the design based on your requirements and the site analysis. This includes floor plans, elevations, 3D visualizations, and material recommendations.",
+      "Our architects produce floor plans, elevations, 3D views and a materials list from your brief and the site study.",
     details: [
       "Concept development",
       "Floor plan design",
@@ -49,7 +49,7 @@ export const processSteps: ProcessStep[] = [
     number: "04",
     title: "Estimation & Planning",
     description:
-      "We prepare a detailed, transparent cost estimate covering materials, labor, equipment, and contingencies. The scope of work is documented clearly to avoid ambiguity.",
+      "An itemized estimate covering materials, labour, equipment and contingencies, with the scope of work written down.",
     details: [
       "Detailed cost breakdown",
       "Material specifications",
@@ -62,7 +62,7 @@ export const processSteps: ProcessStep[] = [
     number: "05",
     title: "Approvals",
     description:
-      "We manage the approval process — building permits, structural plan approvals, utility connections, and any regulatory requirements specific to your location.",
+      "We get the building permit, structural approval, utility connections and anything else your location requires.",
     details: [
       "Building permit application",
       "Structural plan approval",
@@ -75,7 +75,7 @@ export const processSteps: ProcessStep[] = [
     number: "06",
     title: "Construction",
     description:
-      "Construction begins with a dedicated project manager, regular progress reporting, and strict quality protocols at every stage — from foundation to finishing.",
+      "A dedicated project manager runs the site, with quality checks at every stage and regular progress reports.",
     details: [
       "Foundation and structure",
       "MEP rough-in",
@@ -88,7 +88,7 @@ export const processSteps: ProcessStep[] = [
     number: "07",
     title: "Quality Inspection",
     description:
-      "Before handover, our quality team conducts a comprehensive inspection covering structural integrity, finishing quality, MEP systems, and compliance with approved drawings.",
+      "Before handover, our quality team inspects the structure, finishes, electrical and plumbing, and checks everything against the approved drawings.",
     details: [
       "Structural integrity check",
       "Finishing quality audit",
@@ -101,7 +101,7 @@ export const processSteps: ProcessStep[] = [
     number: "08",
     title: "Handover",
     description:
-      "We walk you through the completed project, hand over all documentation — drawings, warranties, maintenance guides — and provide post-construction support.",
+      "We walk you through the building and hand over the drawings, warranties and maintenance guides. Support continues after you move in.",
     details: [
       "Final walkthrough",
       "Documentation handover",

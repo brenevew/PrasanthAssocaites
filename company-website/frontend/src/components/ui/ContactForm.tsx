@@ -22,12 +22,12 @@ const selectClass =
 const labelClass = "block text-[11px] font-bold uppercase tracking-widest text-concrete mb-2";
 
 function mapSlugToProjectType(slug?: string): string {
-  if (!slug) return "residential";
+  if (!slug) return "";
   const spec = serviceQuoteSpecs[slug];
   if (spec?.formDefaults?.serviceCategory) {
     return spec.formDefaults.serviceCategory;
   }
-  return "residential";
+  return "";
 }
 
 export default function ContactForm({ isEstimate = false, serviceSlug, serviceTitle }: ContactFormProps) {

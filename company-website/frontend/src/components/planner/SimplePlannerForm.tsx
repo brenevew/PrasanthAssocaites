@@ -227,7 +227,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
 
   /* Dynamic Floor Levels & Maximize/Minimize (Expanded/Collapsed) State
      `list` and `nextLevel` are kept in one state object so every add/remove
-     is a single atomic, pure update — reading a plain ref for `nextLevel`
+     is a single atomic, pure update, reading a plain ref for `nextLevel`
      from inside a separate setState's updater caused it to skip a level
      number (e.g. jump straight from 2nd Floor to 4th Floor) because React
      can invoke that updater at a different time than the ref mutation. */
@@ -1347,7 +1347,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
               <div className="border-t border-white/20 pt-2 flex items-center justify-between">
                 <span className="text-xs font-bold text-white/70">Total Estimated Fee</span>
                 <span className="text-2xl font-heading font-bold text-warm-white">
-                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : "—"}
+                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : "-"}
                 </span>
               </div>
             </div>

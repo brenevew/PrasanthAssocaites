@@ -77,8 +77,7 @@ export default function RequestQuoteClient() {
     [queryService]
   );
 
-  // Multi-select fields start empty so the visitor states what they actually
-  // want; single-select fields keep a sensible default.
+  // Option pickers start empty so the visitor states what they actually want.
   // ?f1=/?f2= carry the picks made in the Services-page card, so the visitor
   // does not restate them here. Unknown values are dropped.
   const preset = (param: string, opts: { value: string }[]) => {
@@ -88,11 +87,9 @@ export default function RequestQuoteClient() {
     return valid.length ? valid : null;
   };
   const initialField1 = (s: typeof spec) =>
-    preset("f1", s?.formDefaults?.field1Options || []) ??
-    (s?.formDefaults?.field1Multi ? [] : [s?.formDefaults?.field1Options?.[0]?.value].filter(Boolean) as string[]);
+    preset("f1", s?.formDefaults?.field1Options || []) ?? [];
   const initialField2 = (s: typeof spec) =>
-    preset("f2", s?.formDefaults?.field2Options || []) ??
-    (s?.formDefaults?.field2Multi ? [] : [s?.formDefaults?.field2Options?.[0]?.value].filter(Boolean) as string[]);
+    preset("f2", s?.formDefaults?.field2Options || []) ?? [];
 
   const [selectedField1, setSelectedField1] = useState<string[]>(() => initialField1(spec));
   const [selectedField2, setSelectedField2] = useState<string[]>(() => initialField2(spec));
@@ -273,7 +270,7 @@ export default function RequestQuoteClient() {
                   <FormSection
                     step={1}
                     title="Your project"
-                    hint="Pick the closest match — we'll refine the details on the call."
+                    hint="Pick the closest match - we'll refine the details on the call."
                   >
                     <div className="space-y-5">
                       <OptionCards
@@ -528,7 +525,7 @@ export default function RequestQuoteClient() {
                     <li key={item.title} className="flex items-start gap-2.5">
                       <Check size={14} className="mt-0.5 flex-shrink-0 text-emerald-600" strokeWidth={2.5} />
                       <span className="text-xs leading-snug text-concrete">
-                        <strong className="text-charcoal">{item.title}</strong> — {item.desc}
+                        <strong className="text-charcoal">{item.title}</strong> - {item.desc}
                       </span>
                     </li>
                   ))}
@@ -593,7 +590,7 @@ export default function RequestQuoteClient() {
                     Ballpark estimator for {currentService.title}
                   </h3>
                   <p className="mx-auto mt-1 max-w-lg text-xs text-concrete">
-                    Indicative only — your formal quote will be itemised to your exact specification.
+                    Indicative only - your formal quote will be itemised to your exact specification.
                   </p>
                 </div>
                 <CostCalculator

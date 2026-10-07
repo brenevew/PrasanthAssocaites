@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
     // re-encoded every hour.
     minimumCacheTTL: 31536000,
   },
+  async redirects() {
+    return [
+      {
+        // Page removed; it was indexed, so send its traffic to the closest page.
+        source: "/service-areas/:path*",
+        destination: "/locations/coimbatore",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

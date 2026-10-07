@@ -3,6 +3,7 @@ import Image from "next/image";
 import { blurProps } from "@/data/imageBlur";
 import Link from "next/link";
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { company } from "@/data/company";
 import { projects } from "@/data/projects";
 import { differentiators } from "@/data/quality";
@@ -17,9 +18,9 @@ import CTABanner from "@/components/ui/CTABanner";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Construction Company in Coimbatore | Prasanth Associates",
+  title: { absolute: "Construction Company in Coimbatore | Prasanth Associates" },
   description:
-    "Prasanth Associates — #1 construction company in Coimbatore, Tamil Nadu. 15+ years, 250+ projects, 2M+ sq. ft. built. Residential, commercial & turnkey construction with fixed BoQ. Get a free quote today.",
+    "Construction company in Coimbatore with 15+ years and 250+ projects. Houses, villas, commercial and turnkey builds on a fixed-price BoQ. Get a free quote.",
   keywords: [
     "construction company in Coimbatore",
     "building contractors Coimbatore",
@@ -31,16 +32,13 @@ export const metadata: Metadata = {
     "construction company near me Coimbatore",
   ],
   alternates: {
-    canonical: "https://prasanthassociates.com/",
+    canonical: `${SITE_URL}/`,
   },
-  openGraph: {
-    title: "Leading Construction Company in Coimbatore | Prasanth Associates",
-    description:
-      "15+ years of trusted civil construction in Coimbatore & Tamil Nadu. Houses, villas, commercial spaces & turnkey projects. Fixed BoQ, no hidden costs.",
-    url: "https://prasanthassociates.com/",
-    type: "website",
-    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
-  },
+  openGraph: pageOpenGraph(
+    "/",
+    "Construction Company in Coimbatore | Prasanth Associates",
+    "15+ years of civil construction in Coimbatore and The Nilgiris. Houses, villas, commercial and turnkey projects on a fixed BoQ, with no hidden costs."
+  ),
 };
 
 export default function Home() {
@@ -54,7 +52,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/hero/hero-main.webp"
-            alt="Prasanth Associates — premium construction and architecture"
+            alt="A home built by Prasanth Associates"
             fill
             className="object-cover"
             priority
@@ -76,7 +74,7 @@ export default function Home() {
             <ScrollReveal>
               <span className="nm-raised text-gold-dark px-4.5 py-1.5 rounded-full mb-7 inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase border border-border backdrop-blur-md shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-dark inline-block" />
-                Tamil Nadu&apos;s Premium Construction &amp; Design Firm
+                Coimbatore&apos;s Premium Construction &amp; Design Firm
               </span>
             </ScrollReveal>
 
@@ -147,7 +145,7 @@ export default function Home() {
                 <div className="absolute inset-0 nm-dark-raised translate-x-4 translate-y-4 rounded-3xl z-0" />
                 <Image
                   src="/images/projects/Designs/hall-1.webp"
-                  alt="Premium construction craftsmanship"
+                  alt="Living hall interior by Prasanth Associates"
                   fill
                   className="object-cover z-10 rounded-3xl border border-white/60 shadow-xl"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -172,29 +170,26 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal mb-7 leading-tight"
                 style={{ fontSize: "var(--text-h2)" }}
               >
-                We don&apos;t just construct
+                Engineered first.
                 <br />
-                <em className="text-gold not-italic">buildings.</em> We build
-                <br />
-                lasting value.
+                <em className="text-gold not-italic">Then</em> built.
               </h2>
               <div className="space-y-5 text-concrete leading-relaxed mb-8">
                 <p>
-                  At Prasanth Associates, exceptional construction is the result of rigorous
-                  engineering, precise project management, and uncompromising quality control.
+                  Good buildings start with sound engineering. We design the structure,
+                  manage the site and check the work ourselves.
                 </p>
                 <p>
-                  Whether it&apos;s a luxury villa or a commercial complex, our approach remains
-                  the same — complete transparency from day one, premium materials, and a
-                  commitment to timelines others consider impossible.
+                  Villa or commercial complex, you get the same thing: an itemized price
+                  before we start, materials we have checked, and a schedule we stick to.
                 </p>
               </div>
               <ul className="space-y-3 mb-10">
                 {[
-                  "100% Transparent Cost Estimation",
-                  "In-house Architectural & Engineering Team",
-                  "Strict Timeline Adherence",
-                  "Comprehensive Post-Handover Warranty",
+                  "Itemized, fixed-price estimates",
+                  "Architects and engineers in-house",
+                  "Handover on schedule",
+                  "Warranty after handover",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-charcoal font-semibold text-sm">
                     <span className="w-6 h-6 rounded-full nm-inset-sm flex items-center justify-center flex-shrink-0">
@@ -205,7 +200,7 @@ export default function Home() {
                 ))}
               </ul>
               <Button href="/about" variant="primary" size="md">
-                Discover Our Story
+                About us
                 <ArrowRight size={16} />
               </Button>
             </ScrollReveal>
@@ -224,7 +219,6 @@ export default function Home() {
             <SectionHeading
               badge="Portfolio"
               title="Selected Projects"
-              subtitle="A curated selection of our finest residential and commercial work, demonstrating our commitment to quality and architectural excellence."
             />
           </ScrollReveal>
 
@@ -239,7 +233,7 @@ export default function Home() {
           <div className="mt-16 text-center">
             <ScrollReveal delay={350}>
               <Button href="/projects" variant="gold" size="lg">
-                Explore All Projects
+                All projects
                 <ArrowRight size={16} />
               </Button>
             </ScrollReveal>
@@ -260,15 +254,13 @@ export default function Home() {
                     className="font-heading font-bold text-charcoal leading-tight"
                     style={{ fontSize: "var(--text-h2)" }}
                   >
-                    Engineering First.
+                    Why build
                     <br />
-                    <em className="text-gold not-italic">Quality</em> Always.
+                    <em className="text-gold not-italic">with us</em>
                   </h2>
                   <div className="gold-line" />
                   <p className="text-concrete leading-relaxed">
-                    We don&apos;t just promise quality; we engineer it into every phase of
-                    construction. Here&apos;s why homeowners and developers trust us with
-                    their most valuable assets.
+                    Six things you can hold us to.
                   </p>
                 </div>
               </ScrollReveal>
@@ -306,8 +298,8 @@ export default function Home() {
           <ScrollReveal>
             <SectionHeading
               badge="Client Voices"
-              title="Trusted by Homeowners & Businesses"
-              subtitle="Real words from real clients across Coimbatore, Tiruppur and beyond."
+              title="In their words"
+              subtitle="Clients across Coimbatore, The Nilgiris and beyond."
             />
           </ScrollReveal>
 

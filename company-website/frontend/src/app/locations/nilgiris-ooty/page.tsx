@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { company } from "@/data/company";
 import { projects } from "@/data/projects";
@@ -24,7 +25,7 @@ import {
 export const metadata: Metadata = {
   title: "Hillside Builders in Nilgiris & Ooty",
   description:
-    "Expert builders and construction company in The Nilgiris, Ooty, Gudalur & Coonoor. Specialized in hillside pile foundations, slope stability engineering, cold-weather curing & luxury mountain residences.",
+    "Builders in The Nilgiris, Ooty, Gudalur and Coonoor. Hillside pile foundations, slope stability, cold-weather concrete curing and mountain homes.",
   keywords: [
     "builders in Nilgiris",
     "house construction in Ooty",
@@ -34,18 +35,13 @@ export const metadata: Metadata = {
     "civil contractors Nilgiris",
   ],
   alternates: {
-    canonical: "https://prasanthassociates.com/locations/nilgiris-ooty",
+    canonical: `${SITE_URL}/locations/nilgiris-ooty`,
   },
-  openGraph: {
-    title: "Builders in Nilgiris & Ooty | Prasanth Associates",
-    description:
-      "Specialized hillside civil construction and architectural residences across The Nilgiris, Ooty, Gudalur, and Coonoor.",
-    url: "https://prasanthassociates.com/locations/nilgiris-ooty",
-    type: "website",
-    locale: "en_IN",
-    siteName: "Prasanth Associates",
-    images: [{ url: "/images/hero/hero-main.webp", width: 1200, height: 630, alt: "Prasanth Associates" }],
-  },
+  openGraph: pageOpenGraph(
+    "/locations/nilgiris-ooty",
+    "Builders in Nilgiris & Ooty | Prasanth Associates",
+    "Hillside construction and custom homes across The Nilgiris, Ooty, Gudalur and Coonoor."
+  ),
 };
 
 export default function NilgirisOotyLocationPage() {
@@ -66,11 +62,12 @@ export default function NilgirisOotyLocationPage() {
       {
         "@type": "HomeAndConstructionBusiness",
         "@id": "https://prasanthassociates.com#gudalur-branch",
-        name: `${company.name} - Nilgiris & Gudalur Branch Office`,
+        name: `${company.name} - Gudalur Branch Office`,
+        parentOrganization: { "@id": "https://prasanthassociates.com#organization" },
         image: "https://prasanthassociates.com/images/projects/Villa/manjushree-1.webp",
         telephone: nilgirisOffice.phone,
         email: nilgirisOffice.email,
-        url: canonicalUrl,
+        url: "https://prasanthassociates.com/locations/gudalur", // the branch's own page
         priceRange: "₹₹₹",
         address: {
           "@type": "PostalAddress",
@@ -187,9 +184,8 @@ export default function NilgirisOotyLocationPage() {
             </h1>
 
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-3xl mb-8">
-              Constructing in the Western Ghats demands specialized engineering: bedrock pile foundations,
-              geotechnical slope anchoring, cold-weather concrete mix designs, and multi-barrier waterproofing.
-              Through our branch office in Gudalur, Prasanth Associates delivers bespoke hillside homes and estates.
+              Building in the Western Ghats needs piles to bedrock, slope anchoring, concrete mixed for the cold,
+              and several layers of waterproofing. We build custom hillside homes and estates from our Gudalur branch.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -371,7 +367,7 @@ export default function NilgirisOotyLocationPage() {
               <div className="relative h-64 md:h-80 w-full rounded-2xl overflow-hidden bg-slate-100">
                 <img
                   src={ootyProjects[0].image}
-                  alt={ootyProjects[0].title}
+                  alt={`${ootyProjects[0].title}, ${ootyProjects[0].type.toLowerCase()} by Prasanth Associates`}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -414,7 +410,7 @@ export default function NilgirisOotyLocationPage() {
                 Building in Gudalur specifically?
               </h3>
               <p className="text-concrete text-xs mt-1">
-                Our Gudalur branch office page covers individual house construction at lower elevation —
+                Our Gudalur branch office page covers individual house construction at lower elevation,
                 heavier monsoon exposure, sloping laterite plots and ghat-road material logistics.
               </p>
             </div>
