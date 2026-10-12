@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { company } from "@/data/company";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://prasanthassociates.com";
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://prasanthassociates.com").replace(/\/+$/, "");
 
 /** Stable JSON-LD ids, so every page's schema points at the same two entities. */
 export const ORG_ID = `${SITE_URL}#organization`;

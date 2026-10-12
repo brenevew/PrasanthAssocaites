@@ -8,6 +8,7 @@ import {
   Landmark, ShieldCheck, Calculator, FileCheck,
 } from "lucide-react";
 import type { Service } from "@/data/services";
+import { serviceHref } from "@/data/serviceLinks";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
   Home, Building2, Building, Key, Hammer, Cpu, Factory, Compass, Palette, Trees, ClipboardList,
@@ -89,7 +90,7 @@ export default function ServicesTabs({ services }: ServicesTabsProps) {
           return (
             <Link
               key={service.slug}
-              href={`/services#${service.slug}`}
+              href={serviceHref(service.slug)}
               className="nm-raised group relative flex flex-col rounded-3xl p-7 transition-all duration-300 hover:-translate-y-2 hover:border-gold/30"
               style={{ animationDelay: `${index * 60}ms` }}
             >

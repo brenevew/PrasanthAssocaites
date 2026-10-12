@@ -23,8 +23,9 @@ import {
   Truck,
 } from "lucide-react";
 
-const CANONICAL_URL = "https://prasanthassociates.com/locations/gudalur";
-const BRANCH_ID = "https://prasanthassociates.com#gudalur-branch";
+const CANONICAL_URL = `${SITE_URL}/locations/gudalur`;
+const BRANCH_ID = `${SITE_URL}#gudalur-branch`;
+const gudalurOffice = company.offices.find((office) => office.label === "Gudalur") || company.offices[1];
 
 export const metadata: Metadata = {
   title: "Individual House Contractors in Gudalur",
@@ -128,16 +129,19 @@ const gudalurSchema = {
       "@type": "HomeAndConstructionBusiness",
       "@id": BRANCH_ID,
       name: `${company.name} - Gudalur Branch Office`,
-      image: "https://prasanthassociates.com/images/hero/hero-main.webp",
+      image: `${SITE_URL}/images/hero/hero-main.webp`,
       url: CANONICAL_URL,
       priceRange: "₹₹₹",
-      parentOrganization: { "@id": "https://prasanthassociates.com#organization" },
+      telephone: gudalurOffice.phone,
+      email: gudalurOffice.email,
+      hasMap: gudalurOffice.mapLink,
+      parentOrganization: { "@id": `${SITE_URL}#organization` },
       address: {
         "@type": "PostalAddress",
-        streetAddress: "No: 6, Thiruvalluvar Commercial Complex, Near SBI ATM, Ooty Main Road",
+        streetAddress: gudalurOffice.street,
         addressLocality: "Gudalur",
         addressRegion: "Tamil Nadu",
-        postalCode: "643212",
+        postalCode: gudalurOffice.pincode,
         addressCountry: "IN",
       },
       geo: { "@type": "GeoCoordinates", latitude: 11.5001001, longitude: 76.4937999 },
@@ -167,8 +171,8 @@ const gudalurSchema = {
       "@type": "BreadcrumbList",
       "@id": `${CANONICAL_URL}#breadcrumb`,
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://prasanthassociates.com" },
-        { "@type": "ListItem", position: 2, name: "Locations", item: "https://prasanthassociates.com/locations/nilgiris-ooty" },
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}` },
+        { "@type": "ListItem", position: 2, name: "Locations", item: `${SITE_URL}/locations/nilgiris-ooty` },
         { "@type": "ListItem", position: 3, name: "Gudalur", item: CANONICAL_URL },
       ],
     },
@@ -176,7 +180,6 @@ const gudalurSchema = {
 };
 
 export default function GudalurLocationPage() {
-  const gudalurOffice = company.offices.find((o) => o.label === "Gudalur") || company.offices[1];
 
   return (
     <>

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { blurProps } from "@/data/imageBlur";
@@ -29,7 +30,7 @@ function reveal(prev: { index: number; mounted: number[] }, next: number, total:
 export default function ProjectCard({ project, priority = false }: ProjectCardProps) {
   // Every photo for this project, cover image first, no duplicates — named
   // and browsable right here in the grid, with a maximized view on click.
-  // Nothing here ever navigates to a different page.
+  // A separate text link below the gallery opens the project details.
   const images = useMemo(() => {
     const all = [project.image, ...project.galleryImages];
     const unique = all.filter((src, idx) => all.indexOf(src) === idx);
@@ -171,11 +172,17 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
           <h3 className="text-lg font-heading font-bold text-warm-white mb-1 leading-snug">
             {project.title}
           </h3>
-          <p className="text-xs text-concrete-lighter">
-            {project.location}
-          </p>
+          {project.location && <p className="text-xs text-concrete-lighter">{project.location}</p>}
         </div>
       </button>
+
+      <Link
+        href={`/projects/${project.slug}`}
+        className="mt-3 block rounded-xl px-3 py-3 text-sm font-semibold text-charcoal underline decoration-gold underline-offset-4 hover:text-gold-dark focus-visible:outline-2 focus-visible:outline-gold"
+        aria-label={`View project details: ${project.title}`}
+      >
+        View project details
+      </Link>
 
       {lightboxOpen && (
         <Lightbox

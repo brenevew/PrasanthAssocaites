@@ -33,6 +33,13 @@ export const metadata: Metadata = {
     "villa construction Ooty",
     "hill station builders Tamil Nadu",
     "civil contractors Nilgiris",
+    "builders in Ooty",
+    "construction company in Ooty",
+    "house construction in Coonoor",
+    "builders in Coonoor",
+    "house construction in Kotagiri",
+    "building contractors in Kotagiri",
+    "construction company Nilgiris",
   ],
   alternates: {
     canonical: `${SITE_URL}/locations/nilgiris-ooty`,
@@ -45,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export default function NilgirisOotyLocationPage() {
-  const canonicalUrl = "https://prasanthassociates.com/locations/nilgiris-ooty";
+  const canonicalUrl = `${SITE_URL}/locations/nilgiris-ooty`;
   const nilgirisOffice = company.offices.find((o) => o.label === "Gudalur") || company.offices[1];
   const ootyProjects = projects.filter((p) => p.location.includes("Ooty") || p.location.includes("Nilgiris"));
 
@@ -61,19 +68,19 @@ export default function NilgirisOotyLocationPage() {
     "@graph": [
       {
         "@type": "HomeAndConstructionBusiness",
-        "@id": "https://prasanthassociates.com#gudalur-branch",
+        "@id": `${SITE_URL}#gudalur-branch`,
         name: `${company.name} - Gudalur Branch Office`,
-        parentOrganization: { "@id": "https://prasanthassociates.com#organization" },
-        image: "https://prasanthassociates.com/images/projects/Villa/manjushree-1.webp",
+        parentOrganization: { "@id": `${SITE_URL}#organization` },
+        image: `${SITE_URL}/images/projects/Villa/manjushree-1.webp`,
         telephone: nilgirisOffice.phone,
         email: nilgirisOffice.email,
-        url: "https://prasanthassociates.com/locations/gudalur", // the branch's own page
+        url: `${SITE_URL}/locations/gudalur`, // the branch's own page
         priceRange: "₹₹₹",
         address: {
           "@type": "PostalAddress",
           streetAddress: nilgirisOffice.street,
           addressLocality: "Gudalur",
-          addressRegion: "The Nilgiris, Tamil Nadu",
+          addressRegion: nilgirisOffice.state,
           postalCode: nilgirisOffice.pincode,
           addressCountry: "IN",
         },
@@ -106,13 +113,13 @@ export default function NilgirisOotyLocationPage() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://prasanthassociates.com",
+            item: `${SITE_URL}`,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Locations",
-            item: "https://prasanthassociates.com/contact",
+            item: `${SITE_URL}/contact`,
           },
           {
             "@type": "ListItem",
@@ -272,7 +279,7 @@ export default function NilgirisOotyLocationPage() {
 
                 <div className="pt-4 border-t border-border">
                   <Link
-                    href="/services#villa-construction"
+                    href="/services/villa-construction-nilgiris"
                     className="flex items-center justify-between p-3 rounded-2xl bg-linen hover:bg-gold/15 border border-border transition-colors text-xs font-bold text-charcoal"
                   >
                     <span>View Luxury Villa Construction Capabilities</span>

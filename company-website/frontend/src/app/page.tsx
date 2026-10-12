@@ -1,7 +1,5 @@
-import { Suspense } from "react";
 import Image from "next/image";
 import { blurProps } from "@/data/imageBlur";
-import Link from "next/link";
 import { Metadata } from "next";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { company } from "@/data/company";
@@ -15,12 +13,13 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import ProjectCard from "@/components/ui/ProjectCard";
 import TestimonialsMarquee from "@/components/ui/TestimonialsMarquee";
 import CTABanner from "@/components/ui/CTABanner";
+import HomeFaq from "@/components/ui/HomeFaq";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: { absolute: "Construction Company in Coimbatore | Prasanth Associates" },
+  title: { absolute: "Construction Company, Coimbatore & Nilgiris | Prasanth Associates" },
   description:
-    "Construction company in Coimbatore with 15+ years and 250+ projects. Houses, villas, commercial and turnkey builds on a fixed-price BoQ. Get a free quote.",
+    "Construction company in Coimbatore and the Nilgiris, with offices in Gandhipuram and Gudalur. Houses, villas and commercial builds on a fixed-price BoQ.",
   keywords: [
     "construction company in Coimbatore",
     "building contractors Coimbatore",
@@ -30,6 +29,12 @@ export const metadata: Metadata = {
     "civil contractors Tamil Nadu",
     "best construction company Coimbatore",
     "construction company near me Coimbatore",
+    "architects in Coimbatore",
+    "interior designers in Coimbatore",
+    "building plan approval Coimbatore",
+    "villa construction Coimbatore",
+    "house construction in Kovai",
+    "builders in Ooty and Coonoor",
   ],
   alternates: {
     canonical: `${SITE_URL}/`,
@@ -84,15 +89,14 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal leading-[1.08] mb-7"
                 style={{ fontSize: "var(--text-display)" }}
               >
-                {company.tagline}
-
+                Construction &amp; Design Company in Coimbatore
               </h1>
             </ScrollReveal>
 
             {/* Subtext */}
             <ScrollReveal delay={160}>
               <p className="text-lg md:text-xl text-concrete mb-10 leading-relaxed max-w-xl">
-                {company.description}
+                {company.tagline}. {company.description}
               </p>
             </ScrollReveal>
 
@@ -309,7 +313,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 8. CTA Banner ───────────────────────────────────────────── */}
+      {/* ── 8. Frequently Asked Questions ───────────────────────────── */}
+      <HomeFaq />
+
+      {/* ── 9. CTA Banner ───────────────────────────────────────────── */}
       <CTABanner />
     </>
   );

@@ -29,126 +29,125 @@ export interface Project {
 
 /**
  * Project data — these are real, completed Prasanth Associates projects.
- * Fields marked [PLACEHOLDER] are honest stand-ins (no invented client
- * facts) — replace with the real location, area, year, client and
- * narrative before publishing. Images reference files in
- * /public/images/projects/.
+ * Empty fields are awaiting verified business information and are omitted
+ * from public pages. Add only confirmed locations, measurements and narratives.
+ * Images reference files in /public/images/projects/.
  */
 export const projects: Project[] = [
   {
     slug: "oxford-school",
     title: "Oxford School",
-    location: "Tamil Nadu", // [PLACEHOLDER]
+    location: "",
     category: "commercial",
     status: "completed",
     type: "Educational Institution",
-    area: "To be confirmed", // [PLACEHOLDER]
-    year: "To be confirmed", // [PLACEHOLDER]
-    duration: "To be confirmed", // [PLACEHOLDER]
+    area: "",
+    year: "",
+    duration: "",
     client: "Oxford School",
     image: "/images/projects/Commercial/oxford-school.webp",
     galleryImages: ["/images/projects/Commercial/oxford-school.webp"],
     shortDescription:
-      "A school building project completed by Prasanth Associates, built to support daily academic use with durable, low-maintenance construction. Full project description to be added.", // [PLACEHOLDER]
-    challenge: "Project narrative to be added.", // [PLACEHOLDER]
-    designApproach: "Project narrative to be added.", // [PLACEHOLDER]
-    constructionMethod: "Project narrative to be added.", // [PLACEHOLDER]
-    result: "Project narrative to be added.", // [PLACEHOLDER]
+      "A school building project completed by Prasanth Associates.",
+    challenge: "",
+    designApproach: "",
+    constructionMethod: "",
+    result: "",
   },
   {
     slug: "rex-school",
     title: "Rex School",
-    location: "Tamil Nadu", // [PLACEHOLDER]
+    location: "",
     category: "commercial",
     status: "completed",
     type: "Educational Institution",
-    area: "To be confirmed", // [PLACEHOLDER]
-    year: "To be confirmed", // [PLACEHOLDER]
-    duration: "To be confirmed", // [PLACEHOLDER]
+    area: "",
+    year: "",
+    duration: "",
     client: "Rex School",
     image: "/images/projects/Commercial/rex-school.webp",
     galleryImages: ["/images/projects/Commercial/rex-school.webp"],
     shortDescription:
-      "A school building project completed by Prasanth Associates, built to support daily academic use with durable, low-maintenance construction. Full project description to be added.", // [PLACEHOLDER]
-    challenge: "Project narrative to be added.", // [PLACEHOLDER]
-    designApproach: "Project narrative to be added.", // [PLACEHOLDER]
-    constructionMethod: "Project narrative to be added.", // [PLACEHOLDER]
-    result: "Project narrative to be added.", // [PLACEHOLDER]
+      "A school building project completed by Prasanth Associates.",
+    challenge: "",
+    designApproach: "",
+    constructionMethod: "",
+    result: "",
   },
   {
     slug: "sasthapruri",
     title: "Sasthapruri",
-    location: "Tamil Nadu", // [PLACEHOLDER]
+    location: "",
     category: "commercial",
     status: "completed",
     type: "Commercial Building",
-    area: "To be confirmed", // [PLACEHOLDER]
-    year: "To be confirmed", // [PLACEHOLDER]
-    duration: "To be confirmed", // [PLACEHOLDER]
-    client: "Sasthapruri", // [PLACEHOLDER]
+    area: "",
+    year: "",
+    duration: "",
+    client: "",
     image: "/images/projects/Commercial/sasthapruri.webp",
     galleryImages: ["/images/projects/Commercial/sasthapruri.webp"],
     shortDescription:
-      "A commercial construction project completed by Prasanth Associates. Full project description to be added.", // [PLACEHOLDER]
-    challenge: "Project narrative to be added.", // [PLACEHOLDER]
-    designApproach: "Project narrative to be added.", // [PLACEHOLDER]
-    constructionMethod: "Project narrative to be added.", // [PLACEHOLDER]
-    result: "Project narrative to be added.", // [PLACEHOLDER]
+      "A commercial construction project completed by Prasanth Associates.",
+    challenge: "",
+    designApproach: "",
+    constructionMethod: "",
+    result: "",
   },
   {
     slug: "pricol",
     title: "Pricol",
-    location: "Coimbatore, Tamil Nadu", // [PLACEHOLDER]
+    location: "",
     category: "villa",
     status: "completed",
     type: "Villa",
-    area: "To be confirmed", // [PLACEHOLDER]
-    year: "To be confirmed", // [PLACEHOLDER]
-    duration: "To be confirmed", // [PLACEHOLDER]
-    client: "Private Client", // [PLACEHOLDER]
+    area: "",
+    year: "",
+    duration: "",
+    client: "Private Client",
     image: "/images/projects/Villa/pricol-1.webp",
     galleryImages: [
       "/images/projects/Villa/pricol-1.webp",
       "/images/projects/Villa/pricol-2.webp",
     ],
     shortDescription:
-      "A villa construction project completed by Prasanth Associates. Full project description to be added.", // [PLACEHOLDER]
-    challenge: "Project narrative to be added.", // [PLACEHOLDER]
-    designApproach: "Project narrative to be added.", // [PLACEHOLDER]
-    constructionMethod: "Project narrative to be added.", // [PLACEHOLDER]
-    result: "Project narrative to be added.", // [PLACEHOLDER]
+      "A villa construction project completed by Prasanth Associates.",
+    challenge: "",
+    designApproach: "",
+    constructionMethod: "",
+    result: "",
   },
   {
     slug: "manjushree",
     title: "Manjushree",
-    location: "Coimbatore, Tamil Nadu", // [PLACEHOLDER]
+    location: "",
     category: "villa",
     status: "completed",
     type: "Villa",
-    area: "To be confirmed", // [PLACEHOLDER]
-    year: "To be confirmed", // [PLACEHOLDER]
-    duration: "To be confirmed", // [PLACEHOLDER]
-    client: "Private Client", // [PLACEHOLDER]
+    area: "",
+    year: "",
+    duration: "",
+    client: "Private Client",
     image: "/images/projects/Villa/manjushree-1.webp",
     galleryImages: ["/images/projects/Villa/manjushree-1.webp"],
     shortDescription:
-      "A villa construction project completed by Prasanth Associates. Full project description to be added.", // [PLACEHOLDER]
-    challenge: "Project narrative to be added.", // [PLACEHOLDER]
-    designApproach: "Project narrative to be added.", // [PLACEHOLDER]
-    constructionMethod: "Project narrative to be added.", // [PLACEHOLDER]
-    result: "Project narrative to be added.", // [PLACEHOLDER]
+      "A villa construction project completed by Prasanth Associates.",
+    challenge: "",
+    designApproach: "",
+    constructionMethod: "",
+    result: "",
   },
   {
     slug: "residential-construction-project",
     title: "Residential Construction Project",
-    location: "Coimbatore, Tamil Nadu", // [PLACEHOLDER]
+    location: "",
     category: "residential",
     status: "completed",
     type: "Independent House",
-    area: "To be confirmed", // [PLACEHOLDER]
-    year: "To be confirmed", // [PLACEHOLDER]
-    duration: "To be confirmed", // [PLACEHOLDER]
-    client: "Private Client", // [PLACEHOLDER]
+    area: "",
+    year: "",
+    duration: "",
+    client: "Private Client",
     image: "/images/projects/Residential/residential-site-1.webp",
     galleryImages: [
       "/images/projects/Residential/residential-site-1.webp",
@@ -156,11 +155,11 @@ export const projects: Project[] = [
       "/images/projects/Residential/residential-site-3.webp",
     ],
     shortDescription:
-      "A residential construction project completed by Prasanth Associates. Full project description to be added.", // [PLACEHOLDER]
-    challenge: "Project narrative to be added.", // [PLACEHOLDER]
-    designApproach: "Project narrative to be added.", // [PLACEHOLDER]
-    constructionMethod: "Project narrative to be added.", // [PLACEHOLDER]
-    result: "Project narrative to be added.", // [PLACEHOLDER]
+      "A residential construction project completed by Prasanth Associates.",
+    challenge: "",
+    designApproach: "",
+    constructionMethod: "",
+    result: "",
   },
 ];
 

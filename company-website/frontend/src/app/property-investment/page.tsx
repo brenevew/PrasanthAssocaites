@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import { serviceHref } from "@/data/serviceLinks";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { company } from "@/data/company";
 import { services } from "@/data/services";
@@ -229,6 +231,9 @@ export default function PropertyInvestmentPage() {
                         <span>Request Quote</span>
                         <ArrowRight size={13} />
                       </Button>
+                      <Link href={serviceHref(service.slug)} className="block mt-3 text-center text-sm font-semibold text-gold-dark underline underline-offset-4">
+                        Explore {service.title.toLowerCase()}
+                      </Link>
                     </div>
                   </div>
                 </ScrollReveal>

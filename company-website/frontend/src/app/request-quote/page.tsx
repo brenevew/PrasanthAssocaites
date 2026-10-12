@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "Request a Construction Quote",
   description:
     "Request a quote for construction, architectural design, bank valuation reports or structural stability certificates in Coimbatore and The Nilgiris.",
+  keywords: [
+    "house construction quote Coimbatore",
+    "construction cost estimate Coimbatore",
+    "building contractor quotation Coimbatore",
+  ],
   alternates: {
     canonical: `${SITE_URL}/request-quote`,
   },

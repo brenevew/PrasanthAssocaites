@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "Construction Projects in Coimbatore",
   description:
     "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in and around Coimbatore.",
+  keywords: [
+    "construction projects Coimbatore",
+    "villa projects Coimbatore",
+    "school building construction Tamil Nadu",
+    "house construction photos Coimbatore",
+  ],
   alternates: {
     canonical: `${SITE_URL}/projects`,
   },

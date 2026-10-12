@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { serviceHref } from "@/data/serviceLinks";
 import {
   CheckCircle2, Home, Building2, Building, Key, Hammer, Cpu,
   Factory, Compass, Palette, Trees, ClipboardList, ArrowRight, Sparkles,
@@ -105,10 +107,12 @@ export default function ServicesPageClient() {
               style={{ fontSize: "var(--text-h1)" }}
             >
               Engineering &amp;{" "}
-              <em className="text-gold-dark not-italic">Design</em> Services
+              <em className="text-gold-dark not-italic">Design</em> Services in Coimbatore
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
-              Homes, villas, commercial buildings and factories, plus the drawings, valuations and property advice that go with them.
+              From our Gandhipuram office in Coimbatore (Kovai), we help with house construction,
+              building plans, interiors, factory sheds, property valuation and property management.
+              Choose a service to see the scope and what to send with your enquiry.
             </p>
           </ScrollReveal>
         </div>
@@ -195,7 +199,9 @@ export default function ServicesPageClient() {
 
                     {/* Title */}
                     <h2 className="text-xl font-heading font-bold text-charcoal mb-2.5 leading-snug">
-                      {service.title}
+                      <Link href={serviceHref(service.slug)} onClick={(event) => event.stopPropagation()} className="hover:text-gold-dark underline-offset-4 hover:underline">
+                        {service.title}
+                      </Link>
                     </h2>
 
                     {/* SLA & Credential Badges */}
@@ -262,6 +268,14 @@ export default function ServicesPageClient() {
                           </Button>
                         )}
                       </div>
+                      {!serviceHref(service.slug).includes("#") && (
+                        <Link
+                          href={serviceHref(service.slug)}
+                          className="block py-2 text-center text-sm font-semibold text-gold-dark underline underline-offset-4"
+                        >
+                          Explore {service.title.toLowerCase()}
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </ScrollReveal>

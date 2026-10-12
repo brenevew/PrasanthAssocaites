@@ -1,5 +1,6 @@
 import { company } from "@/data/company";
 import { services } from "@/data/services";
+import { serviceHref } from "@/data/serviceLinks";
 import { serviceCategories } from "@/data/serviceCategories";
 import { SITE_URL } from "@/lib/seo";
 
@@ -21,7 +22,7 @@ export function GET() {
       const lines = category.slugs
         .map((slug) => services.find((s) => s.slug === slug))
         .filter((s) => s !== undefined)
-        .map((s) => `- [${s.title}](${SITE_URL}/services#${s.slug}): ${s.shortDescription}`);
+        .map((s) => `- [${s.title}](${SITE_URL}${serviceHref(s.slug)}): ${s.shortDescription}`);
       return `### ${category.label}\n\n${lines.join("\n")}`;
     })
     .join("\n\n");
@@ -43,8 +44,9 @@ export function GET() {
 ${[years && `- Years in business: ${years}`, projectsDelivered && `- Projects delivered: ${projectsDelivered}`].filter(Boolean).join("\n")}
 - Head office: Gandhipuram, Coimbatore
 - Branch office: Gudalur, The Nilgiris
-- Primary service area: Coimbatore and surrounding areas, including Saravanampatti, Vadavalli, Thudiyalur, Peelamedu, RS Puram, Kalapatti, Sulur and Mettupalayam
-- Secondary service area: The Nilgiris district, including Ooty, Coonoor, Kotagiri and Gudalur
+- Service area, Coimbatore (head office, Gandhipuram): Coimbatore and surrounding areas, including Saravanampatti, Vadavalli, Thudiyalur, Peelamedu, RS Puram, Kalapatti, Sulur and Mettupalayam
+- Service area, The Nilgiris (branch office, Gudalur): the whole district; the company has built in Gudalur, Ooty, Coonoor and Kotagiri
+- Every service below is offered in both Coimbatore and the Nilgiris, based on the project's requirements. House construction, villas and house plans with approval have separate Nilgiris pages because hill conditions change the work
 - Pricing model: itemized, fixed-price Bill of Quantities (BoQ) signed before construction starts
 - Website: ${SITE_URL}
 
@@ -67,6 +69,9 @@ ${serviceSections}
 - [Construction company in Coimbatore](${SITE_URL}/locations/coimbatore)
 - [Builders in The Nilgiris and Ooty](${SITE_URL}/locations/nilgiris-ooty)
 - [House contractors in Gudalur](${SITE_URL}/locations/gudalur)
+- [House construction in the Nilgiris](${SITE_URL}/services/house-construction-nilgiris)
+- [Villa and estate bungalow construction in the Nilgiris](${SITE_URL}/services/villa-construction-nilgiris)
+- [House plans and building approval in the Nilgiris](${SITE_URL}/services/building-plan-approval-nilgiris)
 - [Property and investment advisory](${SITE_URL}/property-investment)
 - [Projects](${SITE_URL}/projects)
 - [Building planner](${SITE_URL}/plan-home)

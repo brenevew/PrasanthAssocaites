@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { blurProps } from "@/data/imageBlur";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -28,9 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  // shortDescription still holds placeholder copy for most projects, so the
-  // search snippet is built from the project's facts instead.
-  const description = `${project.title}: ${project.type.toLowerCase()} built by Prasanth Associates in ${project.location}. Photos and project details.`;
+  const description = `${project.title}: ${project.type.toLowerCase()} by Prasanth Associates${project.location ? ` in ${project.location}` : ""}. Browse project photographs and discuss a similar build.`;
 
   return {
     title: project.title,
@@ -54,6 +53,21 @@ export default async function ProjectDetailPage({ params }: Props) {
   if (!project) {
     notFound();
   }
+
+  const facts = [
+    { label: "Project type", value: project.type },
+    { label: "Status", value: project.status === "completed" ? "Completed" : "Ongoing" },
+    { label: "Client", value: project.client },
+    { label: "Built-up area", value: project.area },
+    { label: "Duration", value: project.duration },
+    { label: "Completion", value: project.year },
+  ].filter((fact) => fact.value);
+  const story = [
+    { title: "The Challenge", text: project.challenge },
+    { title: "Design Approach", text: project.designApproach },
+    { title: "Construction & Engineering", text: project.constructionMethod },
+    { title: "The Result", text: project.result },
+  ].filter((section) => section.text);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -89,10 +103,9 @@ export default async function ProjectDetailPage({ params }: Props) {
               <span className="text-sm font-semibold tracking-wider uppercase text-gold">
                 {project.type}
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-concrete-lighter" />
-              <span className="text-sm font-medium text-concrete-lighter">
-                {project.location}
-              </span>
+              {project.location && (
+                <span className="text-sm font-medium text-concrete-lighter">{project.location}</span>
+              )}
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4 drop-shadow-md">
               {project.title}
@@ -101,54 +114,37 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Project Overview Bar */}
       <section className="bg-linen text-charcoal border-y border-border py-8">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 divide-x-0 md:divide-x divide-border">
-            <div className="px-4">
-              <p className="text-xs text-concrete uppercase tracking-wider mb-1 font-semibold">Client</p>
-              <p className="font-medium text-charcoal">{project.client}</p>
-            </div>
-            <div className="px-4">
-              <p className="text-xs text-concrete uppercase tracking-wider mb-1 font-semibold">Built-up Area</p>
-              <p className="font-medium text-charcoal">{project.area}</p>
-            </div>
-            <div className="px-4">
-              <p className="text-xs text-concrete uppercase tracking-wider mb-1 font-semibold">Duration</p>
-              <p className="font-medium text-charcoal">{project.duration}</p>
-            </div>
-            <div className="px-4">
-              <p className="text-xs text-concrete uppercase tracking-wider mb-1 font-semibold">Completion</p>
-              <p className="font-medium text-charcoal">{project.year}</p>
-            </div>
-          </div>
+          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-concrete">
+            <Link href="/" className="underline">Home</Link>
+            {" / "}<Link href="/projects" className="underline">Projects</Link>
+            {" / "}<span aria-current="page">{project.title}</span>
+          </nav>
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="text-xs text-concrete uppercase tracking-wider mb-1 font-semibold">{fact.label}</dt>
+                <dd className="font-medium text-charcoal">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* Project Story */}
       <section className="section bg-background">
         <div className="container max-w-4xl">
           <div className="space-y-16">
-            <ScrollReveal>
-              <h2 className="font-heading text-3xl text-charcoal mb-6 font-semibold">The Challenge</h2>
-              <p className="text-lg text-concrete leading-relaxed">
-                {project.challenge}
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={100}>
-              <h2 className="font-heading text-3xl text-charcoal mb-6 font-semibold">Design Approach</h2>
-              <p className="text-lg text-concrete leading-relaxed">
-                {project.designApproach}
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={200}>
-              <h2 className="font-heading text-3xl text-charcoal mb-6 font-semibold">Construction & Engineering</h2>
-              <p className="text-lg text-concrete leading-relaxed">
-                {project.constructionMethod}
-              </p>
-            </ScrollReveal>
+            <div>
+              <h2 className="font-heading text-3xl text-charcoal mb-6 font-semibold">Project Overview</h2>
+              <p className="text-lg text-concrete leading-relaxed">{project.shortDescription}</p>
+            </div>
+            {story.map((section) => (
+              <ScrollReveal key={section.title}>
+                <h2 className="font-heading text-3xl text-charcoal mb-6 font-semibold">{section.title}</h2>
+                <p className="text-lg text-concrete leading-relaxed">{section.text}</p>
+              </ScrollReveal>
+            ))}
 
             {/* Gallery */}
             {project.galleryImages.length > 0 && (
@@ -169,14 +165,9 @@ export default async function ProjectDetailPage({ params }: Props) {
               </ScrollReveal>
             )}
 
-            <ScrollReveal>
-              <h2 className="font-heading text-3xl text-charcoal mb-6 font-semibold">The Result</h2>
-              <div className="p-8 bg-surface border-l-4 border-gold shadow-sm">
-                <p className="text-lg text-charcoal font-medium leading-relaxed italic">
-                  {project.result}
-                </p>
-              </div>
-            </ScrollReveal>
+            <Link href="/projects" className="inline-block font-semibold text-gold-dark underline underline-offset-4">
+              Explore all construction projects
+            </Link>
           </div>
         </div>
       </section>

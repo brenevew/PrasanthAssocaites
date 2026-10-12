@@ -1,8 +1,10 @@
 import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
+import { servicePages } from "@/data/servicePages";
+import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://prasanthassociates.com";
+  const baseUrl = SITE_URL;
 
   // Core static routes
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -86,5 +88,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...projectRoutes];
+  const serviceRoutes: MetadataRoute.Sitemap = servicePages.map((page) => ({
+    url: `${baseUrl}/services/${page.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.9,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes];
 }

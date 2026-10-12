@@ -532,9 +532,14 @@
 
    /* Scroll Reveal */
    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+   }
+
+   .reveal.reveal-pending {
       opacity: 0;
       transform: translateY(22px);
-      transition: opacity var(--transition-slow), transform var(--transition-slow);
    }
 
    .reveal.revealed {
@@ -549,7 +554,7 @@
    .reveal-delay-5 { transition-delay: 400ms; }
 
    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal, .reveal.reveal-pending { opacity: 1; transform: none; transition: none; }
    }
 
    /* Running Testimonial Cards (Marquee) */

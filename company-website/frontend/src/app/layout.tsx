@@ -7,6 +7,7 @@ import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import { company } from "@/data/company";
 import { SITE_URL, OG_IMAGE, pageOpenGraph, ORG_ID, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { services } from "@/data/services";
+import { serviceHref } from "@/data/serviceLinks";
 import { serviceCategories } from "@/data/serviceCategories";
 
 const inter = Inter({
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
   openGraph: pageOpenGraph("/", `${company.name} | Construction Company in Coimbatore`, company.description),
   twitter: {
     card: "summary_large_image",
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION?.trim() || undefined,
   },
 };
 
@@ -121,7 +125,7 @@ const organizationSchema = {
                 "@type": "Service",
                 name: s.title,
                 description: s.shortDescription,
-                url: `${siteUrl}/services#${s.slug}`,
+                url: `${siteUrl}${serviceHref(s.slug)}`,
               },
             })),
         })),

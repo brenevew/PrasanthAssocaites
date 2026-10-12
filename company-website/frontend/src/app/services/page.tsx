@@ -1,20 +1,31 @@
 import { Metadata } from "next";
 import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
 import { services } from "@/data/services";
+import { serviceHref } from "@/data/serviceLinks";
 import JsonLd from "@/components/seo/JsonLd";
 import ServicesPageClient from "./ServicesPageClient";
 
 export const metadata: Metadata = {
-  title: { absolute: "Construction Services in Coimbatore | Prasanth Associates" },
+  title: { absolute: "Services in Coimbatore & the Nilgiris | Prasanth Associates" },
   description:
-    "Construction and design in Coimbatore: homes, villas, commercial buildings, factories, architecture, interiors, valuation reports and landscaping.",
+    "Construction and design in Coimbatore and the Nilgiris: houses, villas, commercial buildings, factories, house plans, approvals, interiors and valuations.",
+  keywords: [
+    "construction services in Coimbatore",
+    "construction company in Coimbatore",
+    "architects in Coimbatore",
+    "interior designers in Coimbatore",
+    "building plan approval Coimbatore",
+    "property valuers in Coimbatore",
+    "structural engineers in Coimbatore",
+    "PEB shed contractors in Coimbatore",
+  ],
   alternates: {
     canonical: `${SITE_URL}/services`,
   },
   openGraph: pageOpenGraph(
     "/services",
     "Construction & Design Services in Coimbatore | Prasanth Associates",
-    "Construction and design in Coimbatore: homes, villas, commercial buildings, factories, architecture, interiors, valuation reports and landscaping."
+    "Construction and design in Coimbatore and the Nilgiris: houses, villas, commercial buildings, factories, house plans, approvals, interiors and valuations."
   ),
 };
 
@@ -35,7 +46,7 @@ const servicesSchema = {
           "@id": `${SITE_URL}/services#${service.slug}`,
           name: service.title,
           description: service.shortDescription,
-          url: `${SITE_URL}/services#${service.slug}`,
+          url: `${SITE_URL}${serviceHref(service.slug)}`,
           provider: { "@id": ORG_ID },
           areaServed: [
             { "@type": "City", name: "Coimbatore" },

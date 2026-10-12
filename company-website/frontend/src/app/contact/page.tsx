@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "Contact Us, Coimbatore & Gudalur Offices",
   description:
     "Call, email or visit our offices in Gandhipuram, Coimbatore and Gudalur, The Nilgiris. Free consultation for construction and design projects.",
+  keywords: [
+    "Prasanth Associates contact",
+    "construction company Gandhipuram Coimbatore",
+    "builders office Coimbatore",
+    "building contractors Gudalur Nilgiris",
+  ],
   alternates: {
     canonical: `${SITE_URL}/contact`,
   },

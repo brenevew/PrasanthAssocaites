@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     "house construction company Coimbatore",
     "turnkey builders Coimbatore",
     "residential construction Coimbatore Gandhipuram",
+    "home builders in Coimbatore",
+    "house construction in Kovai",
+    "construction company Gandhipuram",
   ],
   alternates: {
     canonical: `${SITE_URL}/locations/coimbatore`,
@@ -46,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export default function CoimbatoreLocationPage() {
-  const canonicalUrl = "https://prasanthassociates.com/locations/coimbatore";
+  const canonicalUrl = `${SITE_URL}/locations/coimbatore`;
   const coimbatoreOffice = company.offices.find((o) => o.label === "Coimbatore") || company.offices[0];
 
   const coimbatoreNeighborhoods = [
@@ -66,7 +69,7 @@ export default function CoimbatoreLocationPage() {
         // Same entity as the site-wide organisation; this page adds local detail.
         "@id": ORG_ID,
         name: company.name,
-        image: "https://prasanthassociates.com/images/hero/hero-main.webp",
+        image: `${SITE_URL}/images/hero/hero-main.webp`,
         telephone: coimbatoreOffice.phone,
         email: coimbatoreOffice.email,
         url: canonicalUrl,
@@ -106,13 +109,13 @@ export default function CoimbatoreLocationPage() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://prasanthassociates.com",
+            item: `${SITE_URL}`,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Locations",
-            item: "https://prasanthassociates.com/contact",
+            item: `${SITE_URL}/contact`,
           },
           {
             "@type": "ListItem",

@@ -8,7 +8,8 @@
  * Checks: HTTP status, title/description presence, length and duplicates,
  * canonical and og:url, H1 count, image alt text, JSON-LD validity, thin
  * content, noindex, broken internal links, orphan pages (in the sitemap but
- * linked from nowhere) and linked pages missing from the sitemap.
+ * linked from nowhere), linked pages missing from the sitemap, and dedicated
+ * sitemap pages for every service in the services catalog.
  *
  * Read-only. Exits 1 when any error is found, so it can gate a deploy.
  */
@@ -23,7 +24,7 @@ const add = (level, page, message) => issues.push({ level, page, message });
 
 async function get(url) {
   try {
-    const res = await fetch(url, { headers: { "User-Agent": UA }, redirect: "manual" });
+    const res = await fetch(url, { headers: { "User-Agent": UA }, redirect: "manual", signal: AbortSignal.timeout(15000) });
     return { status: res.status, location: res.headers.get("location"), body: res.status === 200 ? await res.text() : "" };
   } catch (e) {
     return { status: 0, body: "", error: String(e) };
@@ -37,17 +38,30 @@ const metaContent = (html, key, val) => {
   for (const tag of html.match(/<meta\b[^>]*>/gi) || []) if (attr(tag, key) === val) return decode(attr(tag, "content") || "");
   return null;
 };
-/** Map a sitemap URL (always the live domain) onto the origin being audited. */
-const toAudit = (url) => url.replace(LIVE_ORIGIN, base);
+/** Check the requested server even when its sitemap uses the production origin. */
+const toAudit = (url) => `${base}${new URL(url).pathname}${new URL(url).search}`;
 const pathOf = (url) => new URL(url).pathname.replace(/\/$/, "") || "/";
+const samePage = (actual, expected) => {
+  try {
+    const a = new URL(actual);
+    const b = new URL(expected);
+    return a.origin === b.origin && pathOf(actual) === pathOf(expected) && a.search === b.search && !a.hash;
+  } catch {
+    return false;
+  }
+};
 
 const sitemap = await get(`${base}/sitemap.xml`);
 if (sitemap.status !== 200) {
-  console.error(`Could not fetch ${base}/sitemap.xml (HTTP ${sitemap.status})`);
+  console.error(`Could not fetch ${base}/sitemap.xml (HTTP ${sitemap.status})${sitemap.error ? `: ${sitemap.error}` : ""}`);
   process.exit(1);
 }
 const sitemapUrls = [...sitemap.body.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 const sitemapPaths = new Set(sitemapUrls.map(pathOf));
+if (!sitemapUrls.length) {
+  console.error("The sitemap contains no page URLs.");
+  process.exit(1);
+}
 
 const robots = await get(`${base}/robots.txt`);
 if (robots.status !== 200) add("error", "/robots.txt", `robots.txt returned HTTP ${robots.status}`);
@@ -57,6 +71,7 @@ const titles = new Map();
 const descriptions = new Map();
 const inbound = new Map(); // path -> Set of pages linking to it
 const linked = new Set();
+let catalogServiceCount = 0;
 
 for (const url of sitemapUrls) {
   const page = pathOf(url);
@@ -87,11 +102,11 @@ for (const url of sitemapUrls) {
   const canonicalTag = (head.match(/<link\b[^>]*rel="canonical"[^>]*>/i) || [])[0];
   const canonical = canonicalTag && attr(canonicalTag, "href");
   if (!canonical) add("error", page, "missing canonical tag");
-  else if (pathOf(canonical) !== page) add("error", page, `canonical points elsewhere: ${canonical}`);
+  else if (!samePage(canonical, url)) add("error", page, `canonical does not match sitemap URL: ${canonical}`);
 
   const ogUrl = metaContent(head, "property", "og:url");
   if (!ogUrl) add("warn", page, "missing og:url");
-  else if (pathOf(ogUrl) !== page) add("error", page, `og:url points elsewhere: ${ogUrl}`);
+  else if (!samePage(ogUrl, url)) add("error", page, `og:url does not match sitemap URL: ${ogUrl}`);
   if (!metaContent(head, "property", "og:image")) add("warn", page, "missing og:image");
 
   const robotsMeta = metaContent(head, "name", "robots");
@@ -113,7 +128,31 @@ for (const url of sitemapUrls) {
   if (ldBlocks.length === 0) add("warn", page, "no JSON-LD structured data");
   for (const [, json] of ldBlocks) {
     try {
-      JSON.parse(json);
+      const data = JSON.parse(json);
+      if (page === "/services") {
+        const catalog = (data["@graph"] || [data]).find((item) => item["@type"] === "ItemList");
+        if (catalog) {
+          const targets = new Set();
+          for (const entry of catalog.itemListElement || []) {
+            const service = entry.item;
+            if (service?.["@type"] !== "Service") continue;
+            catalogServiceCount++;
+            let target;
+            try { target = new URL(service.url); } catch {
+              add("error", page, `${service.name}: missing or invalid service URL`);
+              continue;
+            }
+            if (target.hash || target.search || pathOf(target.href) === "/services") {
+              add("error", page, `${service.name}: needs its own canonical service page, got ${service.url}`);
+            }
+            if (!sitemapUrls.some((url) => samePage(target.href, url))) {
+              add("error", page, `${service.name}: service URL is missing from the sitemap`);
+            }
+            if (targets.has(target.href)) add("error", page, `services share a landing page: ${target.href}`);
+            targets.add(target.href);
+          }
+        }
+      }
     } catch {
       add("error", page, "invalid JSON-LD block");
     }
@@ -124,8 +163,8 @@ for (const url of sitemapUrls) {
     .replace(/<style[\s\S]*?<\/style>/gi, " ")
     .replace(/<[^>]+>/g, " ");
   const words = visible.split(/\s+/).filter((w) => /[a-z]/i.test(w)).length;
-  if (words < THIN_WORDS) add("warn", page, `thin content: ~${words} words`);
-  if (/to be added|\[PLACEHOLDER\]/i.test(visible)) add("warn", page, "visible placeholder text on page");
+  if (words < THIN_WORDS) add("warn", page, `short page: ~${words} words; review usefulness (not a minimum word requirement)`);
+  if (/to be added|to be confirmed|\[PLACEHOLDER\]/i.test(visible)) add("warn", page, "visible placeholder text on page");
 
   for (const [, href] of html.matchAll(/<a\b[^>]*href="([^"#?]*)/gi)) {
     let target;
@@ -137,6 +176,10 @@ for (const url of sitemapUrls) {
     linked.add(target);
     if (target !== page) inbound.set(target, (inbound.get(target) || new Set()).add(page));
   }
+}
+
+if (sitemapPaths.has("/services") && catalogServiceCount === 0) {
+  add("error", "/services", "no services found in the structured-data catalog");
 }
 
 for (const [title, pages] of titles) if (pages.length > 1) add("error", pages.join(", "), `duplicate title: "${title}"`);
@@ -156,6 +199,7 @@ const errors = issues.filter((i) => i.level === "error");
 const warnings = issues.filter((i) => i.level === "warn");
 console.log(`# SEO audit: ${base}\n`);
 console.log(`Pages in sitemap: ${sitemapUrls.length} | Errors: ${errors.length} | Warnings: ${warnings.length}\n`);
+console.log(`Services checked for dedicated sitemap pages: ${catalogServiceCount}\n`);
 for (const [label, list] of [["Errors", errors], ["Warnings", warnings]]) {
   if (!list.length) continue;
   console.log(`## ${label}\n`);

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
+import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
+import { serviceHref } from "@/data/serviceLinks";
 import Link from "next/link";
 import ContactForm from "@/components/ui/ContactForm";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -19,7 +20,7 @@ import {
   Landmark,
 } from "lucide-react";
 
-const CANONICAL_URL = "https://prasanthassociates.com/services/turnkey-design-build-coimbatore";
+const CANONICAL_URL = `${SITE_URL}/services/turnkey-design-build-coimbatore`;
 
 export const metadata: Metadata = {
   title: "Turnkey Design & Build, Coimbatore",
@@ -129,6 +130,10 @@ const neighborhoodNotes = [
 
 const faqs = [
   {
+    q: "What does turnkey mean? Can one team handle my house plan and construction?",
+    a: "Turnkey design and build brings the agreed design and construction work under one team, from the initial brief through handover. For a home in Coimbatore or Kovai, share your plot details and room requirements, then confirm which drawings, building work, finishes and other items are included in your contract.",
+  },
+  {
     q: "What is the realistic timeline for a turnkey design and build project in Coimbatore?",
     a: "For an independent residential home (G+1 to G+2, roughly 2,000–3,500 sq. ft.), design and approval typically take 6–8 weeks and civil-to-handover construction runs 8–11 months, depending on approval turnaround from CCMC or the local DTCP/LPA office. Commercial and industrial builds run longer due to structural load requirements and fire-safety NOC dependencies - we issue a project-specific schedule during the feasibility stage rather than quoting a generic figure.",
   },
@@ -160,6 +165,14 @@ const faqs = [
     q: "Can the design be modified after construction has started?",
     a: "Structural elements (footing, column positions, beam spans) are locked once DTCP/LPA/CCMC approval is granted, since any change requires a revised sanction. Non-structural elements, internal partitions, finishes, MEP fixtures, can be revised through a documented change order without restarting the approval process.",
   },
+  {
+    q: "Key handover house construction in Coimbatore: what is included?",
+    a: "Key handover means one contract covers everything until you move in: plan and approvals, foundation to roof, electrical and plumbing, interiors such as the modular kitchen and wardrobes, painting and final cleaning. The exact list is written into your itemized BoQ.",
+  },
+  {
+    q: "Full house construction with interiors by one contractor: is it possible?",
+    a: "Yes. That is what turnkey means here. One team handles design, approvals, construction and interiors, so you do not have to manage separate masons, carpenters, electricians and plumbers.",
+  },
 ];
 
 const localSchema = {
@@ -167,26 +180,14 @@ const localSchema = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${CANONICAL_URL}#service`,
+      "@id": `${SITE_URL}/services#turnkey-construction`,
       name: "Turnkey Design & Build - Coimbatore",
       serviceType: "Turnkey Design and Construction",
-      provider: {
-        "@type": "GeneralContractor",
-        name: "Prasanth Associates",
-        telephone: "+919486038761",
-        email: "info@prasanthassociates.com",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "Second Floor, Sowma Complex, Gandhipuram, Sathy Road",
-          addressLocality: "Coimbatore",
-          addressRegion: "Tamil Nadu",
-          postalCode: "641012",
-          addressCountry: "IN",
-        },
-      },
+      provider: { "@id": ORG_ID },
       areaServed: {
         "@type": "City",
         name: "Coimbatore",
+        alternateName: "Kovai",
       },
       description:
         "Single-contract turnkey design and build service covering soil investigation, DTCP/LPA/CCMC approvals, structural and MEP design, civil execution, and interior handover in Coimbatore.",
@@ -208,8 +209,8 @@ const localSchema = {
       "@type": "BreadcrumbList",
       "@id": `${CANONICAL_URL}#breadcrumb`,
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://prasanthassociates.com" },
-        { "@type": "ListItem", position: 2, name: "Services", item: "https://prasanthassociates.com/services" },
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}` },
+        { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
         { "@type": "ListItem", position: 3, name: "Turnkey Design & Build - Coimbatore", item: CANONICAL_URL },
       ],
     },
@@ -435,7 +436,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
       </section>
 
       {/* ── 6. FAQ ───────────────────────────────────────────────────── */}
-      <section className="py-14 md:py-20 bg-linen border-y border-border">
+      <section id="faq" className="py-14 md:py-20 bg-linen border-y border-border scroll-mt-32">
         <div className="container max-w-3xl space-y-8">
           <div className="text-center">
             <span className="badge-gold mb-2 inline-flex">Frequently Asked Questions</span>
@@ -461,6 +462,18 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-linen border-y border-border">
+        <div className="container max-w-4xl">
+          <h2 className="font-heading text-3xl font-semibold text-charcoal mb-5">Need help with one part of the project?</h2>
+          <p className="text-concrete leading-relaxed">
+            Explore our <Link href={serviceHref("architectural-designs")} className="text-gold-dark underline">house plans</Link>,{" "}
+            <Link href={serviceHref("detailed-estimation-costing")} className="text-gold-dark underline">building estimates and BOQ</Link>,{" "}
+            <Link href={serviceHref("structural-stability-certificate")} className="text-gold-dark underline">structural stability certificates</Link> and{" "}
+            <Link href={serviceHref("bank-valuation-report")} className="text-gold-dark underline">bank property valuation reports</Link> in Coimbatore.
+          </p>
         </div>
       </section>
 

@@ -10,16 +10,22 @@ import { qualityCapabilities } from "@/data/quality";
 import { ShieldCheck, ArrowRight, Upload, Compass, Send, CheckCircle2, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: { absolute: "About Prasanth Associates | Engineers & Builders, Coimbatore" },
+  title: { absolute: "About Prasanth Associates | Builders, Coimbatore & Nilgiris" },
   description:
-    "Prasanth Associates is a Coimbatore construction and design firm run by engineers. See how we work and our 3-step design process.",
+    "Prasanth Associates is a construction and design firm run by engineers, with offices in Coimbatore and Gudalur, The Nilgiris. See how we work.",
+  keywords: [
+    "Prasanth Associates Coimbatore",
+    "civil engineers in Coimbatore",
+    "construction and architecture firm Coimbatore",
+    "builders in Gandhipuram Coimbatore",
+  ],
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: pageOpenGraph(
     "/about",
     "About Us, Engineers & Builders in Coimbatore | Prasanth Associates",
-    "Prasanth Associates is a Coimbatore construction and design firm run by engineers. See how we work and our 3-step design process."
+    "Prasanth Associates is a construction and design firm run by engineers, with offices in Coimbatore and Gudalur, The Nilgiris. See how we work."
   ),
 };
 
