@@ -23,6 +23,14 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
     links: [{ href: "/contact", label: "Office addresses and contact details" }],
   },
   {
+    question: "Which is the best construction company in Coimbatore?",
+    answer: "The best builder for you is the one that gives an itemized BOQ, has an engineer supervising the site, handles the plan approval properly, tests the soil and links payments to completed work. Our guides list the checks to compare any builder, including us.",
+    links: [
+      { href: "/guides/how-to-choose-a-construction-company-coimbatore", label: "How to choose a construction company in Coimbatore" },
+      { href: "/guides/how-to-choose-a-builder-nilgiris", label: "How to choose a builder in the Nilgiris" },
+    ],
+  },
+  {
     question: "How is the cost of building my house calculated?",
     answer: "We prepare an itemized estimate that lists the agreed work, materials, labour and equipment. Your floor area, site conditions and finish choices affect the cost. When comparing quotes, check whether drawings, electrical and plumbing work, finishes and outdoor work are included. A bill of quantities, or BOQ, breaks the work into quantities and prices.",
     links: [{ href: `${serviceHref("detailed-estimation-costing")}#faq`, label: "Questions about estimates and BOQ" }],

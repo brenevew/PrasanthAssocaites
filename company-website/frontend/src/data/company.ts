@@ -10,6 +10,12 @@ export interface OfficeLocation {
   email: string;
   mapEmbedUrl: string;
   mapLink: string;
+  /**
+   * Where /review/<office> sends clients to leave a Google review. Best: paste
+   * the link from Business Profile > "Ask for reviews" (it opens the review box
+   * directly). Until then it opens the listing, where "Write a review" is one tap.
+   */
+  reviewLink: string;
 }
 
 export interface CompanyInfo {
@@ -40,6 +46,8 @@ export interface CompanyInfo {
     youtube?: string;
   };
   mapEmbedUrl: string;
+  /** Combined Google Business Profile reviews (both offices). Update as they grow. */
+  googleReviews: { rating: number; count: number };
   stats: {
     label: string;
     value: string;
@@ -82,6 +90,7 @@ export const company: CompanyInfo = {
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2737!2d76.9662768!3d11.017756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8590064684247%3A0xf6131f07c6935a32!2sPrasanth%20Associates!5e0!3m2!1sen!2sin!4v1700000000000",
       mapLink:
         "https://www.google.com/maps/place/Prasanth+Associates/@11.017756,76.9688517,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba8590064684247:0xf6131f07c6935a32!8m2!3d11.017756!4d76.9688517!16s%2Fg%2F11xgkf0822",
+      reviewLink: "https://www.google.com/maps?cid=17731550276144552498",
     },
     {
       label: "Gudalur",
@@ -97,6 +106,7 @@ export const company: CompanyInfo = {
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3911.3789!2d76.491225!3d11.5001001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8a722ff0c8105%3A0x1f66b5d25ee1e613!2sPrasanth%20Construction!5e0!3m2!1sen!2sin!4v1700000000000",
       mapLink:
         "https://www.google.com/maps/place/Prasanth+Construction/@11.5001001,76.4937999,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba8a722ff0c8105:0x1f66b5d25ee1e613!8m2!3d11.5001001!4d76.4937999!16s%2Fg%2F11clvfbk09",
+      reviewLink: "https://www.google.com/maps?cid=2262695777939875347",
     },
   ],
   hours: {
@@ -115,6 +125,8 @@ export const company: CompanyInfo = {
   },
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2737!2d76.9662768!3d11.017756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8590064684247%3A0xf6131f07c6935a32!2sPrasanth%20Associates!5e0!3m2!1sen!2sin!4v1700000000000", // [PLACEHOLDER]
+  // Coimbatore 23 + Gudalur 42 reviews, both 4.9★ (confirmed 7 Oct 2026).
+  googleReviews: { rating: 4.9, count: 65 },
   stats: [
     {
       label: "Years Experience",

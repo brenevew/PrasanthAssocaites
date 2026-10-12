@@ -157,9 +157,9 @@ export default function Home() {
                 />
                 {/* Floating Neu-Glass badge */}
                 <div className="absolute -bottom-5 -right-5 z-20 neu-glass rounded-2xl px-5 py-4">
-                  <p className="text-xs text-concrete font-medium mb-0.5">Trust Score</p>
-                  <p className="text-2xl font-heading font-bold text-charcoal">4.9 ★</p>
-                  <p className="text-[10px] text-concrete-light">From 200+ clients</p>
+                  <p className="text-xs text-concrete font-medium mb-0.5">Google Rating</p>
+                  <p className="text-2xl font-heading font-bold text-charcoal">{company.googleReviews.rating} ★</p>
+                  <p className="text-[10px] text-concrete-light">{company.googleReviews.count} Google reviews</p>
                 </div>
               </div>
             </ScrollReveal>

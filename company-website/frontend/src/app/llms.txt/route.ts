@@ -72,6 +72,8 @@ ${serviceSections}
 - [House construction in the Nilgiris](${SITE_URL}/services/house-construction-nilgiris)
 - [Villa and estate bungalow construction in the Nilgiris](${SITE_URL}/services/villa-construction-nilgiris)
 - [House plans and building approval in the Nilgiris](${SITE_URL}/services/building-plan-approval-nilgiris)
+- [How to choose a construction company in Coimbatore](${SITE_URL}/guides/how-to-choose-a-construction-company-coimbatore)
+- [How to choose a builder in the Nilgiris](${SITE_URL}/guides/how-to-choose-a-builder-nilgiris)
 - [Property and investment advisory](${SITE_URL}/property-investment)
 - [Projects](${SITE_URL}/projects)
 - [Building planner](${SITE_URL}/plan-home)

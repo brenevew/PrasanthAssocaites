@@ -2,10 +2,23 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { homeFaqQuestions } from "@/data/homeFaqs";
 import SectionHeading from "@/components/ui/SectionHeading";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
 export default function HomeFaq() {
   return (
     <section id="faq" aria-label="Frequently asked questions" className="section bg-linen border-b border-border scroll-mt-32">
+      {/* Mirrors the visible questions below, so answer engines can quote them. */}
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": `${SITE_URL}/#faq`,
+        mainEntity: homeFaqQuestions.map(({ question, answer }) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer },
+        })),
+      }} />
       <div className="mx-auto w-full px-4 sm:px-6 lg:w-[75%] lg:px-0">
         <SectionHeading
           badge="FAQs"
