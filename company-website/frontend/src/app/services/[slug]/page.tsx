@@ -11,6 +11,8 @@ import { ORG_ID, GUDALUR_BRANCH_ID, SITE_URL, pageOpenGraph } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Button from "@/components/ui/Button";
 import ProjectCard from "@/components/ui/ProjectCard";
+import DesignGallery from "@/components/ui/DesignGallery";
+import { designGalleryImages } from "@/data/designGallery";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -135,6 +137,38 @@ export default async function ServicePage({ params }: Props) {
               <p className="text-concrete leading-relaxed">{section.text}</p>
             </div>
           ))}
+          {page.scopeItems && (
+            <div>
+              <h2 className="font-heading text-3xl font-semibold text-charcoal mb-6">What we design</h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {page.scopeItems.map((item) => (
+                  <li key={item.title} className="rounded-2xl border border-border bg-white p-5">
+                    <h3 className="font-heading text-lg font-bold text-charcoal mb-1">{item.title}</h3>
+                    <p className="text-concrete text-sm leading-relaxed">{item.text}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {page.process && (
+            <div>
+              <h2 className="font-heading text-3xl font-semibold text-charcoal mb-6">How it works</h2>
+              <ol className="space-y-5">
+                {page.process.map((step, index) => (
+                  <li key={step.title} className="flex gap-4">
+                    <span className="w-8 h-8 rounded-full bg-linen border border-border flex items-center justify-center text-sm font-bold text-gold-dark flex-shrink-0">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-lg font-bold text-charcoal">{step.title}</h3>
+                      <p className="text-concrete leading-relaxed">{step.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              {page.processNote && <p className="text-concrete leading-relaxed mt-6">{page.processNote}</p>}
+            </div>
+          )}
           <div>
             <h2 className="font-heading text-3xl font-semibold text-charcoal mb-4">
               {isNilgiris
@@ -179,6 +213,18 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {page.designGallery === "interiors" && (
+        <section className="section bg-linen">
+          <div className="container">
+            <h2 className="font-heading text-3xl font-semibold text-charcoal mb-3">Interior work</h2>
+            <p className="text-concrete mb-8">
+              Kitchens, living spaces, bedrooms, bathrooms and a café interior from our design portfolio.
+            </p>
+            <DesignGallery images={designGalleryImages.filter((img) => !img.src.includes("landscape"))} />
+          </div>
+        </section>
+      )}
 
       {relatedProjects.length > 0 && (
         <section className="section bg-linen">

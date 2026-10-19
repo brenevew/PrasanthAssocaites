@@ -35,6 +35,10 @@ export const serviceSearchTerms: Partial<
       "independent house construction in Coimbatore",
       "house construction cost in Coimbatore",
       "construction company in Coimbatore",
+      "home builders in Coimbatore for individual houses",
+      "duplex house construction in Coimbatore",
+      "house construction cost per sq ft in Coimbatore",
+      "CCMC building plan approval",
     ],
     aliases: ["house construction", "home construction", "building contractor", "house builders", "civil contractor", "independent house construction", "duplex house construction"],
     questions: [

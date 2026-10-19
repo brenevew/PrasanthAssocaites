@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { designGalleryImages } from "@/data/designGallery";
+import { designGalleryImages, type DesignGalleryImage } from "@/data/designGallery";
 import { blurProps } from "@/data/imageBlur";
 import Lightbox from "./Lightbox";
 
@@ -11,14 +11,14 @@ import Lightbox from "./Lightbox";
  * named project — kitchens, bathrooms, landscaping, finishing details.
  * Clicking a photo opens it maximized; nothing here navigates away.
  */
-export default function DesignGallery() {
+export default function DesignGallery({ images = designGalleryImages }: { images?: DesignGalleryImage[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const lightboxImages = designGalleryImages.map((img) => ({ src: img.src, caption: img.alt }));
+  const lightboxImages = images.map((img) => ({ src: img.src, caption: img.alt }));
 
   return (
     <>
       <div className="columns-2 sm:columns-3 lg:columns-4 gap-4 [column-fill:_balance]">
-        {designGalleryImages.map((img, index) => (
+        {images.map((img, index) => (
           <button
             key={img.src}
             type="button"

@@ -20,6 +20,13 @@ interface ServicePage {
   intro: string;
   projectCategory?: ProjectCategory;
   sections: { title: string; text: string }[];
+  /** "What we cover" cards, e.g. the rooms an interior service includes. */
+  scopeItems?: { title: string; text: string }[];
+  /** Ordered steps of how the service is delivered. */
+  process?: { title: string; text: string }[];
+  processNote?: string;
+  /** Show the design gallery photos whose file path matches this filter. */
+  designGallery?: "interiors";
   questions: { question: string; answer: string }[];
   /** Standard search phrases plus other names for the service (meta + schema only). */
   keywords?: string[];
@@ -39,12 +46,28 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
       { title: "Plan the home around your plot", text: "Share the plot dimensions, road access, preferred number of floors and room requirements. Include parking, stairs, daylight, ventilation and any Vastu preferences in the brief. The building planner helps you collect these requirements for the team to review; it does not replace a site assessment or approved drawings." },
       { title: "Understand the construction scope", text: "Discuss the foundation, structure, waterproofing, electrical and plumbing work alongside finishes. Record material specifications and responsibilities in the project scope. If you already have drawings, send them with the enquiry so the discussion can focus on construction requirements and any information still needed." },
       { title: "Compare the complete budget", text: "A square-foot rate is only useful when the included work is clear. Plot conditions, floor area, structural requirements, finish selections and external works affect the scope. Ask for an itemized bill of quantities and clarify how design fees, approvals, utility connections and later changes will be handled before agreeing the contract." },
+      { title: "Homes we build in Coimbatore", text: "We build 2 BHK and 3 BHK independent houses, duplex homes, larger family houses and villas, designed to Vastu where you want it, as well as renovation and rebuilding of older homes. Every house is planned for its own plot, budget and family rather than adapted from a standard plan. Our completed work in Coimbatore includes a two-storey house in Perur, shown in our project portfolio, and projects in Gandhipuram, where our office is." },
+      { title: "Areas we cover across Coimbatore", text: "From our office on Sathy Road, Gandhipuram, we take up house construction anywhere in Coimbatore (Kovai), including RS Puram, Saibaba Colony, Race Course, Peelamedu, Avinashi Road, Saravanampatti, Kalapatti, Ganapathy, Thudiyalur, Vadavalli, Perur, Singanallur, Podanur and Sundarapuram. Send your plot location and our engineers will review it and arrange a site visit." },
+      { title: "Design and drawings for your house", text: "Your house is designed before it is built: a site plan and architectural floor plans for every floor, 3D elevation views, structural drawings with footing, column, beam and slab schedules, electrical and plumbing layouts, and the approval drawings for sanction. Interior designs for the kitchen, wardrobes and living spaces can be added. The drawings are revised with you before submission, so the plan is settled before construction starts." },
+      { title: "Construction stages, from soil test to handover", text: "Each house follows the same sequence: site feasibility and a soil test (SBC and bore log), design and drawings, an itemized BoQ and contract, approval filing, then excavation, foundation and structure, with cube test reports for the concrete. Masonry, electrical and plumbing work follow, then flooring, doors, windows and painting. The house is handed over after a joint snag-list walkthrough, with as-built drawings and warranty documents. An engineer inspects each stage against a checklist before the next one starts." },
+      { title: "Materials and specification", text: "The structure uses Fe550D TMT steel and 53-grade cement, with footings designed from your soil test. Waterproofing is applied in layers on the roof slab, sunken bathrooms and foundation. Finishes include vitrified tiles, quality sanitary fittings and washable emulsion paint, and the house can be pre-piped for a rainwater percolation pit and rooftop solar. Every material grade, brand allowance and quantity is written line by line into your BoQ, so you can compare it with any other quote." },
+      { title: "Approvals in Coimbatore", text: "Which authority approves your plan depends on where the plot is. Plots within Coimbatore City Municipal Corporation limits go through CCMC's building plan sanction, while plots in surrounding panchayats and growth areas usually fall under a Local Planning Authority (LPA) or DTCP, each with its own setback and FSI rules. We check the jurisdiction first, prepare the approval drawings to suit it, and file and follow up the application until it is approved." },
+      { title: "Fixed price and milestone payments", text: "The itemized BoQ signed before construction fixes the price, specification and brands. The cost only changes if you ask for a change, such as a better finish or a different layout, and any change is written down and priced before the work is done. Payments are linked to construction milestones set out in the contract, so you pay as each stage is completed." },
     ],
     questions: [
       { question: "How much does it cost to build a house in Coimbatore?", answer: "The house construction cost depends on built-up area, number of floors, site conditions, materials and the agreed scope. Send your plot details and room requirements for a quote, and compare what each square-foot rate includes before choosing a builder." },
       { question: "Can I enquire before I have a floor plan?", answer: "Yes. Send your plot dimensions, room requirements and any sketches or reference images. You can use the building planner to organize the brief before requesting a quote." },
       { question: "What information helps with a construction quote?", answer: "Provide the site location, plot dimensions, proposed floors, approximate built-up area and preferred finishes. Existing drawings and site photographs help the team understand your requirements." },
       { question: "Can I include Vastu preferences?", answer: "Yes. Include your preferences in the initial brief so they can be considered alongside space planning, daylight and the plot layout." },
+      { question: "Can I see houses you have built in Coimbatore?", answer: "Yes. Our project portfolio includes a two-storey house in Perur, Coimbatore, with photographs taken during and after construction. Ask the team about other completed homes similar to the house you are planning." },
+      { question: "Do you handle building plan approval in Coimbatore?", answer: "Yes. We check whether your plot falls under CCMC, an LPA or DTCP, prepare the approval drawings to suit, and file and follow up the application until it is approved." },
+      { question: "Is the price fixed once construction starts?", answer: "Yes. The itemized BoQ signed before construction fixes the price and specification. The cost only changes if you request a change, and any change is priced and agreed before the work is done." },
+      { question: "How are payments made during house construction?", answer: "Payments are linked to construction milestones, such as foundation, roof slab and finishing, which are set out in the contract. You pay as each stage is completed." },
+      { question: "How is construction quality checked?", answer: "An engineer inspects each stage against a checklist before the next stage starts, and cube test reports are issued for the concrete. Before handover, the house is checked in a joint snag-list walkthrough." },
+      { question: "What warranty do you give on house construction?", answer: "Structural work, including the RCC frame, footings and substructure waterproofing, carries a workmanship warranty documented in the contract. Manufacturer warranties on fittings, electrical components and finishes are handed over to you at completion." },
+      { question: "What is not included in a per sq ft construction rate?", answer: "It varies between builders. Items often priced separately include the compound wall and gate, sump and septic tank, electricity connection, approval fees and a lift. Your BoQ from us lists each item, so you can see exactly what is and is not included." },
+      { question: "Can you build a duplex house or a villa in Coimbatore?", answer: "Yes. We build duplex homes and villas as well as independent houses. Villas have their own page, covering design features, finishes and external works." },
+      { question: "Can interiors be included with house construction?", answer: "Yes. Interiors such as the modular kitchen and wardrobes can be included in the same contract, so one team takes the house from plan to move-in. The BoQ lists exactly which interior items are included." },
     ],
   },
   {
@@ -355,8 +378,28 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
       {
         title: "Compare materials and the complete interior scope",
         text: "Joinery, hardware, lighting, surface finishes and installation details affect both the budget and the result. Ask for the scope to distinguish design, supply and execution. Discuss sample selections, electrical changes and the handover sequence before work begins, particularly if other construction trades are still on site."
+      },
+      {
+        title: "Plan the interiors while the house is being built",
+        text: "If we are also designing or building your house, the interior layout can be settled before the walls are plastered and the floors laid. Light points, switch positions, kitchen and bathroom plumbing, and ceiling heights for false ceilings are then placed for the furniture that will actually go there, instead of being moved later. The same team prepares the interior drawings and coordinates them with the electrical and plumbing drawings."
       }
     ],
+    scopeItems: [
+      { title: "Modular kitchens", text: "A practical work triangle, pull-out drawers, tall pantry units and countertops, planned around how you cook." },
+      { title: "Wardrobes & bedrooms", text: "Floor-to-ceiling wardrobes, walk-in closets and bedroom storage designed for what you need to keep." },
+      { title: "Living rooms & TV units", text: "TV display consoles, storage and furniture layouts for the way your family uses the room." },
+      { title: "False ceilings & lighting", text: "Cove lighting, track lights and lighting circuits planned together with the ceiling design." },
+      { title: "Bathrooms & vanities", text: "Vanity and mirror units and bathroom finishes chosen to suit daily use." },
+      { title: "Offices & cafés", text: "Commercial interiors planned around how staff and customers move through and use the space." },
+    ],
+    process: [
+      { title: "Brief", text: "Your storage needs, colours, how your family uses each room and the finish you want. Bring a floor plan and photographs of the space." },
+      { title: "3D views", text: "Room-by-room 3D views with realistic lighting and textures, shown alongside material samples, so you see the design before work starts." },
+      { title: "Drawings & material specifications", text: "Carpentry and execution drawings, hardware codes, material and colour specifications for every item." },
+      { title: "Execution", text: "Supply and installation to the agreed drawings and specifications, where your scope includes them, coordinated with any other trades still on site." },
+    ],
+    processNote: "The design pack, with 3D views, material specifications and carpentry drawings, typically takes 10 to 14 days once the brief is agreed. Execution time depends on the rooms, joinery quantities and materials, and is agreed with the scope.",
+    designGallery: "interiors",
     questions: [
       {
         question: "Do you design interiors for a 2 BHK or 3 BHK house?",
@@ -369,6 +412,22 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
       {
         question: "What is the cost of home interiors in Coimbatore?",
         answer: "The quote depends on the rooms, joinery quantities, materials, hardware, lighting and execution scope. Share a budget and priority list so the team can discuss appropriate options."
+      },
+      {
+        question: "Will I see the design before work starts?",
+        answer: "Yes. You get room-by-room 3D views with lighting and textures, alongside material samples, before the execution drawings are prepared and before any work begins."
+      },
+      {
+        question: "How long does interior design take?",
+        answer: "The design pack, with 3D views, material specifications and carpentry drawings, typically takes 10 to 14 days once the brief is agreed. Execution time depends on the rooms, joinery quantities and materials, and is agreed with the scope."
+      },
+      {
+        question: "Can you work with furniture I already have?",
+        answer: "Yes. Tell us which furniture you want to keep when you share the brief, and the layout and storage are planned around it."
+      },
+      {
+        question: "How do I get started with my home interiors?",
+        answer: "Send your floor plan, photographs of the space, the rooms you want included and your budget through the quote form or WhatsApp. If the house is still being built, send the construction drawings too, so the interiors can be coordinated with the electrical and plumbing work."
       }
     ]
   },
