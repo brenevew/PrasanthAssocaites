@@ -13,17 +13,21 @@ interface HomeFaqQuestion {
  */
 export const homeFaqQuestions: HomeFaqQuestion[] = [
   {
-    question: "What services do you offer in Coimbatore?",
-    answer: "We design and build houses, villas, commercial buildings and factory sheds. You can also come to us for house plans, interiors, renovation, home automation, engineering drawings, building estimates, valuation reports and property support. You can request a single service or discuss a complete project with the team.",
+    question: "What services do you offer?",
+    answer: "We prepare building plans and approval drawings, design houses and commercial buildings including 3D elevations, build houses, villas, commercial buildings and factory sheds, and design and install interiors. You can also come to us for renovation, home automation, engineering drawings, building estimates, valuation reports and property support. You can request a single service or discuss a complete project with the team.",
     links: [{ href: "/services", label: "Find the service you need" }],
   },
   {
-    question: "Do you work in Kovai and the Nilgiris?",
-    answer: "Our head office is in Gandhipuram, Coimbatore, also known as Kovai. Our Gudalur branch is on Ooty Main Road in the Nilgiris. Send the property address or map location and the work you need so the team can confirm coverage and discuss a site visit.",
-    links: [{ href: "/contact", label: "Office addresses and contact details" }],
+    question: "Where are your offices, and which areas do you cover?",
+    answer: "Our head office is in Gandhipuram, Coimbatore, also known as Kovai, and takes projects across Coimbatore. Our Gudalur branch is on Ooty Main Road in the Nilgiris and covers Ooty, Coonoor, Kotagiri and Gudalur. Send the property address or map location and the work you need so the team can confirm coverage and discuss a site visit.",
+    links: [
+      { href: "/locations/coimbatore", label: "Building in Coimbatore" },
+      { href: "/locations/nilgiris-ooty", label: "Building in Ooty and the Nilgiris" },
+      { href: "/contact", label: "Office addresses and contact details" },
+    ],
   },
   {
-    question: "Which is the best construction company in Coimbatore?",
+    question: "How should I choose a builder?",
     answer: "The best builder for you is the one that gives an itemized BOQ, has an engineer supervising the site, handles the plan approval properly, tests the soil and links payments to completed work. Our guides list the checks to compare any builder, including us.",
     links: [
       { href: "/guides/how-to-choose-a-construction-company-coimbatore", label: "How to choose a construction company in Coimbatore" },
@@ -56,7 +60,7 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
   {
     question: "How is the construction timeline planned?",
     answer: "We work from a schedule with clear stages: site review, design, cost planning, approvals, construction, inspection and handover. Tell us your preferred completion date during the first discussion. The building size, approval process, site access and your material selections affect the schedule agreed for your project.",
-    links: [{ href: "/how-it-works", label: "See our process from consultation to handover" }],
+    links: [{ href: "/about#how-it-works", label: "See our process from consultation to handover" }],
   },
   {
     question: "How will I know the work is progressing properly?",
@@ -86,10 +90,11 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
   },
   {
     question: "Where can I see examples of your completed work?",
-    answer: "Our portfolio includes the Pricol and Manjushree villas, Oxford School, Rex School and other building projects. The project galleries show photographs of our work. When you enquire, mention the type of building or finish that interests you so the team can discuss examples relevant to your plans.",
+    answer: "Our portfolio includes the Pricol Limited tea bungalow and Sasthapuri Hotels in Gudalur, Christus Rex Higher Secondary School in Ooty, Oxford School, and houses in Perur (Coimbatore), Gudalur and Ooty. The project galleries show photographs of our work, including some taken during construction. When you enquire, mention the type of building or finish that interests you so the team can discuss examples relevant to your plans.",
     links: [
-      { href: "/projects/pricol", label: "View the Pricol villa" },
-      { href: "/projects/oxford-school", label: "View Oxford School" },
+      { href: "/projects/pricol", label: "View the Pricol tea bungalow" },
+      { href: "/projects/residential-building-perur-coimbatore", label: "View the house in Perur, Coimbatore" },
+      { href: "/projects/residential-building-ooty", label: "View the house in Ooty" },
       { href: "/projects", label: "Browse all projects" },
     ],
   },

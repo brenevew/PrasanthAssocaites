@@ -45,7 +45,10 @@ export default async function ServicePage({ params }: Props) {
   if (!page) notFound();
   const service = services.find((entry) => entry.slug === page.serviceSlug);
   if (!service) notFound();
-  const relatedProjects = projects.filter((project) => project.category === page.projectCategory);
+  const regionName = page.location === "nilgiris" ? "Nilgiris" : page.location === "coimbatore" ? "Coimbatore" : "";
+  const relatedProjects = projects
+    .filter((project) => project.category === page.projectCategory)
+    .sort((a, b) => Number(regionName !== "" && b.location.includes(regionName)) - Number(regionName !== "" && a.location.includes(regionName)));
   const category = serviceCategories.find((entry) => entry.slugs.includes(service.slug));
   const relatedServices = services.filter((entry) => entry.slug !== service.slug && category?.slugs.includes(entry.slug));
   const canPlan = plannableSlugs.includes(service.slug) || designSlugs.includes(service.slug);

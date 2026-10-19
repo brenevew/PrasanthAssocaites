@@ -4,22 +4,24 @@ import ProjectsClient from "./ProjectsClient";
 import { projects, type ProjectCategory } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Construction Projects in Coimbatore",
+  title: "Projects in Coimbatore & the Nilgiris",
   description:
-    "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in and around Coimbatore.",
+    "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in Coimbatore and the Nilgiris.",
   keywords: [
     "construction projects Coimbatore",
     "villa projects Coimbatore",
     "school building construction Tamil Nadu",
     "house construction photos Coimbatore",
+    "construction projects Ooty",
+    "house construction photos Nilgiris",
   ],
   alternates: {
     canonical: `${SITE_URL}/projects`,
   },
   openGraph: pageOpenGraph(
     "/projects",
-    "Construction Projects in Coimbatore | Prasanth Associates",
-    "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in and around Coimbatore."
+    "Projects in Coimbatore & the Nilgiris | Prasanth Associates",
+    "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in Coimbatore and the Nilgiris."
   ),
 };
 

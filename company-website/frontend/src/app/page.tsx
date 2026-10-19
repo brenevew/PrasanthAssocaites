@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { blurProps } from "@/data/imageBlur";
+import { serviceHref } from "@/data/serviceLinks";
 import { Metadata } from "next";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { company } from "@/data/company";
@@ -17,9 +19,9 @@ import HomeFaq from "@/components/ui/HomeFaq";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: { absolute: "Construction Company, Coimbatore & Nilgiris | Prasanth Associates" },
+  title: { absolute: "Building Plans & Construction in Coimbatore & Ooty | Prasanth Associates" },
   description:
-    "Construction company in Coimbatore and the Nilgiris, with offices in Gandhipuram and Gudalur. Houses, villas and commercial builds on a fixed-price BoQ.",
+    "Building plans, 2D/3D design, construction and interiors from one team. Offices in Gandhipuram, Coimbatore and Gudalur, serving Ooty and the Nilgiris.",
   keywords: [
     "construction company in Coimbatore",
     "building contractors Coimbatore",
@@ -35,19 +37,92 @@ export const metadata: Metadata = {
     "villa construction Coimbatore",
     "house construction in Kovai",
     "builders in Ooty and Coonoor",
+    "builders in Ooty",
+    "house construction in Ooty",
+    "building plan approval Nilgiris",
   ],
   alternates: {
     canonical: `${SITE_URL}/`,
   },
   openGraph: pageOpenGraph(
     "/",
-    "Construction Company in Coimbatore | Prasanth Associates",
-    "15+ years of civil construction in Coimbatore and The Nilgiris. Houses, villas, commercial and turnkey projects on a fixed BoQ, with no hidden costs."
+    "Building Plans, Design & Construction | Prasanth Associates",
+    "Building plans, approvals, construction and interiors in Coimbatore and the Nilgiris, from one team with offices in Gandhipuram and Gudalur."
   ),
 };
 
+// Service priorities, in order. Property development is left out until the
+// development offering is confirmed; the property pages are advisory services.
+const serviceGroups = [
+  {
+    title: "Building plans & approvals",
+    text: "2D floor plans drawn for your plot, and approval drawings prepared, filed and followed up until sanction.",
+    links: [
+      { href: serviceHref("architectural-designs"), label: "House plans in Coimbatore" },
+      { href: "/services/building-plan-approval-nilgiris", label: "Plans & approval in the Nilgiris" },
+      { href: "/plan-home", label: "Building planner" },
+    ],
+  },
+  {
+    title: "Residential & commercial construction",
+    text: "Houses, villas, schools, offices and shops built on an itemized BoQ, with our engineers supervising the site.",
+    links: [
+      { href: serviceHref("residential-construction"), label: "Houses in Coimbatore" },
+      { href: "/services/house-construction-nilgiris", label: "Houses in the Nilgiris" },
+      { href: serviceHref("villa-construction"), label: "Villas" },
+      { href: serviceHref("commercial-construction"), label: "Commercial buildings" },
+    ],
+  },
+  {
+    title: "Architectural & elevation design",
+    text: "Layouts, 3D elevations and working drawings, coordinated with the structural, electrical and plumbing drawings.",
+    links: [
+      { href: serviceHref("architectural-designs"), label: "Architectural design" },
+      { href: serviceHref("structural-drawings"), label: "Structural drawings" },
+    ],
+  },
+  {
+    title: "Interior design & execution",
+    text: "Kitchens, wardrobes, ceilings and lighting, designed and installed by the same team.",
+    links: [{ href: serviceHref("interior-designs"), label: "Interior design" }],
+  },
+];
+
+const [coimbatoreOffice, gudalurOffice] = company.offices;
+
+// Same structure and number of links for each region.
+const regions = [
+  {
+    name: "Coimbatore",
+    office: coimbatoreOffice,
+    officeArea: "Gandhipuram",
+    text: "Office and team in Gandhipuram, on Sathy Road. Building plans, construction and interiors for projects across Coimbatore.",
+    links: [
+      { href: "/locations/coimbatore", label: "Building in Coimbatore" },
+      { href: serviceHref("residential-construction"), label: "House construction in Coimbatore" },
+      { href: serviceHref("architectural-designs"), label: "House plans in Coimbatore" },
+      { href: serviceHref("turnkey-construction"), label: "Turnkey design & build" },
+    ],
+  },
+  {
+    name: "Ooty and the Nilgiris",
+    office: gudalurOffice,
+    officeArea: "Gudalur",
+    text: "Branch office on Ooty Main Road, Gudalur. Hillside houses, villas and estate bungalows in Ooty, Coonoor, Kotagiri and Gudalur.",
+    links: [
+      { href: "/locations/nilgiris-ooty", label: "Building in Ooty and the Nilgiris" },
+      { href: "/services/house-construction-nilgiris", label: "House construction in the Nilgiris" },
+      { href: "/services/building-plan-approval-nilgiris", label: "Plans & approval in the Nilgiris" },
+      { href: "/locations/gudalur", label: "Gudalur office" },
+    ],
+  },
+];
+
 export default function Home() {
-  const featuredProjects = projects.slice(0, 3);
+  const featuredSlugs = ["residential-building-perur-coimbatore", "residential-building-ooty", "sasthapruri"];
+  const featuredProjects = featuredSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project) => project !== undefined);
 
   return (
     <>
@@ -79,7 +154,7 @@ export default function Home() {
             <ScrollReveal>
               <span className="nm-raised text-gold-dark px-4.5 py-1.5 rounded-full mb-7 inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase border border-border backdrop-blur-md shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-dark inline-block" />
-                Coimbatore&apos;s Premium Construction &amp; Design Firm
+                Engineers · Architectural Design · Construction
               </span>
             </ScrollReveal>
 
@@ -89,22 +164,27 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal leading-[1.08] mb-7"
                 style={{ fontSize: "var(--text-display)" }}
               >
-                Construction &amp; Design Company in Coimbatore
+                Building plans, design and construction in Coimbatore and the Nilgiris
               </h1>
             </ScrollReveal>
 
             {/* Subtext */}
             <ScrollReveal delay={160}>
               <p className="text-lg md:text-xl text-concrete mb-10 leading-relaxed max-w-xl">
-                {company.tagline}. {company.description}
+                One team takes your project from the first floor plan and approval drawings to
+                construction, interiors and handover. Offices in Gandhipuram, Coimbatore, and in
+                Gudalur for Ooty and the Nilgiris.
               </p>
             </ScrollReveal>
 
             {/* CTAs */}
             <ScrollReveal delay={240} className="flex flex-col sm:flex-row gap-4">
               <Button href="/plan-home" variant="primary" size="lg">
-                Start Planning
+                Start your building plan
                 <ArrowRight size={16} />
+              </Button>
+              <Button href="/request-quote" variant="gold" size="lg">
+                Get a construction quote
               </Button>
             </ScrollReveal>
           </div>
@@ -212,6 +292,90 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── 4. What We Do ───────────────────────────────────────────── */}
+      <section className="section bg-[var(--canvas-bg)] border-t border-border/70 relative overflow-hidden">
+        <div className="container relative z-10">
+          <ScrollReveal>
+            <SectionHeading
+              badge="Services"
+              title="What we do"
+              subtitle="Take one service on its own, or the whole project from plan to handover."
+            />
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {serviceGroups.map((group, index) => (
+              <ScrollReveal key={group.title} delay={index * 80}>
+                <div className="neu-glass p-6.5 rounded-3xl h-full flex flex-col gap-4">
+                  <h3 className="text-lg font-heading font-bold text-charcoal">{group.title}</h3>
+                  <p className="text-concrete text-sm leading-relaxed flex-1">{group.text}</p>
+                  <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="text-sm font-semibold text-gold-dark hover:text-charcoal transition-colors inline-flex items-center gap-1"
+                        >
+                          {link.label}
+                          <ArrowRight size={13} />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4b. Where We Work ───────────────────────────────────────── */}
+      <section className="section bg-linen border-y border-border relative overflow-hidden">
+        <div className="container relative z-10">
+          <ScrollReveal>
+            <SectionHeading
+              badge="Locations"
+              title="Where we work"
+              subtitle="Two offices, each with its own team."
+            />
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {regions.map((region, index) => (
+              <ScrollReveal key={region.name} delay={index * 100}>
+                <div className="bg-white rounded-3xl p-7 md:p-8 border border-border shadow-2xs h-full flex flex-col gap-4">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold-dark bg-gold/15 px-3 py-1 rounded-full border border-gold/30 self-start">
+                    {region.office.badge} · {region.officeArea}
+                  </span>
+                  <h3 className="font-heading text-2xl font-bold text-charcoal">{region.name}</h3>
+                  <p className="text-concrete text-sm leading-relaxed">{region.text}</p>
+                  <ul className="space-y-2 flex-1">
+                    {region.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="text-sm font-semibold text-charcoal hover:text-gold-dark transition-colors inline-flex items-center gap-1.5"
+                        >
+                          <ArrowRight size={13} className="text-gold-dark" />
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={region.office.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-concrete hover:text-gold-dark transition-colors pt-3 border-t border-border"
+                  >
+                    {region.office.street}, {region.office.city} – {region.office.pincode} · Directions
+                  </a>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── 5. Featured Projects ─────────────────────────────────────── */}
       <section className="section bg-linen text-charcoal relative overflow-hidden border-y border-border">

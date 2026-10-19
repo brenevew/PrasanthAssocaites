@@ -62,7 +62,7 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
     questions: [
       { question: "Can I include a courtyard or double-height living area?", answer: "These are features offered within the villa service. Share your preferences at the brief stage so the design can be considered against the plot, structure and budget." },
       { question: "Should interiors be considered before construction?", answer: "Discuss them early. Furniture layouts, lighting, plumbing and automation requirements influence decisions that are easier to coordinate while drawings are being prepared." },
-      { question: "Can I see examples of your villa work?", answer: "The Pricol and Manjushree project galleries show villa work from the Prasanth Associates portfolio. Use the links below to browse the photographs." },
+      { question: "Can I see examples of your villa work?", answer: "Yes. The Pricol Limited tea bungalow in Gudalur, a 12,120 sq. ft. residence built within a tea plantation, includes photographs taken during construction. Use the project links below to browse it." },
     ],
   },
   {
@@ -216,8 +216,8 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
     location: "coimbatore",
     serviceSlug: "architectural-designs",
     title: "House Plans & Architecture in Coimbatore",
-    metadataTitle: "Architects & House Plans in Coimbatore",
-    description: "Architects in Coimbatore for house plans, 3D elevations, Vastu layouts, working drawings and building plan approval. Send your plot size to start.",
+    metadataTitle: "House Plans & 3D Elevation Design in Coimbatore",
+    description: "2D floor plans, 3D elevations, working drawings and approval drawings for homes and commercial buildings in Coimbatore. Send your plot size to start.",
     intro: "A good house plan starts with your plot and how you want to use each room. Prasanth Associates offers architectural design in Coimbatore, from an initial layout and floor plan to coordinated working drawings for construction. You can enquire with a plot sketch before a detailed plan exists.",
     sections: [
       {
@@ -344,8 +344,8 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
     location: "both",
     serviceSlug: "interior-designs",
     title: "Interior Design in Coimbatore & the Nilgiris",
-    metadataTitle: "Interior Designers in Coimbatore & Nilgiris",
-    description: "Interior designers in Coimbatore and the Nilgiris for homes and offices: modular kitchens, wardrobes, false ceilings, lighting and 3D interior views.",
+    metadataTitle: "Interior Design & Execution, Coimbatore & Nilgiris",
+    description: "Home and office interiors designed and installed by one team in Coimbatore and the Nilgiris: modular kitchens, wardrobes, false ceilings, lighting and 3D views.",
     intro: "Prasanth Associates offers home and office interior design in Coimbatore and the Nilgiris. Whether you need a full interior scheme or a room makeover, the brief starts with how you use the space, the storage you need and the finishes you want to live with.",
     sections: [
       {
@@ -666,8 +666,10 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
   {
     slug: "house-construction-nilgiris",
     location: "nilgiris",
+    projectCategory: "residential",
     serviceSlug: "residential-construction",
     title: "House Construction in the Nilgiris",
+    metadataTitle: "House Construction in Ooty & the Nilgiris",
     description: "House construction in the Nilgiris: Gudalur, Ooty, Coonoor and Kotagiri. Slope foundations, monsoon-proof detailing and a fixed BoQ from our Gudalur branch.",
     intro: "Prasanth Associates builds houses across the Nilgiris from a staffed branch office on Ooty Main Road, Gudalur, and has built in Gudalur, Ooty, Coonoor and Kotagiri. A hill house has to cope with sloping plots, months of monsoon rain and materials that come up the ghat road, so the plan, foundation and waterproofing are decided for your site rather than copied from a plains design.",
     sections: [
@@ -689,6 +691,7 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
   {
     slug: "villa-construction-nilgiris",
     location: "nilgiris",
+    projectCategory: "villa",
     serviceSlug: "villa-construction",
     title: "Villa & Estate Bungalow Construction in the Nilgiris",
     metadataTitle: "Villa Construction in Ooty & the Nilgiris",
@@ -713,7 +716,7 @@ const servicePageContent: (Omit<ServicePage, "slug"> & { slug?: string })[] = [
     location: "nilgiris",
     serviceSlug: "architectural-designs",
     title: "House Plans & Building Approval in the Nilgiris",
-    metadataTitle: "Building Plan Approval in the Nilgiris",
+    metadataTitle: "Building Plans & Approval in Ooty & the Nilgiris",
     description: "House plans and building approval in the Nilgiris: patta checks, hill-area rules on slope, coverage and height, and sanction drawings filed for you.",
     intro: "The Nilgiris is a regulated hill district. Plots here face rules on gradient, site coverage and building height that do not apply in Coimbatore, and plots near reserve forests get extra scrutiny. We check these before the design starts, draw the plan to fit them, and file and follow up the approval for you.",
     sections: [
