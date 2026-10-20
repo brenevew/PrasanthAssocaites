@@ -1,9 +1,7 @@
 import { Metadata } from "next";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import { company } from "@/data/company";
 import { projects } from "@/data/projects";
-import { serviceHref } from "@/data/serviceLinks";
 import ContactForm from "@/components/ui/ContactForm";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABanner from "@/components/ui/CTABanner";
@@ -22,6 +20,7 @@ import {
   MessageCircle,
   ArrowRight,
 } from "lucide-react";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Builders in Ooty & the Nilgiris",
@@ -55,17 +54,7 @@ export const metadata: Metadata = {
 export default function NilgirisOotyLocationPage() {
   const canonicalUrl = `${SITE_URL}/locations/nilgiris-ooty`;
   const nilgirisOffice = company.offices.find((o) => o.label === "Gudalur") || company.offices[1];
-  const ootyProjects = projects
-    .filter((p) => p.location.includes("Ooty") || p.location.includes("Nilgiris"))
-    .sort((a, b) => Number(b.location.includes("Ooty")) - Number(a.location.includes("Ooty")));
-  const nilgirisServiceLinks = [
-    { href: "/services/house-construction-nilgiris", label: "House Construction in the Nilgiris" },
-    { href: "/services/villa-construction-nilgiris", label: "Villa & Estate Bungalow Construction" },
-    { href: "/services/building-plan-approval-nilgiris", label: "House Plans & Building Approval" },
-    { href: serviceHref("commercial-construction"), label: "Commercial Construction" },
-    { href: serviceHref("interior-designs"), label: "Interior Design & Execution" },
-    { href: "/guides/how-to-choose-a-builder-nilgiris", label: "Guide: Choosing a Builder in the Nilgiris" },
-  ];
+  const ootyProjects = projects.filter((p) => p.location.includes("Ooty") || p.location.includes("Nilgiris"));
 
   const nilgirisHubs = [
     { name: "Ooty (Udhagamandalam)", desc: "Luxury holiday residences, hillside duplex homes, and heritage stone bungalow restorations." },
@@ -198,12 +187,13 @@ export default function NilgirisOotyLocationPage() {
               className="font-heading font-bold text-charcoal mb-6 leading-[1.12]"
               style={{ fontSize: "var(--text-h1)" }}
             >
-              Builders in <em className="text-gold-dark not-italic">Ooty and the Nilgiris</em>
+              Builders &amp; Construction in <em className="text-gold-dark not-italic">The Nilgiris &amp; Ooty</em>
             </h1>
 
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-3xl mb-8">
-              Building in the Western Ghats needs piles to bedrock, slope anchoring, concrete mixed for the cold,
-              and several layers of waterproofing. We build custom hillside homes and estates from our Gudalur branch.
+              Constructing in the Western Ghats demands specialized engineering: bedrock pile foundations,
+              geotechnical slope anchoring, cold-weather concrete mix designs, and multi-barrier waterproofing.
+              Through our branch office in Gudalur, Prasanth Associates delivers bespoke hillside homes and estates.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -227,7 +217,7 @@ export default function NilgirisOotyLocationPage() {
               </a>
 
               <a
-                href={`https://wa.me/919486038761?text=${encodeURIComponent(
+                href={`https://wa.me/919360337733?text=${encodeURIComponent(
                   "Hello Prasanth Associates, I want to discuss a construction project in The Nilgiris / Ooty."
                 )}`}
                 target="_blank"
@@ -288,17 +278,14 @@ export default function NilgirisOotyLocationPage() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-border space-y-2">
-                  {nilgirisServiceLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="flex items-center justify-between p-3 rounded-2xl bg-linen hover:bg-gold/15 border border-border transition-colors text-xs font-bold text-charcoal"
-                    >
-                      <span>{link.label}</span>
-                      <ArrowRight size={13} />
-                    </Link>
-                  ))}
+                <div className="pt-4 border-t border-border">
+                  <Link
+                    href="/services#villa-construction"
+                    className="flex items-center justify-between p-3 rounded-2xl bg-linen hover:bg-gold/15 border border-border transition-colors text-xs font-bold text-charcoal"
+                  >
+                    <span>View Luxury Villa Construction Capabilities</span>
+                    <ArrowRight size={13} />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -380,7 +367,7 @@ export default function NilgirisOotyLocationPage() {
             <div>
               <span className="badge-gold mb-2 inline-flex">Hillside Portfolio</span>
               <h3 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
-                {ootyProjects[0].type} in {ootyProjects[0].location}
+                Real Project: Lakeside Residence in Ooty
               </h3>
             </div>
 
@@ -394,7 +381,7 @@ export default function NilgirisOotyLocationPage() {
               </div>
               <div className="space-y-4">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gold-dark bg-gold/10 px-3 py-1 rounded-full">
-                  {ootyProjects[0].status === "completed" ? "Completed" : "In progress"}
+                  Completed Mountain Home
                 </span>
                 <h4 className="font-heading text-2xl font-bold text-charcoal">
                   {ootyProjects[0].title}
@@ -404,12 +391,8 @@ export default function NilgirisOotyLocationPage() {
                 </p>
                 <div className="text-xs text-concrete space-y-1 border-y border-border py-3">
                   <div><strong>Location:</strong> {ootyProjects[0].location}</div>
-                  {ootyProjects[0].area && (
-                    <div><strong>Built-up Area:</strong> {ootyProjects[0].area}</div>
-                  )}
-                  {ootyProjects[0].year && (
-                    <div><strong>Year:</strong> {ootyProjects[0].year}</div>
-                  )}
+                  <div><strong>Built-up Area:</strong> {ootyProjects[0].area}</div>
+                  <div><strong>Engineering:</strong> Deep pile foundation anchored to bedrock</div>
                 </div>
                 <Link
                   href={`/projects/${ootyProjects[0].slug}`}
@@ -425,22 +408,7 @@ export default function NilgirisOotyLocationPage() {
       )}
 
       <section className="pb-4 bg-[var(--canvas-bg)]">
-        <div className="container max-w-5xl space-y-4">
-          <Link
-            href="/blog/building-in-the-nilgiris-lessons-from-three-projects"
-            className="flex items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-border hover:border-gold transition-colors"
-          >
-            <div>
-              <h3 className="font-heading font-bold text-charcoal text-base">
-                Lessons from three Nilgiris projects
-              </h3>
-              <p className="text-concrete text-xs mt-1">
-                A tea bungalow reached across a river, a commercial building in Gudalur town and a school in Ooty:
-                how access, space and weather shaped each one.
-              </p>
-            </div>
-            <ArrowRight size={18} className="text-gold-dark flex-shrink-0" />
-          </Link>
+        <div className="container max-w-5xl">
           <Link
             href="/locations/gudalur"
             className="flex items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-border hover:border-gold transition-colors"
@@ -450,7 +418,7 @@ export default function NilgirisOotyLocationPage() {
                 Building in Gudalur specifically?
               </h3>
               <p className="text-concrete text-xs mt-1">
-                Our Gudalur branch office page covers individual house construction at lower elevation,
+                Our Gudalur branch office page covers individual house construction at lower elevation —
                 heavier monsoon exposure, sloping laterite plots and ghat-road material logistics.
               </p>
             </div>

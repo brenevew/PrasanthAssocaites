@@ -61,7 +61,7 @@ export const serviceCategories: ServiceCategory[] = [
     id: "realestate",
     label: "Property & Investments",
     shortLabel: "Property",
-    description: "Buying property, land deals & portfolio management",
+    description: "Property acquisition advisory, land transactions & portfolio stewardship",
     iconName: "TrendingUp",
     badge: "4 Solutions",
     slugs: [

@@ -1,9 +1,8 @@
 import { Metadata } from "next";
+import ServicesPageClient from "./ServicesPageClient";
 import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
 import { services } from "@/data/services";
-import { serviceHref } from "@/data/serviceLinks";
 import JsonLd from "@/components/seo/JsonLd";
-import ServicesPageClient from "./ServicesPageClient";
 
 export const metadata: Metadata = {
   title: { absolute: "Services in Coimbatore & the Nilgiris | Prasanth Associates" },
@@ -46,7 +45,7 @@ const servicesSchema = {
           "@id": `${SITE_URL}/services#${service.slug}`,
           name: service.title,
           description: service.shortDescription,
-          url: `${SITE_URL}${serviceHref(service.slug)}`,
+          url: `${SITE_URL}/services#${service.slug}`,
           provider: { "@id": ORG_ID },
           areaServed: [
             { "@type": "City", name: "Coimbatore" },

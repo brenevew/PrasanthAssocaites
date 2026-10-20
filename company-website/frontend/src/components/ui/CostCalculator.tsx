@@ -23,14 +23,14 @@ const packages = [
     id: "premium",
     name: "Premium Package",
     ratePerSqFt: 2650,
-    description: "Teakwood doors, Italian marble flooring, premium designer bath fittings, architectural elevation.",
+    description: "Teakwood doors, Italian marble flooring, Jaquar bath fittings, architectural elevation.",
     badge: "Recommended",
   },
   {
     id: "luxury",
     name: "Luxury Package",
     ratePerSqFt: 3800,
-    description: "Imported marble, multi-zone air conditioning pre-piping, international-grade luxury bath fittings, high-end facade.",
+    description: "Imported marble, VRV air conditioning pre-piping, Kohler/Grohe luxury bath, high-end facade.",
     badge: "Ultra Luxury",
   },
 ];

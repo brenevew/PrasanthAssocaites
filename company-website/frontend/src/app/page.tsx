@@ -1,9 +1,8 @@
+import { Suspense } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { blurProps } from "@/data/imageBlur";
-import { serviceHref } from "@/data/serviceLinks";
+import Link from "next/link";
 import { Metadata } from "next";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { company } from "@/data/company";
 import { projects } from "@/data/projects";
 import { differentiators } from "@/data/quality";
@@ -17,6 +16,7 @@ import TestimonialsMarquee from "@/components/ui/TestimonialsMarquee";
 import CTABanner from "@/components/ui/CTABanner";
 import HomeFaq from "@/components/ui/HomeFaq";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: { absolute: "Building Plans & Construction in Coimbatore & Ooty | Prasanth Associates" },
@@ -51,78 +51,8 @@ export const metadata: Metadata = {
   ),
 };
 
-// Service priorities, in order. Property development is left out until the
-// development offering is confirmed; the property pages are advisory services.
-const serviceGroups = [
-  {
-    title: "Building plans & approvals",
-    text: "2D floor plans drawn for your plot, and approval drawings prepared, filed and followed up until sanction.",
-    links: [
-      { href: serviceHref("architectural-designs"), label: "House plans in Coimbatore" },
-      { href: "/services/building-plan-approval-nilgiris", label: "Plans & approval in the Nilgiris" },
-      { href: "/plan-home", label: "Building planner" },
-    ],
-  },
-  {
-    title: "Residential & commercial construction",
-    text: "Houses, villas, schools, offices and shops built on an itemized BoQ, with our engineers supervising the site.",
-    links: [
-      { href: serviceHref("residential-construction"), label: "Houses in Coimbatore" },
-      { href: "/services/house-construction-nilgiris", label: "Houses in the Nilgiris" },
-      { href: serviceHref("villa-construction"), label: "Villas" },
-      { href: serviceHref("commercial-construction"), label: "Commercial buildings" },
-    ],
-  },
-  {
-    title: "Architectural & elevation design",
-    text: "Layouts, 3D elevations and working drawings, coordinated with the structural, electrical and plumbing drawings.",
-    links: [
-      { href: serviceHref("architectural-designs"), label: "Architectural design" },
-      { href: serviceHref("structural-drawings"), label: "Structural drawings" },
-    ],
-  },
-  {
-    title: "Interior design & execution",
-    text: "Kitchens, wardrobes, ceilings and lighting, designed and installed by the same team.",
-    links: [{ href: serviceHref("interior-designs"), label: "Interior design" }],
-  },
-];
-
-const [coimbatoreOffice, gudalurOffice] = company.offices;
-
-// Same structure and number of links for each region.
-const regions = [
-  {
-    name: "Coimbatore",
-    office: coimbatoreOffice,
-    officeArea: "Gandhipuram",
-    text: "Office and team in Gandhipuram, on Sathy Road. Building plans, construction and interiors for projects across Coimbatore.",
-    links: [
-      { href: "/locations/coimbatore", label: "Building in Coimbatore" },
-      { href: serviceHref("residential-construction"), label: "House construction in Coimbatore" },
-      { href: serviceHref("architectural-designs"), label: "House plans in Coimbatore" },
-      { href: serviceHref("turnkey-construction"), label: "Turnkey design & build" },
-    ],
-  },
-  {
-    name: "Ooty and the Nilgiris",
-    office: gudalurOffice,
-    officeArea: "Gudalur",
-    text: "Branch office on Ooty Main Road, Gudalur. Hillside houses, villas and estate bungalows in Ooty, Coonoor, Kotagiri and Gudalur.",
-    links: [
-      { href: "/locations/nilgiris-ooty", label: "Building in Ooty and the Nilgiris" },
-      { href: "/services/house-construction-nilgiris", label: "House construction in the Nilgiris" },
-      { href: "/services/building-plan-approval-nilgiris", label: "Plans & approval in the Nilgiris" },
-      { href: "/locations/gudalur", label: "Gudalur office" },
-    ],
-  },
-];
-
 export default function Home() {
-  const featuredSlugs = ["residential-building-perur-coimbatore", "residential-building-ooty", "sasthapruri"];
-  const featuredProjects = featuredSlugs
-    .map((slug) => projects.find((project) => project.slug === slug))
-    .filter((project) => project !== undefined);
+  const featuredProjects = projects.slice(0, 3);
 
   return (
     <>
@@ -154,7 +84,7 @@ export default function Home() {
             <ScrollReveal>
               <span className="nm-raised text-gold-dark px-4.5 py-1.5 rounded-full mb-7 inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase border border-border backdrop-blur-md shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-dark inline-block" />
-                Engineers · Architectural Design · Construction
+                Tamil Nadu&apos;s Premium Construction &amp; Design Firm
               </span>
             </ScrollReveal>
 
@@ -164,27 +94,23 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal leading-[1.08] mb-7"
                 style={{ fontSize: "var(--text-display)" }}
               >
-                Building plans, design and construction in Coimbatore and the Nilgiris
+                {company.tagline}
+
               </h1>
             </ScrollReveal>
 
             {/* Subtext */}
             <ScrollReveal delay={160}>
               <p className="text-lg md:text-xl text-concrete mb-10 leading-relaxed max-w-xl">
-                One team takes your project from the first floor plan and approval drawings to
-                construction, interiors and handover. Offices in Gandhipuram, Coimbatore, and in
-                Gudalur for Ooty and the Nilgiris.
+                {company.description}
               </p>
             </ScrollReveal>
 
             {/* CTAs */}
             <ScrollReveal delay={240} className="flex flex-col sm:flex-row gap-4">
               <Button href="/plan-home" variant="primary" size="lg">
-                Start your building plan
+                Start Planning
                 <ArrowRight size={16} />
-              </Button>
-              <Button href="/request-quote" variant="gold" size="lg">
-                Get a construction quote
               </Button>
             </ScrollReveal>
           </div>
@@ -228,18 +154,18 @@ export default function Home() {
                 {/* Neu-Glass shadow back-drop */}
                 <div className="absolute inset-0 nm-dark-raised translate-x-4 translate-y-4 rounded-3xl z-0" />
                 <Image
-                  src="/images/projects/Designs/hall-1.webp"
+                  src="/images/projects/Designs/interior-design-residential-hall-7.webp"
                   alt="Living hall interior by Prasanth Associates"
                   fill
                   className="object-cover z-10 rounded-3xl border border-white/60 shadow-xl"
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  {...blurProps("/images/projects/Designs/hall-1.webp")}
+                  {...blurProps("/images/projects/Designs/interior-design-residential-hall-7.webp")}
                 />
                 {/* Floating Neu-Glass badge */}
                 <div className="absolute -bottom-5 -right-5 z-20 neu-glass rounded-2xl px-5 py-4">
-                  <p className="text-xs text-concrete font-medium mb-0.5">Google Rating</p>
-                  <p className="text-2xl font-heading font-bold text-charcoal">{company.googleReviews.rating} ★</p>
-                  <p className="text-[10px] text-concrete-light">{company.googleReviews.count} Google reviews</p>
+                  <p className="text-xs text-concrete font-medium mb-0.5">Trust Score</p>
+                  <p className="text-2xl font-heading font-bold text-charcoal">4.9 ★</p>
+                  <p className="text-[10px] text-concrete-light">From 200+ clients</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -254,26 +180,29 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal mb-7 leading-tight"
                 style={{ fontSize: "var(--text-h2)" }}
               >
-                Engineered first.
+                We don&apos;t just construct
                 <br />
-                <em className="text-gold not-italic">Then</em> built.
+                <em className="text-gold not-italic">buildings.</em> We build
+                <br />
+                lasting value.
               </h2>
               <div className="space-y-5 text-concrete leading-relaxed mb-8">
                 <p>
-                  Good buildings start with sound engineering. We design the structure,
-                  manage the site and check the work ourselves.
+                  At Prasanth Associates, exceptional construction is the result of rigorous
+                  engineering, precise project management, and uncompromising quality control.
                 </p>
                 <p>
-                  Villa or commercial complex, you get the same thing: an itemized price
-                  before we start, materials we have checked, and a schedule we stick to.
+                  Whether it&apos;s a luxury villa or a commercial complex, our approach remains
+                  the same — complete transparency from day one, premium materials, and a
+                  commitment to timelines others consider impossible.
                 </p>
               </div>
               <ul className="space-y-3 mb-10">
                 {[
-                  "Itemized, fixed-price estimates",
-                  "Architects and engineers in-house",
-                  "Handover on schedule",
-                  "Warranty after handover",
+                  "100% Transparent Cost Estimation",
+                  "In-house Architectural & Engineering Team",
+                  "Strict Timeline Adherence",
+                  "Comprehensive Post-Handover Warranty",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-charcoal font-semibold text-sm">
                     <span className="w-6 h-6 rounded-full nm-inset-sm flex items-center justify-center flex-shrink-0">
@@ -284,7 +213,7 @@ export default function Home() {
                 ))}
               </ul>
               <Button href="/about" variant="primary" size="md">
-                About us
+                Discover Our Story
                 <ArrowRight size={16} />
               </Button>
             </ScrollReveal>
@@ -292,90 +221,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4. What We Do ───────────────────────────────────────────── */}
-      <section className="section bg-[var(--canvas-bg)] border-t border-border/70 relative overflow-hidden">
-        <div className="container relative z-10">
-          <ScrollReveal>
-            <SectionHeading
-              badge="Services"
-              title="What we do"
-              subtitle="Take one service on its own, or the whole project from plan to handover."
-            />
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {serviceGroups.map((group, index) => (
-              <ScrollReveal key={group.title} delay={index * 80}>
-                <div className="neu-glass p-6.5 rounded-3xl h-full flex flex-col gap-4">
-                  <h3 className="text-lg font-heading font-bold text-charcoal">{group.title}</h3>
-                  <p className="text-concrete text-sm leading-relaxed flex-1">{group.text}</p>
-                  <ul className="flex flex-wrap gap-x-5 gap-y-2">
-                    {group.links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="text-sm font-semibold text-gold-dark hover:text-charcoal transition-colors inline-flex items-center gap-1"
-                        >
-                          {link.label}
-                          <ArrowRight size={13} />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4b. Where We Work ───────────────────────────────────────── */}
-      <section className="section bg-linen border-y border-border relative overflow-hidden">
-        <div className="container relative z-10">
-          <ScrollReveal>
-            <SectionHeading
-              badge="Locations"
-              title="Where we work"
-              subtitle="Two offices, each with its own team."
-            />
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {regions.map((region, index) => (
-              <ScrollReveal key={region.name} delay={index * 100}>
-                <div className="bg-white rounded-3xl p-7 md:p-8 border border-border shadow-2xs h-full flex flex-col gap-4">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold-dark bg-gold/15 px-3 py-1 rounded-full border border-gold/30 self-start">
-                    {region.office.badge} · {region.officeArea}
-                  </span>
-                  <h3 className="font-heading text-2xl font-bold text-charcoal">{region.name}</h3>
-                  <p className="text-concrete text-sm leading-relaxed">{region.text}</p>
-                  <ul className="space-y-2 flex-1">
-                    {region.links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="text-sm font-semibold text-charcoal hover:text-gold-dark transition-colors inline-flex items-center gap-1.5"
-                        >
-                          <ArrowRight size={13} className="text-gold-dark" />
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href={region.office.mapLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-concrete hover:text-gold-dark transition-colors pt-3 border-t border-border"
-                  >
-                    {region.office.street}, {region.office.city} – {region.office.pincode} · Directions
-                  </a>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── 5. Featured Projects ─────────────────────────────────────── */}
       <section className="section bg-linen text-charcoal relative overflow-hidden border-y border-border">
@@ -387,6 +232,7 @@ export default function Home() {
             <SectionHeading
               badge="Portfolio"
               title="Selected Projects"
+              subtitle="A curated selection of our finest residential and commercial work, demonstrating our commitment to quality and architectural excellence."
             />
           </ScrollReveal>
 
@@ -401,7 +247,7 @@ export default function Home() {
           <div className="mt-16 text-center">
             <ScrollReveal delay={350}>
               <Button href="/projects" variant="gold" size="lg">
-                All projects
+                Explore All Projects
                 <ArrowRight size={16} />
               </Button>
             </ScrollReveal>
@@ -422,13 +268,15 @@ export default function Home() {
                     className="font-heading font-bold text-charcoal leading-tight"
                     style={{ fontSize: "var(--text-h2)" }}
                   >
-                    Why build
+                    Engineering First.
                     <br />
-                    <em className="text-gold not-italic">with us</em>
+                    <em className="text-gold not-italic">Quality</em> Always.
                   </h2>
                   <div className="gold-line" />
                   <p className="text-concrete leading-relaxed">
-                    Six things you can hold us to.
+                    We don&apos;t just promise quality; we engineer it into every phase of
+                    construction. Here&apos;s why homeowners and developers trust us with
+                    their most valuable assets.
                   </p>
                 </div>
               </ScrollReveal>
@@ -466,8 +314,8 @@ export default function Home() {
           <ScrollReveal>
             <SectionHeading
               badge="Client Voices"
-              title="In their words"
-              subtitle="Clients across Coimbatore, The Nilgiris and beyond."
+              title="Trusted by Homeowners & Businesses"
+              subtitle="Real words from real clients across Coimbatore, Tiruppur and beyond."
             />
           </ScrollReveal>
 
@@ -477,7 +325,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 8. Frequently Asked Questions ───────────────────────────── */}
+      {/* ── 8. FAQ (with matching FAQPage schema) ──────────────────────── */}
       <HomeFaq />
 
       {/* ── 9. CTA Banner ───────────────────────────────────────────── */}

@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
 import Link from "next/link";
 import { company } from "@/data/company";
 import ContactForm from "@/components/ui/ContactForm";
@@ -21,6 +20,7 @@ import {
   MessageCircle,
   ArrowRight,
 } from "lucide-react";
+import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Building Contractors in Coimbatore",
@@ -188,9 +188,9 @@ export default function CoimbatoreLocationPage() {
             </h1>
 
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-3xl mb-8">
-              From our head office on Sathy Road, Gandhipuram, we have built 250+ homes, villas and commercial
-              buildings across Coimbatore. We handle the engineering and the CCMC approvals, and every job runs on a
-              signed, fixed-price BoQ.
+              From our headquarters on Sathy Road, Gandhipuram, Prasanth Associates has delivered over 250+
+              landmark homes, luxury villas, and commercial buildings across Coimbatore. We combine rigorous
+              civil engineering, CCMC municipal approval management, and legally binding fixed-price BoQ contracts.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -214,7 +214,7 @@ export default function CoimbatoreLocationPage() {
               </a>
 
               <a
-                href={`https://wa.me/919486038761?text=${encodeURIComponent(
+                href={`https://wa.me/919360337733?text=${encodeURIComponent(
                   "Hello Prasanth Associates, I would like to schedule an in-person meeting at your Gandhipuram office."
                 )}`}
                 target="_blank"
@@ -367,7 +367,7 @@ export default function CoimbatoreLocationPage() {
       </section>
 
       <CTABanner
-        headline="Building in Coimbatore?"
+        headline="Ready to build your dream home in Coimbatore?"
         subtitle="Visit our Gandhipuram office or book an on-site engineer visit today."
       />
     </>

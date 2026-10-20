@@ -8,19 +8,19 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Structural Engineering",
     description:
-      "Foundations, beams, columns and slabs are sized by calculation, not by rule of thumb.",
+      "Every project is designed with detailed structural calculations, ensuring foundations, beams, columns, and slabs are engineered for long-term durability and safety.",
     icon: "Shield",
   },
   {
     title: "Soil Analysis",
     description:
-      "A soil test gives the bearing capacity, water table and soil type. The foundation is designed from those numbers.",
+      "Before construction begins, comprehensive soil testing determines bearing capacity, water table depth, and soil composition to inform foundation design.",
     icon: "Layers",
   },
   {
     title: "Concrete Quality",
     description:
-      "Design-mix concrete, with slump tests, cube tests and a proper curing schedule.",
+      "We use design-mix concrete with strict quality protocols — slump tests, cube testing, and proper curing schedules to ensure structural integrity.",
     icon: "Box",
   },
   {
@@ -32,19 +32,19 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Waterproofing",
     description:
-      "Multi-layer waterproofing for basements, terraces, bathrooms and other wet areas, using proven membranes and coatings.",
+      "Multi-layer waterproofing systems for basements, terraces, bathrooms, and wet areas — using proven membrane and coating technologies.",
     icon: "Droplets",
   },
   {
     title: "Electrical Systems",
     description:
-      "Wiring sized for today's load and future additions, with proper protection, concealed conduits and modular fittings.",
+      "Electrical design considers current capacity, future load requirements, safety systems, and energy efficiency — with concealed wiring and modular fittings.",
     icon: "Zap",
   },
   {
     title: "Plumbing & Sanitary",
     description:
-      "CPVC and PPR pipes, pressure-tested, laid to calculated slopes and fitted with water-saving fixtures.",
+      "CPVC and PPR piping systems, pressure testing, proper gradient calculations, and water-efficient fixtures ensure reliable, long-lasting plumbing infrastructure.",
     icon: "Pipette",
   },
   {
@@ -62,7 +62,7 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Energy Efficiency",
     description:
-      "Orientation, cross-ventilation, daylight and insulation cut energy use without making the house less comfortable.",
+      "Passive design strategies — orientation, natural ventilation, daylighting, and insulation — reduce energy consumption without compromising comfort.",
     icon: "Sun",
   },
 ];
@@ -77,37 +77,37 @@ export const differentiators: Differentiator[] = [
   {
     title: "Engineering First",
     description:
-      "The structure is designed and checked before anyone picks up a shovel.",
+      "Every project is designed around structural integrity and long-term durability. We invest in engineering before construction begins.",
     icon: "Compass",
   },
   {
     title: "Transparent Pricing",
     description:
-      "Itemized estimates with the scope written down. No hidden costs and no vague line items.",
+      "Clear, itemized estimates with documented scope. No hidden costs, no ambiguous line items. You know exactly what you're paying for.",
     icon: "FileText",
   },
   {
     title: "Quality Materials",
     description:
-      "We choose materials for how they perform, not for the lowest price, and check every batch before it is used.",
+      "Materials are selected based on performance, durability, and suitability — not lowest cost. Every material is verified before use.",
     icon: "Gem",
   },
   {
-    title: "In-House Team",
+    title: "Experienced Team",
     description:
-      "Architects, structural engineers, project managers and skilled tradespeople, each responsible for their own part of the job.",
+      "Architects, structural engineers, project managers, and skilled workers — each bringing expertise to their area of responsibility.",
     icon: "Users",
   },
   {
     title: "Project Management",
     description:
-      "A schedule, milestones, quality checks at each stage and regular progress reports.",
+      "Professional scheduling, milestone tracking, quality checkpoints, and regular progress reporting keep every project organized and on track.",
     icon: "BarChart3",
   },
   {
     title: "On-Time Execution",
     description:
-      "Materials are ordered ahead and progress is tracked against the schedule, so the handover date holds.",
+      "Structured planning, proactive material procurement, and disciplined progress tracking minimize delays and deliver projects on schedule.",
     icon: "Clock",
   },
 ];

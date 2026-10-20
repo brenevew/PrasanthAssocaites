@@ -7,7 +7,6 @@ import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import { company } from "@/data/company";
 import { SITE_URL, OG_IMAGE, pageOpenGraph, ORG_ID, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { services } from "@/data/services";
-import { serviceHref } from "@/data/serviceLinks";
 import { serviceCategories } from "@/data/serviceCategories";
 
 const inter = Inter({
@@ -90,6 +89,8 @@ const organizationSchema = {
         { "@type": "City", name: "Coonoor" },
         { "@type": "City", name: "Kotagiri" },
         { "@type": "City", name: "Gudalur" },
+        // Served from Coimbatore; described on /service-areas/tiruppur.
+        { "@type": "City", name: "Tiruppur" },
       ],
       knowsAbout: [
         "House construction",
@@ -125,7 +126,7 @@ const organizationSchema = {
                 "@type": "Service",
                 name: s.title,
                 description: s.shortDescription,
-                url: `${siteUrl}${serviceHref(s.slug)}`,
+                url: `${siteUrl}/services#${s.slug}`,
               },
             })),
         })),

@@ -342,7 +342,7 @@ export default function RequestDesignForm() {
 
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/15 border border-gold/40 text-gold-dark font-bold text-xs uppercase tracking-widest mb-4">
             <span className="w-2 h-2 rounded-full bg-gold-dark animate-ping" />
-            Architectural Review - In Progress
+            Architectural Review — In Progress
           </div>
 
           <h2 className="font-heading text-2xl md:text-4xl font-bold text-charcoal mb-3">
@@ -378,7 +378,7 @@ export default function RequestDesignForm() {
               { step: "03", title: "Email Delivery", desc: "Fixed-fee quotation arrives within 24 hours." },
             ].map(s => (
               <div key={s.step} className={`p-4 rounded-xl border ${s.active ? "border-gold/60 ring-1 ring-gold/40" : "border-border/60"} bg-white/80`}>
-                <div className="font-mono font-bold text-gold-dark text-[10px] mb-0.5">{s.step} -</div>
+                <div className="font-mono font-bold text-gold-dark text-[10px] mb-0.5">{s.step} —</div>
                 <h4 className="font-bold text-charcoal text-xs mb-0.5">{s.title}</h4>
                 <p className="text-[10px] text-concrete">{s.desc}</p>
               </div>
@@ -402,7 +402,7 @@ export default function RequestDesignForm() {
             </div>
             <p className="text-concrete">
               {selectedProjectType === "Commercial"
-                ? `Commercial - ${commercialType} (${commercialUnits} Units, ${commercialKitchens} Pantry, ${commercialRestrooms} Restrooms)`
+                ? `Commercial — ${commercialType} (${commercialUnits} Units, ${commercialKitchens} Pantry, ${commercialRestrooms} Restrooms)`
                 : `Residential House (${floors} Floor${floors > 1 ? "s" : ""} ${sameFloorPlan && floors > 1 ? "Identical Plan" : "Custom Layout"} · ${perFloorConfigs[0]?.bedrooms || 2} Beds, ${perFloorConfigs[0]?.baths || 2} Baths per floor)`} · {plotDimensions} · {sft.toLocaleString("en-IN")} SFT Total Built-Up
             </p>
             <div className="space-y-1.5">
@@ -964,7 +964,7 @@ export default function RequestDesignForm() {
 
               {selectedServices.length === 0 && (
                 <p className="text-[11px] text-concrete text-center py-2">
-                  Select services above - your fee builds up automatically.
+                  Select services above — your fee builds up automatically.
                 </p>
               )}
             </div>
@@ -1012,7 +1012,7 @@ export default function RequestDesignForm() {
               <div className="border-t border-white/20 pt-2 flex items-center justify-between">
                 <span className="text-xs font-bold text-white/70">Total Estimate</span>
                 <span className="text-2xl font-heading font-bold text-warm-white">
-                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : "-"}
+                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : "—"}
                 </span>
               </div>
               <p className="text-[9px] text-white/40">Final fee confirmed by architects within 24 hours.</p>

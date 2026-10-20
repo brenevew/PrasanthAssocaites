@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import ContactPageClient from "./ContactPageClient";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us, Coimbatore & Gudalur Offices",

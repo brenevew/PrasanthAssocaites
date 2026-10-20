@@ -1,7 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import { serviceHref } from "@/data/serviceLinks";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { company } from "@/data/company";
 import { services } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
@@ -21,6 +18,7 @@ import {
   ChevronRight,
   Building2,
 } from "lucide-react";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 const iconMap: Record<
   string,
@@ -153,6 +151,11 @@ export default function PropertyInvestmentPage() {
                 Our Property &amp; Investment{" "}
                 <em className="text-gold-dark not-italic">Services</em>
               </h1>
+              <p className="text-concrete text-base max-w-2xl mx-auto leading-relaxed">
+                Comprehensive real estate advisory covering every stage — from
+                initial property identification to ongoing portfolio management
+                and strategic exits.
+              </p>
             </div>
           </ScrollReveal>
 
@@ -231,9 +234,6 @@ export default function PropertyInvestmentPage() {
                         <span>Request Quote</span>
                         <ArrowRight size={13} />
                       </Button>
-                      <Link href={serviceHref(service.slug)} className="block mt-3 text-center text-sm font-semibold text-gold-dark underline underline-offset-4">
-                        Explore {service.title.toLowerCase()}
-                      </Link>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -245,14 +245,14 @@ export default function PropertyInvestmentPage() {
 
       {/* ── 3. CTA Banner ───────────────────────────────────────────── */}
       <CTABanner
-        headline="Buying, selling or investing?"
-        subtitle="Talk it through with our licensed property consultants. Confidential, and no obligation."
+        headline="Ready to Make Your Next Property Move?"
+        subtitle="Connect with our licensed property consultants for a confidential, no-obligation discussion about your investment goals."
         primaryCTA={{
           label: "Book a Free Consultation",
           href: "/contact",
         }}
         secondaryCTA={{
-          label: "All services",
+          label: "Explore All Services",
           href: "/services#realestate",
         }}
       />

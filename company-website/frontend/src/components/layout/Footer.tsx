@@ -145,10 +145,6 @@ export default function Footer() {
           <p className="text-xs text-concrete-light">
             &copy; {currentYear} {company.name}. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs text-concrete-light">
-            <Link href="/privacy" className="hover:text-charcoal transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-charcoal transition-colors">Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>

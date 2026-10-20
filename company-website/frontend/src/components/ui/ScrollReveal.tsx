@@ -22,17 +22,16 @@ export default function ScrollReveal({
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const element = ref.current;
-    if (!element || prefersReducedMotion || !("IntersectionObserver" in window)) return;
-
-    // Keep server-rendered and above-the-fold content visible immediately.
-    // Only enhance offscreen content once JavaScript is ready.
-    if (element.getBoundingClientRect().top < window.innerHeight) return;
+    if (prefersReducedMotion) {
+      if (ref.current) {
+        ref.current.classList.add("revealed");
+      }
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.classList.remove("reveal-pending");
           entry.target.classList.add("revealed");
           observer.unobserve(entry.target);
         }
@@ -40,13 +39,11 @@ export default function ScrollReveal({
       { threshold }
     );
 
-    element.classList.add("reveal-pending");
-    observer.observe(element);
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
 
-    return () => {
-      observer.disconnect();
-      element.classList.remove("reveal-pending");
-    };
+    return () => observer.disconnect();
   }, [threshold]);
 
   return (

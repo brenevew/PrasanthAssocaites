@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { Suspense } from "react";
 import PlanHomeClient from "./PlanHomeClient";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Residential & Commercial Building Planner",

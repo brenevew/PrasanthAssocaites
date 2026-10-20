@@ -7,28 +7,28 @@ export interface Testimonial {
 }
 
 /**
- * Real client testimonials, confirmed by Prasanth Associates (7 Oct 2026).
- * Only add new entries with the client's permission.
+ * Testimonials — replace with real customer feedback.
+ * All names and quotes below are placeholder content.
  */
 export const testimonials: Testimonial[] = [
   {
-    name: "Vijay Raghavan",
+    name: "Vijay Raghavan", // [PLACEHOLDER]
     project: "Residential Construction",
     location: "Coimbatore",
     quote:
       "The entire construction process was transparent from day one. Weekly updates, documented progress, and no surprises on the budget. The team delivered exactly what was promised, and the finishing quality exceeded our expectations.",
-    role: "Residential Construction",
+    role: "Homeowner",
   },
   {
-    name: "Priya",
+    name: "Priya", // [PLACEHOLDER]
     project: "Villa Construction",
     location: "Ooty",
     quote:
-      "What impressed us most was their attention to structural details that most builders overlook, waterproofing, concrete quality, and electrical planning. Three years in, and the house performs flawlessly.",
+      "What impressed us most was their attention to structural details that most builders overlook — waterproofing, concrete quality, and electrical planning. Three years in, and the house performs flawlessly.",
     role: "Villa Owner",
   },
   {
-    name: "Suresh Ramanathan",
+    name: "Suresh Ramanathan", // [PLACEHOLDER]
     project: "Commercial Office",
     location: "Coimbatore",
     quote:
@@ -36,7 +36,7 @@ export const testimonials: Testimonial[] = [
     role: "Business Owner",
   },
   {
-    name: "Dinesh Mani",
+    name: "Dinesh Mani", // [PLACEHOLDER]
     project: "Home Renovation",
     location: "Gudalur",
     quote:
@@ -52,11 +52,11 @@ export const testimonials: Testimonial[] = [
   role: "School Management / Correspondent",
 },
   {
-    name: "Confidential",
+    name: "Confidential", // [PLACEHOLDER]
     project: "Smart Home Villa",
-    location: "Kanniyakumari",
+    location: "Kanniyakumarai",
     quote:
-      "We wanted a home that integrates technology seamlessly, automated lighting, security, climate control. The team planned the smart systems during the design phase itself, not as an afterthought. The result feels effortless to live in.",
+      "We wanted a home that integrates technology seamlessly — automated lighting, security, climate control. The team planned the smart systems during the design phase itself, not as an afterthought. The result feels effortless to live in.",
     role: "Villa Owner",
   },
 ];

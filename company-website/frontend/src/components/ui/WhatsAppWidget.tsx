@@ -16,7 +16,7 @@ const QUICK_TEMPLATES = [
 ];
 
 export default function WhatsAppWidget({
-  phoneNumber = "919486038761",
+  phoneNumber = "919360337733",
   defaultMessage = "Hello Prasanth Associates, I would like to enquire about your architectural design services.",
 }: WhatsAppWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);

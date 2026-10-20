@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
+import RequestQuoteClient from "./RequestQuoteClient";
 import { connection } from "next/server";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
-import RequestQuoteClient from "./RequestQuoteClient";
 
 export const metadata: Metadata = {
   title: "Request a Construction Quote",

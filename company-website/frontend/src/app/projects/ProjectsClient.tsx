@@ -1,36 +1,46 @@
 "use client";
 
 import { useState } from "react";
-import { Search, X } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Search, X } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ProjectCard from "@/components/ui/ProjectCard";
 import ProjectFilter from "@/components/ui/ProjectFilter";
 import DesignGallery from "@/components/ui/DesignGallery";
-import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/ui/CTABanner";
+import { designGalleryImages } from "@/data/designGallery";
+import { blurProps } from "@/data/imageBlur";
 import type { Project, ProjectCategory } from "@/data/projects";
+
+export type ProjectsView = "projects" | "designs";
 
 interface ProjectsClientProps {
   allProjects: Project[];
   initialCategory: ProjectCategory | "all";
   initialSearch: string;
+  initialView: ProjectsView;
 }
 
 export default function ProjectsClient({
   allProjects,
   initialCategory,
   initialSearch,
+  initialView,
 }: ProjectsClientProps) {
   // Filters live in local state, seeded from the URL the server rendered with.
   // Keeping them out of useSearchParams() is what lets this page prerender —
   // and filtering locally keeps typing in the search box instant.
   const [currentCategory, setCurrentCategory] = useState<ProjectCategory | "all">(initialCategory);
   const [searchTerm, setSearchTerm] = useState(initialSearch);
+  const [view, setView] = useState<ProjectsView>(initialView);
   const currentSearch = searchTerm;
 
   // Keep the URL shareable/bookmarkable without triggering a re-render round trip.
-  const syncUrl = (newCategory: string, newSearch: string) => {
+  const syncUrl = (newCategory: string, newSearch: string, newView: ProjectsView = view) => {
     const params = new URLSearchParams();
+    if (newView === "designs") {
+      params.set("view", "designs");
+    }
     if (newCategory && newCategory !== "all") {
       params.set("category", newCategory);
     }
@@ -51,6 +61,29 @@ export default function ProjectsClient({
     setSearchTerm(val);
     syncUrl(currentCategory, val);
   };
+
+  const handleViewChange = (newView: ProjectsView) => {
+    setView(newView);
+    syncUrl(currentCategory, searchTerm, newView);
+  };
+
+  // Projects and designs get equal billing: two showcase tabs, one panel each.
+  const showcases = [
+    {
+      value: "projects" as const,
+      label: "Built Projects",
+      count: `${allProjects.length} projects`,
+      description: "Homes, schools, hotels and commercial buildings, with photos from the site.",
+      image: allProjects[0]?.image,
+    },
+    {
+      value: "designs" as const,
+      label: "Designs",
+      count: `${designGalleryImages.length} designs`,
+      description: "House elevations, landscaping, and residential and commercial interiors.",
+      image: designGalleryImages[0]?.src,
+    },
+  ];
 
   const clearSearch = () => {
     setSearchTerm("");
@@ -87,21 +120,82 @@ export default function ProjectsClient({
         <div className="container relative z-10 text-center max-w-3xl">
           <ScrollReveal>
             <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold tracking-[0.2em] uppercase text-gold-dark nm-raised border border-border shadow-2xs mb-4">
-              Portfolio
+              Architectural Portfolio
             </span>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-charcoal font-bold mb-6 leading-tight">
               Selected Projects
             </h1>
             <p className="text-lg text-concrete leading-relaxed">
-              Completed and ongoing work: homes, villas, commercial buildings and factories.
+              Buildings we have built, and the elevations and interiors our team has designed.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Filter & Live Search Bar */}
-      <section className="section bg-background">
+      {/* Showcase tabs: built projects and designs side by side */}
+      <section className="pt-12 md:pt-16 bg-background">
         <div className="container">
+          <div role="tablist" aria-label="Projects and designs" className="grid grid-cols-2 gap-3 sm:gap-6 max-w-5xl mx-auto">
+            {showcases.map((item) => {
+              const active = view === item.value;
+              return (
+                <button
+                  key={item.value}
+                  type="button"
+                  role="tab"
+                  id={`tab-${item.value}`}
+                  aria-selected={active}
+                  aria-controls={`panel-${item.value}`}
+                  onClick={() => handleViewChange(item.value)}
+                  className={`group relative overflow-hidden rounded-3xl text-left aspect-[4/5] sm:aspect-[16/9] cursor-pointer transition-all duration-300 ${
+                    active
+                      ? "ring-2 ring-gold ring-offset-4 ring-offset-[var(--canvas-bg)] shadow-xl"
+                      : "nm-raised hover:-translate-y-1"
+                  }`}
+                >
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      priority
+                      className={`object-cover transition-transform duration-700 group-hover:scale-105 ${active ? "" : "saturate-[0.85]"}`}
+                      sizes="(max-width: 640px) 50vw, 512px"
+                      {...blurProps(item.image)}
+                    />
+                  )}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-[rgba(26,23,20,0.92)] via-[rgba(26,23,20,0.55)] to-[rgba(26,23,20,0.05)] transition-opacity ${active ? "opacity-100" : "opacity-90"}`} />
+                  {active && (
+                    <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase nm-gold-raised text-charcoal">
+                      Viewing
+                    </span>
+                  )}
+                  <span className="absolute inset-x-0 bottom-0 p-4 sm:p-7 flex flex-col gap-1 sm:gap-2 text-white">
+                    <span className="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white/85 drop-shadow-sm">{item.count}</span>
+                    <span className="font-heading text-xl sm:text-3xl lg:text-4xl font-bold leading-tight">{item.label}</span>
+                    <span className="hidden sm:block text-sm text-white/80 leading-relaxed max-w-sm">{item.description}</span>
+                    <span className={`mt-1 sm:mt-2 inline-flex items-center gap-1.5 text-xs font-semibold ${active ? "text-gold-light" : "text-white"}`}>
+                      {active ? "Showing below" : `View ${item.label.toLowerCase()}`}
+                      <ArrowRight size={13} className={`transition-transform ${active ? "rotate-90" : "group-hover:translate-x-1"}`} />
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Built projects: filter & live search. Both panels stay in the HTML; only the active one shows. */}
+      <section
+        id="panel-projects"
+        role="tabpanel"
+        aria-labelledby="tab-projects"
+        hidden={view !== "projects"}
+        className="pt-10 md:pt-14 pb-20 md:pb-28 bg-background scroll-mt-28"
+      >
+        <div className="container">
+          <h2 className="sr-only">Built Projects</h2>
           <ScrollReveal className="max-w-xl mx-auto mb-10">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-concrete">
@@ -169,25 +263,23 @@ export default function ProjectsClient({
         </div>
       </section>
 
-      {/* Interior Design & Finishes Gallery */}
-      <section className="section bg-[var(--canvas-bg)] border-t border-border/70">
+      {/* Designs: elevations, landscaping and interiors */}
+      <section
+        id="panel-designs"
+        role="tabpanel"
+        aria-labelledby="tab-designs"
+        hidden={view !== "designs"}
+        className="pt-10 md:pt-14 pb-20 md:pb-28 bg-background scroll-mt-28"
+      >
         <div className="container">
-          <ScrollReveal>
-            <SectionHeading
-              badge="Design & Finishes"
-              title="Interior Design Highlights"
-              subtitle="Kitchens, bathrooms and finishing details from our projects."
-            />
-          </ScrollReveal>
-          <ScrollReveal delay={100}>
-            <DesignGallery />
-          </ScrollReveal>
+          <h2 className="sr-only">Designs</h2>
+          <DesignGallery />
         </div>
       </section>
 
       <CTABanner
-        headline="Want something similar?"
-        subtitle="Tell us about your plot and we'll talk you through it."
+        headline="See a project that inspires you?"
+        subtitle="Talk with our engineering & design team about bringing a similar level of quality to your build."
       />
     </>
   );

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import ProjectsClient from "./ProjectsClient";
 import { projects, type ProjectCategory } from "@/data/projects";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Projects in Coimbatore & the Nilgiris",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 interface ProjectsPageProps {
-  searchParams: Promise<{ category?: string; q?: string }>;
+  searchParams: Promise<{ category?: string; q?: string; view?: string }>;
 }
 
 /**
@@ -37,7 +37,7 @@ interface ProjectsPageProps {
  * hydration. The client component re-filters locally to keep search instant.
  */
 export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
-  const { category, q } = await searchParams;
+  const { category, q, view } = await searchParams;
 
   const initialCategory = (category as ProjectCategory | "all") || "all";
   const initialSearch = q || "";
@@ -47,6 +47,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
       allProjects={projects}
       initialCategory={initialCategory}
       initialSearch={initialSearch}
+      initialView={view === "designs" ? "designs" : "projects"}
     />
   );
 }

@@ -52,7 +52,7 @@ export default function StepBuildingReport({
             type="button"
             onClick={() => {
               const msg = `*Preliminary Building Requirement Brief [Ref: ${refCode}]*\n\n*Project:* ${state.setup.projectName || "Residential Project"}\n*Location:* ${state.setup.location || "Not specified"}\n*Plot Area:* ${plotArea.toLocaleString("en-IN")} SFT\n*Built-up Area:* ${totalBuiltUp.toLocaleString("en-IN")} SFT\n*Floors:* ${state.floors.length} Levels\n*Bedrooms:* ${totalBeds} | *Baths:* ${totalBaths}\n\nI would like to review this architectural brief with Prasanth Associates team.`;
-              const url = `https://wa.me/919486038761?text=${encodeURIComponent(msg)}`;
+              const url = `https://wa.me/919360337733?text=${encodeURIComponent(msg)}`;
               window.open(url, "_blank", "noopener,noreferrer");
             }}
             className="px-4 py-2.5 rounded-xl bg-[#25D366] text-white hover:bg-[#20ba59] font-bold text-xs flex items-center gap-1.5 shadow-md cursor-pointer"

@@ -35,7 +35,7 @@ export default function OptionCards({
         {legend}
         {multi && (
           <span className="ml-1.5 font-medium normal-case tracking-normal text-concrete-light">
-            - select all that apply
+            — select all that apply
           </span>
         )}
       </legend>

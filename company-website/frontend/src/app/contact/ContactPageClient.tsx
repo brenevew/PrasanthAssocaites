@@ -22,11 +22,12 @@ export default function ContactPageClient() {
               className="mb-4 text-balance font-heading font-bold leading-tight text-charcoal"
               style={{ fontSize: "var(--text-h2)" }}
             >
-              Talk to{" "}
-              <em className="not-italic text-gold-dark">us</em>
+              Get in Touch with Our{" "}
+              <em className="not-italic text-gold-dark">Architectural Team</em>
             </h1>
             <p className="mx-auto mb-6 max-w-xl text-sm leading-relaxed text-concrete md:text-base">
-              Call, email, or visit our offices in Coimbatore and Gudalur.
+              Visit our offices in Coimbatore or Gudalur, call our engineering team
+              directly, or send us a message.
             </p>
 
             {/* Immediate contact actions — no scrolling needed to call or email */}
@@ -49,9 +50,9 @@ export default function ContactPageClient() {
 
             <div className="flex flex-wrap justify-center gap-2.5">
               {[
-                "Reply within 24 hours",
-                "Free consultation",
-                "Fixed BoQ pricing",
+                "24-Hour Response Guarantee",
+                "Free Engineering Consultation",
+                "100% Fixed BoQ Pricing",
               ].map((item) => (
                 <span
                   key={item}

@@ -227,7 +227,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
 
   /* Dynamic Floor Levels & Maximize/Minimize (Expanded/Collapsed) State
      `list` and `nextLevel` are kept in one state object so every add/remove
-     is a single atomic, pure update, reading a plain ref for `nextLevel`
+     is a single atomic, pure update — reading a plain ref for `nextLevel`
      from inside a separate setState's updater caused it to skip a level
      number (e.g. jump straight from 2nd Floor to 4th Floor) because React
      can invoke that updater at a different time than the ref mutation. */
@@ -561,7 +561,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
             onClick={() => {
               const floorDetailsText = floorLevels.map((f, idx) => `  • ${f.name || getArchitecturalFloorName(idx)}: ${f.length}x${f.breadth} ft (${(parseFloat(f.length)||0)*(parseFloat(f.breadth)||0)} SFT)`).join('\n');
               const msg = `*Project Plan Inquiry [Ref: ${refCode}]*\n\n*Client Name:* ${name || "Client"}\n*Phone:* ${phone || "Not specified"}\n*Project Type:* ${selectedProjectType}\n*Plot:* ${plotLength} x ${plotWidth} ft (${plotAreaNum.toLocaleString('en-IN')} SFT)\n*Total Floors:* ${floorLevels.length} Levels\n*Total Built-up:* ${totalAllFloorsSft.toLocaleString('en-IN')} SFT\n\n*Floor Breakdown:*\n${floorDetailsText}\n\n${selectedPackage ? `*Package:* ${selectedPackage}\n` : ''}${grandTotal > 0 ? `*Est. Fee:* ₹${grandTotal.toLocaleString('en-IN')}\n` : ''}\nReference: ${refCode}`;
-              const url = `https://wa.me/919486038761?text=${encodeURIComponent(msg)}`;
+              const url = `https://wa.me/919360337733?text=${encodeURIComponent(msg)}`;
               window.open(url, "_blank", "noopener,noreferrer");
             }}
             className="w-full py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl text-xs font-bold uppercase tracking-widest transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
@@ -1347,7 +1347,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
               <div className="border-t border-white/20 pt-2 flex items-center justify-between">
                 <span className="text-xs font-bold text-white/70">Total Estimated Fee</span>
                 <span className="text-2xl font-heading font-bold text-warm-white">
-                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : "-"}
+                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : "—"}
                 </span>
               </div>
             </div>
@@ -1411,7 +1411,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                 onClick={() => {
                   const floorDetailsText = floorLevels.map((f, idx) => `  • ${f.name || getArchitecturalFloorName(idx)}: ${f.length}x${f.breadth} ft (${(parseFloat(f.length)||0)*(parseFloat(f.breadth)||0)} SFT)`).join('\n');
                   const msg = `*Project Plan Inquiry - Prasanth Associates*\n\n*Client Name:* ${name || "Client"}\n*Phone:* ${phone || "Not specified"}\n*Project Type:* ${selectedProjectType}\n*Plot Dimensions:* ${plotLength} x ${plotWidth} ft (${plotAreaNum.toLocaleString('en-IN')} SFT)\n*Total Floors:* ${numFloorsCount} Levels\n*Total Built-up Area:* ${totalAllFloorsSft.toLocaleString('en-IN')} SFT\n\n*Floor Breakdown:*\n${floorDetailsText}\n\n${selectedPackage ? `*Selected Package:* ${selectedPackage}\n` : ''}${grandTotal > 0 ? `*Est. Design Fee:* ₹${grandTotal.toLocaleString('en-IN')}\n` : ''}\nI would like to discuss this plan with your senior architect.`;
-                  const url = `https://wa.me/919486038761?text=${encodeURIComponent(msg)}`;
+                  const url = `https://wa.me/919360337733?text=${encodeURIComponent(msg)}`;
                   window.open(url, "_blank", "noopener,noreferrer");
                 }}
                 className="w-full py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-2xl text-xs font-bold uppercase tracking-widest transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"

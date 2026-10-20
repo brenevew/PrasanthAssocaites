@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { serviceHref } from "@/data/serviceLinks";
 import {
   CheckCircle2, Home, Building2, Building, Key, Hammer, Cpu,
   Factory, Compass, Palette, Trees, ClipboardList, ArrowRight, Sparkles,
@@ -100,19 +98,17 @@ export default function ServicesPageClient() {
           <ScrollReveal>
             <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-gold-dark nm-raised px-4.5 py-1.5 rounded-full mb-8 backdrop-blur-md border border-border shadow-xs">
               <Sparkles size={11} className="text-gold-dark" />
-              Services
+              Comprehensive Capabilities
             </span>
             <h1
               className="font-heading font-bold text-charcoal mb-6 leading-tight"
               style={{ fontSize: "var(--text-h1)" }}
             >
               Engineering &amp;{" "}
-              <em className="text-gold-dark not-italic">Design</em> Services in Coimbatore
+              <em className="text-gold-dark not-italic">Design</em> Services
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
-              From our Gandhipuram office in Coimbatore (Kovai), we help with house construction,
-              building plans, interiors, factory sheds, property valuation and property management.
-              Choose a service to see the scope and what to send with your enquiry.
+              From individual luxury residences to large-scale commercial &amp; industrial developments — delivered with precision, transparency, and architectural distinction.
             </p>
           </ScrollReveal>
         </div>
@@ -199,9 +195,7 @@ export default function ServicesPageClient() {
 
                     {/* Title */}
                     <h2 className="text-xl font-heading font-bold text-charcoal mb-2.5 leading-snug">
-                      <Link href={serviceHref(service.slug)} onClick={(event) => event.stopPropagation()} className="hover:text-gold-dark underline-offset-4 hover:underline">
-                        {service.title}
-                      </Link>
+                      {service.title}
                     </h2>
 
                     {/* SLA & Credential Badges */}
@@ -230,7 +224,7 @@ export default function ServicesPageClient() {
                     {/* Sunken Key Capabilities Box */}
                     <div className="nm-inset rounded-2xl p-5 mb-6">
                       <h4 className="text-[10px] font-bold uppercase tracking-widest text-charcoal/70 mb-3">
-                        What&apos;s included
+                        Key Capabilities &amp; Specifications
                       </h4>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {service.features.map((feature) => (
@@ -268,14 +262,6 @@ export default function ServicesPageClient() {
                           </Button>
                         )}
                       </div>
-                      {!serviceHref(service.slug).includes("#") && (
-                        <Link
-                          href={serviceHref(service.slug)}
-                          className="block py-2 text-center text-sm font-semibold text-gold-dark underline underline-offset-4"
-                        >
-                          Explore {service.title.toLowerCase()}
-                        </Link>
-                      )}
                     </div>
                   </div>
                 </ScrollReveal>
