@@ -15,24 +15,28 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 interface Props { params: Promise<{ slug: string }> }
 
-export const dynamicParams = false;
+// Services whose canonical page is /services/<slug>. The turnkey service has its
+// own page, so /services/turnkey-construction must 404 rather than duplicate it.
+const hasLandingPage = (slug: string) =>
+  services.some((service) => service.slug === slug) && getServicePath(slug) === `/services/${slug}`;
 
+// No `dynamicParams = false`: on Cloudflare (OpenNext) prebuilt pages aren't in a
+// runtime cache, so that setting made every service URL 404 in production.
+// Unknown slugs still 404 through notFound() below.
 export function generateStaticParams() {
-  return services
-    .filter((service) => getServicePath(service.slug) === `/services/${service.slug}`)
-    .map(({ slug }) => ({ slug }));
+  return services.filter((service) => hasLandingPage(service.slug)).map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  if (!services.some((service) => service.slug === slug)) notFound();
+  if (!hasLandingPage(slug)) notFound();
   return serviceMetadata(slug);
 }
 
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const service = services.find((entry) => entry.slug === slug);
-  if (!service) notFound();
+  if (!service || !hasLandingPage(slug)) notFound();
   const category = serviceCategories.find((entry) => entry.slugs.includes(slug))!;
   const hasPlanner = plannableSlugs.includes(slug) || designSlugs.includes(slug);
   const url = `${SITE_URL}${getServicePath(slug)}`;
