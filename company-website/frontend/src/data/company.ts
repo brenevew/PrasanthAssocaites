@@ -115,31 +115,13 @@ export const company: CompanyInfo = {
   },
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2737!2d76.9662768!3d11.017756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8590064684247%3A0xf6131f07c6935a32!2sPrasanth%20Associates!5e0!3m2!1sen!2sin!4v1700000000000", // [PLACEHOLDER]
+  // Only verifiable figures: Google Business Profile ratings and review counts
+  // (Gudalur 4.9 from 42, Coimbatore 4.9 from 23, Oct 2026). Don't add unsourced totals.
   stats: [
-    {
-      label: "Years Experience",
-      value: "15",
-      suffix: "+",
-      numericValue: 15,
-    },
-    {
-      label: "Projects Delivered",
-      value: "250",
-      suffix: "+",
-      numericValue: 250,
-    },
-    {
-      label: "Sq. Ft. Constructed",
-      value: "2M",
-      suffix: "+",
-      numericValue: 2000000,
-    },
-    {
-      label: "Client Satisfaction",
-      value: "98",
-      suffix: "%",
-      numericValue: 98,
-    },
+    { label: "Google Rating", value: "4.9", suffix: "★", numericValue: 4.9 },
+    { label: "Google Reviews", value: "65", suffix: "", numericValue: 65 },
+    { label: "Offices", value: "2", suffix: "", numericValue: 2 },
+    { label: "Districts Served", value: "2", suffix: "", numericValue: 2 },
   ],
 };
 

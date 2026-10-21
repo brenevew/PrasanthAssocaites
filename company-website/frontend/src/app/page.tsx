@@ -163,9 +163,9 @@ export default function Home() {
                 />
                 {/* Floating Neu-Glass badge */}
                 <div className="absolute -bottom-5 -right-5 z-20 neu-glass rounded-2xl px-5 py-4">
-                  <p className="text-xs text-concrete font-medium mb-0.5">Trust Score</p>
+                  <p className="text-xs text-concrete font-medium mb-0.5">Google rating</p>
                   <p className="text-2xl font-heading font-bold text-charcoal">4.9 ★</p>
-                  <p className="text-[10px] text-concrete-light">From 200+ clients</p>
+                  <p className="text-[10px] text-concrete-light">From 65 Google reviews</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -202,7 +202,7 @@ export default function Home() {
                   "100% Transparent Cost Estimation",
                   "In-house Architectural & Engineering Team",
                   "Strict Timeline Adherence",
-                  "Comprehensive Post-Handover Warranty",
+                  "Post-Handover Support",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-charcoal font-semibold text-sm">
                     <span className="w-6 h-6 rounded-full nm-inset-sm flex items-center justify-center flex-shrink-0">

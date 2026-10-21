@@ -50,7 +50,7 @@ export default function ContactPageClient() {
 
             <div className="flex flex-wrap justify-center gap-2.5">
               {[
-                "24-Hour Response Guarantee",
+                "Reply Usually Within 24 Hours",
                 "Free Engineering Consultation",
                 "100% Fixed BoQ Pricing",
               ].map((item) => (

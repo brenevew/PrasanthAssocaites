@@ -131,7 +131,6 @@ const gudalurSchema = {
       name: `${company.name} - Gudalur Branch Office`,
       image: `${SITE_URL}/images/hero/hero-main.webp`,
       url: CANONICAL_URL,
-      priceRange: "₹₹₹",
       telephone: gudalurOffice.phone,
       email: gudalurOffice.email,
       hasMap: gudalurOffice.mapLink,

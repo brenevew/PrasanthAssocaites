@@ -12,9 +12,9 @@ export const services: Service[] = [
     slug: "residential-construction",
     title: "Residential Construction",
     shortDescription:
-      "Individual custom homes and duplex residences built with 100% Vastu compliance, Fe550D TMT reinforcement, and legally binding fixed-price BoQ.",
+      "Individual custom homes and duplex residences built with 100% Vastu compliance, Fe550D TMT reinforcement, and an itemised BoQ that fixes the price for the agreed scope.",
     description:
-      "Every home is a generational landmark. We design and construct custom residences balancing scientific Vastu architecture, spatial efficiency, and engineered durability. From geotechnical soil analysis and heavy RCC foundation casting to premium vitrified finishes and multi-layer waterproofing, every milestone is supervised by senior civil engineers with zero escalation clauses.",
+      "Every home is a generational landmark. We design and construct custom residences balancing scientific Vastu architecture, spatial efficiency, and engineered durability. From geotechnical soil analysis and heavy RCC foundation casting to premium vitrified finishes and multi-layer waterproofing, every milestone is supervised by senior civil engineers, with the price fixed for the agreed scope.",
     icon: "Home",
     features: [
       "100% Vastu-aligned architectural layouts",
@@ -22,7 +22,7 @@ export const services: Service[] = [
       "Multi-layer chemical waterproofing on slabs & wet areas",
       "Branded sanitary & electrical fittings",
       "Conduit pre-wiring for solar & rainwater percolation pit",
-      "Legally locked line-item BoQ with zero price escalation",
+      "Line-item BoQ that fixes the price for the agreed scope",
     ],
   },
   {
@@ -73,7 +73,7 @@ export const services: Service[] = [
       "Transparent milestone billing with live app tracking",
       "Independent stage-by-stage quality audits",
       "Material testing certificates for all concrete & steel batches",
-      "Guaranteed handover date backed by contract penalty clause",
+      "Written project schedule with agreed handover date",
     ],
   },
   {
@@ -153,27 +153,27 @@ export const services: Service[] = [
       "Our architectural team crafts innovative, functional, and aesthetically striking designs tailored to your spatial needs. From conceptual blueprints to structural planning, we translate visions into buildable, sustainable realities.",
     icon: "Compass",
     features: [
-      "Architectural Planning",
-      "Building Design",
-      "Blueprint & Drafting",
-      "Spatial Architecture",
-      "Structural Concepts",
+      "2D floor plans drawn for your plot",
+      "3D front elevation",
+      "Vastu-based room planning on request",
+      "Approval (sanction) drawings",
+      "Working drawings for your builder",
     ],
   },
   {
     slug: "interior-designs",
     title: "Interior Designs",
     shortDescription:
-      "Bespoke interior styling, space makeovers, indoor aesthetics, and customized interior decoration.",
+      "Interior design and installation for homes and offices: modular kitchens, wardrobes, ceilings, lighting and storage.",
     description:
       "We create sophisticated indoor environments that blend ergonomics with high-end aesthetic appeal. Our bespoke interior solutions transform raw spaces into beautifully curated living and working environments.",
     icon: "Palette",
     features: [
-      "Interior Styling",
-      "Space Makeover",
-      "Indoor Aesthetics",
-      "Interior Decorating",
-      "Bespoke Interiors",
+      "Modular kitchens & wardrobes",
+      "False ceiling & lighting design",
+      "TV units, pooja units & storage",
+      "3D views of every room before work starts",
+      "Supply and installation by our team",
     ],
   },
   {
@@ -231,23 +231,23 @@ export const services: Service[] = [
     slug: "landscaping-designs",
     title: "Landscaping Designs",
     shortDescription:
-      "Landscape architecture, outdoor living design, garden crafting, and tranquil green space creation.",
+      "Garden and outdoor design: planting plans, lawns, pathways, irrigation, outdoor lighting and terrace gardens.",
     description:
       "We harmonize architecture with nature by designing serene outdoor spaces, gardens, and exterior environments. Our landscaping expertise elevates property value and creates refreshing green sanctuaries.",
     icon: "Trees",
     features: [
-      "Outdoor Living Design",
-      "Landscape Architecture",
-      "Garden Crafting",
-      "Exterior Styling",
-      "Green Spaces Design",
+      "Garden layout & planting plan",
+      "Lawns, pathways & driveways",
+      "Drip & sprinkler irrigation",
+      "Outdoor lighting & seating areas",
+      "Terrace & balcony gardens",
     ],
   },
   {
     slug: "bank-valuation-report",
     title: "Bank Valuation Report",
     shortDescription:
-      "Certified property valuation reports for home loans, mortgages, commercial financing, and banking compliance.",
+      "Property valuation reports for home loans, mortgages, commercial financing, and banking compliance.",
     description:
       "We prepare authoritative, bank-approved property valuation and appraisal reports accepted by leading nationalized and private banks. Our registered valuers conduct rigorous on-site inspections, land cost assessments, and structural depreciation analyses to provide precise valuation certifications for home loans, mortgages, asset declarations, and visa processing.",
     icon: "Landmark",
@@ -256,7 +256,7 @@ export const services: Service[] = [
       "Mortgage & Financing Valuation",
       "Fair Market Value Assessment",
       "Depreciation & Land Evaluation",
-      "Registered Valuer Certification",
+      "Signed valuation report",
       "Tax & Visa Net Worth Reports",
     ],
   },
@@ -266,7 +266,7 @@ export const services: Service[] = [
     shortDescription:
       "Official stability certifications, load audits, and structural safety assessments for residential, industrial, and commercial premises.",
     description:
-      "Certified structural stability inspections and safety certifications issued by licensed Chartered Structural Engineers. We verify structural soundness, load-bearing capacities, seismic resilience, and foundation health for factory license renewals, school/college building clearances, commercial occupancy approvals, and vintage building renovations.",
+      "Structural stability inspections and safety certificates prepared by our structural engineers. We verify structural soundness, load-bearing capacities, seismic resilience, and foundation health for factory license renewals, school/college building clearances, commercial occupancy approvals, and vintage building renovations.",
     icon: "ShieldCheck",
     features: [
       "Factory & Industrial Clearances",
@@ -274,7 +274,7 @@ export const services: Service[] = [
       "Load-bearing & NDT Audits",
       "Seismic Resilience Analysis",
       "Vintage Building Fitness Report",
-      "Chartered Engineer Sign-off",
+      "Engineer sign-off",
     ],
   },
   {
@@ -300,7 +300,7 @@ export const services: Service[] = [
     shortDescription:
       "Technical asset appraisals, machinery valuation, customs certification, and government regulatory clearances.",
     description:
-      "Government-registered Chartered Engineer certifications and technical valuation services for industrial machinery, commercial infrastructure, and corporate fixed assets. We deliver legally valid technical documentation for customs clearances, bank collateral, asset liquidation, insurance audits, and legal dispute resolutions.",
+      "Engineer-prepared technical valuation services for industrial machinery, commercial infrastructure, and corporate fixed assets. We deliver legally valid technical documentation for customs clearances, bank collateral, asset liquidation, insurance audits, and legal dispute resolutions.",
     icon: "FileCheck",
     features: [
       "Plant & Machinery Valuation",
@@ -323,7 +323,7 @@ export const services: Service[] = [
       "Market intelligence & location analysis",
       "Legal title verification & due diligence",
       "Fair market value negotiation",
-      "DTCP & CMDA approval verification",
+      "DTCP & local planning authority approval verification",
       "Registration & stamp duty guidance",
       "Post-acquisition development advisory",
     ],

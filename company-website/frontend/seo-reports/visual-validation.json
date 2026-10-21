@@ -1,0 +1,506 @@
+[
+  {
+    "route": "/",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 8313,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 9597,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#construction",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 4876,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#design",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 4259,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#valuation",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 3417,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#realestate",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 3512,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services/turnkey-design-build-coimbatore",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 6916,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/locations/coimbatore",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 4466,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/locations/nilgiris-ooty",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 92,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 5137,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/locations/gudalur",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 5851,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/contact",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 2279,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/request-quote?service=residential-construction",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 2673,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/property-investment",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 3010,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/projects",
+    "device": "desktop",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 1440,
+      "top": 3443,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 11817,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 21305,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#construction",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 10131,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#design",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 8026,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#valuation",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 6034,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services#realestate",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 6109,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/services/turnkey-design-build-coimbatore",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 11531,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/locations/coimbatore",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 6513,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/locations/nilgiris-ooty",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 99,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 7516,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/locations/gudalur",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 9055,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/contact",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 4350,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/request-quote?service=residential-construction",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 5213,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/property-investment",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 5708,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  },
+  {
+    "route": "/projects",
+    "device": "mobile",
+    "textIdentical": true,
+    "dimensionsIdentical": true,
+    "exactChangedPixels": 0,
+    "changedPixelsAbove8": 0,
+    "changedPercent": 0,
+    "bounds": {
+      "left": 390,
+      "top": 5900,
+      "right": 0,
+      "bottom": 0
+    },
+    "errors": [],
+    "overflowBefore": false,
+    "overflowAfter": false
+  }
+]

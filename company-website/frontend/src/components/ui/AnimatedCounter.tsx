@@ -15,7 +15,10 @@ export default function AnimatedCounter({
   label,
   duration = 2000,
 }: AnimatedCounterProps) {
-  const [displayValue, setDisplayValue] = useState("0");
+  // Starts at the real value, so server-rendered HTML (and crawlers) see the
+  // actual figure. Only counters that begin below the fold are reset to 0 and
+  // animated as they scroll into view.
+  const [displayValue, setDisplayValue] = useState(value);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -24,6 +27,12 @@ export default function AnimatedCounter({
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+
+    const element = ref.current;
+    if (!element || prefersReducedMotion || hasAnimated) return;
+    // Already visible on load: keep the real value rather than flashing to 0.
+    if (element.getBoundingClientRect().top < window.innerHeight) return;
+    const resetFrame = requestAnimationFrame(() => setDisplayValue("0"));
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -75,11 +84,12 @@ export default function AnimatedCounter({
       { threshold: 0.3 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
 
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(resetFrame);
+      observer.disconnect();
+    };
   }, [value, duration, hasAnimated]);
 
   return (

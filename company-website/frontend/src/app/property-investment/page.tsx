@@ -246,7 +246,7 @@ export default function PropertyInvestmentPage() {
       {/* ── 3. CTA Banner ───────────────────────────────────────────── */}
       <CTABanner
         headline="Ready to Make Your Next Property Move?"
-        subtitle="Connect with our licensed property consultants for a confidential, no-obligation discussion about your investment goals."
+        subtitle="Connect with our property consultants for a confidential, no-obligation discussion about your investment goals."
         primaryCTA={{
           label: "Book a Free Consultation",
           href: "/contact",

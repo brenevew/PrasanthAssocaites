@@ -105,7 +105,7 @@ export const differentiators: Differentiator[] = [
     icon: "BarChart3",
   },
   {
-    title: "On-Time Execution",
+    title: "Planned Execution",
     description:
       "Structured planning, proactive material procurement, and disciplined progress tracking minimize delays and deliver projects on schedule.",
     icon: "Clock",

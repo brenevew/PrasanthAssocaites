@@ -376,7 +376,7 @@ export default function ArchitecturalEstimator() {
                   </p>
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full nm-raised text-[11px] font-bold text-charcoal">
                     <ShieldCheck size={14} className="text-gold-dark" />
-                    100% Structural Price Lock Guarantee
+                    Price Fixed for the Agreed Scope
                   </div>
                 </div>
               ) : (

@@ -1,0 +1,137 @@
+
+> prasanthassocaites@0.1.0 seo:audit
+> node scripts/seo-audit.mjs http://127.0.0.1:3100
+
+# SEO audit: http://127.0.0.1:3100
+
+Pages in sitemap: 20 | Errors: 22 | Warnings: 99
+
+Services checked for dedicated sitemap pages: 22
+
+## Errors
+
+- `/services` Residential Construction: service URL is missing from the sitemap
+- `/services` Villa Construction: service URL is missing from the sitemap
+- `/services` Commercial Building & Retail Construction: service URL is missing from the sitemap
+- `/services` Turnkey Design and Construction: service URL is missing from the sitemap
+- `/services` Industrial & Factory Construction: service URL is missing from the sitemap
+- `/services` Smart Home Automation: service URL is missing from the sitemap
+- `/services` Renovation & Structural Retrofitting: service URL is missing from the sitemap
+- `/services` Construction Consulting & Project Management: service URL is missing from the sitemap
+- `/services` Architectural Designs: service URL is missing from the sitemap
+- `/services` Interior Designs: service URL is missing from the sitemap
+- `/services` Structural Drawings: service URL is missing from the sitemap
+- `/services` Electrical Drawings: service URL is missing from the sitemap
+- `/services` Plumbing Drawings: service URL is missing from the sitemap
+- `/services` Landscaping Designs: service URL is missing from the sitemap
+- `/services` Bank Valuation Report: service URL is missing from the sitemap
+- `/services` Structural Stability Certificate: service URL is missing from the sitemap
+- `/services` Detailed Estimation & Costing (BOQ): service URL is missing from the sitemap
+- `/services` Chartered Engineer & Technical Valuation: service URL is missing from the sitemap
+- `/services` Property Acquisition Advisory: service URL is missing from the sitemap
+- `/services` Land & Plot Transactions: service URL is missing from the sitemap
+- `/services` Real Estate Investment Consulting: service URL is missing from the sitemap
+- `/services` Property Portfolio Management: service URL is missing from the sitemap
+
+## Warnings
+
+- `/` title is 72 chars (Google shows ~60): "Building Plans & Construction in Coimbatore & Ooty | Prasanth Associates"
+- `/` image without alt text: /images/social/instagram.svg
+- `/` image without alt text: /images/social/facebook.svg
+- `/` image without alt text: /images/social/linkedin.svg
+- `/about` image without alt text: /images/social/instagram.svg
+- `/about` image without alt text: /images/social/facebook.svg
+- `/about` image without alt text: /images/social/linkedin.svg
+- `/contact` image without alt text: /images/social/instagram.svg
+- `/contact` image without alt text: /images/social/facebook.svg
+- `/contact` image without alt text: /images/social/linkedin.svg
+- `/contact` short page: ~297 words; review usefulness (not a minimum word requirement)
+- `/locations/coimbatore` image without alt text: /images/social/instagram.svg
+- `/locations/coimbatore` image without alt text: /images/social/facebook.svg
+- `/locations/coimbatore` image without alt text: /images/social/linkedin.svg
+- `/locations/gudalur` image without alt text: /images/social/instagram.svg
+- `/locations/gudalur` image without alt text: /images/social/facebook.svg
+- `/locations/gudalur` image without alt text: /images/social/linkedin.svg
+- `/locations/nilgiris-ooty` image without alt text: /images/social/instagram.svg
+- `/locations/nilgiris-ooty` image without alt text: /images/social/facebook.svg
+- `/locations/nilgiris-ooty` image without alt text: /images/social/linkedin.svg
+- `/plan-home` image without alt text: /images/social/instagram.svg
+- `/plan-home` image without alt text: /images/social/facebook.svg
+- `/plan-home` image without alt text: /images/social/linkedin.svg
+- `/projects` image without alt text: /_next/image?url=%2Fimages%2Fprojects%2FVilla%2Fluxury-villa-construction-pricol
+- `/projects` image without alt text: /_next/image?url=%2Fimages%2Fprojects%2FDesigns%2Fexterior-design-residential-el
+- `/projects` image without alt text: /images/social/instagram.svg
+- `/projects` image without alt text: /images/social/facebook.svg
+- `/projects` image without alt text: /images/social/linkedin.svg
+- `/projects/manjushree` title is 75 chars (Google shows ~60): "Director's Building Renovation, Manjushree Plantation | Prasanth Associates"
+- `/projects/manjushree` meta description is 168 chars (keep under ~160)
+- `/projects/manjushree` image without alt text: /images/social/instagram.svg
+- `/projects/manjushree` image without alt text: /images/social/facebook.svg
+- `/projects/manjushree` image without alt text: /images/social/linkedin.svg
+- `/projects/manjushree` short page: ~283 words; review usefulness (not a minimum word requirement)
+- `/projects/oxford-school` image without alt text: /images/social/instagram.svg
+- `/projects/oxford-school` image without alt text: /images/social/facebook.svg
+- `/projects/oxford-school` image without alt text: /images/social/linkedin.svg
+- `/projects/oxford-school` short page: ~183 words; review usefulness (not a minimum word requirement)
+- `/projects/oxford-school` visible placeholder text on page
+- `/projects/oxford-school` orphan page: in the sitemap but no other page links to it
+- `/projects/pricol` meta description is 181 chars (keep under ~160)
+- `/projects/pricol` image without alt text: /images/social/instagram.svg
+- `/projects/pricol` image without alt text: /images/social/facebook.svg
+- `/projects/pricol` image without alt text: /images/social/linkedin.svg
+- `/projects/residential-building-ooty` image without alt text: /images/social/instagram.svg
+- `/projects/residential-building-ooty` image without alt text: /images/social/facebook.svg
+- `/projects/residential-building-ooty` image without alt text: /images/social/linkedin.svg
+- `/projects/residential-building-ooty` short page: ~181 words; review usefulness (not a minimum word requirement)
+- `/projects/residential-building-ooty` visible placeholder text on page
+- `/projects/residential-building-ooty` orphan page: in the sitemap but no other page links to it
+- `/projects/residential-building-perur-coimbatore` image without alt text: /images/social/instagram.svg
+- `/projects/residential-building-perur-coimbatore` image without alt text: /images/social/facebook.svg
+- `/projects/residential-building-perur-coimbatore` image without alt text: /images/social/linkedin.svg
+- `/projects/residential-building-perur-coimbatore` short page: ~213 words; review usefulness (not a minimum word requirement)
+- `/projects/residential-construction-project` image without alt text: /images/social/instagram.svg
+- `/projects/residential-construction-project` image without alt text: /images/social/facebook.svg
+- `/projects/residential-construction-project` image without alt text: /images/social/linkedin.svg
+- `/projects/residential-construction-project` short page: ~227 words; review usefulness (not a minimum word requirement)
+- `/projects/rex-school` image without alt text: /images/social/instagram.svg
+- `/projects/rex-school` image without alt text: /images/social/facebook.svg
+- `/projects/rex-school` image without alt text: /images/social/linkedin.svg
+- `/projects/sasthapruri` meta description is 167 chars (keep under ~160)
+- `/projects/sasthapruri` image without alt text: /images/social/instagram.svg
+- `/projects/sasthapruri` image without alt text: /images/social/facebook.svg
+- `/projects/sasthapruri` image without alt text: /images/social/linkedin.svg
+- `/property-investment` image without alt text: /images/social/instagram.svg
+- `/property-investment` image without alt text: /images/social/facebook.svg
+- `/property-investment` image without alt text: /images/social/linkedin.svg
+- `/request-quote` image without alt text: /images/social/instagram.svg
+- `/request-quote` image without alt text: /images/social/facebook.svg
+- `/request-quote` image without alt text: /images/social/linkedin.svg
+- `/services` image without alt text: /images/social/instagram.svg
+- `/services` image without alt text: /images/social/facebook.svg
+- `/services` image without alt text: /images/social/linkedin.svg
+- `/services` Residential Construction: has no dedicated service page, got https://prasanthassociates.com/services#residential-construction
+- `/services` Villa Construction: has no dedicated service page, got https://prasanthassociates.com/services#villa-construction
+- `/services` Commercial Building & Retail Construction: has no dedicated service page, got https://prasanthassociates.com/services#commercial-construction
+- `/services` Turnkey Design and Construction: has no dedicated service page, got https://prasanthassociates.com/services#turnkey-construction
+- `/services` Industrial & Factory Construction: has no dedicated service page, got https://prasanthassociates.com/services#industrial-factory-construction
+- `/services` Smart Home Automation: has no dedicated service page, got https://prasanthassociates.com/services#smart-homes
+- `/services` Renovation & Structural Retrofitting: has no dedicated service page, got https://prasanthassociates.com/services#renovation
+- `/services` Construction Consulting & Project Management: has no dedicated service page, got https://prasanthassociates.com/services#construction-work-consulting
+- `/services` Architectural Designs: has no dedicated service page, got https://prasanthassociates.com/services#architectural-designs
+- `/services` Interior Designs: has no dedicated service page, got https://prasanthassociates.com/services#interior-designs
+- `/services` Structural Drawings: has no dedicated service page, got https://prasanthassociates.com/services#structural-drawings
+- `/services` Electrical Drawings: has no dedicated service page, got https://prasanthassociates.com/services#electrical-drawings
+- `/services` Plumbing Drawings: has no dedicated service page, got https://prasanthassociates.com/services#plumbing-drawings
+- `/services` Landscaping Designs: has no dedicated service page, got https://prasanthassociates.com/services#landscaping-designs
+- `/services` Bank Valuation Report: has no dedicated service page, got https://prasanthassociates.com/services#bank-valuation-report
+- `/services` Structural Stability Certificate: has no dedicated service page, got https://prasanthassociates.com/services#structural-stability-certificate
+- `/services` Detailed Estimation & Costing (BOQ): has no dedicated service page, got https://prasanthassociates.com/services#detailed-estimation-costing
+- `/services` Chartered Engineer & Technical Valuation: has no dedicated service page, got https://prasanthassociates.com/services#chartered-engineer-valuation
+- `/services` Property Acquisition Advisory: has no dedicated service page, got https://prasanthassociates.com/services#property-acquisition-advisory
+- `/services` Land & Plot Transactions: has no dedicated service page, got https://prasanthassociates.com/services#land-plot-transactions
+- `/services` Real Estate Investment Consulting: has no dedicated service page, got https://prasanthassociates.com/services#real-estate-investment-consulting
+- `/services` Property Portfolio Management: has no dedicated service page, got https://prasanthassociates.com/services#property-portfolio-management
+- `/services/turnkey-design-build-coimbatore` image without alt text: /images/social/instagram.svg
+- `/services/turnkey-design-build-coimbatore` image without alt text: /images/social/facebook.svg
+- `/services/turnkey-design-build-coimbatore` image without alt text: /images/social/linkedin.svg
+

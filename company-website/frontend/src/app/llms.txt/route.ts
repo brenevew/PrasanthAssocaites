@@ -1,5 +1,6 @@
 import { company } from "@/data/company";
 import { services } from "@/data/services";
+import { getServicePath } from "@/data/serviceRoutes";
 import { serviceCategories } from "@/data/serviceCategories";
 import { SITE_URL } from "@/lib/seo";
 
@@ -16,7 +17,7 @@ export function GET() {
       const lines = category.slugs
         .map((slug) => services.find((s) => s.slug === slug))
         .filter((s) => s !== undefined)
-        .map((s) => `- [${s.title}](${SITE_URL}/services#${s.slug}): ${s.shortDescription}`);
+        .map((s) => `- [${s.title}](${SITE_URL}${getServicePath(s.slug)}): ${s.shortDescription}`);
       return `### ${category.label}\n\n${lines.join("\n")}`;
     })
     .join("\n\n");
@@ -37,7 +38,7 @@ export function GET() {
 - Service area, Coimbatore (head office, Gandhipuram): Coimbatore and surrounding areas, including Saravanampatti, Vadavalli, Thudiyalur, Peelamedu, RS Puram, Kalapatti, Sulur and Mettupalayam
 - Service area, The Nilgiris (branch office, Gudalur): the whole district; the company has built in Gudalur, Ooty, Coonoor and Kotagiri
 - Every service below is offered in both Coimbatore and the Nilgiris, based on the project's requirements
-- Pricing model: itemized, fixed-price Bill of Quantities (BoQ) signed before construction starts
+- Pricing model: itemized Bill of Quantities (BoQ) signed before construction starts; the price is fixed for the agreed scope
 - Website: ${SITE_URL}
 
 ## Contact

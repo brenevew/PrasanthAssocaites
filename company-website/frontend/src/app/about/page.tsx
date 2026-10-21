@@ -44,7 +44,7 @@ const howItWorksSteps = [
   },
   {
     number: "02",
-    title: "24-Hour Architect Review",
+    title: "Architect Review",
     description:
       "Our in-house architectural team conducts a thorough feasibility assessment analyzing plot dimensions, Vastu alignment, setback implications, natural lighting opportunities, and structural complexity before preparing your project-specific quotation.",
     icon: Compass,
@@ -58,7 +58,7 @@ const howItWorksSteps = [
     number: "03",
     title: "Design Delivery & Project Confirmation",
     description:
-      "Within 24 hours, you receive your formal project quotation and design brief via email. Once confirmed, our principal architects proceed with your complete 2D CAD floor plans and 3D visualization assets.",
+      "Usually within 24 hours, you receive your formal project quotation and design brief via email. Once confirmed, our principal architects proceed with your complete 2D CAD floor plans and 3D visualization assets.",
     icon: Send,
     highlights: [
       "Direct email delivery to your inbox",
@@ -251,7 +251,7 @@ export default function AboutPage() {
                   Ready to start your building journey?
                 </h3>
                 <p className="text-concrete text-xs md:text-sm max-w-lg mx-auto leading-relaxed mb-6">
-                  Submit your plot measurements, design preferences, or rough sketch. Our architectural team reviews every input within 24 hours.
+                  Submit your plot measurements, design preferences, or rough sketch. Our architectural team usually reviews it within 24 hours.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-4">
                   <Button href="/plan-home" variant="secondary" size="md" className="nm-gold-raised">

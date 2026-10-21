@@ -1,5 +1,7 @@
 "use client";
 
+import { trackLeadEvent } from "@/lib/analytics";
+
 import { useState, useEffect } from "react";
 import { User, Phone, Mail, Building, MapPin, MessageSquare, Send, CheckCircle, Sparkles, FileText, ChevronDown } from "lucide-react";
 import { submitContactForm, type ActionResult } from "@/app/actions/contactActions";
@@ -39,8 +41,9 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
 
   const spec = serviceSlug ? serviceQuoteSpecs[serviceSlug] : null;
 
-  const [selectedField1, setSelectedField1] = useState<string>(() => spec?.formDefaults?.field1Options?.[0]?.value || "");
-  const [selectedField2, setSelectedField2] = useState<string>(() => spec?.formDefaults?.field2Options?.[0]?.value || "");
+  // Nothing is pre-selected; the visitor picks from each dropdown.
+  const [selectedField1, setSelectedField1] = useState<string>("");
+  const [selectedField2, setSelectedField2] = useState<string>("");
   const [location, setLocation] = useState<string>("");
 
   const [prevServiceSlug, setPrevServiceSlug] = useState(serviceSlug);
@@ -48,13 +51,8 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
     setPrevServiceSlug(serviceSlug);
     if (serviceSlug) {
       setProjectType(mapSlugToProjectType(serviceSlug));
-      const currentSpec = serviceQuoteSpecs[serviceSlug];
-      if (currentSpec?.formDefaults?.field1Options?.[0]) {
-        setSelectedField1(currentSpec.formDefaults.field1Options[0].value);
-      }
-      if (currentSpec?.formDefaults?.field2Options?.[0]) {
-        setSelectedField2(currentSpec.formDefaults.field2Options[0].value);
-      }
+      setSelectedField1("");
+      setSelectedField2("");
     }
   }
 
@@ -81,6 +79,7 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
     const res = await submitContactForm(formData);
     setResult(res);
     if (res.success) {
+      trackLeadEvent(isEstimate ? "quote_submit" : "form_submit", { service: serviceSlug, location, form: isEstimate ? "quote" : "contact" });
       setStatus("success");
       setAttachments([]);
       if (e.target instanceof HTMLFormElement) e.target.reset();
@@ -111,7 +110,7 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
         )}
 
         <p className="text-concrete text-xs md:text-sm max-w-sm mx-auto leading-relaxed mb-6">
-          Our specialized team will review your requirements for {serviceTitle || "your project"} and reach out within 24 business hours.
+          Our specialized team will review your requirements for {serviceTitle || "your project"} and usually reach out within 24 business hours.
         </p>
 
         <button
@@ -151,7 +150,7 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
           </div>
           <div className="flex flex-col items-end">
             <span className="text-[10px] uppercase tracking-wider font-bold text-emerald-800 bg-emerald-100/90 border border-emerald-300/80 px-2.5 py-0.5 rounded-full shadow-2xs">
-              ⚡ 24h Response
+              ⚡ Quick Response
             </span>
             <span className="text-[9px] text-concrete font-medium mt-0.5">No Obligation</span>
           </div>
@@ -199,6 +198,7 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
                   onChange={(e) => setSelectedField1(e.target.value)}
                   className="w-full pl-3 pr-7 py-2 bg-linen/50 text-charcoal text-xs font-semibold rounded-xl border border-border focus:border-gold focus:outline-none transition-all cursor-pointer appearance-none truncate"
                 >
+                  <option value="" disabled>Select…</option>
                   {spec.formDefaults.field1Options.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
@@ -223,6 +223,7 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
                   onChange={(e) => setSelectedField2(e.target.value)}
                   className="w-full pl-3 pr-7 py-2 bg-linen/50 text-charcoal text-xs font-semibold rounded-xl border border-border focus:border-gold focus:outline-none transition-all cursor-pointer appearance-none truncate"
                 >
+                  <option value="" disabled>Select…</option>
                   {spec.formDefaults.field2Options.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
@@ -401,7 +402,7 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
             <span className="text-emerald-600 font-bold">✓</span> 100% Confidential
           </span>
           <span className="flex items-center gap-1">
-            <span className="text-gold font-bold">✓</span> Fixed-Price BoQ
+            <span className="text-gold font-bold">✓</span> Itemised BoQ
           </span>
           <span className="flex items-center gap-1">
             <span className="text-charcoal font-bold">✓</span> No Obligation

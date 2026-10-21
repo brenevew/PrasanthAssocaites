@@ -1,0 +1,28 @@
+
+> prasanthassocaites@0.1.0 seo:audit
+> node scripts/seo-audit.mjs http://127.0.0.1:3100
+
+# SEO audit: http://127.0.0.1:3100
+
+Pages in sitemap: 41 | Errors: 0 | Warnings: 15
+
+Services checked for dedicated sitemap pages: 22
+
+## Warnings
+
+- `/` title is 72 chars (Google shows ~60): "Building Plans & Construction in Coimbatore & Ooty | Prasanth Associates"
+- `/contact` short page: ~297 words; review usefulness (not a minimum word requirement)
+- `/projects/manjushree` title is 75 chars (Google shows ~60): "Director's Building Renovation, Manjushree Plantation | Prasanth Associates"
+- `/projects/manjushree` meta description is 168 chars (keep under ~160)
+- `/projects/manjushree` short page: ~283 words; review usefulness (not a minimum word requirement)
+- `/projects/oxford-school` short page: ~183 words; review usefulness (not a minimum word requirement)
+- `/projects/oxford-school` visible placeholder text on page
+- `/projects/oxford-school` orphan page: in the sitemap but no other page links to it
+- `/projects/pricol` meta description is 181 chars (keep under ~160)
+- `/projects/residential-building-ooty` short page: ~181 words; review usefulness (not a minimum word requirement)
+- `/projects/residential-building-ooty` visible placeholder text on page
+- `/projects/residential-building-ooty` orphan page: in the sitemap but no other page links to it
+- `/projects/residential-building-perur-coimbatore` short page: ~213 words; review usefulness (not a minimum word requirement)
+- `/projects/residential-construction-project` short page: ~227 words; review usefulness (not a minimum word requirement)
+- `/projects/sasthapruri` meta description is 167 chars (keep under ~160)
+

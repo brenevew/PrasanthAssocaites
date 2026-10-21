@@ -1,0 +1,1746 @@
+{
+  "date": "2026-10-21",
+  "environment": "Local production build, webpack, Node 22.23.2",
+  "services": [
+    {
+      "slug": "residential-construction",
+      "title": "Residential Construction",
+      "shortDescription": "Individual custom homes and duplex residences built with 100% Vastu compliance, Fe550D TMT reinforcement, and an itemised BoQ that fixes the price for the agreed scope.",
+      "description": "Every home is a generational landmark. We design and construct custom residences balancing scientific Vastu architecture, spatial efficiency, and engineered durability. From geotechnical soil analysis and heavy RCC foundation casting to premium vitrified finishes and multi-layer waterproofing, every milestone is supervised by senior civil engineers, with the price fixed for the agreed scope.",
+      "icon": "Home",
+      "features": [
+        "100% Vastu-aligned architectural layouts",
+        "Fe550D TMT steel & 53-grade certified cement",
+        "Multi-layer chemical waterproofing on slabs & wet areas",
+        "Branded sanitary & electrical fittings",
+        "Conduit pre-wiring for solar & rainwater percolation pit",
+        "Line-item BoQ that fixes the price for the agreed scope"
+      ]
+    },
+    {
+      "slug": "villa-construction",
+      "title": "Villa Construction",
+      "shortDescription": "Signature architectural residences blending double-height living, natural imported marble, private courtyards, and artisan craftsmanship.",
+      "description": "Our villa projects represent the pinnacle of architectural living. Designed for discerning homeowners, each villa is an exclusive statement with expansive glass facades, floating cantilever stairs, hand-picked Italian Statuario marble, and private plunge pools. We coordinate every trade under white-glove supervision to ensure peerless aesthetic and structural perfection.",
+      "icon": "Building2",
+      "features": [
+        "Double-height living & panoramic glass facades",
+        "Hand-picked Italian marble & aged teakwood joinery",
+        "Private courtyard pools & landscaped timber decks",
+        "Integrated wired smart automation & ambient lighting",
+        "Thermal-break insulation & acoustic ceiling shielding",
+        "Dedicated mastercraft civil engineer & white-glove PM"
+      ]
+    },
+    {
+      "slug": "commercial-construction",
+      "title": "Commercial Building & Retail Construction",
+      "shortDescription": "Corporate offices, retail hubs, and mixed-use commercial developments engineered for high footfalls, safety compliance, and maximum rental yields.",
+      "description": "Commercial developments require uncompromising precision, structural speed, and statutory compliance. We engineer corporate towers, retail arcades, and commercial complexes with column-free post-tensioned spans, high-efficiency MEP shafts, certified fire suppression networks, and NBC-compliant life-safety provisions.",
+      "icon": "Building",
+      "features": [
+        "Column-free post-tensioned large floorplates",
+        "NBC fire suppression & emergency egress networks",
+        "High-capacity passenger & service elevator shafts",
+        "Energy-efficient low-E glass facade glazing",
+        "Basement multi-level parking with rainwater recharge",
+        "Full statutory building approvals & completion sanction"
+      ]
+    },
+    {
+      "slug": "turnkey-construction",
+      "title": "Turnkey Design and Construction",
+      "shortDescription": "Complete concept-to-key delivery with single-point accountability covering design, government sanctions, civil execution, and interior handover.",
+      "description": "Eliminate the stress of juggling multiple contractors, architects, and government offices. Our turnkey delivery provides full accountability under a single comprehensive contract. We manage land surveying, architectural drafting, municipality plan sanctions, raw material procurement, civil contracting, and final interior commissioning.",
+      "icon": "Key",
+      "features": [
+        "Single point of legal & engineering responsibility",
+        "Sanction approvals & municipality plan clearances",
+        "Transparent milestone billing with live app tracking",
+        "Independent stage-by-stage quality audits",
+        "Material testing certificates for all concrete & steel batches",
+        "Written project schedule with agreed handover date"
+      ]
+    },
+    {
+      "slug": "industrial-factory-construction",
+      "title": "Industrial & Factory Construction",
+      "shortDescription": "Heavy-duty manufacturing plants, pre-engineered building (PEB) factory sheds, and certified industrial fire networks.",
+      "description": "Engineered for heavy industrial operations, logistics, and manufacturing. We build high-tensile PEB steel sheds, reinforced machinery foundations, heavy load-bearing industrial flooring, and complete fire hydrant/sprinkler protection networks compliant with industrial safety regulations.",
+      "icon": "Factory",
+      "features": [
+        "High-tensile PEB steel structures with 10T crane provisions",
+        "Heavy machinery vibration-damped concrete foundations",
+        "Industrial fire hydrant & automatic sprinkler networks",
+        "Hazardous area ventilation & fume extraction conduits",
+        "Laser-screed heavy-duty VDF flooring with metallic hardeners",
+        "Statutory Factory Inspectorate (DISH) & Fire NOC clearances"
+      ]
+    },
+    {
+      "slug": "smart-homes",
+      "title": "Smart Home Automation",
+      "shortDescription": "Intelligent wired and wireless home automation for centralized lighting, biometric security, climate control, and voice-assisted living.",
+      "description": "Smart living designed into the walls from day one. We engineer concealed structured cabling and wireless mesh networks that unify smart lighting scenes, motorized drapery, multi-zone VRV air conditioning, biometric security locks, and perimeter CCTV surveillance into intuitive smartphone and touch-panel controls.",
+      "icon": "Cpu",
+      "features": [
+        "Centralized lighting scene automation & mood presets",
+        "Multi-zone VRV/VRF smart climate regulation",
+        "Biometric keyless access & video door intercom",
+        "Motorized curtain, drape & skylight automation",
+        "Whole-home architectural audio distribution",
+        "Real-time energy consumption monitoring & solar sync"
+      ]
+    },
+    {
+      "slug": "renovation",
+      "title": "Renovation & Structural Retrofitting",
+      "shortDescription": "Transforming aging properties into contemporary luxury spaces with structural column jacketing, interior modernization, and spatial reorganization.",
+      "description": "Breathe new life and modern value into existing properties. We specialize in non-destructive structural retrofitting, load-bearing redistribution, floorplan modernization, and complete MEP upgrades, preserving architectural heritage while delivering state-of-the-art living comforts.",
+      "icon": "Hammer",
+      "features": [
+        "Non-destructive rebound hammer & ultrasonic testing",
+        "RCC column jacketing & structural load redistribution",
+        "Complete spatial floorplan reconfiguration & wall removals",
+        "Plumbing, electrical & waterproofing overhaul",
+        "Contemporary facade facelift & terrace rejuvenation",
+        "Phased scheduling for minimal occupancy disruption"
+      ]
+    },
+    {
+      "slug": "construction-work-consulting",
+      "title": "Construction Consulting & Project Management",
+      "shortDescription": "Independent engineering supervision, BoQ rate validation, contractor billing audits, and quality control checklists for private builders.",
+      "description": "Protect your capital investment with veteran civil engineering oversight. We act as your independent owner's engineer, verifying contractor workmanship, cross-checking raw material test certificates, auditing bill of quantities to prevent overcharging, and resolving complex on-site engineering challenges.",
+      "icon": "ClipboardList",
+      "features": [
+        "Independent third-party site quality inspections",
+        "Contractor Bill of Quantities (BoQ) rate validation",
+        "Concrete cube test & steel tensile audit verification",
+        "Milestone-based contractor payment certification",
+        "Construction delay diagnosis & recovery planning",
+        "Defect liability checklist & final handover inspection"
+      ]
+    },
+    {
+      "slug": "architectural-designs",
+      "title": "Architectural Designs",
+      "shortDescription": "Comprehensive architectural planning, building concepts, spatial design, and detailed blueprint drafting.",
+      "description": "Our architectural team crafts innovative, functional, and aesthetically striking designs tailored to your spatial needs. From conceptual blueprints to structural planning, we translate visions into buildable, sustainable realities.",
+      "icon": "Compass",
+      "features": [
+        "2D floor plans drawn for your plot",
+        "3D front elevation",
+        "Vastu-based room planning on request",
+        "Approval (sanction) drawings",
+        "Working drawings for your builder"
+      ]
+    },
+    {
+      "slug": "interior-designs",
+      "title": "Interior Designs",
+      "shortDescription": "Interior design and installation for homes and offices: modular kitchens, wardrobes, ceilings, lighting and storage.",
+      "description": "We create sophisticated indoor environments that blend ergonomics with high-end aesthetic appeal. Our bespoke interior solutions transform raw spaces into beautifully curated living and working environments.",
+      "icon": "Palette",
+      "features": [
+        "Modular kitchens & wardrobes",
+        "False ceiling & lighting design",
+        "TV units, pooja units & storage",
+        "3D views of every room before work starts",
+        "Supply and installation by our team"
+      ]
+    },
+    {
+      "slug": "structural-drawings",
+      "title": "Structural Drawings",
+      "shortDescription": "Stamped RCC structural drawings, footing schedules, column layouts, beam and slab reinforcement details ready for site execution.",
+      "description": "Structural drawings translate an architectural concept into something a site team can actually build safely. Our engineers size every member against the soil bearing capacity returned by your SBC test and the load path of the building, then issue fully detailed RCC drawings, footing schedules, column orientation, beam reinforcement cut-lengths, and slab bar-bending schedules. Drawings are formatted for municipal plan sanction and carry the engineer's stamp lenders and approval authorities require.",
+      "icon": "PencilRuler",
+      "features": [
+        "Footing & foundation layout schedules",
+        "Column orientation & reinforcement details",
+        "Beam and slab bar-bending schedules (BBS)",
+        "Fe 550D TMT specification with lap and anchorage detailing",
+        "Designed against site-specific SBC and bore log data",
+        "Stamped drawings formatted for DTCP/LPA/CCMC sanction"
+      ]
+    },
+    {
+      "slug": "electrical-drawings",
+      "title": "Electrical Drawings",
+      "shortDescription": "Concealed conduit routing, load-calculated distribution boards, earthing layouts, and point-wise electrical schematics.",
+      "description": "An electrical layout drawn after the walls are up is a retrofit, not a design. We prepare point-wise electrical drawings before casting, conduit routing, switchboard elevations, DB positions, and circuit segregation, with distribution boards sized against calculated connected load rather than a rule of thumb. Layouts include dedicated circuits for kitchen, HVAC and utility loads, ELCB/MCB protection schedules, earthing design, and conduit provisioning for solar, inverter and smart-home systems.",
+      "icon": "Zap",
+      "features": [
+        "Point-wise lighting, power & switchboard layouts",
+        "Connected load calculation & DB sizing schedule",
+        "Circuit segregation with ELCB/MCB protection design",
+        "Earthing and lightning protection layouts",
+        "Conduit provisioning for solar, inverter & automation",
+        "Single-line diagrams (SLD) for sanction and EB connection"
+      ]
+    },
+    {
+      "slug": "plumbing-drawings",
+      "title": "Plumbing Drawings",
+      "shortDescription": "Water supply, drainage and sanitary layouts with CPVC/UPVC routing, slope-calculated waste lines and rainwater harvesting design.",
+      "description": "Plumbing drawings fix the position of every wet point, pipe run and inspection chamber before the first slab is cast, which is what prevents the chased walls and re-laid floors that follow guesswork. We produce water supply schematics on CPVC for hot lines and UPVC for cold and drainage, waste and soil lines drawn to calculated fall, and sump and overhead tank capacities sized against actual occupancy. Rainwater harvesting pits are designed to the recharge norms mandated for your plot area.",
+      "icon": "Droplets",
+      "features": [
+        "Water supply schematics (CPVC hot / UPVC cold)",
+        "Soil, waste & vent lines drawn to calculated slope",
+        "Sump and OHT capacity sized against occupancy",
+        "Inspection chamber and manhole positioning",
+        "Rainwater harvesting and percolation pit design",
+        "Pressure-test and pre-concealment inspection schedule"
+      ]
+    },
+    {
+      "slug": "landscaping-designs",
+      "title": "Landscaping Designs",
+      "shortDescription": "Garden and outdoor design: planting plans, lawns, pathways, irrigation, outdoor lighting and terrace gardens.",
+      "description": "We harmonize architecture with nature by designing serene outdoor spaces, gardens, and exterior environments. Our landscaping expertise elevates property value and creates refreshing green sanctuaries.",
+      "icon": "Trees",
+      "features": [
+        "Garden layout & planting plan",
+        "Lawns, pathways & driveways",
+        "Drip & sprinkler irrigation",
+        "Outdoor lighting & seating areas",
+        "Terrace & balcony gardens"
+      ]
+    },
+    {
+      "slug": "bank-valuation-report",
+      "title": "Bank Valuation Report",
+      "shortDescription": "Property valuation reports for home loans, mortgages, commercial financing, and banking compliance.",
+      "description": "We prepare authoritative, bank-approved property valuation and appraisal reports accepted by leading nationalized and private banks. Our registered valuers conduct rigorous on-site inspections, land cost assessments, and structural depreciation analyses to provide precise valuation certifications for home loans, mortgages, asset declarations, and visa processing.",
+      "icon": "Landmark",
+      "features": [
+        "Home Loan Approvals",
+        "Mortgage & Financing Valuation",
+        "Fair Market Value Assessment",
+        "Depreciation & Land Evaluation",
+        "Signed valuation report",
+        "Tax & Visa Net Worth Reports"
+      ]
+    },
+    {
+      "slug": "structural-stability-certificate",
+      "title": "Structural Stability Certificate",
+      "shortDescription": "Official stability certifications, load audits, and structural safety assessments for residential, industrial, and commercial premises.",
+      "description": "Structural stability inspections and safety certificates prepared by our structural engineers. We verify structural soundness, load-bearing capacities, seismic resilience, and foundation health for factory license renewals, school/college building clearances, commercial occupancy approvals, and vintage building renovations.",
+      "icon": "ShieldCheck",
+      "features": [
+        "Factory & Industrial Clearances",
+        "School & Commercial Approvals",
+        "Load-bearing & NDT Audits",
+        "Seismic Resilience Analysis",
+        "Vintage Building Fitness Report",
+        "Engineer sign-off"
+      ]
+    },
+    {
+      "slug": "detailed-estimation-costing",
+      "title": "Detailed Estimation & Costing (BOQ)",
+      "shortDescription": "Itemized quantity surveys, Bill of Quantities (BOQ), material estimation, and budget feasibility forecasts.",
+      "description": "Comprehensive itemized cost estimation and Bill of Quantities (BOQ) prepared with micro-level accuracy. We break down concrete volumes, steel tonnage, brickwork, finishing materials, and labor schedules to protect you against budget overflows and enable transparent contractor tendering.",
+      "icon": "Calculator",
+      "features": [
+        "Line-Item Bill of Quantities (BOQ)",
+        "Material Quantity Take-offs",
+        "Labor & Machinery Schedules",
+        "Budget Overrun Protection",
+        "Contractor Tender Analysis",
+        "Stage-wise Cash Flow Planning"
+      ]
+    },
+    {
+      "slug": "chartered-engineer-valuation",
+      "title": "Chartered Engineer & Technical Valuation",
+      "shortDescription": "Technical asset appraisals, machinery valuation, customs certification, and government regulatory clearances.",
+      "description": "Engineer-prepared technical valuation services for industrial machinery, commercial infrastructure, and corporate fixed assets. We deliver legally valid technical documentation for customs clearances, bank collateral, asset liquidation, insurance audits, and legal dispute resolutions.",
+      "icon": "FileCheck",
+      "features": [
+        "Plant & Machinery Valuation",
+        "Customs & EPCG Clearance",
+        "Bank Collateral Assessment",
+        "Insurance Asset Certification",
+        "Mergers & Asset Liquidation",
+        "Legal & Statutory Compliance"
+      ]
+    },
+    {
+      "slug": "property-acquisition-advisory",
+      "title": "Property Acquisition Advisory",
+      "shortDescription": "Strategic counsel for identifying, evaluating, and securing high-potential residential and commercial properties.",
+      "description": "Our property acquisition advisory service guides discerning buyers through every stage of the acquisition journey, from market intelligence and location shortlisting to legal due diligence, negotiation strategy, and registration support. We combine deep local market expertise with rigorous technical assessment to ensure every investment decision is informed, protected, and positioned for long-term value appreciation.",
+      "icon": "MapPin",
+      "features": [
+        "Market intelligence & location analysis",
+        "Legal title verification & due diligence",
+        "Fair market value negotiation",
+        "DTCP & local planning authority approval verification",
+        "Registration & stamp duty guidance",
+        "Post-acquisition development advisory"
+      ]
+    },
+    {
+      "slug": "land-plot-transactions",
+      "title": "Land & Plot Transactions",
+      "shortDescription": "End-to-end facilitation of premium residential and commercial land acquisitions, sales, and plot development.",
+      "description": "We facilitate seamless land and plot transactions for buyers, sellers, and developers, handling everything from property sourcing, boundary verification, and legal encumbrance checks to negotiation, documentation, and sub-registrar formalities. Our deep knowledge of local zoning laws, DTCP layouts, and municipal bylaws ensures every transaction is legally sound and investment-grade.",
+      "icon": "Map",
+      "features": [
+        "Premium plot sourcing & curation",
+        "Boundary survey & FMB verification",
+        "Encumbrance & title chain audit",
+        "Zoning & land-use compliance check",
+        "Sale deed & registration facilitation",
+        "Plot development feasibility analysis"
+      ]
+    },
+    {
+      "slug": "real-estate-investment-consulting",
+      "title": "Real Estate Investment Consulting",
+      "shortDescription": "Data-driven advisory for maximizing returns on residential, commercial, and mixed-use property investments.",
+      "description": "Our real estate investment consulting practice delivers institutional-grade market analysis, yield forecasting, and risk assessment for individual investors, NRIs, and corporate entities. We evaluate micro-market dynamics, infrastructure growth corridors, rental yield potential, and capital appreciation trajectories to build conviction behind every property investment decision.",
+      "icon": "TrendingUp",
+      "features": [
+        "Micro-market growth analysis",
+        "Rental yield & ROI forecasting",
+        "NRI investment advisory & compliance",
+        "Infrastructure corridor mapping",
+        "Risk assessment & exit strategy",
+        "Diversified portfolio construction"
+      ]
+    },
+    {
+      "slug": "property-portfolio-management",
+      "title": "Property Portfolio Management",
+      "shortDescription": "Comprehensive stewardship of multi-property holdings, from tenant acquisition and lease management to asset optimization.",
+      "description": "We provide end-to-end portfolio management services for property owners holding multiple residential, commercial, or mixed-use assets. Our team handles tenant sourcing, lease documentation, rent collection, periodic property inspections, maintenance coordination, and strategic disposition planning, allowing owners to realize maximum returns with zero operational burden.",
+      "icon": "LayoutDashboard",
+      "features": [
+        "Tenant sourcing & screening",
+        "Lease documentation & compliance",
+        "Rent collection & disbursement",
+        "Property inspection & maintenance",
+        "Asset performance reporting",
+        "Strategic disposition planning"
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "id": "construction",
+      "label": "Civil Construction",
+      "shortLabel": "Construction",
+      "description": "Custom residential, villas, commercial complexes & industrial structures",
+      "iconName": "Hammer",
+      "badge": "8 Services",
+      "slugs": [
+        "residential-construction",
+        "villa-construction",
+        "commercial-construction",
+        "turnkey-construction",
+        "industrial-factory-construction",
+        "smart-homes",
+        "renovation",
+        "construction-work-consulting"
+      ]
+    },
+    {
+      "id": "design",
+      "label": "Design & Architecture",
+      "shortLabel": "Design & Arch",
+      "description": "Architectural blueprints, structural & MEP drawings, interior styling & landscape design",
+      "iconName": "Compass",
+      "badge": "6 Disciplines",
+      "slugs": [
+        "architectural-designs",
+        "structural-drawings",
+        "electrical-drawings",
+        "plumbing-drawings",
+        "interior-designs",
+        "landscaping-designs"
+      ]
+    },
+    {
+      "id": "valuation",
+      "label": "Estimate & Valuation",
+      "shortLabel": "Valuation & BOQ",
+      "description": "Bank valuation reports, structural stability certificates & itemized BOQ",
+      "iconName": "Landmark",
+      "badge": "4 Services",
+      "slugs": [
+        "bank-valuation-report",
+        "structural-stability-certificate",
+        "detailed-estimation-costing",
+        "chartered-engineer-valuation"
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "Property & Investments",
+      "shortLabel": "Property",
+      "description": "Property acquisition advisory, land transactions & portfolio stewardship",
+      "iconName": "TrendingUp",
+      "badge": "4 Solutions",
+      "slugs": [
+        "property-acquisition-advisory",
+        "land-plot-transactions",
+        "real-estate-investment-consulting",
+        "property-portfolio-management"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Building Plans & Construction in Coimbatore & Ooty | Prasanth Associates",
+      "description": "Building plans, 2D/3D design, construction and interiors from one team. Offices in Gandhipuram, Coimbatore and Gudalur, serving Ooty and the Nilgiris.",
+      "canonical": "https://prasanthassociates.com",
+      "h1": [
+        "Building Spaces That Last for Generations"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "FAQPage"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/projects/pricol",
+        "/projects/sasthapruri",
+        "/projects/rex-school",
+        "/request-quote",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/projects/residential-building-perur-coimbatore",
+        "/projects/residential-construction-project",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "title": "Services in Coimbatore & the Nilgiris | Prasanth Associates",
+      "description": "Construction and design in Coimbatore and the Nilgiris: houses, villas, commercial buildings, factories, house plans, approvals, interiors and valuations.",
+      "canonical": "https://prasanthassociates.com/services",
+      "h1": [
+        "Engineering & Design Services"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/request-quote",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/turnkey-design-build-coimbatore",
+      "status": 200,
+      "title": "Turnkey Design & Build, Coimbatore | Prasanth Associates",
+      "description": "Turnkey design and build contractors in Coimbatore. One contract from soil test to handover, with DTCP/LPA approvals and itemized BoQ pricing.",
+      "canonical": "https://prasanthassociates.com/services/turnkey-design-build-coimbatore",
+      "h1": [
+        "Turnkey Design & Build Contractors in Coimbatore"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "Service",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/property-investment",
+      "status": 200,
+      "title": "Property & Investment Advisory, Coimbatore | Prasanth Associates",
+      "description": "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and Tamil Nadu.",
+      "canonical": "https://prasanthassociates.com/property-investment",
+      "h1": [
+        "Our Property & Investment Services"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "Service",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/request-quote",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects",
+      "status": 200,
+      "title": "Projects in Coimbatore & the Nilgiris | Prasanth Associates",
+      "description": "Completed and ongoing work by Prasanth Associates: homes, villas, schools and commercial buildings in Coimbatore and the Nilgiris.",
+      "canonical": "https://prasanthassociates.com/projects",
+      "h1": [
+        "Selected Projects"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/projects/pricol",
+        "/projects/sasthapruri",
+        "/projects/rex-school",
+        "/projects/manjushree",
+        "/projects/residential-construction-project",
+        "/projects/residential-building-perur-coimbatore",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/plan-home",
+      "status": 200,
+      "title": "Residential & Commercial Building Planner | Prasanth Associates",
+      "description": "Plan your house or commercial building: plot size, floors, rooms, parking and design packages. An architect usually reviews every plan within 24 hours.",
+      "canonical": "https://prasanthassociates.com/plan-home",
+      "h1": [
+        "Plan Your Dream Building Project"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "title": "About Prasanth Associates | Builders, Coimbatore & Nilgiris",
+      "description": "Prasanth Associates is a construction and design firm run by engineers, with offices in Coimbatore and Gudalur, The Nilgiris. See how we work.",
+      "canonical": "https://prasanthassociates.com/about",
+      "h1": [
+        "Building BeyondThe Surface"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "title": "Contact Us, Coimbatore & Gudalur Offices | Prasanth Associates",
+      "description": "Call, email or visit our offices in Gandhipuram, Coimbatore and Gudalur, The Nilgiris. Free consultation for construction and design projects.",
+      "canonical": "https://prasanthassociates.com/contact",
+      "h1": [
+        "Get in Touch with Our Architectural Team"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/request-quote",
+      "status": 200,
+      "title": "Request a Construction Quote | Prasanth Associates",
+      "description": "Request a quote for construction, architectural design, bank valuation reports or structural stability certificates in Coimbatore and The Nilgiris.",
+      "canonical": "https://prasanthassociates.com/request-quote",
+      "h1": [
+        "Get an itemised quote for Residential Construction"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/locations/coimbatore",
+      "status": 200,
+      "title": "Building Contractors in Coimbatore | Prasanth Associates",
+      "description": "Building contractors in Coimbatore with a head office in Gandhipuram. Individual houses, luxury villas, commercial buildings and turnkey contracts.",
+      "canonical": "https://prasanthassociates.com/locations/coimbatore",
+      "h1": [
+        "Construction Company in Coimbatore"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "GeneralContractor",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/services/turnkey-design-build-coimbatore",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty"
+      ]
+    },
+    {
+      "route": "/locations/nilgiris-ooty",
+      "status": 200,
+      "title": "Builders in Ooty & the Nilgiris | Prasanth Associates",
+      "description": "Houses, villas, building plans and interiors in Ooty, Coonoor, Kotagiri and Gudalur, built for slopes and monsoon weather. Run from our Gudalur branch.",
+      "canonical": "https://prasanthassociates.com/locations/nilgiris-ooty",
+      "h1": [
+        "Builders & Construction in The Nilgiris & Ooty"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "HomeAndConstructionBusiness",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/projects/pricol",
+        "/locations/gudalur",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/locations/gudalur",
+      "status": 200,
+      "title": "Individual House Contractors in Gudalur | Prasanth Associates",
+      "description": "Building contractors in Gudalur, The Nilgiris. Our Ooty Main Road branch builds houses and estate bungalows for heavy monsoon rain and sloping terrain.",
+      "canonical": "https://prasanthassociates.com/locations/gudalur",
+      "h1": [
+        "Individual House Contractors in Gudalur"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "HomeAndConstructionBusiness",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/nilgiris-ooty",
+        "/locations/coimbatore",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/pricol",
+      "status": 200,
+      "title": "Pricol Limited Tea Bungalow | Prasanth Associates",
+      "description": "A 12,120 sq. ft. tea bungalow for Pricol Limited, built inside a tea plantation in Gudalur. Reaching the site meant crossing a river, so access and logistics were planned around it.",
+      "canonical": "https://prasanthassociates.com/projects/pricol",
+      "h1": [
+        "Pricol Limited Tea Bungalow"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/sasthapruri",
+      "status": 200,
+      "title": "Sasthapuri Hotels | Prasanth Associates",
+      "description": "A 38,879 sq. ft. commercial building for Sasthapuri Hotels in the main town area of Gudalur. We handled the architecture, structural engineering, construction and MEP.",
+      "canonical": "https://prasanthassociates.com/projects/sasthapruri",
+      "h1": [
+        "Sasthapuri Hotels"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/rex-school",
+      "status": 200,
+      "title": "Christus Rex Higher Secondary School | Prasanth Associates",
+      "description": "A 12,000 sq. ft. school building for Christus Rex Higher Secondary School on Woodcock Road, Kandal, Ooty, designed and built for hill-region conditions.",
+      "canonical": "https://prasanthassociates.com/projects/rex-school",
+      "h1": [
+        "Christus Rex Higher Secondary School"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/oxford-school",
+      "status": 200,
+      "title": "The Oxford Continental School | Prasanth Associates",
+      "description": "The Oxford Continental School: educational institution by Prasanth Associates in Bandi Shola, Ooty. Browse project photographs and discuss a similar build.",
+      "canonical": "https://prasanthassociates.com/projects/oxford-school",
+      "h1": [
+        "The Oxford Continental School"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/manjushree",
+      "status": 200,
+      "title": "Director's Building Renovation, Manjushree Plantation | Prasanth Associates",
+      "description": "Renovation of the British-era Director's Building at Manjushree Plantation, New Hope, set among cardamom plants beneath the mountain slopes of O'Valley in the Nilgiris.",
+      "canonical": "https://prasanthassociates.com/projects/manjushree",
+      "h1": [
+        "Director's Building Renovation, Manjushree Plantation"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/residential-construction-project",
+      "status": 200,
+      "title": "Residential Building in Gudalur | Prasanth Associates",
+      "description": "A 2,617 sq. ft. residential building in Gudalur, built in 2024–2025 and planned around everyday living: functional room layouts, natural light and ventilation.",
+      "canonical": "https://prasanthassociates.com/projects/residential-construction-project",
+      "h1": [
+        "Residential Building in Gudalur"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/residential-building-ooty",
+      "status": 200,
+      "title": "Residential Building in Ooty | Prasanth Associates",
+      "description": "Residential Building in Ooty: residential building by Prasanth Associates in Ooty, The Nilgiris. Browse project photographs and discuss a similar build.",
+      "canonical": "https://prasanthassociates.com/projects/residential-building-ooty",
+      "h1": [
+        "Residential Building in Ooty"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/projects/residential-building-perur-coimbatore",
+      "status": 200,
+      "title": "Residential Building in Perur | Prasanth Associates",
+      "description": "A 3,500 sq. ft. residential building in Perur, Coimbatore, completed in 2020 and planned around comfortable everyday living.",
+      "canonical": "https://prasanthassociates.com/projects/residential-building-perur-coimbatore",
+      "h1": [
+        "Residential Building in Perur"
+      ],
+      "robots": "indexable (default)",
+      "schema": [
+        "GeneralContractor",
+        "WebSite",
+        "BreadcrumbList"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/residential-construction",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/villa-construction",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/commercial-construction",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/turnkey-construction",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/industrial-factory-construction",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/smart-homes",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/renovation",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/construction-work-consulting",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/architectural-designs",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/interior-designs",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/structural-drawings",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/electrical-drawings",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/plumbing-drawings",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/landscaping-designs",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/bank-valuation-report",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/structural-stability-certificate",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/detailed-estimation-costing",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/chartered-engineer-valuation",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/property-acquisition-advisory",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/land-plot-transactions",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/real-estate-investment-consulting",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    },
+    {
+      "route": "/services/property-portfolio-management",
+      "status": 404,
+      "title": "Prasanth Associates | Construction Company in Coimbatore",
+      "description": "Prasanth Associates is a construction and design company in Coimbatore, Tamil Nadu.",
+      "canonical": "",
+      "h1": [
+        "404"
+      ],
+      "robots": "noindex",
+      "schema": [
+        "GeneralContractor",
+        "WebSite"
+      ],
+      "links": [
+        "/",
+        "/services",
+        "/projects",
+        "/about",
+        "/plan-home",
+        "/property-investment",
+        "/contact",
+        "/locations/coimbatore",
+        "/locations/nilgiris-ooty",
+        "/services/turnkey-design-build-coimbatore"
+      ]
+    }
+  ],
+  "live": [
+    {
+      "path": "/",
+      "status": 200,
+      "location": null,
+      "title": "Building Plans &amp; Construction in Coimbatore &amp; Ooty | Prasanth Associates"
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "location": null,
+      "title": "Services in Coimbatore &amp; the Nilgiris | Prasanth Associates"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "location": null
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "location": null
+    },
+    {
+      "path": "/locations/coimbatore",
+      "status": 200,
+      "location": null,
+      "title": "Building Contractors in Coimbatore | Prasanth Associates"
+    },
+    {
+      "path": "/locations/nilgiris-ooty",
+      "status": 200,
+      "location": null,
+      "title": "Builders in Ooty &amp; the Nilgiris | Prasanth Associates"
+    },
+    {
+      "path": "/locations/gudalur",
+      "status": 200,
+      "location": null,
+      "title": "Individual House Contractors in Gudalur | Prasanth Associates"
+    },
+    {
+      "path": "/services/residential-construction",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/villa-construction",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/commercial-construction",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/turnkey-design-build-coimbatore",
+      "status": 200,
+      "location": null,
+      "title": "Turnkey Design &amp; Build, Coimbatore | Prasanth Associates"
+    },
+    {
+      "path": "/services/industrial-factory-construction",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/smart-homes",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/renovation",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/construction-work-consulting",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/architectural-designs",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/interior-designs",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/structural-drawings",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/electrical-drawings",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/plumbing-drawings",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/landscaping-designs",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/bank-valuation-report",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/structural-stability-certificate",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/detailed-estimation-costing",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/chartered-engineer-valuation",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/property-acquisition-advisory",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/land-plot-transactions",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/real-estate-investment-consulting",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    },
+    {
+      "path": "/services/property-portfolio-management",
+      "status": 404,
+      "location": null,
+      "title": "404: This page could not be found."
+    }
+  ]
+}

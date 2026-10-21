@@ -17,34 +17,13 @@ import {
   CheckCircle2,
   Landmark,
 } from "lucide-react";
-import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
+import { SITE_URL, ORG_ID } from "@/lib/seo";
+
+import { serviceMetadata } from "@/lib/serviceSeo";
 
 const CANONICAL_URL = `${SITE_URL}/services/turnkey-design-build-coimbatore`;
 
-export const metadata: Metadata = {
-  title: "Turnkey Design & Build, Coimbatore",
-  description:
-    "Turnkey design and build contractors in Coimbatore. One contract from soil test to handover, with DTCP/LPA approvals and itemized BoQ pricing.",
-  keywords: [
-    "turnkey builders in Coimbatore",
-    "turnkey design and build Coimbatore",
-    "turnkey construction company Coimbatore",
-    "DTCP approved contractors Coimbatore",
-    "CCMC building approval consultants",
-    "structural stability certificate consultants Coimbatore",
-    "bank valuation report civil engineer Coimbatore",
-    "luxury villa construction Coimbatore",
-    "commercial building contractors Coimbatore",
-  ],
-  alternates: {
-    canonical: `${SITE_URL}/services/turnkey-design-build-coimbatore`,
-  },
-  openGraph: pageOpenGraph(
-    "/services/turnkey-design-build-coimbatore",
-    "Turnkey Design & Build Contractors in Coimbatore | Prasanth Associates",
-    "One contract and one accountable team from soil test to handover: approvals, structural design, construction, MEP and interiors."
-  ),
-};
+export const metadata: Metadata = serviceMetadata("turnkey-construction");
 
 const structuralPillars = [
   {
@@ -171,6 +150,7 @@ const localSchema = {
       "@id": `${SITE_URL}/services#turnkey-construction`,
       name: "Turnkey Design & Build, Coimbatore",
       serviceType: "Turnkey Design and Construction",
+      category: "Civil Construction",
       provider: { "@id": ORG_ID },
       areaServed: {
         "@type": "City",

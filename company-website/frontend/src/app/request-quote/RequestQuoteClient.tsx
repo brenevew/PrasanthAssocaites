@@ -1,5 +1,7 @@
 "use client";
 
+import { trackLeadEvent } from "@/lib/analytics";
+
 import { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -130,6 +132,7 @@ export default function RequestQuoteClient() {
     const res = await submitContactForm(formData);
     setResult(res);
     if (res.success) {
+      trackLeadEvent("quote_submit", { service: currentService.slug, location, form: "quote" });
       setStatus("success");
       form.reset();
       setLocation("");
@@ -187,7 +190,7 @@ export default function RequestQuoteClient() {
             Free Project Quote
           </span>
           <h1 className="font-heading text-3xl font-bold leading-tight tracking-tight text-charcoal md:text-4xl">
-            Get a fixed-price quote for
+            Get an itemised quote for
             <br className="hidden sm:block" />{" "}
             <span className="text-gold-dark">{currentService.title}</span>
           </h1>
@@ -202,7 +205,7 @@ export default function RequestQuoteClient() {
               <Clock size={13} className="text-gold" /> Takes about a minute
             </li>
             <li className="flex items-center gap-1.5">
-              <Send size={13} className="text-gold" /> Reply within 24 hours
+              <Send size={13} className="text-gold" /> Reply usually within 24 hours
             </li>
             <li className="flex items-center gap-1.5">
               <ShieldCheck size={13} className="text-gold" /> No obligation
@@ -236,7 +239,7 @@ export default function RequestQuoteClient() {
                   <p className="mt-4 max-w-sm text-sm leading-relaxed text-concrete">
                     Our engineering team is reviewing your requirements for{" "}
                     <strong className="text-charcoal">{currentService.title}</strong> and will
-                    reach out within 24 business hours.
+                    usually reach out within 24 business hours.
                   </p>
 
                   <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">

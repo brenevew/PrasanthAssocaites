@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
-import { projects } from "@/data/projects";
+import { services } from "@/data/services";
+import { getServicePath } from "@/data/serviceRoutes";
+import { projects, hasDetailsPage } from "@/data/projects";
 import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -15,11 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/services`,
       changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services/turnkey-design-build-coimbatore`,
-      changeFrequency: "monthly",
       priority: 0.9,
     },
     {
@@ -70,12 +67,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Dynamic project routes
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+  // Only projects with a written case study; placeholder pages are noindex until filled in.
+  const projectRoutes: MetadataRoute.Sitemap = projects.filter(hasDetailsPage).map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
     images: [...new Set([project.image, ...project.galleryImages])].map((src) => `${baseUrl}${src}`),
     changeFrequency: "monthly",
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...projectRoutes];
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${baseUrl}${getServicePath(service.slug)}`,
+    changeFrequency: "monthly",
+    priority: 0.9,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes];
 }

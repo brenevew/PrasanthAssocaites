@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: pageOpenGraph(
     "/locations/coimbatore",
     "Construction Company in Coimbatore | Prasanth Associates",
-    "Civil contractors in Coimbatore. 15+ years and 250+ projects delivered with no cost escalation."
+    "Civil contractors with a head office in Gandhipuram, Coimbatore. 100+ homes built, on itemised BoQ contracts."
   ),
 };
 
@@ -73,7 +73,6 @@ export default function CoimbatoreLocationPage() {
         telephone: coimbatoreOffice.phone,
         email: coimbatoreOffice.email,
         url: canonicalUrl,
-        priceRange: "₹₹₹",
         address: {
           "@type": "PostalAddress",
           streetAddress: coimbatoreOffice.street,
@@ -175,9 +174,6 @@ export default function CoimbatoreLocationPage() {
                 <MapPin size={12} className="text-gold-dark" />
                 Headquarters · Gandhipuram, Coimbatore
               </span>
-              <span className="text-[11px] font-bold text-charcoal bg-white/80 border border-border px-3 py-1 rounded-full nm-inset">
-                15+ Years in Manchester of South India
-              </span>
             </div>
 
             <h1
@@ -188,9 +184,9 @@ export default function CoimbatoreLocationPage() {
             </h1>
 
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-3xl mb-8">
-              From our headquarters on Sathy Road, Gandhipuram, Prasanth Associates has delivered over 250+
-              landmark homes, luxury villas, and commercial buildings across Coimbatore. We combine rigorous
-              civil engineering, CCMC municipal approval management, and legally binding fixed-price BoQ contracts.
+              From our head office on Sathy Road, Gandhipuram, Prasanth Associates designs and builds homes,
+              villas and commercial buildings across Coimbatore. We have built 100+ homes, we handle the
+              engineering and CCMC approvals, and every job runs on an itemised BoQ that fixes the price for the agreed scope.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">

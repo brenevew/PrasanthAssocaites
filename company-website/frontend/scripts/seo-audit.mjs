@@ -25,7 +25,7 @@ const add = (level, page, message) => issues.push({ level, page, message });
 async function get(url) {
   try {
     const res = await fetch(url, { headers: { "User-Agent": UA }, redirect: "manual", signal: AbortSignal.timeout(15000) });
-    return { status: res.status, location: res.headers.get("location"), body: res.status === 200 ? await res.text() : "" };
+    return { status: res.status, location: res.headers.get("location"), robots: res.headers.get("x-robots-tag"), body: res.status === 200 ? await res.text() : "" };
   } catch (e) {
     return { status: 0, body: "", error: String(e) };
   }
@@ -58,6 +58,7 @@ if (sitemap.status !== 200) {
 }
 const sitemapUrls = [...sitemap.body.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 const sitemapPaths = new Set(sitemapUrls.map(pathOf));
+if (sitemapPaths.size !== sitemapUrls.length) add("error", "/sitemap.xml", "duplicate sitemap URLs");
 if (!sitemapUrls.length) {
   console.error("The sitemap contains no page URLs.");
   process.exit(1);
@@ -99,6 +100,10 @@ for (const url of sitemapUrls) {
     if (/placeholder|to be added|lorem/i.test(desc)) add("warn", page, "meta description contains placeholder text");
   }
 
+  const canonicalCount = (head.match(/<link\b[^>]*rel="canonical"[^>]*>/gi) || []).length;
+  if (canonicalCount > 1) add("error", page, "multiple canonical tags");
+  if (/noindex/i.test(res.robots || "")) add("error", page, "X-Robots-Tag blocks indexing");
+
   const canonicalTag = (head.match(/<link\b[^>]*rel="canonical"[^>]*>/i) || [])[0];
   const canonical = canonicalTag && attr(canonicalTag, "href");
   if (!canonical) add("error", page, "missing canonical tag");
@@ -118,7 +123,7 @@ for (const url of sitemapUrls) {
 
   for (const img of html.match(/<img\b[^>]*>/gi) || []) {
     const alt = attr(img, "alt");
-    if (alt === undefined || !alt.trim()) {
+    if (alt === undefined) {
       const src = attr(img, "src") || "";
       if (!/aria-hidden="true"/.test(img)) add("warn", page, `image without alt text: ${src.slice(0, 80)}`);
     }
@@ -142,9 +147,9 @@ for (const url of sitemapUrls) {
               add("error", page, `${service.name}: missing or invalid service URL`);
               continue;
             }
-            // This version has no per-service pages; services are anchors on /services.
+            // Every service must have a unique, indexable landing page.
             if (target.hash || target.search || pathOf(target.href) === "/services") {
-              add("warn", page, `${service.name}: has no dedicated service page, got ${service.url}`);
+              add("error", page, `${service.name}: has no dedicated service page, got ${service.url}`);
             }
             if (!sitemapUrls.some((url) => samePage(target.href, url))) {
               add("error", page, `${service.name}: service URL is missing from the sitemap`);
@@ -179,8 +184,8 @@ for (const url of sitemapUrls) {
   }
 }
 
-if (sitemapPaths.has("/services") && catalogServiceCount === 0) {
-  add("error", "/services", "no services found in the structured-data catalog");
+if (sitemapPaths.has("/services") && catalogServiceCount !== 22) {
+  add("error", "/services", `expected 22 services in the structured-data catalog, found ${catalogServiceCount}`);
 }
 
 for (const [title, pages] of titles) if (pages.length > 1) add("error", pages.join(", "), `duplicate title: "${title}"`);

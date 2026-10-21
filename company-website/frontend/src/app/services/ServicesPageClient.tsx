@@ -9,6 +9,7 @@ import {
   PencilRuler, Zap, Droplets
 } from "lucide-react";
 import { services } from "@/data/services";
+import { getServicePath } from "@/data/serviceRoutes";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
 import { serviceCategories, plannableSlugs, designSlugs } from "@/data/serviceCategories";
 import Button from "@/components/ui/Button";
@@ -195,7 +196,20 @@ export default function ServicesPageClient() {
 
                     {/* Title */}
                     <h2 className="text-xl font-heading font-bold text-charcoal mb-2.5 leading-snug">
-                      {service.title}
+                      <a
+                        href={getServicePath(service.slug)}
+                        onClick={(event) => {
+                          // Ordinary activation still opens the existing card modal.
+                          // Native new-tab actions can reach the crawlable service page.
+                          if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                            event.stopPropagation();
+                          } else {
+                            event.preventDefault();
+                          }
+                        }}
+                      >
+                        {service.title}
+                      </a>
                     </h2>
 
                     {/* SLA & Credential Badges */}

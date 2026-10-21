@@ -1,5 +1,7 @@
 "use client";
 
+import { trackLeadEvent } from "@/lib/analytics";
+
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
@@ -50,6 +52,18 @@ export default function ServiceDetailModal({
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
+
+  const lastTrackedService = useRef<string | null>(null);
+  useEffect(() => {
+    if (!isOpen) {
+      lastTrackedService.current = null;
+      return;
+    }
+    if (service && service.slug !== lastTrackedService.current) {
+      lastTrackedService.current = service.slug;
+      trackLeadEvent("service_select", { service: service.slug });
+    }
+  }, [isOpen, service]);
 
   const [field1, setField1] = useState<string[]>([]);
   const [field2, setField2] = useState<string[]>([]);

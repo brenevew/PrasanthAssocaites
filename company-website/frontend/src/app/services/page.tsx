@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import ServicesPageClient from "./ServicesPageClient";
-import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
+import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import { services } from "@/data/services";
+import { serviceSchema } from "@/lib/serviceSeo";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -40,18 +41,7 @@ const servicesSchema = {
       itemListElement: services.map((service, i) => ({
         "@type": "ListItem",
         position: i + 1,
-        item: {
-          "@type": "Service",
-          "@id": `${SITE_URL}/services#${service.slug}`,
-          name: service.title,
-          description: service.shortDescription,
-          url: `${SITE_URL}/services#${service.slug}`,
-          provider: { "@id": ORG_ID },
-          areaServed: [
-            { "@type": "City", name: "Coimbatore" },
-            { "@type": "AdministrativeArea", name: "The Nilgiris" },
-          ],
-        },
+        item: serviceSchema(service),
       })),
     },
     {

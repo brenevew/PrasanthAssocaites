@@ -1,0 +1,72 @@
+
+> prasanthassocaites@0.1.0 lint
+> eslint
+
+
+src/app/locations/coimbatore/page.tsx
+  12:3  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  16:3  warning  'ShieldCheck' is defined but never used   @typescript-eslint/no-unused-vars
+  17:3  warning  'Building2' is defined but never used     @typescript-eslint/no-unused-vars
+  18:3  warning  'Home' is defined but never used          @typescript-eslint/no-unused-vars
+  19:3  warning  'Calculator' is defined but never used    @typescript-eslint/no-unused-vars
+
+src/app/locations/nilgiris-ooty/page.tsx
+   13:3   warning  'CheckCircle2' is defined but never used                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   17:3   warning  'ShieldCheck' is defined but never used                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+   18:3   warning  'Mountain' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   59:9   warning  'nilgirisHubs' is assigned a value but never used                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+  375:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+src/app/page.tsx
+  1:10  warning  'Suspense' is defined but never used  @typescript-eslint/no-unused-vars
+  4:8   warning  'Link' is defined but never used      @typescript-eslint/no-unused-vars
+
+src/app/plan-home/PlanHomeClient.tsx
+  4:8   warning  'Link' is defined but never used         @typescript-eslint/no-unused-vars
+  5:64  warning  'CheckCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/app/property-investment/page.tsx
+  11:3  warning  'Sparkles' is defined but never used      @typescript-eslint/no-unused-vars
+  18:3  warning  'ChevronRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/layout/Footer.tsx
+  22:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  47:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+src/components/layout/Header.tsx
+  14:29  warning  'plannableSlugs' is defined but never used                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  14:45  warning  'designSlugs' is defined but never used                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+  84:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+src/components/layout/MobileNav.tsx
+  50:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+src/components/planner/BuildingStackVisualizer.tsx
+  26:3  warning  'onRenameFloor' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/planner/SimplePlannerForm.tsx
+    5:44  warning  'useEffect' is defined but never used                   @typescript-eslint/no-unused-vars
+  159:7   warning  'defaultFloorNames' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  252:22  warning  'setRoadFacing' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  400:13  warning  'isCustom' is assigned a value but never used           @typescript-eslint/no-unused-vars
+
+src/components/ui/ArchitecturalEstimator.tsx
+   5:3  warning  'Sparkles' is defined but never used      @typescript-eslint/no-unused-vars
+   8:3  warning  'Send' is defined but never used          @typescript-eslint/no-unused-vars
+   9:3  warning  'Layers' is defined but never used        @typescript-eslint/no-unused-vars
+  10:3  warning  'Building' is defined but never used      @typescript-eslint/no-unused-vars
+  11:3  warning  'Ruler' is defined but never used         @typescript-eslint/no-unused-vars
+  16:3  warning  'Check' is defined but never used         @typescript-eslint/no-unused-vars
+  20:3  warning  'Sliders' is defined but never used       @typescript-eslint/no-unused-vars
+  21:3  warning  'ChevronRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/ui/ArchitecturalRateCardSection.tsx
+  12:10  warning  'FileText' is defined but never used     @typescript-eslint/no-unused-vars
+  12:44  warning  'ChevronDown' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/ui/ContactForm.tsx
+  5:20  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+  6:91  warning  'FileText' is defined but never used   @typescript-eslint/no-unused-vars
+
+✖ 39 problems (0 errors, 39 warnings)
+

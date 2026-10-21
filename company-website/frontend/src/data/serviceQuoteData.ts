@@ -40,7 +40,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     slug: "residential-construction",
     badge: "Custom Residential Construction",
     tagline: "Individual custom homes designed around your family lifestyle, Vastu compliance, and lifetime durability.",
-    sla: "8 to 12 Months Guaranteed",
+    sla: "Typically 8 to 12 Months",
     slaLabel: "Milestone Schedule",
     credentialBadge: "100+ Homes",
     credentialLabel: "Zero Structural Compromise",
@@ -54,18 +54,18 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Zero Surprise Pricing", desc: "Legally backed line-item Bill of Quantities fixing every rupee and material specification." },
     ],
     highlightBox: {
-      title: "Transparent Line-Item BoQ with Fixed Price Lock",
-      description: "We protect your hard-earned savings with a legally binding contract detailing exact brands, quantities, and milestone payments.",
-      badges: ["✓ 100% Vastu Compliant", "✓ Fe550D TMT Steel", "✓ Branded Bath & Electricals", "✓ 10-Year Waterproofing"],
+      title: "Transparent Line-Item BoQ, Price Fixed for the Agreed Scope",
+      description: "Your contract lists the materials, quantities and milestone payments line by line, so the price only changes if you change the scope.",
+      badges: ["✓ 100% Vastu Compliant", "✓ Fe550D TMT Steel", "✓ Branded Bath & Electricals", "✓ Multi-Layer Waterproofing"],
     },
     steps: [
       { n: "01", title: "Family Lifestyle & Vastu Layout", body: "Detailed discovery of room dimensions, sunlight orientation, ventilation corridors, and Vastu alignment." },
-      { n: "02", title: "Transparent BoQ & Price Lock", body: "Legally binding specification contract locking in your exact investment with zero hidden clauses." },
+      { n: "02", title: "Transparent BoQ, Fixed for the Agreed Scope", body: "A specification contract that sets your price for the agreed scope, with every item listed and no hidden clauses." },
       { n: "03", title: "Milestone-Supervised Construction", body: "Stage-by-stage civil execution verified through rigorous multi-point engineer inspection checklists." },
     ],
     guarantee: {
-      title: "100% Fixed Price Lock Guarantee",
-      body: "No mid-construction price hikes, no surprise escalation clauses, delivered strictly on schedule.",
+      title: "Price Fixed for the Agreed Scope",
+      body: "The itemised BoQ you sign is the price. Changes are only made when you request them, and are priced before the work is done.",
     },
     formDefaults: {
       serviceCategory: "residential",
@@ -115,8 +115,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Artisan Construction & White-Glove Handover", body: "Flawless civil execution, precision marble bookmatching, and formal handover with complete documentation." },
     ],
     guarantee: {
-      title: "100% Luxury Quality Guarantee",
-      body: "Handcrafted by experienced master artisans using only Tier-1 imported materials and zero shortcuts.",
+      title: "Our Quality Commitment",
+      body: "Experienced craftsmen, materials to the agreed specification, and engineer checks at every stage before work is covered up.",
     },
     formDefaults: {
       serviceCategory: "villa",
@@ -143,7 +143,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     badge: "Commercial & Institutional Engineering",
     tagline: "High-traffic commercial spaces engineered for maximum floor efficiency, fire safety, and corporate distinction.",
     sla: "Structured Milestone Timeline",
-    slaLabel: "On-Time Completion",
+    slaLabel: "Planned Completion",
     credentialBadge: "NBC Compliant",
     credentialLabel: "Commercial Bylaws Specialist",
     deliverablesHeading: "Commercial Engineering Deliverables",
@@ -166,8 +166,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Turnkey Commercial Execution", body: "Rapid-phase construction with strict safety protocols, high-grade finishes, and municipal handover." },
     ],
     guarantee: {
-      title: "100% Commercial Bylaws & Handover Guarantee",
-      body: "Zero regulatory deviations and fully compliant with national building codes and municipal standards.",
+      title: "Designed to Code, Built to Drawings",
+      body: "Planned to the National Building Code and local bylaws, and built to the approved drawings, ready for completion certification.",
     },
     formDefaults: {
       serviceCategory: "commercial",
@@ -204,22 +204,22 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Liaisoning & Sanctions", desc: "Complete handling of plan sanction, temporary power, permanent EB meters, and local occupancy." },
       { title: "Complete Interior Joinery", desc: "Modular kitchen, designer wardrobes, vanity units, solid teak doors, and premium painting." },
       { title: "Full MEP Network Integration", desc: "Concealed wiring, high-pressure CPVC plumbing lines, sanitary fixtures, and solar pre-plumbing." },
-      { title: "Fixed Price BoQ Guarantee", desc: "Legally binding contract with zero price escalations, we absorb raw material market spikes." },
-      { title: "Post-Handover Warranty", desc: "Multi-year structural stability and anti-termite warranty backed by written commitment." },
+      { title: "Price Fixed for the Agreed Scope", desc: "The itemised BoQ in your contract sets the price; changes are only made when you request them, and are priced first." },
+      { title: "Post-Handover Support", desc: "Defects reported after handover are inspected and attended to, under the terms written into your contract." },
     ],
     highlightBox: {
       title: "Zero Coordination Overhead for the Owner",
       description: "You deal with one trusted engineering partner. No managing multiple masonry, carpentry, electrical, and plumbing vendors.",
-      badges: ["✓ Fixed Budget Lock", "✓ Dedicated Project Manager", "✓ Weekly Progress App", "✓ Key Handover"],
+      badges: ["✓ Itemised BoQ", "✓ Dedicated Project Manager", "✓ Weekly Progress App", "✓ Key Handover"],
     },
     steps: [
-      { n: "01", title: "Unified Architecture & Budget Lock", body: "Finalize custom floor plan, 3D elevation, and fixed-price BoQ contract with transparent payment milestones." },
+      { n: "01", title: "Unified Architecture & Budget", body: "Finalize custom floor plan, 3D elevation, and an itemised BoQ contract with transparent payment milestones." },
       { n: "02", title: "Milestone-Driven Civil Execution", body: "Foundation to roof slab completed under the supervision of a dedicated resident site engineer." },
       { n: "03", title: "Turnkey Finishing & Key Handover", body: "Deep cleaning, MEP testing, municipal connection verification, and white-glove key handover." },
     ],
     guarantee: {
-      title: "100% Single-Contract Delivery Guarantee",
-      body: "Guaranteed delivery on the agreed date with zero hidden cost extras and zero vendor finger-pointing.",
+      title: "One Contract, One Accountable Team",
+      body: "Design, approvals, construction and interiors under a single contract with a written schedule, so there is no finger-pointing between vendors.",
     },
     formDefaults: {
       serviceCategory: "residential",
@@ -247,7 +247,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     tagline: "Expert technical guidance, contractor bill auditing, and on-site quality control protecting your capital.",
     sla: "On-Call & Scheduled Audits",
     slaLabel: "Immediate Reporting",
-    credentialBadge: "Licensed Chartered Engineer",
+    credentialBadge: "Qualified Civil Engineers",
     credentialLabel: "Unbiased Quality Control",
     deliverablesHeading: "Consulting & Inspection Scope",
     deliverables: [
@@ -269,8 +269,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Bill Certification & Sign-off", body: "Certifying contractor bills only for work verified accurate to the millimeter with zero overbilling." },
     ],
     guarantee: {
-      title: "100% Unbiased Technical Oversight",
-      body: "We represent solely your interests with zero contractor kickbacks and absolute technical independence.",
+      title: "Independent Technical Oversight",
+      body: "We work for you, not the contractor, and report what we find on site and in the bills.",
     },
     formDefaults: {
       serviceCategory: "other",
@@ -321,8 +321,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Modern Fitout & Handover", body: "New flooring, high-end sanitaryware, modular joinery, fresh facade styling, and handover." },
     ],
     guarantee: {
-      title: "100% Structural Safety Guarantee",
-      body: "Retrofitting executed without compromising existing building integrity, fully verified by structural engineers.",
+      title: "Structure Checked First",
+      body: "Our structural engineers assess the existing building before any wall is removed or floor is added.",
     },
     formDefaults: {
       serviceCategory: "renovation",
@@ -374,8 +374,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Hardware Installation & Commissioning", body: "Mounting touch panels, programming scene automations, and mobile app pairing." },
     ],
     guarantee: {
-      title: "100% System Reliability Guarantee",
-      body: "Industrial-grade wired infrastructure designed for 15+ years of zero-lag, rock-solid operation.",
+      title: "Wired for Reliability",
+      body: "Conduits and control wiring are planned during construction, so the system is concealed, serviceable and easy to extend.",
     },
     formDefaults: {
       serviceCategory: "residential",
@@ -426,8 +426,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Rapid Erection & Statutory NOC Delivery", body: "On-site crane erection, roof sheeting, fire fighting network installation, and final DISH sign-off." },
     ],
     guarantee: {
-      title: "100% Factory Compliance Guarantee",
-      body: "Complete statutory clearances and structural certifications ensuring uninterrupted industrial operations.",
+      title: "Built for Compliance",
+      body: "Designed to factory safety and structural requirements, with the drawings and documents your approvals need.",
     },
     formDefaults: {
       serviceCategory: "industrial",
@@ -462,7 +462,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "2D Detailed Floor Plans", desc: "Exact dimensioned room sizes, door-window schedules, furniture placements, and circulation corridors." },
       { title: "Photorealistic 4K 3D Elevations", desc: "Ultra-realistic CGI exterior renderings capturing day, sunset, and night lighting atmospheres." },
       { title: "Structural CAD Working Drawings", desc: "Footing details, column orientation schedule, beam reinforcement cut-lengths, and slab reinforcement." },
-      { title: "Municipal Sanction Drawings", desc: "Formatted precisely for Local Corporation/DTCP/CMDA building permission with FAR calculations." },
+      { title: "Municipal Sanction Drawings", desc: "Prepared for Corporation, DTCP or local planning authority building permission, with FSI calculations." },
       { title: "Concealed MEP Layouts", desc: "Electrical conduit routing, switchboard elevations, sanitary drop pipes, and storm water drainage." },
       { title: "Joinery & Window Cut Sheets", desc: "Detailed woodworking and aluminum/UPVC fabrication schedules with precise glass thicknesses." },
     ],
@@ -477,8 +477,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Full Working Drawing Dossier", body: "Handing over the comprehensive contractor-ready architectural, structural, and MEP blueprint pack." },
     ],
     guarantee: {
-      title: "100% Design Satisfaction Guarantee",
-      body: "Iterative design refinements included until your blueprint and elevation are 100% approved by you.",
+      title: "Revisions Included",
+      body: "The agreed number of design revisions is included, so the plan and elevation are refined with you before they are finalised.",
     },
     formDefaults: {
       serviceCategory: "architectural",
@@ -559,7 +559,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     tagline: "Point-wise conduit routing, distribution board sizing, earthing design and single-line diagrams.",
     sla: "4-6 Days Point Layout",
     slaLabel: "8 Days Full MEP Electrical",
-    credentialBadge: "Licensed Electrical Engineer",
+    credentialBadge: "Electrical Engineer Designed",
     credentialLabel: "IS 732 / NEC Compliant",
     deliverablesHeading: "Electrical Drawing Deliverables",
     deliverables: [
@@ -685,8 +685,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Execution Drawings & Material Specs", body: "Handing over contractor cutting drawings, hardware codes, sanitary selections, and paint palettes." },
     ],
     guarantee: {
-      title: "100% Visual Fidelity Guarantee",
-      body: "What you see and approve in the 3D photorealistic renders is what gets delivered on-site with zero deviation.",
+      title: "Built to the Approved 3D Design",
+      body: "The approved 3D views and drawings are what our team works from on site, with any change discussed with you first.",
     },
     formDefaults: {
       serviceCategory: "architectural",
@@ -737,8 +737,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Planting Schedule & Hardscape Pack", body: "Delivering botanical species schedule, automated irrigation blueprints, and masonry specs." },
     ],
     guarantee: {
-      title: "100% Eco-Resilience Guarantee",
-      body: "Native, climate-adapted plant species and water-efficient irrigation built to thrive year-round with low maintenance.",
+      title: "Climate-Suited Planting",
+      body: "Native, climate-adapted plants and water-efficient irrigation chosen for low maintenance.",
     },
     formDefaults: {
       serviceCategory: "architectural",
@@ -764,25 +764,25 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
 
   "bank-valuation-report": {
     slug: "bank-valuation-report",
-    badge: "Certified Property Valuation Report",
-    tagline: "Bank-approved, legally binding property valuation and appraisal reports accepted across all major financial institutions.",
+    badge: "Property Valuation Report",
+    tagline: "Property valuation reports prepared in the format banks and financial institutions ask for.",
     sla: "24 to 48 Hours Express",
     slaLabel: "Fast Turnaround",
-    credentialBadge: "IBBI Registered Valuer",
+    credentialBadge: "Bank-Format Reports",
     credentialLabel: "Wealth Tax Act Cat 1 Panel",
     deliverablesHeading: "Bank Valuation Inclusions",
     deliverables: [
       { title: "Fair Market Value (FMV) Assessment", desc: "Scientific valuation balancing guideline value, recent registered sale transactions, and local market demand." },
       { title: "Plinth Area & Depreciation Audit", desc: "Structural valuation applying official depreciation charts based on construction type, age, and maintenance." },
       { title: "Pre-Approved for Major Banks", desc: "Accepted by SBI, HDFC Bank, ICICI Bank, Axis Bank, Canara Bank, Indian Bank, Kotak, and Union Bank." },
-      { title: "Official Registered Valuer Dossier", desc: "Legal appraisal dossier stamped and signed with IBBI registration number and professional valuer seal." },
+      { title: "Signed Valuation Report", desc: "A signed valuation report with site photographs, measurements and the basis of value." },
       { title: "Boundary & Measurement Verification", desc: "Physical site dimension cross-check against Field Measurement Book (FMB), patta, and sanctioned plan." },
       { title: "Multi-Purpose Acceptance", desc: "Valid for Home Loans, Mortgage / LAP, Visa Net Worth Certification, Capital Gains, and Asset Division." },
     ],
     highlightBox: {
       title: "Empaneled with Leading Financial Institutions",
       description: "Our valuation reports follow strict Indian Banking Association (IBA) and SARFAESI compliance for seamless loan sanction.",
-      badges: ["✓ SBI, HDFC & ICICI Approved", "✓ 24-48 Hr Fast Turnaround", "✓ IBBI Registered Valuer Seal", "✓ Visa Net Worth Accepted"],
+      badges: ["✓ Bank Report Format", "✓ Quick Turnaround", "✓ Site Inspection Included", "✓ Visa & Net Worth Purposes"],
     },
     steps: [
       { n: "01", title: "Document Verification", body: "Reviewing title deed, Patta/Chitta, parent documents, EC, and building sanction drawing." },
@@ -790,8 +790,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Certified Report Handover", body: "Formal stamped valuation report delivered in hard copy and digital format for immediate bank submission." },
     ],
     guarantee: {
-      title: "100% Bank & Authority Acceptance Guarantee",
-      body: "Guaranteed acceptance across public sector and private banking institutions with zero documentation rejections.",
+      title: "Prepared to the Bank's Checklist",
+      body: "Send us your bank's checklist and we prepare the report to it. Acceptance is decided by the bank or authority.",
     },
     formDefaults: {
       serviceCategory: "valuation",
@@ -818,7 +818,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
   "structural-stability-certificate": {
     slug: "structural-stability-certificate",
     badge: "Structural Stability & Safety Certification",
-    tagline: "Certified structural safety audits, NDT testing, and official stability certificates issued by licensed Chartered Structural Engineers.",
+    tagline: "Structural safety audits, NDT testing, and stability certificates prepared by our structural engineers.",
     sla: "2 to 4 Working Days",
     slaLabel: "On-Site Non-Destructive Testing",
     credentialBadge: "Chartered Structural Engineer",
@@ -830,7 +830,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "School & College Fitness NOC", desc: "Structural safety certificates required for CBSE, ICSE, Matriculation school and college recognition." },
       { title: "Load-Bearing & Deflection Analysis", desc: "Verifying safety thresholds under equipment vibration, machinery load, wind, and seismic stresses." },
       { title: "Foundation Settlement & Crack Audit", desc: "Diagnosing structural vs superficial cracks, spalling concrete, corroded rebar, and repair methods." },
-      { title: "Chartered Engineer Sign-Off", desc: "Signed and sealed by an empaneled Grade-1 Chartered Structural Engineer with legal validity." },
+      { title: "Engineer Sign-Off", desc: "Signed by the structural engineer who carried out the assessment." },
     ],
     highlightBox: {
       title: "Legally Valid for Factory, School & Commercial Clearances",
@@ -843,8 +843,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Certified Stability Dossier Handover", body: "Delivering official Form 1A/1B certificate with engineering calculation sheets and safety stamps." },
     ],
     guarantee: {
-      title: "100% Statutory Compliance Guarantee",
-      body: "Legally recognized by the Directorate of Industrial Safety & Health (DISH) and Municipal Corporations.",
+      title: "Prepared for Your Authority",
+      body: "Prepared in the format required by DISH or the municipal authority. Confirm their requirements with us before the inspection.",
     },
     formDefaults: {
       serviceCategory: "valuation",
@@ -871,10 +871,10 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
   "detailed-estimation-costing": {
     slug: "detailed-estimation-costing",
     badge: "Itemized Bill of Quantities (BOQ)",
-    tagline: "Micro-level quantity surveying, material take-offs, and rate analysis protecting you against 15–25% unexpected contractor cost escalations.",
+    tagline: "Micro-level quantity surveying, material take-offs, and rate analysis protecting you against unexpected contractor cost escalations.",
     sla: "3 to 5 Days Detailed BOQ",
     slaLabel: "Line-Item Precision",
-    credentialBadge: "Certified Quantity Surveyors",
+    credentialBadge: "Experienced Quantity Surveyors",
     credentialLabel: "CPWD / State PWD Schedule of Rates",
     deliverablesHeading: "Estimation & Costing Deliverables",
     deliverables: [
@@ -896,8 +896,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Comprehensive BoQ & Tender Dossier", body: "Handing over the itemized Excel sheets, contractor agreement schedules, and milestone cash flow tables." },
     ],
     guarantee: {
-      title: "100% Quantity Survey Precision Guarantee",
-      body: "Verified against CPWD and State PWD standard Schedule of Rates to prevent inflated contractor claims.",
+      title: "Checked Against Standard Rates",
+      body: "Quantities and rates are checked against CPWD and State PWD Schedules of Rates, so inflated claims are easy to spot.",
     },
     formDefaults: {
       serviceCategory: "valuation",
@@ -922,11 +922,11 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
 
   "chartered-engineer-valuation": {
     slug: "chartered-engineer-valuation",
-    badge: "Chartered Engineer & Technical Asset Valuation",
+    badge: "Technical Asset Valuation",
     tagline: "Authoritative technical asset appraisals, plant and machinery valuation, and customs certifications for industrial enterprises.",
     sla: "48 to 72 Hours Turnaround",
     slaLabel: "Government Empaneled",
-    credentialBadge: "Chartered Engineer (India)",
+    credentialBadge: "Engineer-Prepared Reports",
     credentialLabel: "Ministry of Commerce Approved",
     deliverablesHeading: "Technical Valuation Scope",
     deliverables: [
@@ -935,12 +935,12 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Bank Collateral Asset Appraisal", desc: "Technical solvency and market worth reports for working capital facilities, term loans, and consortiums." },
       { title: "Insurance Asset Reinstatement Value", desc: "Fair replacement valuation documentation for industrial fire, hazard, and machinery breakdown policies." },
       { title: "Corporate Merger & Asset Liquidation", desc: "Impartial technical valuation for NCLT insolvency proceedings, mergers, acquisitions, and asset sales." },
-      { title: "Chartered Engineer Stamped Dossier", desc: "Certified under the Institution of Engineers (India) with formal seal, registration number, and calculations." },
+      { title: "Signed Technical Report", desc: "A signed report with the calculations, photographs and basis of valuation." },
     ],
     highlightBox: {
       title: "Authoritative Technical Certification for Corporate & Regulatory Needs",
       description: "Accepted by Customs Authorities, Income Tax Appellate Tribunals, Nationalized Banks, and Corporate Courts.",
-      badges: ["✓ Plant & Machinery Appraisal", "✓ Customs EPCG & Advance License", "✓ Bank Collateral Valuation", "✓ NCLT & Insolvency Certified"],
+      badges: ["✓ Plant & Machinery Appraisal", "✓ Customs EPCG & Advance License", "✓ Bank Collateral Valuation", "✓ Insolvency & Audit Purposes"],
     },
     steps: [
       { n: "01", title: "Asset Inventory & Invoices Audit", body: "Reviewing machinery purchase invoices, customs bill of entry, running hours, and asset depreciation registers." },
@@ -948,8 +948,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Chartered Engineer Dossier Handover", body: "Issuing the official stamped appraisal certificate with detailed technical valuation schedules." },
     ],
     guarantee: {
-      title: "100% Statutory Validity Guarantee",
-      body: "Fully certified under the Institution of Engineers (India) and recognized by government and financial bodies.",
+      title: "Prepared for Its Purpose",
+      body: "Tell us who the report is for (bank, customs, auditor) and we prepare it to their stated requirements.",
     },
     formDefaults: {
       serviceCategory: "valuation",
@@ -980,12 +980,12 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     tagline: "Expert guidance for identifying, evaluating, and securing high-potential residential and commercial properties with complete legal protection.",
     sla: "Dedicated Advisory Mandate",
     slaLabel: "End-to-End Support",
-    credentialBadge: "Licensed Property Consultants",
+    credentialBadge: "Experienced Property Consultants",
     credentialLabel: "RERA Registered",
     deliverablesHeading: "Acquisition Advisory Deliverables",
     deliverables: [
       { title: "Curated Property Shortlisting", desc: "Handpicked properties matching your investment criteria, lifestyle preferences, and budget parameters." },
-      { title: "Legal Title & EC Verification", desc: "Comprehensive Encumbrance Certificate, parent deed chain, patta/chitta, and DTCP/CMDA approval verification." },
+      { title: "Legal Title & EC Verification", desc: "Comprehensive Encumbrance Certificate, parent deed chain, patta/chitta, and DTCP or local planning authority approval verification." },
       { title: "Fair Market Value Assessment", desc: "Independent valuation cross-referencing guideline value, recent registered transactions, and micro-market demand." },
       { title: "Negotiation & Deal Structuring", desc: "Professional negotiation strategy to secure the best acquisition price with protective contract clauses." },
       { title: "Registration & Documentation", desc: "Complete support through sale agreement drafting, stamp duty computation, and sub-registrar formalities." },
@@ -994,7 +994,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     highlightBox: {
       title: "Every Acquisition Decision Backed by Data & Due Diligence",
       description: "We ensure zero legal risk and maximum value by conducting rigorous multi-layer verification before you commit a single rupee.",
-      badges: ["✓ Title Chain Verification", "✓ Fair Market Valuation", "✓ DTCP/CMDA Compliance", "✓ Registration Support"],
+      badges: ["✓ Title Chain Verification", "✓ Fair Market Valuation", "✓ DTCP / LPA Approval Check", "✓ Registration Support"],
     },
     steps: [
       { n: "01", title: "Investment Criteria & Location Mapping", body: "Understanding your budget, timeline, usage intent, and preferred micro-markets for targeted property sourcing." },
@@ -1002,8 +1002,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Negotiation, Documentation & Closure", body: "Professional deal negotiation, sale deed preparation, and sub-registrar registration support." },
     ],
     guarantee: {
-      title: "100% Legal Clarity Guarantee",
-      body: "Every property acquisition backed by exhaustive title verification and legal due diligence with zero hidden encumbrances.",
+      title: "Title Checked Before You Commit",
+      body: "Title documents, encumbrance certificate and approvals are reviewed before you pay an advance, and any concerns are reported to you in writing.",
     },
     formDefaults: {
       serviceCategory: "realestate",
@@ -1039,7 +1039,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     deliverablesHeading: "Land Transaction Services",
     deliverables: [
       { title: "Premium Plot Sourcing & Curation", desc: "Access to exclusive off-market DTCP-approved plots in high-growth residential and commercial corridors." },
-      { title: "Boundary Survey & FMB Verification", desc: "Licensed surveyor-conducted boundary verification against Field Measurement Book records and revenue maps." },
+      { title: "Boundary Survey & FMB Verification", desc: "Surveyor-conducted boundary verification against Field Measurement Book records and revenue maps." },
       { title: "Encumbrance & Title Chain Audit", desc: "30-year EC verification, parent deed tracing, and legal opinion from empaneled property advocates." },
       { title: "Zoning & Land-Use Compliance", desc: "Verification of DTCP layout approval, CRZ restrictions, agricultural land conversion status, and FSI eligibility." },
       { title: "Sale Deed & Registration", desc: "Drafting of sale agreement, computation of stamp duty and registration fees, and sub-registrar coordination." },
@@ -1047,7 +1047,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     ],
     highlightBox: {
       title: "Investment-Grade Land Transactions with Zero Legal Exposure",
-      description: "Every plot we facilitate comes with exhaustive legal verification, licensed boundary surveys, and clear title certification.",
+      description: "Every plot we facilitate is checked for title, boundaries and approvals before you commit.",
       badges: ["✓ DTCP Approved Plots", "✓ FMB Boundary Verified", "✓ 30-Year EC Clearance", "✓ Sub-Registrar Support"],
     },
     steps: [
@@ -1056,8 +1056,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Documentation, Registration & Handover", body: "Sale deed drafting, stamp duty processing, sub-registrar registration, and mutation completion." },
     ],
     guarantee: {
-      title: "100% Clear Title Guarantee",
-      body: "Every land transaction backed by thorough legal verification ensuring zero disputes, zero encumbrances, and complete ownership clarity.",
+      title: "Verified Before You Buy",
+      body: "Title, encumbrance and boundary checks are completed and shared with you before the sale deed is registered.",
     },
     formDefaults: {
       serviceCategory: "realestate",
@@ -1086,7 +1086,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     tagline: "Data-driven real estate investment consulting delivering yield forecasting, risk analysis, and strategic portfolio positioning for maximum capital appreciation.",
     sla: "Comprehensive Market Dossier",
     slaLabel: "ROI Forecasting Included",
-    credentialBadge: "Certified Property Analysts",
+    credentialBadge: "Data-Led Property Analysis",
     credentialLabel: "NRI Investment Specialists",
     deliverablesHeading: "Investment Consulting Deliverables",
     deliverables: [
@@ -1108,8 +1108,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Acquisition Execution & Portfolio Monitoring", body: "Supporting deal closure, documentation, and ongoing portfolio performance tracking with periodic reviews." },
     ],
     guarantee: {
-      title: "100% Data-Backed Investment Decisions",
-      body: "Every recommendation supported by verified market data, infrastructure growth plans, and transparent yield modelling, zero speculation.",
+      title: "Data-Backed Recommendations",
+      body: "Recommendations are based on market data, infrastructure plans and yield calculations that we share with you.",
     },
     formDefaults: {
       serviceCategory: "realestate",
@@ -1161,8 +1161,8 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { n: "03", title: "Ongoing Management & Performance Review", body: "Monthly reporting, maintenance coordination, lease renewals, and strategic advisory for portfolio growth." },
     ],
     guarantee: {
-      title: "100% Owner Transparency Guarantee",
-      body: "Complete visibility into tenant status, rental income, maintenance costs, and asset performance through dedicated monthly reporting.",
+      title: "Monthly Owner Reports",
+      body: "Tenant status, rental income, maintenance costs and property condition reported to you every month.",
     },
     formDefaults: {
       serviceCategory: "realestate",

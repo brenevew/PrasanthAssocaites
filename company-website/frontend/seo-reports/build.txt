@@ -1,0 +1,61 @@
+
+> prasanthassocaites@0.1.0 build
+> next build --webpack
+
+▲ Next.js 16.3.4 (webpack)
+- Environments: .env.production
+✓ Running next.config.ts took 21ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.0s
+  Running TypeScript ...
+  Finished TypeScript in 4.7s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/54) ...
+  Generating static pages using 7 workers (13/54) 
+  Generating static pages using 7 workers (26/54) 
+  Generating static pages using 7 workers (40/54) 
+✓ Generating static pages using 7 workers (54/54) in 628ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ƒ /api/projects
+├ ƒ /api/sync-sheets
+├ ƒ /api/upload
+├ ○ /apple-icon.png
+├ ○ /contact
+├ ○ /how-it-works
+├ ○ /icon.svg
+├ ○ /llms.txt
+├ ○ /locations/coimbatore
+├ ○ /locations/gudalur
+├ ○ /locations/nilgiris-ooty
+├ ○ /plan-home
+├ ƒ /projects
+├   /projects/[slug]
+│ ├ ● /projects/pricol
+│ ├ ● /projects/sasthapruri
+│ ├ ● /projects/rex-school
+│ └ ● [+5 more paths]
+├ ○ /property-investment
+├ ○ /request-design
+├ ƒ /request-quote
+├ ○ /robots.txt
+├ ○ /services
+├   /services/[slug]
+│ ├ ● /services/residential-construction
+│ ├ ● /services/villa-construction
+│ ├ ● /services/commercial-construction
+│ └ ● [+18 more paths]
+├ ○ /services/turnkey-design-build-coimbatore
+└ ○ /sitemap.xml
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -75,7 +75,6 @@ export default function NilgirisOotyLocationPage() {
         telephone: nilgirisOffice.phone,
         email: nilgirisOffice.email,
         url: `${SITE_URL}/locations/gudalur`, // the branch's own page
-        priceRange: "₹₹₹",
         address: {
           "@type": "PostalAddress",
           streetAddress: nilgirisOffice.street,
@@ -375,6 +374,8 @@ export default function NilgirisOotyLocationPage() {
               <div className="relative h-64 md:h-80 w-full rounded-2xl overflow-hidden bg-slate-100">
                 <img
                   src={ootyProjects[0].image}
+                  loading="lazy"
+                  decoding="async"
                   alt={`${ootyProjects[0].title}, ${ootyProjects[0].type.toLowerCase()} by Prasanth Associates`}
                   className="w-full h-full object-cover"
                 />

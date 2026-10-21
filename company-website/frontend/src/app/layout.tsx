@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import LeadAnalytics from "@/components/analytics/LeadAnalytics";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import { company } from "@/data/company";
 import { SITE_URL, OG_IMAGE, pageOpenGraph, ORG_ID, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { services } from "@/data/services";
+import { getServicePath } from "@/data/serviceRoutes";
 import { serviceCategories } from "@/data/serviceCategories";
 
 const inter = Inter({
@@ -54,7 +56,6 @@ const organizationSchema = {
       image: `${siteUrl}${OG_IMAGE.url}`,
       telephone: company.phone.replace(/\s/g, ""),
       email: company.email,
-      priceRange: "₹₹₹",
       address: {
         "@type": "PostalAddress",
         streetAddress: company.address.street,
@@ -124,7 +125,9 @@ const organizationSchema = {
                 "@type": "Service",
                 name: s.title,
                 description: s.shortDescription,
-                url: `${siteUrl}/services#${s.slug}`,
+                "@id": `${siteUrl}/services#${s.slug}`,
+                url: `${siteUrl}${getServicePath(s.slug)}`,
+                provider: { "@id": ORG_ID },
               },
             })),
         })),
@@ -159,6 +162,7 @@ export default function RootLayout({
           }}
         />
 
+        <LeadAnalytics />
         <Header />
         <main className="flex-grow pt-24 md:pt-[104px]">
           {children}

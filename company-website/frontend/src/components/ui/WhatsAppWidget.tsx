@@ -1,5 +1,7 @@
 "use client";
 
+import { trackLeadEvent } from "@/lib/analytics";
+
 import React, { useState } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 
@@ -27,6 +29,7 @@ export default function WhatsAppWidget({
   const handleSendWhatsApp = (customText?: string) => {
     const textToSend = customText || customerMsg || defaultMessage;
     const url = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(textToSend)}`;
+    trackLeadEvent("whatsapp_click");
     window.open(url, "_blank", "noopener,noreferrer");
   };
 

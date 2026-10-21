@@ -37,6 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.title,
     description,
+    // Placeholder pages stay reachable but out of search results until their
+    // case study is written; hasDetailsPage() flips this automatically.
+    ...(hasDetailsPage(project) ? {} : { robots: { index: false, follow: true } }),
     alternates: {
       canonical: `${SITE_URL}/projects/${project.slug}`,
     },

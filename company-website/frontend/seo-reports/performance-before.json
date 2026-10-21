@@ -1,0 +1,22 @@
+[
+  {
+    "route": "/",
+    "lcp": 268,
+    "cls": 0
+  },
+  {
+    "route": "/services",
+    "lcp": 68,
+    "cls": 0
+  },
+  {
+    "route": "/locations/nilgiris-ooty",
+    "lcp": 88,
+    "cls": 0
+  },
+  {
+    "route": "/contact",
+    "lcp": 84,
+    "cls": 0
+  }
+]
