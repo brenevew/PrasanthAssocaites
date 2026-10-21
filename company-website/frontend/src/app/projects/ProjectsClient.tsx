@@ -72,14 +72,12 @@ export default function ProjectsClient({
     {
       value: "projects" as const,
       label: "Built Projects",
-      count: `${allProjects.length} projects`,
       description: "Homes, schools, hotels and commercial buildings, with photos from the site.",
       image: allProjects[0]?.image,
     },
     {
       value: "designs" as const,
       label: "Designs",
-      count: `${designGalleryImages.length} designs`,
       description: "House elevations, landscaping, and residential and commercial interiors.",
       image: designGalleryImages[0]?.src,
     },
@@ -171,7 +169,6 @@ export default function ProjectsClient({
                     </span>
                   )}
                   <span className="absolute inset-x-0 bottom-0 p-4 sm:p-7 flex flex-col gap-1 sm:gap-2 text-white">
-                    <span className="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-white/85 drop-shadow-sm">{item.count}</span>
                     <span className="font-heading text-xl sm:text-3xl lg:text-4xl font-bold leading-tight">{item.label}</span>
                     <span className="hidden sm:block text-sm text-white/80 leading-relaxed max-w-sm">{item.description}</span>
                     <span className={`mt-1 sm:mt-2 inline-flex items-center gap-1.5 text-xs font-semibold ${active ? "text-gold-light" : "text-white"}`}>

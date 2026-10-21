@@ -14,13 +14,13 @@ export const services: Service[] = [
     shortDescription:
       "Individual custom homes and duplex residences built with 100% Vastu compliance, Fe550D TMT reinforcement, and legally binding fixed-price BoQ.",
     description:
-      "Every home is a generational landmark. We design and construct custom residences balancing scientific Vastu architecture, spatial efficiency, and engineered durability. From geotechnical soil analysis and heavy RCC foundation casting to Kajaria/Somany vitrified finishes and multi-layer waterproofing, every milestone is supervised by senior civil engineers with zero escalation clauses.",
+      "Every home is a generational landmark. We design and construct custom residences balancing scientific Vastu architecture, spatial efficiency, and engineered durability. From geotechnical soil analysis and heavy RCC foundation casting to premium vitrified finishes and multi-layer waterproofing, every milestone is supervised by senior civil engineers with zero escalation clauses.",
     icon: "Home",
     features: [
       "100% Vastu-aligned architectural layouts",
       "Fe550D TMT steel & 53-grade certified cement",
       "Multi-layer chemical waterproofing on slabs & wet areas",
-      "Branded sanitary & electrical fittings (Jaquar/Kohler)",
+      "Branded sanitary & electrical fittings",
       "Conduit pre-wiring for solar & rainwater percolation pit",
       "Legally locked line-item BoQ with zero price escalation",
     ],
@@ -37,7 +37,7 @@ export const services: Service[] = [
       "Double-height living & panoramic glass facades",
       "Hand-picked Italian marble & aged teakwood joinery",
       "Private courtyard pools & landscaped timber decks",
-      "Integrated KNX smart automation & ambient lighting",
+      "Integrated wired smart automation & ambient lighting",
       "Thermal-break insulation & acoustic ceiling shielding",
       "Dedicated mastercraft civil engineer & white-glove PM",
     ],
@@ -97,7 +97,7 @@ export const services: Service[] = [
     slug: "smart-homes",
     title: "Smart Home Automation",
     shortDescription:
-      "Intelligent KNX/Zigbee home automation for centralized lighting, biometric security, climate control, and voice-assisted living.",
+      "Intelligent wired and wireless home automation for centralized lighting, biometric security, climate control, and voice-assisted living.",
     description:
       "Smart living designed into the walls from day one. We engineer concealed structured cabling and wireless mesh networks that unify smart lighting scenes, motorized drapery, multi-zone VRV air conditioning, biometric security locks, and perimeter CCTV surveillance into intuitive smartphone and touch-panel controls.",
     icon: "Cpu",
@@ -133,7 +133,7 @@ export const services: Service[] = [
     shortDescription:
       "Independent engineering supervision, BoQ rate validation, contractor billing audits, and quality control checklists for private builders.",
     description:
-      "Protect your capital investment with veteran civil engineering oversight. We act as your independent owner's engineer—verifying contractor workmanship, cross-checking raw material test certificates, auditing bill of quantities to prevent overcharging, and resolving complex on-site engineering challenges.",
+      "Protect your capital investment with veteran civil engineering oversight. We act as your independent owner's engineer, verifying contractor workmanship, cross-checking raw material test certificates, auditing bill of quantities to prevent overcharging, and resolving complex on-site engineering challenges.",
     icon: "ClipboardList",
     features: [
       "Independent third-party site quality inspections",
@@ -180,9 +180,9 @@ export const services: Service[] = [
     slug: "structural-drawings",
     title: "Structural Drawings",
     shortDescription:
-      "Stamped RCC structural drawings — footing schedules, column layouts, beam and slab reinforcement details ready for site execution.",
+      "Stamped RCC structural drawings, footing schedules, column layouts, beam and slab reinforcement details ready for site execution.",
     description:
-      "Structural drawings translate an architectural concept into something a site team can actually build safely. Our engineers size every member against the soil bearing capacity returned by your SBC test and the load path of the building, then issue fully detailed RCC drawings — footing schedules, column orientation, beam reinforcement cut-lengths, and slab bar-bending schedules. Drawings are formatted for municipal plan sanction and carry the engineer's stamp lenders and approval authorities require.",
+      "Structural drawings translate an architectural concept into something a site team can actually build safely. Our engineers size every member against the soil bearing capacity returned by your SBC test and the load path of the building, then issue fully detailed RCC drawings, footing schedules, column orientation, beam reinforcement cut-lengths, and slab bar-bending schedules. Drawings are formatted for municipal plan sanction and carry the engineer's stamp lenders and approval authorities require.",
     icon: "PencilRuler",
     features: [
       "Footing & foundation layout schedules",
@@ -199,7 +199,7 @@ export const services: Service[] = [
     shortDescription:
       "Concealed conduit routing, load-calculated distribution boards, earthing layouts, and point-wise electrical schematics.",
     description:
-      "An electrical layout drawn after the walls are up is a retrofit, not a design. We prepare point-wise electrical drawings before casting — conduit routing, switchboard elevations, DB positions, and circuit segregation — with distribution boards sized against calculated connected load rather than a rule of thumb. Layouts include dedicated circuits for kitchen, HVAC and utility loads, ELCB/MCB protection schedules, earthing design, and conduit provisioning for solar, inverter and smart-home systems.",
+      "An electrical layout drawn after the walls are up is a retrofit, not a design. We prepare point-wise electrical drawings before casting, conduit routing, switchboard elevations, DB positions, and circuit segregation, with distribution boards sized against calculated connected load rather than a rule of thumb. Layouts include dedicated circuits for kitchen, HVAC and utility loads, ELCB/MCB protection schedules, earthing design, and conduit provisioning for solar, inverter and smart-home systems.",
     icon: "Zap",
     features: [
       "Point-wise lighting, power & switchboard layouts",
@@ -317,7 +317,7 @@ export const services: Service[] = [
     shortDescription:
       "Strategic counsel for identifying, evaluating, and securing high-potential residential and commercial properties.",
     description:
-      "Our property acquisition advisory service guides discerning buyers through every stage of the acquisition journey — from market intelligence and location shortlisting to legal due diligence, negotiation strategy, and registration support. We combine deep local market expertise with rigorous technical assessment to ensure every investment decision is informed, protected, and positioned for long-term value appreciation.",
+      "Our property acquisition advisory service guides discerning buyers through every stage of the acquisition journey, from market intelligence and location shortlisting to legal due diligence, negotiation strategy, and registration support. We combine deep local market expertise with rigorous technical assessment to ensure every investment decision is informed, protected, and positioned for long-term value appreciation.",
     icon: "MapPin",
     features: [
       "Market intelligence & location analysis",
@@ -334,7 +334,7 @@ export const services: Service[] = [
     shortDescription:
       "End-to-end facilitation of premium residential and commercial land acquisitions, sales, and plot development.",
     description:
-      "We facilitate seamless land and plot transactions for buyers, sellers, and developers — handling everything from property sourcing, boundary verification, and legal encumbrance checks to negotiation, documentation, and sub-registrar formalities. Our deep knowledge of local zoning laws, DTCP layouts, and municipal bylaws ensures every transaction is legally sound and investment-grade.",
+      "We facilitate seamless land and plot transactions for buyers, sellers, and developers, handling everything from property sourcing, boundary verification, and legal encumbrance checks to negotiation, documentation, and sub-registrar formalities. Our deep knowledge of local zoning laws, DTCP layouts, and municipal bylaws ensures every transaction is legally sound and investment-grade.",
     icon: "Map",
     features: [
       "Premium plot sourcing & curation",
@@ -366,9 +366,9 @@ export const services: Service[] = [
     slug: "property-portfolio-management",
     title: "Property Portfolio Management",
     shortDescription:
-      "Comprehensive stewardship of multi-property holdings — from tenant acquisition and lease management to asset optimization.",
+      "Comprehensive stewardship of multi-property holdings, from tenant acquisition and lease management to asset optimization.",
     description:
-      "We provide end-to-end portfolio management services for property owners holding multiple residential, commercial, or mixed-use assets. Our team handles tenant sourcing, lease documentation, rent collection, periodic property inspections, maintenance coordination, and strategic disposition planning — allowing owners to realize maximum returns with zero operational burden.",
+      "We provide end-to-end portfolio management services for property owners holding multiple residential, commercial, or mixed-use assets. Our team handles tenant sourcing, lease documentation, rent collection, periodic property inspections, maintenance coordination, and strategic disposition planning, allowing owners to realize maximum returns with zero operational burden.",
     icon: "LayoutDashboard",
     features: [
       "Tenant sourcing & screening",

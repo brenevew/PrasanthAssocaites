@@ -23,7 +23,7 @@ export const processSteps: ProcessStep[] = [
     number: "02",
     title: "Site Evaluation",
     description:
-      "Our engineering team evaluates the site — soil conditions, topography, access, orientation, and regulatory constraints — to inform the design and structural approach.",
+      "Our engineering team evaluates the site, soil conditions, topography, access, orientation, and regulatory constraints, to inform the design and structural approach.",
     details: [
       "Soil testing and analysis",
       "Topographic survey",
@@ -62,7 +62,7 @@ export const processSteps: ProcessStep[] = [
     number: "05",
     title: "Approvals",
     description:
-      "We manage the approval process — building permits, structural plan approvals, utility connections, and any regulatory requirements specific to your location.",
+      "We manage the approval process, building permits, structural plan approvals, utility connections, and any regulatory requirements specific to your location.",
     details: [
       "Building permit application",
       "Structural plan approval",
@@ -75,7 +75,7 @@ export const processSteps: ProcessStep[] = [
     number: "06",
     title: "Construction",
     description:
-      "Construction begins with a dedicated project manager, regular progress reporting, and strict quality protocols at every stage — from foundation to finishing.",
+      "Construction begins with a dedicated project manager, regular progress reporting, and strict quality protocols at every stage, from foundation to finishing.",
     details: [
       "Foundation and structure",
       "MEP rough-in",
@@ -101,7 +101,7 @@ export const processSteps: ProcessStep[] = [
     number: "08",
     title: "Handover",
     description:
-      "We walk you through the completed project, hand over all documentation — drawings, warranties, maintenance guides — and provide post-construction support.",
+      "We walk you through the completed project, hand over all documentation, drawings, warranties, maintenance guides, and provide post-construction support.",
     details: [
       "Final walkthrough",
       "Documentation handover",

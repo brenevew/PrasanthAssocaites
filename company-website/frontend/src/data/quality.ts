@@ -20,7 +20,7 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Concrete Quality",
     description:
-      "We use design-mix concrete with strict quality protocols — slump tests, cube testing, and proper curing schedules to ensure structural integrity.",
+      "We use design-mix concrete with strict quality protocols, slump tests, cube testing, and proper curing schedules to ensure structural integrity.",
     icon: "Box",
   },
   {
@@ -32,13 +32,13 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Waterproofing",
     description:
-      "Multi-layer waterproofing systems for basements, terraces, bathrooms, and wet areas — using proven membrane and coating technologies.",
+      "Multi-layer waterproofing systems for basements, terraces, bathrooms, and wet areas, using proven membrane and coating technologies.",
     icon: "Droplets",
   },
   {
     title: "Electrical Systems",
     description:
-      "Electrical design considers current capacity, future load requirements, safety systems, and energy efficiency — with concealed wiring and modular fittings.",
+      "Electrical design considers current capacity, future load requirements, safety systems, and energy efficiency, with concealed wiring and modular fittings.",
     icon: "Zap",
   },
   {
@@ -62,7 +62,7 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Energy Efficiency",
     description:
-      "Passive design strategies — orientation, natural ventilation, daylighting, and insulation — reduce energy consumption without compromising comfort.",
+      "Passive design strategies, orientation, natural ventilation, daylighting, and insulation, reduce energy consumption without compromising comfort.",
     icon: "Sun",
   },
 ];
@@ -89,13 +89,13 @@ export const differentiators: Differentiator[] = [
   {
     title: "Quality Materials",
     description:
-      "Materials are selected based on performance, durability, and suitability — not lowest cost. Every material is verified before use.",
+      "Materials are selected based on performance, durability, and suitability, not lowest cost. Every material is verified before use.",
     icon: "Gem",
   },
   {
     title: "Experienced Team",
     description:
-      "Architects, structural engineers, project managers, and skilled workers — each bringing expertise to their area of responsibility.",
+      "Architects, structural engineers, project managers, and skilled workers, each bringing expertise to their area of responsibility.",
     icon: "Users",
   },
   {

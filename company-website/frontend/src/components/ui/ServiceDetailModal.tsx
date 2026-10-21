@@ -51,10 +51,6 @@ export default function ServiceDetailModal({
     };
   }, [isOpen]);
 
-  const openSpec = service ? serviceQuoteSpecs[service.slug] : undefined;
-  const defaults = (opts?: { value: string }[], multi?: boolean) =>
-    multi ? [] : ([opts?.[0]?.value].filter(Boolean) as string[]);
-
   const [field1, setField1] = useState<string[]>([]);
   const [field2, setField2] = useState<string[]>([]);
   const [pickedFor, setPickedFor] = useState<string | null>(null);
@@ -62,8 +58,8 @@ export default function ServiceDetailModal({
   // Reset the pickers when the card switches to a different service.
   if (service && service.slug !== pickedFor) {
     setPickedFor(service.slug);
-    setField1(defaults(openSpec?.formDefaults?.field1Options, openSpec?.formDefaults?.field1Multi));
-    setField2(defaults(openSpec?.formDefaults?.field2Options, openSpec?.formDefaults?.field2Multi));
+    setField1([]);
+    setField2([]);
   }
 
   if (!isOpen || !service) return null;

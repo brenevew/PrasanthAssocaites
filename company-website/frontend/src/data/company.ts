@@ -110,7 +110,7 @@ export const company: CompanyInfo = {
   // weakens the match rather than adding to it.
   social: {
     instagram: "https://www.instagram.com/prasanthassociates.in/",
-    facebook: "https://www.facebook.com/prasanthconstruction/", // [UNVERIFIED] page still named "Prasanth Construction"
+    facebook: "https://www.facebook.com/Prasanthassociates.in",
     linkedin: "https://www.linkedin.com/company/prasanthassociates-in/",
   },
   mapEmbedUrl:

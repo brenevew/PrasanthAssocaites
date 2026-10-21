@@ -89,8 +89,6 @@ const organizationSchema = {
         { "@type": "City", name: "Coonoor" },
         { "@type": "City", name: "Kotagiri" },
         { "@type": "City", name: "Gudalur" },
-        // Served from Coimbatore; described on /service-areas/tiruppur.
-        { "@type": "City", name: "Tiruppur" },
       ],
       knowsAbout: [
         "House construction",

@@ -67,11 +67,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/service-areas/tiruppur`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
   ];
 
   // Dynamic project routes

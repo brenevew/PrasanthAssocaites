@@ -37,7 +37,7 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
     const unique = all.filter((src, idx) => all.indexOf(src) === idx);
     return unique.map((src, i) => ({
       src,
-      caption: unique.length > 1 ? `${project.title} — Photo ${i + 1} of ${unique.length}` : project.title,
+      caption: unique.length > 1 ? `${project.title} - Photo ${i + 1} of ${unique.length}` : project.title,
     }));
   }, [project.image, project.galleryImages, project.title]);
 

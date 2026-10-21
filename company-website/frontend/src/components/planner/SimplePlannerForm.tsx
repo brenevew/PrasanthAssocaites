@@ -157,8 +157,8 @@ const getArchitecturalFloorName = (index: number): string => {
 const defaultFloorNames = ["Ground Floor", "1st Floor", "2nd Floor", "3rd Floor", "4th Floor", "5th Floor", "6th Floor", "7th Floor"];
 
 const initialFloorLevels: DynamicFloorLevel[] = [
-  { id: "ground", name: "Ground Floor", length: "0", breadth: "0", bedrooms: 2, kitchens: 1, baths: 2, livingHalls: 1 },
-  { id: "floor_1", name: "1st Floor", length: "0", breadth: "0", bedrooms: 2, kitchens: 1, baths: 2, livingHalls: 1 },
+  { id: "ground", name: "Ground Floor", length: "0", breadth: "0", bedrooms: 0, kitchens: 0, baths: 0, livingHalls: 0 },
+  { id: "floor_1", name: "1st Floor", length: "0", breadth: "0", bedrooms: 0, kitchens: 0, baths: 0, livingHalls: 0 },
 ];
 
 const residentialRequirementGroups: { label: string; chips: string[] }[] = [
@@ -227,7 +227,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
 
   /* Dynamic Floor Levels & Maximize/Minimize (Expanded/Collapsed) State
      `list` and `nextLevel` are kept in one state object so every add/remove
-     is a single atomic, pure update — reading a plain ref for `nextLevel`
+     is a single atomic, pure update, reading a plain ref for `nextLevel`
      from inside a separate setState's updater caused it to skip a level
      number (e.g. jump straight from 2nd Floor to 4th Floor) because React
      can invoke that updater at a different time than the ref mutation. */
@@ -241,9 +241,9 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
 
   /* Commercial Specifications */
   const [commercialType, setCommercialType] = useState("Shop / Retail");
-  const [commercialUnits, setCommercialUnits] = useState(2);
-  const [commercialKitchens, setCommercialKitchens] = useState(1);
-  const [commercialRestrooms, setCommercialRestrooms] = useState(2);
+  const [commercialUnits, setCommercialUnits] = useState(0);
+  const [commercialKitchens, setCommercialKitchens] = useState(0);
+  const [commercialRestrooms, setCommercialRestrooms] = useState(0);
   const [commercialFacilities, setCommercialFacilities] = useState<string[]>(["Display Windows", "Customer Parking"]);
 
   /* Vehicle Parking & Road */
@@ -340,10 +340,10 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
         name: getArchitecturalFloorName(prev.nextLevel),
         length: baseLength,
         breadth: baseBreadth,
-        bedrooms: 2,
-        kitchens: 1,
-        baths: 2,
-        livingHalls: 1,
+        bedrooms: 0,
+        kitchens: 0,
+        baths: 0,
+        livingHalls: 0,
       };
 
       return { list: [...prev.list, newFloor], nextLevel: prev.nextLevel + 1 };
@@ -401,10 +401,10 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
         name: "Basement",
         length: ground?.length || "0",
         breadth: ground?.breadth || "0",
-        bedrooms: isCustom ? 1 : 0,
+        bedrooms: 0,
         kitchens: 0,
-        baths: isCustom ? 1 : 0,
-        livingHalls: isCustom ? 1 : 0,
+        baths: 0,
+        livingHalls: 0,
         isBasement: true,
         basementHasParking: option === "parking",
         basementHasCustomRooms: option === "custom",
@@ -906,7 +906,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                               <div className="bg-linen/40 p-2 rounded-xl border border-border/50">
                                 <span className="block text-[9px] font-bold uppercase text-concrete mb-1">Bedrooms</span>
                                 <div className="flex items-center justify-center gap-1">
-                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { bedrooms: Math.max(1, fl.bedrooms - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { bedrooms: Math.max(0, fl.bedrooms - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
                                   <span className="text-xs font-bold font-mono text-charcoal w-4">{fl.bedrooms}</span>
                                   <button type="button" onClick={() => updateFloorLevel(fl.id, { bedrooms: fl.bedrooms + 1 })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
                                 </div>
@@ -924,7 +924,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                               <div className="bg-linen/40 p-2 rounded-xl border border-border/50">
                                 <span className="block text-[9px] font-bold uppercase text-concrete mb-1">Baths</span>
                                 <div className="flex items-center justify-center gap-1">
-                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { baths: Math.max(1, fl.baths - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { baths: Math.max(0, fl.baths - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
                                   <span className="text-xs font-bold font-mono text-charcoal w-4">{fl.baths}</span>
                                   <button type="button" onClick={() => updateFloorLevel(fl.id, { baths: fl.baths + 1 })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
                                 </div>
@@ -944,7 +944,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                               <div className="bg-linen/40 p-2 rounded-xl border border-border/50">
                                 <span className="block text-[9px] font-bold uppercase text-concrete mb-1">Units / Cabins</span>
                                 <div className="flex items-center justify-center gap-1">
-                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { bedrooms: Math.max(1, fl.bedrooms - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { bedrooms: Math.max(0, fl.bedrooms - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
                                   <span className="text-xs font-bold font-mono text-charcoal w-4">{fl.bedrooms}</span>
                                   <button type="button" onClick={() => updateFloorLevel(fl.id, { bedrooms: fl.bedrooms + 1 })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
                                 </div>
@@ -953,7 +953,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                               <div className="bg-linen/40 p-2 rounded-xl border border-border/50">
                                 <span className="block text-[9px] font-bold uppercase text-concrete mb-1">Restrooms</span>
                                 <div className="flex items-center justify-center gap-1">
-                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { baths: Math.max(1, fl.baths - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                                  <button type="button" onClick={() => updateFloorLevel(fl.id, { baths: Math.max(0, fl.baths - 1) })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
                                   <span className="text-xs font-bold font-mono text-charcoal w-4">{fl.baths}</span>
                                   <button type="button" onClick={() => updateFloorLevel(fl.id, { baths: fl.baths + 1 })} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
                                 </div>
@@ -1034,7 +1034,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                     <div className="bg-white p-2.5 rounded-xl border border-border/60">
                       <span className="block text-[9px] font-bold uppercase text-concrete mb-1 truncate">{currentSpec.label1}</span>
                       <div className="flex items-center justify-center gap-1.5">
-                        <button type="button" onClick={() => setCommercialUnits(u => Math.max(1, u - 1))} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                        <button type="button" onClick={() => setCommercialUnits(u => Math.max(0, u - 1))} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
                         <span className="text-xs font-bold font-mono text-charcoal w-4">{commercialUnits}</span>
                         <button type="button" onClick={() => setCommercialUnits(u => u + 1)} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
                       </div>
@@ -1052,7 +1052,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                     <div className="bg-white p-2.5 rounded-xl border border-border/60">
                       <span className="block text-[9px] font-bold uppercase text-concrete mb-1 truncate">{currentSpec.label3}</span>
                       <div className="flex items-center justify-center gap-1.5">
-                        <button type="button" onClick={() => setCommercialRestrooms(r => Math.max(1, r - 1))} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
+                        <button type="button" onClick={() => setCommercialRestrooms(r => Math.max(0, r - 1))} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">−</button>
                         <span className="text-xs font-bold font-mono text-charcoal w-4">{commercialRestrooms}</span>
                         <button type="button" onClick={() => setCommercialRestrooms(r => r + 1)} className="w-5 h-5 rounded border border-border text-xs flex items-center justify-center font-bold text-concrete hover:text-charcoal cursor-pointer">+</button>
                       </div>
@@ -1214,7 +1214,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                         <button
                           key={pkg.name}
                           type="button"
-                          onClick={() => { setSelectedPackage(active ? null : pkg.name); setPackageDropdownOpen(false); }}
+                          onClick={() => { setSelectedPackage(pkg.name); setPackageDropdownOpen(false); }}
                           className={`w-full text-left px-3 py-3 hover:bg-gold/10 border-b border-border/40 last:border-0 transition-colors cursor-pointer flex items-start justify-between gap-3 ${
                             active ? "bg-gold/15" : ""
                           }`}
@@ -1347,7 +1347,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
               <div className="border-t border-white/20 pt-2 flex items-center justify-between">
                 <span className="text-xs font-bold text-white/70">Total Estimated Fee</span>
                 <span className="text-2xl font-heading font-bold text-warm-white">
-                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : "—"}
+                  {grandTotal > 0 ? `₹${grandTotal.toLocaleString("en-IN")}` : ", "}
                 </span>
               </div>
             </div>
@@ -1410,7 +1410,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                 type="button"
                 onClick={() => {
                   const floorDetailsText = floorLevels.map((f, idx) => `  • ${f.name || getArchitecturalFloorName(idx)}: ${f.length}x${f.breadth} ft (${(parseFloat(f.length)||0)*(parseFloat(f.breadth)||0)} SFT)`).join('\n');
-                  const msg = `*Project Plan Inquiry - Prasanth Associates*\n\n*Client Name:* ${name || "Client"}\n*Phone:* ${phone || "Not specified"}\n*Project Type:* ${selectedProjectType}\n*Plot Dimensions:* ${plotLength} x ${plotWidth} ft (${plotAreaNum.toLocaleString('en-IN')} SFT)\n*Total Floors:* ${numFloorsCount} Levels\n*Total Built-up Area:* ${totalAllFloorsSft.toLocaleString('en-IN')} SFT\n\n*Floor Breakdown:*\n${floorDetailsText}\n\n${selectedPackage ? `*Selected Package:* ${selectedPackage}\n` : ''}${grandTotal > 0 ? `*Est. Design Fee:* ₹${grandTotal.toLocaleString('en-IN')}\n` : ''}\nI would like to discuss this plan with your senior architect.`;
+                  const msg = `*Project Plan Inquiry: Prasanth Associates*\n\n*Client Name:* ${name || "Client"}\n*Phone:* ${phone || "Not specified"}\n*Project Type:* ${selectedProjectType}\n*Plot Dimensions:* ${plotLength} x ${plotWidth} ft (${plotAreaNum.toLocaleString('en-IN')} SFT)\n*Total Floors:* ${numFloorsCount} Levels\n*Total Built-up Area:* ${totalAllFloorsSft.toLocaleString('en-IN')} SFT\n\n*Floor Breakdown:*\n${floorDetailsText}\n\n${selectedPackage ? `*Selected Package:* ${selectedPackage}\n` : ''}${grandTotal > 0 ? `*Est. Design Fee:* ₹${grandTotal.toLocaleString('en-IN')}\n` : ''}\nI would like to discuss this plan with your senior architect.`;
                   const url = `https://wa.me/919360337733?text=${encodeURIComponent(msg)}`;
                   window.open(url, "_blank", "noopener,noreferrer");
                 }}

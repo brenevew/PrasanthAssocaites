@@ -84,7 +84,7 @@ export default function Home() {
             <ScrollReveal>
               <span className="nm-raised text-gold-dark px-4.5 py-1.5 rounded-full mb-7 inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase border border-border backdrop-blur-md shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-dark inline-block" />
-                Tamil Nadu&apos;s Premium Construction &amp; Design Firm
+                Coimbatore&apos;s Premium Construction &amp; Design Firm
               </span>
             </ScrollReveal>
 
@@ -193,7 +193,7 @@ export default function Home() {
                 </p>
                 <p>
                   Whether it&apos;s a luxury villa or a commercial complex, our approach remains
-                  the same — complete transparency from day one, premium materials, and a
+                  the same, complete transparency from day one, premium materials, and a
                   commitment to timelines others consider impossible.
                 </p>
               </div>
@@ -315,7 +315,7 @@ export default function Home() {
             <SectionHeading
               badge="Client Voices"
               title="Trusted by Homeowners & Businesses"
-              subtitle="Real words from real clients across Coimbatore, Tiruppur and beyond."
+              subtitle="Real words from real clients across Coimbatore, the Nilgiris and beyond."
             />
           </ScrollReveal>
 

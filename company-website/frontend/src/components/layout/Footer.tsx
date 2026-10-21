@@ -33,7 +33,7 @@ export default function Footer() {
             <p className="text-concrete leading-relaxed text-sm max-w-xs">
               {company.description}
             </p>
-            {/* Social icons */}
+            {/* Social logos */}
             <div className="flex gap-3 pt-2">
               {Object.entries(company.social).map(([platform, url]) => (
                 <a
@@ -41,10 +41,10 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-full bg-white border border-border shadow-xs flex items-center justify-center text-charcoal hover:bg-charcoal hover:text-white transition-all duration-300 text-xs font-bold"
+                  className="block w-11 h-11 rounded-xl overflow-hidden shadow-xs hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
                   aria-label={`Visit our ${platform} page`}
                 >
-                  {platform.slice(0, 2).toUpperCase()}
+                  <img src={`/images/social/${platform}.svg`} alt="" width={44} height={44} className="w-full h-full" />
                 </a>
               ))}
             </div>

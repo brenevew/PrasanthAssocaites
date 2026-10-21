@@ -108,7 +108,7 @@ export default function ServicesPageClient() {
               <em className="text-gold-dark not-italic">Design</em> Services
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
-              From individual luxury residences to large-scale commercial &amp; industrial developments — delivered with precision, transparency, and architectural distinction.
+              From individual luxury residences to large-scale commercial &amp; industrial developments, delivered with precision, transparency, and architectural distinction.
             </p>
           </ScrollReveal>
         </div>

@@ -57,13 +57,13 @@ const structuralPillars = [
     icon: Ruler,
     title: "Foundation Design for Coimbatore's Soil Profile",
     body:
-      "Coimbatore's subsoil varies sharply across the city — red gravelly and lateritic strata around Saravanampatti and Thudiyalur, harder rock-bearing strata near Vadavalli and Thondamuthur, and pockets of expansive black cotton soil closer to Sulur and the Noyyal belt. We commission a soil investigation report (SBC test and bore log) before finalizing footing type, choosing between isolated footings, combined footings, or a raft foundation based on the safe bearing capacity returned, not a standard default.",
+      "Coimbatore's subsoil varies sharply across the city, red gravelly and lateritic strata around Saravanampatti and Thudiyalur, harder rock-bearing strata near Vadavalli and Thondamuthur, and pockets of expansive black cotton soil closer to Sulur and the Noyyal belt. We commission a soil investigation report (SBC test and bore log) before finalizing footing type, choosing between isolated footings, combined footings, or a raft foundation based on the safe bearing capacity returned, not a standard default.",
   },
   {
     icon: Droplets,
     title: "Waterproofing & Groundwater Management",
     body:
-      "Basement and podium levels are treated with crystalline waterproofing admixtures dosed at the batching stage, and terraces and wet areas receive torch-applied APP membrane with a protective screed. Where the water table is shallow — common in low-lying stretches near Ondipudur and along the Noyyal river corridor — we specify additional tanking and a perimeter french drain to keep hydrostatic pressure off the substructure.",
+      "Basement and podium levels are treated with crystalline waterproofing admixtures dosed at the batching stage, and terraces and wet areas receive torch-applied APP membrane with a protective screed. Where the water table is shallow, common in low-lying stretches near Ondipudur and along the Noyyal river corridor, we specify additional tanking and a perimeter french drain to keep hydrostatic pressure off the substructure.",
   },
   {
     icon: Zap,
@@ -75,7 +75,7 @@ const structuralPillars = [
     icon: FileCheck2,
     title: "DTCP / LPA / CCMC Approval Management",
     body:
-      "Depending on the plot's jurisdiction — Coimbatore City Municipal Corporation (CCMC) limits, or an outlying Local Planning Authority (LPA) / DTCP-controlled panchayat area — the approval pathway differs. We handle patta and FMB verification, FSI and setback compliance checks, structural drawing submission for plan sanction, and the building permit application, then close the loop with the completion certificate required for occupancy and utility connections.",
+      "Depending on the plot's jurisdiction, Coimbatore City Municipal Corporation (CCMC) limits, or an outlying Local Planning Authority (LPA) / DTCP-controlled panchayat area, the approval pathway differs. We handle patta and FMB verification, FSI and setback compliance checks, structural drawing submission for plan sanction, and the building permit application, then close the loop with the completion certificate required for occupancy and utility connections.",
   },
   {
     icon: ShieldCheck,
@@ -99,7 +99,7 @@ const workflow = [
   {
     step: "03",
     title: "Itemized BoQ & Contract Sign-Off",
-    body: "A line-by-line Bill of Quantities covering material grade, brand allowances, and labor scope — reviewed jointly so pricing is fixed before the first excavation.",
+    body: "A line-by-line Bill of Quantities covering material grade, brand allowances, and labor scope, reviewed jointly so pricing is fixed before the first excavation.",
   },
   {
     step: "04",
@@ -119,38 +119,38 @@ const workflow = [
 ];
 
 const neighborhoodNotes = [
-  { name: "Gandhipuram & Sathy Road", note: "Our head office corridor — dense commercial frontage, mixed-use redevelopment, and CCMC core-zone approval requirements." },
+  { name: "Gandhipuram & Sathy Road", note: "Our head office corridor, dense commercial frontage, mixed-use redevelopment, and CCMC core-zone approval requirements." },
   { name: "Saravanampatti & Kalapatti", note: "Tech-corridor residential layouts and gated villa communities on gravelly soil; favors isolated footings with moderate SBC." },
   { name: "Peelamedu & Avinashi Road", note: "Institutional and commercial towers requiring higher-grade M25 structural members and stricter fire/setback compliance." },
   { name: "RS Puram & Race Course", note: "High-value individual bungalows and renovation-heavy structural stability certificate work on older plots." },
   { name: "Vadavalli & Thondamuthur", note: "Rock-bearing strata suited to shallow foundations; scenic elevation-facing custom villa builds." },
-  { name: "Sulur & Ondipudur belt", note: "Industrial and warehousing plots with shallow water tables — waterproofing and drainage design are load-bearing decisions here, not finishing items." },
+  { name: "Sulur & Ondipudur belt", note: "Industrial and warehousing plots with shallow water tables, waterproofing and drainage design are load-bearing decisions here, not finishing items." },
 ];
 
 const faqs = [
   {
     q: "What is the realistic timeline for a turnkey design and build project in Coimbatore?",
-    a: "For an independent residential home (G+1 to G+2, roughly 2,000–3,500 sq. ft.), design and approval typically take 6–8 weeks and civil-to-handover construction runs 8–11 months, depending on approval turnaround from CCMC or the local DTCP/LPA office. Commercial and industrial builds run longer due to structural load requirements and fire-safety NOC dependencies — we issue a project-specific schedule during the feasibility stage rather than quoting a generic figure.",
+    a: "For an independent residential home (G+1 to G+2, roughly 2,000–3,500 sq. ft.), design and approval typically take 6–8 weeks and civil-to-handover construction runs 8–11 months, depending on approval turnaround from CCMC or the local DTCP/LPA office. Commercial and industrial builds run longer due to structural load requirements and fire-safety NOC dependencies, we issue a project-specific schedule during the feasibility stage rather than quoting a generic figure.",
   },
   {
     q: "What does turnkey construction cost per square foot in Coimbatore?",
-    a: "Indicative ranges for 2026 fall between ₹1,850–₹2,400/sq. ft. for standard residential specification, and ₹2,600–₹3,600/sq. ft. for luxury villa specification with premium waterproofing, smart-home provisioning, and higher-grade finishes. Commercial and industrial shell construction is quoted separately based on span, load, and MEP density. These figures are directional — your itemized BoQ, generated after the soil test and design stage, is the binding number.",
+    a: "Indicative ranges for 2026 fall between ₹1,850–₹2,400/sq. ft. for standard residential specification, and ₹2,600–₹3,600/sq. ft. for luxury villa specification with premium waterproofing, smart-home provisioning, and higher-grade finishes. Commercial and industrial shell construction is quoted separately based on span, load, and MEP density. These figures are directional, your itemized BoQ, generated after the soil test and design stage, is the binding number.",
   },
   {
     q: "Do I need DTCP approval, LPA approval, or CCMC approval for my plot?",
-    a: "It depends on jurisdiction. Plots within Coimbatore City Municipal Corporation limits go through CCMC's building plan sanction process. Plots in surrounding panchayats or growth areas typically fall under a Local Planning Authority (LPA) or DTCP-controlled zone, each with distinct FSI and setback norms. We verify jurisdiction from your patta and FMB sketch during the feasibility stage and file with the correct authority — misfiling is one of the most common causes of approval delay.",
+    a: "It depends on jurisdiction. Plots within Coimbatore City Municipal Corporation limits go through CCMC's building plan sanction process. Plots in surrounding panchayats or growth areas typically fall under a Local Planning Authority (LPA) or DTCP-controlled zone, each with distinct FSI and setback norms. We verify jurisdiction from your patta and FMB sketch during the feasibility stage and file with the correct authority, misfiling is one of the most common causes of approval delay.",
   },
   {
     q: "How do you account for Coimbatore's varying soil and groundwater conditions?",
-    a: "We do not use a single default foundation design across the city. A soil investigation (SBC test and bore log) is commissioned for every project, and the footing type — isolated, combined, or raft — is selected from that data. In low-lying or shallow-water-table zones, we add tanking and perimeter drainage at the foundation stage rather than treating waterproofing as a finishing-stage add-on.",
+    a: "We do not use a single default foundation design across the city. A soil investigation (SBC test and bore log) is commissioned for every project, and the footing type, isolated, combined, or raft, is selected from that data. In low-lying or shallow-water-table zones, we add tanking and perimeter drainage at the foundation stage rather than treating waterproofing as a finishing-stage add-on.",
   },
   {
     q: "Is the pricing really fixed, or are there hidden escalation costs?",
-    a: "The itemized BoQ signed before construction begins specifies material grade, brand allowances, and quantities line by line. Costs only move if the client requests a scope change (e.g., upgrading a finish or altering the structural plan) — any such change is documented and priced before execution, not added retroactively to the final bill.",
+    a: "The itemized BoQ signed before construction begins specifies material grade, brand allowances, and quantities line by line. Costs only move if the client requests a scope change (e.g., upgrading a finish or altering the structural plan), any such change is documented and priced before execution, not added retroactively to the final bill.",
   },
   {
     q: "Can I get a Structural Stability Certificate for an existing building?",
-    a: "Yes. Our structural engineers conduct a physical condition assessment — crack mapping, rebound hammer testing where the concrete's history warrants it, and a load-bearing review — and issue a certificate suitable for bank loan documentation, insurance, or statutory compliance filings.",
+    a: "Yes. Our structural engineers conduct a physical condition assessment, crack mapping, rebound hammer testing where the concrete's history warrants it, and a load-bearing review, and issue a certificate suitable for bank loan documentation, insurance, or statutory compliance filings.",
   },
   {
     q: "What warranty applies to the structural work?",
@@ -158,7 +158,7 @@ const faqs = [
   },
   {
     q: "Can the design be modified after construction has started?",
-    a: "Structural elements (footing, column positions, beam spans) are locked once DTCP/LPA/CCMC approval is granted, since any change requires a revised sanction. Non-structural elements — internal partitions, finishes, MEP fixtures — can be revised through a documented change order without restarting the approval process.",
+    a: "Structural elements (footing, column positions, beam spans) are locked once DTCP/LPA/CCMC approval is granted, since any change requires a revised sanction. Non-structural elements, internal partitions, finishes, MEP fixtures, can be revised through a documented change order without restarting the approval process.",
   },
 ];
 
@@ -169,7 +169,7 @@ const localSchema = {
       "@type": "Service",
       // Same entity as the turnkey card in the /services catalog.
       "@id": `${SITE_URL}/services#turnkey-construction`,
-      name: "Turnkey Design & Build — Coimbatore",
+      name: "Turnkey Design & Build, Coimbatore",
       serviceType: "Turnkey Design and Construction",
       provider: { "@id": ORG_ID },
       areaServed: {
@@ -199,7 +199,7 @@ const localSchema = {
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}` },
         { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-        { "@type": "ListItem", position: 3, name: "Turnkey Design & Build — Coimbatore", item: CANONICAL_URL },
+        { "@type": "ListItem", position: 3, name: "Turnkey Design & Build, Coimbatore", item: CANONICAL_URL },
       ],
     },
   ],
@@ -242,7 +242,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
               <li>
                 <ChevronRight size={12} className="text-concrete-lighter" />
               </li>
-              <li className="text-charcoal font-bold">Turnkey Design & Build — Coimbatore</li>
+              <li className="text-charcoal font-bold">Turnkey Design & Build, Coimbatore</li>
             </ol>
           </nav>
 
@@ -268,7 +268,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-3xl mb-8">
               One engineering contract, one accountable team, from the soil investigation on your plot
               through DTCP/LPA/CCMC approval, structural execution, MEP, and final handover. No
-              architect-versus-contractor finger-pointing, no verbal cost escalations — every material
+              architect-versus-contractor finger-pointing, no verbal cost escalations, every material
               grade and quantity is fixed in an itemized Bill of Quantities before excavation starts.
             </p>
 
@@ -315,7 +315,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
             </h2>
             <p className="text-concrete text-sm mt-4 leading-relaxed">
               Splitting a project across a separate architect, structural consultant, and civil
-              contractor creates gaps where accountability disappears — a design change that no one
+              contractor creates gaps where accountability disappears, a design change that no one
               re-costs, a foundation detail the contractor was never told about. Our turnkey scope
               closes those gaps under one engineering-led contract.
             </p>
@@ -325,7 +325,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
               "Topographic survey & soil investigation",
               "2D/3D architectural design & elevations",
               "Structural design (footing, column, beam, slab)",
-              "MEP design — electrical, plumbing, provisioning",
+              "MEP design, electrical, plumbing, provisioning",
               "DTCP / LPA / CCMC plan sanction & permits",
               "Civil execution with milestone tracking",
               "Interior design & smart home integration",
@@ -350,7 +350,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
             </h2>
             <p className="text-concrete text-xs md:text-sm mt-2">
               Every material grade, structural decision, and approval step below is decided by
-              site-specific data — not applied as a citywide default.
+              site-specific data, not applied as a citywide default.
             </p>
           </div>
 
@@ -429,7 +429,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
           <div className="text-center">
             <span className="badge-gold mb-2 inline-flex">Frequently Asked Questions</span>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
-              Turnkey Construction in Coimbatore — Buyer Questions
+              Turnkey Construction in Coimbatore, Buyer Questions
             </h2>
           </div>
 
@@ -465,7 +465,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
               <p className="text-concrete text-xs md:text-sm mt-1">
                 Share your plot location and project scope. A principal civil engineer reviews the
                 jurisdiction (CCMC / LPA / DTCP), soil profile, and approval path before we schedule an
-                in-person site visit — no cost or obligation for the initial review.
+                in-person site visit, no cost or obligation for the initial review.
               </p>
             </div>
 
@@ -480,7 +480,7 @@ export default function TurnkeyDesignBuildCoimbatorePage() {
 
       <CTABanner
         headline="Ready to put your Coimbatore project under one accountable contract?"
-        subtitle="From soil investigation to handover — book a site feasibility consultation with our engineering team."
+        subtitle="From soil investigation to handover, book a site feasibility consultation with our engineering team."
         primaryCTA={{ label: "Book Site Feasibility Consultation", href: "#feasibility-consultation" }}
         secondaryCTA={{ label: "View All Services", href: "/services" }}
       />

@@ -152,7 +152,7 @@ export default function PropertyInvestmentPage() {
                 <em className="text-gold-dark not-italic">Services</em>
               </h1>
               <p className="text-concrete text-base max-w-2xl mx-auto leading-relaxed">
-                Comprehensive real estate advisory covering every stage — from
+                Comprehensive real estate advisory covering every stage, from
                 initial property identification to ongoing portfolio management
                 and strategic exits.
               </p>

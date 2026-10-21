@@ -129,7 +129,7 @@ export default function ArchitecturalEstimator() {
 
   const copyQuotation = () => {
     if (!result) return;
-    const text = `PRASANTH ASSOCIATES - ARCHITECTURAL QUOTATION\nRef: ${result.refCode}\nClient: ${result.clientName}\nConfiguration: ${result.configuration} (${result.dimensions})\nService: ${result.serviceCategory}\nArea: ${result.totalSqFt} sq.ft.\nFinal Price: ₹${result.finalPrice.toLocaleString("en-IN")}\nTimeline: ${result.estimatedTimeline}`;
+    const text = `PRASANTH ASSOCIATES: ARCHITECTURAL QUOTATION\nRef: ${result.refCode}\nClient: ${result.clientName}\nConfiguration: ${result.configuration} (${result.dimensions})\nService: ${result.serviceCategory}\nArea: ${result.totalSqFt} sq.ft.\nFinal Price: ₹${result.finalPrice.toLocaleString("en-IN")}\nTimeline: ${result.estimatedTimeline}`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

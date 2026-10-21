@@ -34,7 +34,7 @@ const howItWorksSteps = [
     number: "01",
     title: "Submit Requirements & Rough Plans",
     description:
-      "Provide your plot measurements, preferred configuration (1BHK–Custom), and functional requirements. If you already have a hand-drawn sketch, floor plan photo, or inspiration image, upload it directly — a rough sketch is perfectly fine.",
+      "Provide your plot measurements, preferred configuration (1BHK–Custom), and functional requirements. If you already have a hand-drawn sketch, floor plan photo, or inspiration image, upload it directly, a rough sketch is perfectly fine.",
     icon: Upload,
     highlights: [
       "Drag-and-drop sketch upload (JPG, PNG, PDF, HEIC)",

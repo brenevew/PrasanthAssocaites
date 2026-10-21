@@ -24,7 +24,7 @@ export const testimonials: Testimonial[] = [
     project: "Villa Construction",
     location: "Ooty",
     quote:
-      "What impressed us most was their attention to structural details that most builders overlook — waterproofing, concrete quality, and electrical planning. Three years in, and the house performs flawlessly.",
+      "What impressed us most was their attention to structural details that most builders overlook, waterproofing, concrete quality, and electrical planning. Three years in, and the house performs flawlessly.",
     role: "Villa Owner",
   },
   {
@@ -54,9 +54,9 @@ export const testimonials: Testimonial[] = [
   {
     name: "Confidential", // [PLACEHOLDER]
     project: "Smart Home Villa",
-    location: "Kanniyakumarai",
+    location: "Kanniyakumari",
     quote:
-      "We wanted a home that integrates technology seamlessly — automated lighting, security, climate control. The team planned the smart systems during the design phase itself, not as an afterthought. The result feels effortless to live in.",
+      "We wanted a home that integrates technology seamlessly, automated lighting, security, climate control. The team planned the smart systems during the design phase itself, not as an afterthought. The result feels effortless to live in.",
     role: "Villa Owner",
   },
 ];

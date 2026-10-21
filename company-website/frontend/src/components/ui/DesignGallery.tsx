@@ -20,11 +20,8 @@ export default function DesignGallery() {
   const lightboxImages = images.map((img) => ({ src: img.src, caption: img.caption }));
 
   const filters = [
-    { value: "all" as const, label: "All", count: designGalleryImages.length },
-    ...designGroups.map((g) => ({
-      ...g,
-      count: designGalleryImages.filter((img) => img.group === g.value).length,
-    })),
+    { value: "all" as const, label: "All" },
+    ...designGroups,
   ];
 
   return (
@@ -48,13 +45,6 @@ export default function DesignGallery() {
               }`}
             >
               {filter.label}
-              <span
-                className={`rounded-full px-1.5 py-0.5 text-[10px] leading-none ${
-                  active ? "bg-white/15 text-white" : "bg-linen text-concrete"
-                }`}
-              >
-                {filter.count}
-              </span>
             </button>
           );
         })}

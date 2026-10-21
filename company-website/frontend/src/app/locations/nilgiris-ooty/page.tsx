@@ -418,7 +418,7 @@ export default function NilgirisOotyLocationPage() {
                 Building in Gudalur specifically?
               </h3>
               <p className="text-concrete text-xs mt-1">
-                Our Gudalur branch office page covers individual house construction at lower elevation —
+                Our Gudalur branch office page covers individual house construction at lower elevation - 
                 heavier monsoon exposure, sloping laterite plots and ghat-road material logistics.
               </p>
             </div>

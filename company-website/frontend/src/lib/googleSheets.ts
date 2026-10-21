@@ -62,7 +62,7 @@ export async function sendToGoogleSheet(data: GoogleSheetSubmission): Promise<Go
 
   if (!webhookUrl) {
     console.info(
-      "[GoogleSheets] GOOGLE_SHEETS_WEBHOOK_URL is not set — submission was not synced to the Sheet. " +
+      "[GoogleSheets] GOOGLE_SHEETS_WEBHOOK_URL is not set, submission was not synced to the Sheet. " +
         "See GOOGLE_SHEETS_DEPLOYMENT.md to configure it."
     );
     return { success: false, skipped: true, error: "GOOGLE_SHEETS_WEBHOOK_URL not configured" };

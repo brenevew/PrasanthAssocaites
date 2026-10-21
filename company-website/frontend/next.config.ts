@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
     // re-encoded every hour.
     minimumCacheTTL: 31536000,
   },
+  async redirects() {
+    return [
+      {
+        // The Tiruppur page was removed; send its traffic to the Nilgiris page.
+        source: "/service-areas/:path*",
+        destination: "/locations/nilgiris-ooty",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

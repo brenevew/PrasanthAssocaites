@@ -42,13 +42,13 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     tagline: "Individual custom homes designed around your family lifestyle, Vastu compliance, and lifetime durability.",
     sla: "8 to 12 Months Guaranteed",
     slaLabel: "Milestone Schedule",
-    credentialBadge: "500+ Homes Completed",
+    credentialBadge: "100+ Homes",
     credentialLabel: "Zero Structural Compromise",
     deliverablesHeading: "What We Deliver For Your Home",
     deliverables: [
       { title: "100% Vastu Floor Plans", desc: "Scientific spatial alignment for entrance, Agni kitchen, master suite, and natural ventilation." },
       { title: "Earthquake-Resilient RCC", desc: "Heavy Fe550D TMT reinforcement, 53-grade branded cement, and engineered foundation footings." },
-      { title: "Branded Material Selection", desc: "Kajaria/Somany vitrified tiles, Jaquar/Kohler sanitary fittings, and Asian Paints Royale." },
+      { title: "Branded Material Selection", desc: "Premium vitrified tiles, quality sanitary fittings, and washable premium-finish interior paint." },
       { title: "Multi-Layer Waterproofing", desc: "Chemical polymer barrier on roof slab, sunken wet areas, and subterranean foundation." },
       { title: "Pre-Piped Rainwater & Solar", desc: "Integrated groundwater recharge percolation pit and conduit readiness for rooftop solar PV." },
       { title: "Zero Surprise Pricing", desc: "Legally backed line-item Bill of Quantities fixing every rupee and material specification." },
@@ -193,7 +193,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
   "turnkey-construction": {
     slug: "turnkey-construction",
     badge: "Single-Source Turnkey Delivery",
-    tagline: "From soil testing and architectural blueprints to final interior key handover — absolute peace of mind.",
+    tagline: "From soil testing and architectural blueprints to final interior key handover, absolute peace of mind.",
     sla: "Fixed Handover Date",
     slaLabel: "Strict Timeline SLA",
     credentialBadge: "Single-Point Accountability",
@@ -204,7 +204,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Liaisoning & Sanctions", desc: "Complete handling of plan sanction, temporary power, permanent EB meters, and local occupancy." },
       { title: "Complete Interior Joinery", desc: "Modular kitchen, designer wardrobes, vanity units, solid teak doors, and premium painting." },
       { title: "Full MEP Network Integration", desc: "Concealed wiring, high-pressure CPVC plumbing lines, sanitary fixtures, and solar pre-plumbing." },
-      { title: "Fixed Price BoQ Guarantee", desc: "Legally binding contract with zero price escalations — we absorb raw material market spikes." },
+      { title: "Fixed Price BoQ Guarantee", desc: "Legally binding contract with zero price escalations, we absorb raw material market spikes." },
       { title: "Post-Handover Warranty", desc: "Multi-year structural stability and anti-termite warranty backed by written commitment." },
     ],
     highlightBox: {
@@ -352,7 +352,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     tagline: "Concealed automation engineering uniting lighting, climate, security, and entertainment into one intuitive ecosystem.",
     sla: "Wired During Construction",
     slaLabel: "Turnkey Setup",
-    credentialBadge: "KNX & DALI Certified",
+    credentialBadge: "Wired Smart Controls",
     credentialLabel: "Enterprise-Grade Reliability",
     deliverablesHeading: "Smart Automation Architecture",
     deliverables: [
@@ -364,9 +364,9 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Distributed High-Res Audio", desc: "Multi-room streaming audio powered by invisible architectural in-wall and in-ceiling speakers." },
     ],
     highlightBox: {
-      title: "Planned from Construction Day One — Not an Afterthought",
+      title: "Planned from Construction Day One, Not an Afterthought",
       description: "Concealed conduit planning eliminates messy external wires, Wi-Fi drops, and bulky wall adapters.",
-      badges: ["✓ Single App & Voice Control", "✓ KNX Wired Protocol", "✓ Biometric Security", "✓ Energy Optimization"],
+      badges: ["✓ Single App & Voice Control", "✓ Wired Control System", "✓ Biometric Security", "✓ Energy Optimization"],
     },
     steps: [
       { n: "01", title: "Automation Discovery & Lifestyle Mapping", body: "Selecting lighting circuits, climate zones, motorized shades, and security access points." },
@@ -394,7 +394,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "finishing-stage", label: "Plastering / Finishing Stage" },
         { value: "existing-home", label: "Existing Completed Home (Retrofit)" },
       ],
-      placeholder: "Number of bedrooms, living zones, preferred voice ecosystem (Apple HomeKit / Google Home / Alexa)...",
+      placeholder: "Number of bedrooms, living zones, preferred voice ecosystem (Apple, Google or Amazon voice assistant)...",
     },
   },
 
@@ -468,7 +468,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     ],
     highlightBox: {
       title: "Blueprints That Blend Form, Function & Feasibility",
-      description: "Our architectural designs don't just look stunning on paper — they are structurally efficient and budget-optimized to build.",
+      description: "Our architectural designs don't just look stunning on paper, they are structurally efficient and budget-optimized to build.",
       badges: ["✓ 2D Spatial Floor Plans", "✓ 4K 3D Photorealistic Renders", "✓ Complete Structural CAD", "✓ Municipal Sanction Pack"],
     },
     steps: [
@@ -515,12 +515,12 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Column Layout & Schedule", desc: "Column positions, orientation, size schedule and reinforcement details floor by floor." },
       { title: "Beam Reinforcement Drawings", desc: "Beam sizing, main and distribution steel, stirrup spacing, and lap and anchorage lengths." },
       { title: "Slab Reinforcement & BBS", desc: "Slab thickness, two-way or one-way reinforcement layout, and cut-length bar-bending schedules." },
-      { title: "Retaining Wall & Staircase Details", desc: "Where the site demands them — drainage-detailed retaining walls and staircase waist slab design." },
+      { title: "Retaining Wall & Staircase Details", desc: "Where the site demands them, drainage-detailed retaining walls and staircase waist slab design." },
       { title: "Stamped Sanction Drawings", desc: "Engineer-stamped set formatted for DTCP, LPA or Corporation plan sanction and bank submission." },
     ],
     highlightBox: {
       title: "Designed Against Your Soil, Not a Standard Template",
-      description: "Every member is sized from your site's actual bearing capacity and load path — the difference between a structure that lasts and one that cracks.",
+      description: "Every member is sized from your site's actual bearing capacity and load path, the difference between a structure that lasts and one that cracks.",
       badges: ["✓ Footing & Column Schedules", "✓ Complete Bar-Bending Schedule", "✓ Fe 550D Specification", "✓ Engineer-Stamped for Sanction"],
     },
     steps: [
@@ -1024,7 +1024,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "3cr-5cr", label: "₹3 Crore – ₹5 Crore" },
         { value: "above-5cr", label: "Above ₹5 Crore" },
       ],
-      placeholder: "Preferred locations (e.g. Coimbatore, Tiruppur), plot/built-up area requirement, timeline to close, any specific requirements...",
+      placeholder: "Preferred locations (e.g. Coimbatore, The Nilgiris), plot/built-up area requirement, timeline to close, any specific requirements...",
     },
   },
 
@@ -1043,7 +1043,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Encumbrance & Title Chain Audit", desc: "30-year EC verification, parent deed tracing, and legal opinion from empaneled property advocates." },
       { title: "Zoning & Land-Use Compliance", desc: "Verification of DTCP layout approval, CRZ restrictions, agricultural land conversion status, and FSI eligibility." },
       { title: "Sale Deed & Registration", desc: "Drafting of sale agreement, computation of stamp duty and registration fees, and sub-registrar coordination." },
-      { title: "Development Feasibility Analysis", desc: "Assessing plot potential for construction — FAR limits, setback norms, road width, and infrastructure proximity." },
+      { title: "Development Feasibility Analysis", desc: "Assessing plot potential for construction, FAR limits, setback norms, road width, and infrastructure proximity." },
     ],
     highlightBox: {
       title: "Investment-Grade Land Transactions with Zero Legal Exposure",
@@ -1071,7 +1071,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       field2Label: "Preferred Location Zone *",
       field2Options: [
         { value: "coimbatore-city", label: "Coimbatore City & Suburbs" },
-        { value: "tiruppur-region", label: "Tiruppur & Surrounding Towns" },
+        { value: "nilgiris-region", label: "The Nilgiris & Surrounding Towns" },
         { value: "erode-salem", label: "Erode / Salem Corridor" },
         { value: "other-tn", label: "Other Tamil Nadu Locations" },
       ],
@@ -1098,7 +1098,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Diversified Portfolio Construction", desc: "Balanced allocation across residential, commercial, and land assets for risk-adjusted portfolio growth." },
     ],
     highlightBox: {
-      title: "Invest with Conviction — Not Speculation",
+      title: "Invest with Conviction, Not Speculation",
       description: "Our data-backed advisory eliminates emotional decision-making and positions your capital in high-growth, verified opportunities.",
       badges: ["✓ Growth Corridor Analysis", "✓ Rental Yield Modelling", "✓ NRI FEMA Compliance", "✓ Exit Strategy Planning"],
     },
@@ -1109,7 +1109,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     ],
     guarantee: {
       title: "100% Data-Backed Investment Decisions",
-      body: "Every recommendation supported by verified market data, infrastructure growth plans, and transparent yield modelling — zero speculation.",
+      body: "Every recommendation supported by verified market data, infrastructure growth plans, and transparent yield modelling, zero speculation.",
     },
     formDefaults: {
       serviceCategory: "realestate",
@@ -1136,7 +1136,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
   "property-portfolio-management": {
     slug: "property-portfolio-management",
     badge: "Comprehensive Property Portfolio Management",
-    tagline: "Full-spectrum stewardship of multi-property holdings — maximizing occupancy, rental yields, and asset value with zero owner overhead.",
+    tagline: "Full-spectrum stewardship of multi-property holdings, maximizing occupancy, rental yields, and asset value with zero owner overhead.",
     sla: "Dedicated Portfolio Manager",
     slaLabel: "Monthly Reporting",
     credentialBadge: "Multi-Asset Managers",

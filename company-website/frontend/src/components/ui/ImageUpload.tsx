@@ -98,7 +98,7 @@ export default function ImageUpload({
 
         if (file.size > MAX_FILE_BYTES) {
           setError(
-            `"${original.name}" is still ${formatBytes(file.size)} after compression — the limit is ${formatBytes(
+            `"${original.name}" is still ${formatBytes(file.size)} after compression, the limit is ${formatBytes(
               MAX_FILE_BYTES
             )} per file.`
           );
@@ -109,7 +109,7 @@ export default function ImageUpload({
           setError(
             `Adding "${original.name}" would exceed the ${formatBytes(
               MAX_TOTAL_BYTES
-            )} total limit. ${formatBytes(MAX_TOTAL_BYTES - usedBytes)} remaining — remove a file or choose a smaller one.`
+            )} total limit. ${formatBytes(MAX_TOTAL_BYTES - usedBytes)} remaining. Remove a file or choose a smaller one.`
           );
           continue;
         }

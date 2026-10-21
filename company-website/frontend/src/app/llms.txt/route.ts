@@ -59,7 +59,6 @@ ${serviceSections}
 - [Construction company in Coimbatore](${SITE_URL}/locations/coimbatore)
 - [Builders in The Nilgiris and Ooty](${SITE_URL}/locations/nilgiris-ooty)
 - [House contractors in Gudalur](${SITE_URL}/locations/gudalur)
-- [Construction in Tiruppur](${SITE_URL}/service-areas/tiruppur)
 - [Property and investment advisory](${SITE_URL}/property-investment)
 - [Projects](${SITE_URL}/projects)
 - [Building planner](${SITE_URL}/plan-home)
