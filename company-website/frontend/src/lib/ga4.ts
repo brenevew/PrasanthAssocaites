@@ -8,8 +8,8 @@ import { services } from "@/data/services";
  * addresses, query strings). This module maps their sanitized events onto GA4
  * names and an explicit parameter allowlist, so nothing else can reach Google.
  *
- * Set NEXT_PUBLIC_GA_MEASUREMENT_ID at build time to enable it. Without it no
- * tag loads and nothing is sent.
+ * Set NEXT_PUBLIC_GA_MEASUREMENT_ID to enable it (build and runtime on
+ * Cloudflare). Without it the server renders no tag, so nothing is sent.
  */
 
 const rawId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? "";
@@ -101,9 +101,16 @@ declare global {
   }
 }
 
-/** Sends a sanitized hook event to GA4 when the tag is loaded. Never throws. */
+/**
+ * Sends a sanitized hook event to GA4. Never throws.
+ *
+ * Deliberately checks for window.gtag rather than GA_MEASUREMENT_ID: the server
+ * renders the gtag bootstrap only when an ID is configured, while the browser
+ * bundle may not have the ID inlined (e.g. it was a runtime-only variable on
+ * Cloudflare). Checking the ID here silently dropped every custom event live.
+ */
 export function sendToGa4(name: string, properties?: HookProperties): void {
-  if (!GA_MEASUREMENT_ID || typeof window === "undefined" || typeof window.gtag !== "function") return;
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
   try {
     const event = toGa4Event(name, properties, window.location.origin);
     if (event) window.gtag("event", event.name, event.params);

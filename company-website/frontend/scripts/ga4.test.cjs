@@ -63,6 +63,12 @@ test("only allowlisted parameters reach gtag, with no personal data", () => {
 
     window.gtag = () => { throw new Error("gtag failed"); };
     assert.doesNotThrow(() => trackLeadEvent("phone_click"));
+
+    // Without the server-rendered gtag bootstrap (no ID configured), nothing is sent.
+    delete window.gtag;
+    assert.doesNotThrow(() => trackLeadEvent("quote_submit"));
+    assert.equal(calls.length, 1);
+    assert.doesNotThrow(() => trackLeadEvent("phone_click"));
   } finally { delete global.window; delete global.CustomEvent; }
 });
 
