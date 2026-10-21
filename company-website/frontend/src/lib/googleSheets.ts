@@ -111,6 +111,10 @@ export async function sendToGoogleSheet(data: GoogleSheetSubmission): Promise<Go
           console.error(`[GoogleSheets] Apps Script rejected the submission: ${body.slice(0, 300)}`);
           return { success: false, error: `Apps Script error: ${body.slice(0, 200)}` };
         }
+        // Saved, but the team wasn't emailed: surface it instead of failing silently.
+        if (body.includes('"emailed":false')) {
+          console.warn(`[GoogleSheets] Lead saved but the email notification failed: ${body.slice(0, 300)}`);
+        }
         return { success: true };
       }
     } catch (err: unknown) {
