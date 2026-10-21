@@ -1,5 +1,6 @@
 import { PlannerState } from "@/components/planner/types";
 import type { Attachment } from "@/lib/attachments";
+import { trackLeadEvent } from "@/lib/analytics";
 
 export interface ProjectPlanPayload {
   name: string;
@@ -195,6 +196,9 @@ export async function saveProjectPlan(payload: ProjectPlanPayload): Promise<Proj
 
     if (!res.ok) {
       console.warn(`[GoogleSheets] /api/sync-sheets responded ${res.status} for ${planResponse.refCode}`);
+    } else {
+      // The planner's enquiry reached the Sheet: count it once as a lead.
+      trackLeadEvent("form_submit", { form: "planner" });
     }
   } catch (sheetErr) {
     console.warn("[GoogleSheets] Background sync to sheet returned:", sheetErr);

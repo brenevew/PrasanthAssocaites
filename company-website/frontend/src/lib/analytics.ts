@@ -1,7 +1,8 @@
 import { serviceCategories } from "@/data/serviceCategories";
 import { getServicePath } from "@/data/serviceRoutes";
+import { sendToGa4 } from "@/lib/ga4";
 
-/** Local event hooks only: no analytics vendor, cookies or network requests. */
+/** Sanitized event hooks. Forwarded to GA4 (see ga4.ts) only when a Measurement ID is configured. */
 export type EventName =
   | "cta_click" | "form_submit" | "page_view" | "project_view"
   | "service_view" | "filter_change" | "service_select"
@@ -39,8 +40,8 @@ export function coarseLocation(value?: string): string | undefined {
 
 export function trackEvent(name: EventName, properties?: EventProperties): void {
   if (process.env.NODE_ENV === "development") console.log(`[Analytics] ${name}`, properties);
-  // A future approved provider can subscribe to these local, sanitized events.
   if (typeof window !== "undefined") {
+    sendToGa4(name, properties);
     window.dispatchEvent(new CustomEvent("prasanth:analytics", { detail: { name, properties } }));
   }
 }

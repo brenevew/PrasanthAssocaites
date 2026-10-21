@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import LeadAnalytics from "@/components/analytics/LeadAnalytics";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import Script from "next/script";
+import { GA_MEASUREMENT_ID, ga4BootstrapScript } from "@/lib/ga4";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
@@ -155,6 +158,14 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`scroll-smooth ${inter.variable} ${cormorant.variable}`}>
       <body className="min-h-screen flex flex-col font-body text-foreground bg-background antialiased">
+        {/* GA4 consent defaults + event queue, before hydration so the first
+            tracking-hook events aren't lost. Root layout is the documented place
+            for beforeInteractive scripts in the App Router. */}
+        {GA_MEASUREMENT_ID && (
+          <Script id="ga4-bootstrap" strategy="beforeInteractive">
+            {ga4BootstrapScript()}
+          </Script>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -163,6 +174,7 @@ export default function RootLayout({
         />
 
         <LeadAnalytics />
+        <GoogleAnalytics />
         <Header />
         <main className="flex-grow pt-24 md:pt-[104px]">
           {children}
