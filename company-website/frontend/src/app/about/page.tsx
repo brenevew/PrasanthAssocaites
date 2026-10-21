@@ -71,7 +71,7 @@ const howItWorksSteps = [
 export default function AboutPage() {
   return (
     <>
-      {/* ── Hero Banner ──────────────────────────────────────────────── */}
+      {/* ── Hero Banner   ──────────────────────────────────────────────── */}
       <section className="relative pt-28 pb-16 bg-gradient-to-b from-[#FAF8F5] to-[var(--canvas-bg)] text-charcoal border-b border-border overflow-hidden">
         {/* Blueprint grid */}
         <div className="absolute inset-0 blueprint-grid opacity-10" />
