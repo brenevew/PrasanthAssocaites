@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
-  <!-- Top Gold Beam -->
-  <polygon points="60,42 135,42 135,56 60,50" fill="#CCA028"/>
-  <!-- Main Navy P Structure -->
-  <path d="M 60 52 L 88 47 L 88 58 L 77 62 L 77 158 L 60 158 Z" fill="#0B1E3D"/>
-  <path d="M 60 122 L 148 76 L 148 42 L 133 42 L 133 70 L 60 108 Z" fill="#0B1E3D"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="555 494 1574 1574" fill="none">
+  <!-- Traced from image-originals/images/PrasanthAssociates-logo.jpg (2560px source coordinates) -->
+  <!-- Gold beam (its right end runs under the navy post, so no seam shows) -->
+  <polygon points="779,539 1760,539 1760,719.5 779,642" fill="#CAA228"/>
+  <!-- Navy P: stem with angled cap, diagonal and right post -->
+  <polygon points="771,780 1121,671 1150,763 991,812 991,1334 1742,880 1742,539 1913,539 1913,1015 991,1569 991,2023 771,2023" fill="#091F44"/>
 </svg>

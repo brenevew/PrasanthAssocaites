@@ -21,6 +21,9 @@ export interface Project {
   image: string;
   galleryImages: string[];
   shortDescription: string;
+  /** Search-result title/description when the visible ones are too long (~60 / ~160 chars). */
+  seoTitle?: string;
+  seoDescription?: string;
   challenge: string;
   designApproach: string;
   constructionMethod: string;
@@ -63,6 +66,8 @@ export const projects: Project[] = [
       "/images/projects/Villa/luxury-villa-under-construction-pricol-prasanth-associates-2.webp",
       "/images/projects/Villa/luxury-villa-under-construction-pricol-prasanth-associates-3.webp",
     ],
+    seoDescription:
+      "12,120 sq. ft. tea bungalow for Pricol Limited in a Gudalur tea plantation, reached across a river. Architecture, structure, MEP and construction, 2015–2017.",
     shortDescription:
       "A 12,120 sq. ft. tea bungalow for Pricol Limited, built inside a tea plantation in Gudalur. Reaching the site meant crossing a river, so access and logistics were planned around it.",
     challenge:
@@ -138,6 +143,8 @@ export const projects: Project[] = [
       "/images/projects/Commercial/modern-commercial-building-design-construction-gudalur-sasthapuri-hotels.webp",
       "/images/projects/Commercial/modern-commercial-building-design-under-construction-gudalur-sasthapuri-hotels.webp",
     ],
+    seoDescription:
+      "38,879 sq. ft. commercial building for Sasthapuri Hotels in Gudalur town, designed and built with architecture, structural engineering and MEP, 2014–2016.",
     shortDescription:
       "A 38,879 sq. ft. commercial building for Sasthapuri Hotels in the main town area of Gudalur. We handled the architecture, structural engineering, construction and MEP.",
     challenge:
@@ -314,6 +321,9 @@ export const projects: Project[] = [
       "/images/projects/Renovation/manjushree-residential-building-under-renovation-prasanth-associates-1.webp",
       "/images/projects/Renovation/manjushree-residential-building-under-renovation-prasanth-associates-2.webp",
     ],
+    seoTitle: "Manjushree Director's Building Renovation",
+    seoDescription:
+      "Renovation of the British-era Director's Building at Manjushree Plantation, New Hope, O'Valley in the Nilgiris, set among cardamom plants.",
     shortDescription:
       "Renovation of the British-era Director's Building at Manjushree Plantation, New Hope, set among cardamom plants beneath the mountain slopes of O'Valley in the Nilgiris.",
     challenge:
@@ -443,6 +453,41 @@ export function projectPhotoAlt(project: Pick<Project, "title" | "type">, src: s
       ? " during renovation"
       : "";
   return `${project.title}, ${project.type.toLowerCase()} by Prasanth Associates${stage}`;
+}
+
+export type ProjectArea = "coimbatore" | "gudalur" | "nilgiris";
+
+/**
+ * Which regional page a project is evidence for, from its recorded location
+ * only (never guessed). Gudalur projects also count for the wider Nilgiris.
+ */
+export function projectAreas(project: Pick<Project, "location">): ProjectArea[] {
+  const loc = project.location.toLowerCase();
+  const areas: ProjectArea[] = [];
+  if (loc.includes("coimbatore")) areas.push("coimbatore");
+  if (loc.includes("gudalur")) areas.push("gudalur");
+  if (loc.includes("gudalur") || loc.includes("ooty") || loc.includes("nilgiris")) areas.push("nilgiris");
+  return areas;
+}
+
+/** The location page that best matches a project: the town page if one exists, else the region. */
+export function projectLocationLink(project: Pick<Project, "location">): { href: string; label: string } | null {
+  const areas = projectAreas(project);
+  if (areas.includes("coimbatore")) return { href: "/locations/coimbatore", label: "Building in Coimbatore" };
+  if (areas.includes("gudalur")) return { href: "/locations/gudalur", label: "Building in Gudalur" };
+  if (areas.includes("nilgiris")) return { href: "/locations/nilgiris-ooty", label: "Building in Ooty & the Nilgiris" };
+  return null;
+}
+
+/** The service a project demonstrates, by its portfolio category. */
+const categoryServiceSlug: Partial<Record<ProjectCategory, string>> = {
+  residential: "residential-construction",
+  villa: "villa-construction",
+  commercial: "commercial-construction",
+  renovation: "renovation",
+};
+export function projectServiceSlug(project: Pick<Project, "category">): string | undefined {
+  return categoryServiceSlug[project.category];
 }
 
 /** True when a project has written case-study detail worth linking to. */

@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
-import { projects, projectPhotoAlt, hasDetailsPage } from "@/data/projects";
+import Link from "next/link";
+import { projects, projectPhotoAlt, hasDetailsPage, projectLocationLink, projectServiceSlug } from "@/data/projects";
+import { getServicePath } from "@/data/serviceRoutes";
 import CTABanner from "@/components/ui/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -31,11 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Projects without a written case study still have placeholder text in
   // shortDescription, so they get a factual generated description instead.
   const description = hasDetailsPage(project)
-    ? project.shortDescription
+    ? project.seoDescription ?? project.shortDescription
     : `${project.title}: ${project.type.toLowerCase()} by Prasanth Associates${project.location ? ` in ${project.location}` : ""}. Browse project photographs and discuss a similar build.`;
 
   return {
-    title: project.title,
+    title: project.seoTitle ?? project.title,
     description,
     // Placeholder pages stay reachable but out of search results until their
     // case study is written; hasDetailsPage() flips this automatically.
@@ -69,6 +71,9 @@ export default async function ProjectDetailPage({ params }: Props) {
     ...(project.facts ?? []),
   ].filter((item) => item.value && item.value !== "To be confirmed");
 
+  const serviceSlug = projectServiceSlug(project);
+  const locationLink = projectLocationLink(project);
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -100,13 +105,23 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="container relative z-10 h-full flex flex-col justify-end pb-16">
           <ScrollReveal>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-sm font-semibold tracking-wider uppercase text-gold">
-                {project.type}
-              </span>
+              {/* Same look as plain text; the links tie each project to its service
+                  and location pages for visitors and crawlers. */}
+              {serviceSlug ? (
+                <Link href={getServicePath(serviceSlug)} className="text-sm font-semibold tracking-wider uppercase text-gold">
+                  {project.type}
+                </Link>
+              ) : (
+                <span className="text-sm font-semibold tracking-wider uppercase text-gold">{project.type}</span>
+              )}
               <span className="w-1.5 h-1.5 rounded-full bg-concrete-lighter" />
-              <span className="text-sm font-medium text-concrete-lighter">
-                {project.location}
-              </span>
+              {locationLink ? (
+                <Link href={locationLink.href} className="text-sm font-medium text-concrete-lighter">
+                  {project.location}
+                </Link>
+              ) : (
+                <span className="text-sm font-medium text-concrete-lighter">{project.location}</span>
+              )}
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-4 drop-shadow-md">
               {project.title}

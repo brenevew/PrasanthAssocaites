@@ -19,9 +19,9 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "Building Plans & Construction in Coimbatore & Ooty | Prasanth Associates" },
+  title: { absolute: "Construction Company in Coimbatore & Nilgiris | Prasanth Associates" },
   description:
-    "Building plans, 2D/3D design, construction and interiors from one team. Offices in Gandhipuram, Coimbatore and Gudalur, serving Ooty and the Nilgiris.",
+    "House construction, building plans, 3D elevations, interior design and engineering services in Coimbatore, Ooty, Coonoor and Gudalur from Prasanth Associates.",
   keywords: [
     "construction company in Coimbatore",
     "building contractors Coimbatore",
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   },
   openGraph: pageOpenGraph(
     "/",
-    "Building Plans, Design & Construction | Prasanth Associates",
-    "Building plans, approvals, construction and interiors in Coimbatore and the Nilgiris, from one team with offices in Gandhipuram and Gudalur."
+    "Construction Company in Coimbatore & Nilgiris | Prasanth Associates",
+    "House construction, building plans, 3D elevations, interior design and engineering services in Coimbatore, Ooty, Coonoor and Gudalur from Prasanth Associates."
   ),
 };
 

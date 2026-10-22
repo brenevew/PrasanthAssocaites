@@ -41,8 +41,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  // Search-engine ownership checks; each tag renders only when its variable is set.
+  // Bing's also covers Yahoo and DuckDuckGo, which use Bing's index.
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+    yandex: process.env.YANDEX_SITE_VERIFICATION?.trim() || undefined,
+    other: process.env.BING_SITE_VERIFICATION?.trim()
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION.trim() }
+      : undefined,
   },
 };
 
@@ -55,7 +61,7 @@ const organizationSchema = {
       name: company.name,
       description: company.description,
       url: siteUrl,
-      logo: `${siteUrl}/images/logo.svg`,
+      logo: `${siteUrl}/images/PrasanthAssociates-logo.png`,
       image: `${siteUrl}${OG_IMAGE.url}`,
       telephone: company.phone.replace(/\s/g, ""),
       email: company.email,

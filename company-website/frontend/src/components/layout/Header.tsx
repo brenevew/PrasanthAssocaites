@@ -82,7 +82,7 @@ export default function Header() {
               className="flex items-center gap-3.5 text-charcoal group flex-shrink-0 select-none"
             >
               <img
-                src="/images/logo.svg"
+                src="/images/PrasanthAssociates-logo.png"
                 alt="Prasanth Associates Logo"
                 className="w-8 h-8 md:w-9 md:h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]"
               />

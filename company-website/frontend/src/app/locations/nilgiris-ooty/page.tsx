@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { company } from "@/data/company";
-import { projects } from "@/data/projects";
+import { projects, hasDetailsPage } from "@/data/projects";
 import ContactForm from "@/components/ui/ContactForm";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import CTABanner from "@/components/ui/CTABanner";
@@ -23,9 +23,9 @@ import {
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Builders in Ooty & the Nilgiris",
+  title: "Builders in Ooty, Coonoor & Nilgiris",
   description:
-    "Houses, villas, building plans and interiors in Ooty, Coonoor, Kotagiri and Gudalur, built for slopes and monsoon weather. Run from our Gudalur branch.",
+    "Building contractors for Ooty, Coonoor, Kotagiri and Gudalur. House construction, building design and hillside work in the Nilgiris, from our Gudalur branch.",
   keywords: [
     "builders in Nilgiris",
     "house construction in Ooty",
@@ -46,15 +46,17 @@ export const metadata: Metadata = {
   },
   openGraph: pageOpenGraph(
     "/locations/nilgiris-ooty",
-    "Builders in Ooty & the Nilgiris | Prasanth Associates",
-    "Hillside construction and custom homes across The Nilgiris, Ooty, Gudalur and Coonoor."
+    "Builders in Ooty, Coonoor & Nilgiris | Prasanth Associates",
+    "Building contractors for Ooty, Coonoor, Kotagiri and Gudalur. House construction, building design and hillside work in the Nilgiris, from our Gudalur branch."
   ),
 };
 
 export default function NilgirisOotyLocationPage() {
   const canonicalUrl = `${SITE_URL}/locations/nilgiris-ooty`;
   const nilgirisOffice = company.offices.find((o) => o.label === "Gudalur") || company.offices[1];
-  const ootyProjects = projects.filter((p) => p.location.includes("Ooty") || p.location.includes("Nilgiris"));
+  // Featured project: a genuine Ooty project with a written case study, so the
+  // heading, badge and facts below all come from data/projects.ts.
+  const ootyProjects = projects.filter((p) => p.location.includes("Ooty") && hasDetailsPage(p));
 
   const nilgirisHubs = [
     { name: "Ooty (Udhagamandalam)", desc: "Luxury holiday residences, hillside duplex homes, and heritage stone bungalow restorations." },
@@ -72,7 +74,7 @@ export default function NilgirisOotyLocationPage() {
         name: `${company.name} - Gudalur Branch Office`,
         parentOrganization: { "@id": `${SITE_URL}#organization` },
         image: `${SITE_URL}/images/projects/Residential/residential-building-construction-gudalur-prasanth-associates.webp`,
-        telephone: nilgirisOffice.phone,
+        telephone: nilgirisOffice.phone.replace(/\s/g, ""),
         email: nilgirisOffice.email,
         url: `${SITE_URL}/locations/gudalur`, // the branch's own page
         address: {
@@ -102,6 +104,7 @@ export default function NilgirisOotyLocationPage() {
           { "@type": "City", name: "Ooty" },
           { "@type": "City", name: "Gudalur" },
           { "@type": "City", name: "Coonoor" },
+          { "@type": "City", name: "Kotagiri" },
         ],
       },
       {
@@ -366,7 +369,7 @@ export default function NilgirisOotyLocationPage() {
             <div>
               <span className="badge-gold mb-2 inline-flex">Hillside Portfolio</span>
               <h3 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
-                Real Project: Lakeside Residence in Ooty
+                Real Project: {ootyProjects[0].title}, Ooty
               </h3>
             </div>
 
@@ -382,7 +385,7 @@ export default function NilgirisOotyLocationPage() {
               </div>
               <div className="space-y-4">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gold-dark bg-gold/10 px-3 py-1 rounded-full">
-                  Completed Mountain Home
+                  {ootyProjects[0].status === "completed" ? `Completed ${ootyProjects[0].year}` : "In progress"}
                 </span>
                 <h4 className="font-heading text-2xl font-bold text-charcoal">
                   {ootyProjects[0].title}
@@ -393,7 +396,9 @@ export default function NilgirisOotyLocationPage() {
                 <div className="text-xs text-concrete space-y-1 border-y border-border py-3">
                   <div><strong>Location:</strong> {ootyProjects[0].location}</div>
                   <div><strong>Built-up Area:</strong> {ootyProjects[0].area}</div>
-                  <div><strong>Engineering:</strong> Deep pile foundation anchored to bedrock</div>
+                  {ootyProjects[0].duration && (
+                    <div><strong>Project Period:</strong> {ootyProjects[0].duration}</div>
+                  )}
                 </div>
                 <Link
                   href={`/projects/${ootyProjects[0].slug}`}

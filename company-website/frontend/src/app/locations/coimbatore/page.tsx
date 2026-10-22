@@ -25,7 +25,7 @@ import { SITE_URL, pageOpenGraph, ORG_ID } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Building Contractors in Coimbatore",
   description:
-    "Building contractors in Coimbatore with a head office in Gandhipuram. Individual houses, luxury villas, commercial buildings and turnkey contracts.",
+    "Construction company and building contractors in Coimbatore, head office in Gandhipuram. House construction, 2D plans, 3D elevations and commercial buildings.",
   keywords: [
     "construction company in Coimbatore",
     "builders in Coimbatore",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: pageOpenGraph(
     "/locations/coimbatore",
     "Construction Company in Coimbatore | Prasanth Associates",
-    "Civil contractors with a head office in Gandhipuram, Coimbatore. 100+ homes built, on itemised BoQ contracts."
+    "Construction company and building contractors in Coimbatore, head office in Gandhipuram. House construction, 2D plans, 3D elevations and commercial buildings."
   ),
 };
 
@@ -70,7 +70,7 @@ export default function CoimbatoreLocationPage() {
         "@id": ORG_ID,
         name: company.name,
         image: `${SITE_URL}/images/hero/hero-main.webp`,
-        telephone: coimbatoreOffice.phone,
+        telephone: coimbatoreOffice.phone.replace(/\s/g, ""),
         email: coimbatoreOffice.email,
         url: canonicalUrl,
         address: {
@@ -298,10 +298,10 @@ export default function CoimbatoreLocationPage() {
           <div className="text-center max-w-2xl mx-auto">
             <span className="badge-gold mb-2 inline-flex">Local Coverage</span>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal">
-              Neighborhoods We Actively Build in Coimbatore
+              Neighborhoods We Serve in Coimbatore
             </h2>
             <p className="text-concrete text-xs md:text-sm mt-2">
-              Our site engineers and supervisory crews manage active residential and commercial projects throughout greater Coimbatore.
+              From our Gandhipuram office, our engineers take on residential and commercial projects throughout greater Coimbatore.
             </p>
           </div>
 

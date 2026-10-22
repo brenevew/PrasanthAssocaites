@@ -34,5 +34,5 @@ export const footerServiceLinks: NavItem[] = [
 
 export const footerLocationLinks: NavItem[] = [
   { label: "Coimbatore (HQ)", href: "/locations/coimbatore" },
-  { label: "Gudalur", href: "/locations/nilgiris-ooty" },
+  { label: "Gudalur", href: "/locations/gudalur" },
 ];

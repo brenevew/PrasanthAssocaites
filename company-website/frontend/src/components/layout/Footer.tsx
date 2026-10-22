@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Brand (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3.5 group text-charcoal select-none">
-              <img src="/images/logo.svg" alt="Prasanth Associates Logo" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
+              <img src="/images/PrasanthAssociates-logo.png" alt="Prasanth Associates Logo" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
               <div className="flex flex-col leading-tight">
                 <div className="flex items-center gap-1.5 font-heading">
                   <span className="font-bold text-xl text-charcoal tracking-tight">Prasanth</span>

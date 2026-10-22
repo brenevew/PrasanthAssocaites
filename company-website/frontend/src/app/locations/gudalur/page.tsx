@@ -28,9 +28,9 @@ const BRANCH_ID = `${SITE_URL}#gudalur-branch`;
 const gudalurOffice = company.offices.find((office) => office.label === "Gudalur") || company.offices[1];
 
 export const metadata: Metadata = {
-  title: "Individual House Contractors in Gudalur",
+  title: "Building Contractors in Gudalur",
   description:
-    "Building contractors in Gudalur, The Nilgiris. Our Ooty Main Road branch builds houses and estate bungalows for heavy monsoon rain and sloping terrain.",
+    "Builders and building contractors in Gudalur, Nilgiris, with a branch on Ooty Main Road. House construction, house plans and commercial buildings on hill sites.",
   keywords: [
     "individual house contractors in Gudalur",
     "building contractors Gudalur",
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   },
   openGraph: pageOpenGraph(
     "/locations/gudalur",
-    "Individual House Contractors in Gudalur | Prasanth Associates",
-    "Our Nilgiris branch builds individual houses and estate bungalows across Gudalur, designed for heavy monsoon rain and sloping hill terrain."
+    "Building Contractors in Gudalur | Prasanth Associates",
+    "Builders and building contractors in Gudalur, Nilgiris, with a branch on Ooty Main Road. House construction, house plans and commercial buildings on hill sites."
   ),
 };
 
@@ -131,7 +131,7 @@ const gudalurSchema = {
       name: `${company.name} - Gudalur Branch Office`,
       image: `${SITE_URL}/images/hero/hero-main.webp`,
       url: CANONICAL_URL,
-      telephone: gudalurOffice.phone,
+      telephone: gudalurOffice.phone.replace(/\s/g, ""),
       email: gudalurOffice.email,
       hasMap: gudalurOffice.mapLink,
       parentOrganization: { "@id": `${SITE_URL}#organization` },
@@ -144,9 +144,13 @@ const gudalurSchema = {
         addressCountry: "IN",
       },
       geo: { "@type": "GeoCoordinates", latitude: 11.5001001, longitude: 76.4937999 },
+      // Same branch entity as the Nilgiris page (shared @id), so the same areas.
       areaServed: [
         { "@type": "City", name: "Gudalur" },
         { "@type": "AdministrativeArea", name: "The Nilgiris" },
+        { "@type": "City", name: "Ooty" },
+        { "@type": "City", name: "Coonoor" },
+        { "@type": "City", name: "Kotagiri" },
       ],
       openingHoursSpecification: [
         {
