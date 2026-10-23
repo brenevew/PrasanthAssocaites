@@ -25,13 +25,15 @@ interface LocationLandingProps {
   entitySchema: Record<string, unknown>;
   /** Breadcrumb parent between Home and this page. */
   parent: { name: string; href: string };
+  /** Further structured data nodes for this page (e.g. its WebPage). */
+  extraSchema?: Record<string, unknown>[];
 }
 
 /**
  * Layout shared by the office location pages: hero with the office card, local
  * conditions, towns, completed projects, services, questions, map and enquiry.
  */
-export default function LocationLanding({ page, entitySchema, parent }: LocationLandingProps) {
+export default function LocationLanding({ page, entitySchema, parent, extraSchema = [] }: LocationLandingProps) {
   const url = `${SITE_URL}/locations/${page.slug}`;
   const office = company.offices.find((entry) => entry.label === page.office) ?? company.offices[0];
   const telHref = `tel:${office.phone.replace(/\s/g, "")}`;
@@ -57,6 +59,7 @@ export default function LocationLanding({ page, entitySchema, parent }: Location
         "@context": "https://schema.org",
         "@graph": [
           entitySchema,
+          ...extraSchema,
           // Mirrors the visible questions below exactly.
           {
             "@type": "FAQPage",

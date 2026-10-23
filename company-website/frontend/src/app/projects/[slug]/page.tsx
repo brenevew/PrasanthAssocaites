@@ -2,10 +2,10 @@ import Image from "next/image";
 import { blurProps } from "@/data/imageBlur";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
+import { SITE_URL, pageOpenGraph, ORG_ID, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Link from "next/link";
-import { projects, projectPhotoAlt, hasDetailsPage, projectLocationLink, projectServiceSlug } from "@/data/projects";
+import { projects, projectPhotoAlt, hasDetailsPage, projectLocationLink, projectServiceSlug, projectAreas } from "@/data/projects";
 import { getServicePath } from "@/data/serviceRoutes";
 import { blogPosts } from "@/data/blog";
 import CTABanner from "@/components/ui/CTABanner";
@@ -86,9 +86,40 @@ export default async function ProjectDetailPage({ params }: Props) {
     ],
   };
 
+  // Gudalur case studies: describe the page and the building, and tie both to the
+  // Gudalur branch. Only recorded facts (title, town, photo) are used.
+  const pageUrl = `${SITE_URL}/projects/${project.slug}`;
+  const gudalurPageSchema = projectAreas(project).includes("gudalur") && hasDetailsPage(project)
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: `${project.seoTitle ?? project.title} | Prasanth Associates`,
+        description: project.seoDescription ?? project.shortDescription,
+        inLanguage: "en-IN",
+        isPartOf: { "@id": `${SITE_URL}#website` },
+        publisher: { "@id": ORG_ID },
+        mentions: { "@id": GUDALUR_BRANCH_ID },
+        primaryImageOfPage: { "@type": "ImageObject", url: `${SITE_URL}${project.image}` },
+        about: {
+          "@type": "Place",
+          name: project.title,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Gudalur",
+            addressRegion: "Tamil Nadu",
+            addressCountry: "IN",
+          },
+          containedInPlace: { "@type": "AdministrativeArea", name: "The Nilgiris" },
+        },
+      }
+    : null;
+
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
+      {gudalurPageSchema && <JsonLd data={gudalurPageSchema} />}
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] mt-[-104px]">
         <div className="absolute inset-0 z-0">

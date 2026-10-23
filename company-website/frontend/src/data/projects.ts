@@ -66,6 +66,7 @@ export const projects: Project[] = [
       "/images/projects/Villa/luxury-villa-under-construction-pricol-prasanth-associates-2.webp",
       "/images/projects/Villa/luxury-villa-under-construction-pricol-prasanth-associates-3.webp",
     ],
+    seoTitle: "Pricol Tea Bungalow, Gudalur",
     seoDescription:
       "12,120 sq. ft. tea bungalow for Pricol Limited in a Gudalur tea plantation, reached across a river. Architecture, structure, MEP and construction, 2015–2017.",
     shortDescription:
@@ -143,6 +144,7 @@ export const projects: Project[] = [
       "/images/projects/Commercial/modern-commercial-building-design-construction-gudalur-sasthapuri-hotels.webp",
       "/images/projects/Commercial/modern-commercial-building-design-under-construction-gudalur-sasthapuri-hotels.webp",
     ],
+    seoTitle: "Sasthapuri Hotels, Gudalur",
     seoDescription:
       "38,879 sq. ft. commercial building for Sasthapuri Hotels in Gudalur town, designed and built with architecture, structural engineering and MEP, 2014–2016.",
     shortDescription:
