@@ -76,7 +76,10 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
     if (selectedField2) {
       formData.set("timeline", selectedField2);
     }
-    const res = await submitContactForm(formData);
+    const res: ActionResult = await submitContactForm(formData).catch(() => ({
+      success: false,
+      message: "We couldn't send your request. Please check your connection and try again.",
+    }));
     setResult(res);
     if (res.success) {
       trackLeadEvent(isEstimate ? "quote_submit" : "form_submit", { service: serviceSlug, location, form: isEstimate ? "quote" : "contact" });

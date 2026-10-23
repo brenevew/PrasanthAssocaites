@@ -476,6 +476,9 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
         phone,
         projectType: selectedProjectType,
         commercialType: selectedProjectType === "Commercial" ? commercialType : undefined,
+        commercialDetails: selectedProjectType === "Commercial"
+          ? { units: commercialUnits, kitchens: commercialKitchens, restrooms: commercialRestrooms, facilities: commercialFacilities }
+          : undefined,
         projectName: projectName || (selectedProjectType === "Commercial" ? "Commercial Building Project" : "Residential House Project"),
         plotLength: parseFloat(plotLength) || 0,
         plotWidth: parseFloat(plotWidth) || 0,

@@ -4,6 +4,7 @@ import { sendToGoogleSheet } from "@/lib/googleSheets";
 import { generateRefCode, saveSubmission } from "@/lib/db";
 import type { Attachment } from "@/lib/attachments";
 import { rateLimit, getClientIpFromHeaders } from "@/lib/rateLimit";
+import { services } from "@/data/services";
 
 const LEAD_FORM_LIMIT = 5;
 const LEAD_FORM_WINDOW_MS = 10 * 60 * 1000;
@@ -36,6 +37,12 @@ export async function submitContactForm(formData: FormData): Promise<ActionResul
     const isEstimate = formData.get("isEstimate") === "true";
     const budget = formData.get("budget")?.toString().trim();
     const timeline = formData.get("timeline")?.toString().trim();
+    const serviceSlug = formData.get("serviceSlug")?.toString().trim();
+    const service = services.find((item) => item.slug === serviceSlug);
+
+    if (serviceSlug && !service) {
+      return { success: false, message: "Please choose a valid service and try again." };
+    }
 
     // Files were already uploaded to Drive by /api/upload; the form carries
     // only their URLs, which keeps this action well under the 1MB body limit.
@@ -90,12 +97,15 @@ export async function submitContactForm(formData: FormData): Promise<ActionResul
       message: message || undefined,
       budget: budget || undefined,
       timeline: timeline || undefined,
+      serviceSlug: service?.slug,
+      serviceTitle: service?.title,
     };
 
     const refCode = generateRefCode();
 
     // ── Sync to Google Sheet (the system of record) ──
     const detailsArray = [
+      service ? `Service: ${service.title} (${service.slug})` : null,
       message ? `Message: ${message}` : null,
       timeline ? `Timeline: ${timeline}` : null,
       budget ? `Budget: ${budget}` : null,
@@ -121,6 +131,10 @@ export async function submitContactForm(formData: FormData): Promise<ActionResul
         `[contact] Google Sheets sync failed for ${refCode} (${payload.type}). Lead payload:`,
         JSON.stringify({ refCode, ...payload })
       );
+      return {
+        success: false,
+        message: "We couldn't save your request. Please try again or contact us by phone or WhatsApp.",
+      };
     }
 
     // Mirror to the local dev store (best-effort; a no-op in production).
@@ -209,6 +223,10 @@ export async function submitCalculatedEstimate(estimateData: {
         `[estimate] Google Sheets sync failed for ${refCode}. Lead payload:`,
         JSON.stringify({ refCode, ...payload })
       );
+      return {
+        success: false,
+        message: "We couldn't save your estimate request. Please try again or contact us by phone or WhatsApp.",
+      };
     }
 
     const savedRecord = saveSubmission(payload, refCode);

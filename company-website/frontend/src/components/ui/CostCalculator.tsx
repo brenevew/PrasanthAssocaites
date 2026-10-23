@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Calculator, Check, CheckCircle2, Send } from "lucide-react";
-import { submitCalculatedEstimate } from "@/app/actions/contactActions";
+import { submitCalculatedEstimate, type ActionResult } from "@/app/actions/contactActions";
 
 const projectTypes = [
   { id: "residential", label: "Residential House", baseMultiplier: 1.0 },
@@ -73,6 +73,7 @@ export default function CostCalculator({ defaultType }: CostCalculatorProps = {}
   const [location, setLocation] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [refCode, setRefCode] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const toggleAddon = (id: string) => {
     if (selectedAddons.includes(id)) {
@@ -98,8 +99,9 @@ export default function CostCalculator({ defaultType }: CostCalculatorProps = {}
   const handleEstimateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError(null);
 
-    const res = await submitCalculatedEstimate({
+    const res: ActionResult = await submitCalculatedEstimate({
       name,
       phone,
       email,
@@ -109,11 +111,16 @@ export default function CostCalculator({ defaultType }: CostCalculatorProps = {}
       packageType: currentPkg.name,
       addons: selectedAddons,
       estimatedTotal: totalEstimatedCost,
-    });
+    }).catch(() => ({
+      success: false,
+      message: "We couldn't send your request. Please check your connection and try again.",
+    }));
 
     setSubmitting(false);
     if (res.success && res.refCode) {
       setRefCode(res.refCode);
+    } else {
+      setSubmitError(res.message);
     }
   };
 
@@ -317,6 +324,7 @@ export default function CostCalculator({ defaultType }: CostCalculatorProps = {}
             </div>
           ) : (
             <form onSubmit={handleEstimateSubmit} className="mt-6 space-y-4">
+              {submitError && <p role="alert" className="text-sm text-red-200">{submitError}</p>}
               <p className="text-xs font-semibold text-gold uppercase tracking-wider">
                 Lock in this quote &amp; request detailed BoQ breakdown
               </p>

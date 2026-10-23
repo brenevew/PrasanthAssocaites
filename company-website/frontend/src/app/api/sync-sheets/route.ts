@@ -52,7 +52,15 @@ export async function POST(req: NextRequest) {
       typeof body.formType === "string" && (FORM_TYPES as string[]).includes(body.formType)
         ? (body.formType as FormType)
         : "Building Planner";
-    const details = typeof body.details === "string" ? body.details.trim().slice(0, 2000) : undefined;
+    const details = typeof body.details === "string" ? body.details.trim() : undefined;
+    // Reject oversized requirements explicitly instead of silently cutting off
+    // floor layouts and selected services before they reach the team.
+    if (details && details.length > 45_000) {
+      return NextResponse.json(
+        { success: false, error: "Your project details are too long. Please shorten your notes and try again." },
+        { status: 413 }
+      );
+    }
     const estimatedBudget = body.estimatedBudget || body.estimatedFee;
 
     // Attachments are Drive URLs produced by /api/upload, never raw file data.
@@ -93,7 +101,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    return NextResponse.json(result);
+    return NextResponse.json(
+      result.success
+        ? { success: true }
+        : { success: false, error: "We couldn't save your request. Please try again or contact us by phone or WhatsApp." },
+      { status: result.success ? 200 : 502 }
+    );
   } catch (err: unknown) {
     const errorMsg = err instanceof Error ? err.message : "Failed to sync to Google Sheets";
     console.error("[API sync-sheets error]", errorMsg);

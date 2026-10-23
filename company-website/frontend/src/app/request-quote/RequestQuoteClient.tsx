@@ -129,7 +129,10 @@ export default function RequestQuoteClient() {
       formData.append("attachments", JSON.stringify(attachments));
     }
 
-    const res = await submitContactForm(formData);
+    const res: ActionResult = await submitContactForm(formData).catch(() => ({
+      success: false,
+      message: "We couldn't send your request. Please check your connection and try again.",
+    }));
     setResult(res);
     if (res.success) {
       trackLeadEvent("quote_submit", { service: currentService.slug, location, form: "quote" });

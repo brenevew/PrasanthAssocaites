@@ -22,15 +22,35 @@ export default function MobileNav({ isOpen, onClose, onServiceSelect }: MobileNa
   const pathname = usePathname();
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+    if (!isOpen) return;
+
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    if (desktop.matches) {
+      onClose();
+      return;
     }
-    return () => {
-      document.body.style.overflow = "";
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleViewportChange = () => {
+      if (desktop.matches) {
+        document.body.style.overflow = previousOverflow;
+        onClose();
+      }
     };
-  }, [isOpen]);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    desktop.addEventListener("change", handleViewportChange);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", handleViewportChange);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 

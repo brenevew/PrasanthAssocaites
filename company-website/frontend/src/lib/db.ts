@@ -13,6 +13,8 @@ export interface ContactSubmission {
   message?: string;
   budget?: string;
   timeline?: string;
+  serviceSlug?: string;
+  serviceTitle?: string;
   calculatedEstimate?: {
     builtUpAreaSqFt: number;
     packageType: string;

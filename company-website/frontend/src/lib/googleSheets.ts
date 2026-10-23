@@ -105,15 +105,17 @@ export async function sendToGoogleSheet(data: GoogleSheetSubmission): Promise<Go
           `[GoogleSheets] Webhook responded ${response.status} (attempt ${attempt}/${MAX_ATTEMPTS}) for ${data.formType}`
         );
       } else {
-        // The script reports application-level failures (e.g. a bad token) in the body.
-        const body = await response.text();
-        if (body.includes('"status":"error"') || body.includes('"status":"unauthorized"')) {
-          console.error(`[GoogleSheets] Apps Script rejected the submission: ${body.slice(0, 300)}`);
-          return { success: false, error: `Apps Script error: ${body.slice(0, 200)}` };
+        // A 200 can also contain an Apps Script error or a Google sign-in page.
+        // Only the script's explicit acknowledgement confirms the lead was saved.
+        const body = await response.json().catch(() => null);
+        if (body?.status !== "success") {
+          const error = "Google Sheets did not confirm that the submission was saved.";
+          console.error(`[GoogleSheets] ${error}`);
+          return { success: false, error };
         }
         // Saved, but the team wasn't emailed: surface it instead of failing silently.
-        if (body.includes('"emailed":false')) {
-          console.warn(`[GoogleSheets] Lead saved but the email notification failed: ${body.slice(0, 300)}`);
+        if (body.emailed === false) {
+          console.warn("[GoogleSheets] Lead saved but the email notification failed.");
         }
         return { success: true };
       }

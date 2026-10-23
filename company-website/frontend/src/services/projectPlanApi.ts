@@ -1,4 +1,4 @@
-import { PlannerState } from "@/components/planner/types";
+import type { PlannerState } from "@/components/planner/types";
 import type { Attachment } from "@/lib/attachments";
 import { trackLeadEvent } from "@/lib/analytics";
 
@@ -8,6 +8,12 @@ export interface ProjectPlanPayload {
   phone: string;
   projectType: "Residential" | "Commercial" | string;
   commercialType?: string;
+  commercialDetails?: {
+    units: number;
+    kitchens: number;
+    restrooms: number;
+    facilities: string[];
+  };
   projectName?: string;
   location?: string;
 
@@ -162,48 +168,48 @@ export async function saveProjectPlan(payload: ProjectPlanPayload): Promise<Proj
     createdAt: new Date().toISOString(),
   };
 
-  // Cache locally
-  saveLocalPlan(planResponse);
+  // The team must receive the plan before it is treated as submitted locally.
+  const {
+    name, phone, email, projectType, commercialType, location,
+    estimatedFee, attachments, ...requirements
+  } = payload;
 
-  // ── Sync directly to Google Sheet in background ──
+  let res: Response;
   try {
-    const detailsList = [
-      payload.totalBuiltUpSft ? `Built-up Area: ${payload.totalBuiltUpSft} sq ft` : null,
-      payload.numFloors ? `Floors: ${payload.numFloors}` : null,
-      payload.hasBasement ? `Basement: ${payload.basementSummary || "Yes"}` : null,
-      payload.selectedPackage ? `Package: ${payload.selectedPackage}` : null,
-      payload.selectedFeatures ? `Features: ${payload.selectedFeatures}` : null,
-      payload.parkingCarsCount ? `Cars: ${payload.parkingCarsCount}` : null,
-      payload.specialNotes ? `Notes: ${payload.specialNotes}` : null,
-    ].filter(Boolean);
-
-    const res = await fetch("/api/sync-sheets", {
+    res = await fetch("/api/sync-sheets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         formType: "Building Planner",
         refCode: planResponse.refCode,
-        name: payload.name,
-        phone: payload.phone,
-        email: payload.email,
-        projectType: payload.projectType + (payload.commercialType ? ` (${payload.commercialType})` : ""),
-        location: payload.location || "Tamil Nadu",
-        estimatedBudget: payload.estimatedFee,
-        details: detailsList.join(" | "),
-        attachments: payload.attachments || [],
+        name,
+        phone,
+        email,
+        projectType: projectType + (commercialType ? ` (${commercialType})` : ""),
+        location: location || "Tamil Nadu",
+        estimatedBudget: estimatedFee,
+        // Keep every requirement, including floor/room configurations and the
+        // individual services. Contact fields have their own Sheet columns.
+        details: JSON.stringify(requirements, null, 2),
+        attachments: attachments || [],
       }),
     });
-
-    if (!res.ok) {
-      console.warn(`[GoogleSheets] /api/sync-sheets responded ${res.status} for ${planResponse.refCode}`);
-    } else {
-      // The planner's enquiry reached the Sheet: count it once as a lead.
-      trackLeadEvent("form_submit", { form: "planner" });
-    }
   } catch (sheetErr) {
-    console.warn("[GoogleSheets] Background sync to sheet returned:", sheetErr);
+    console.warn("[GoogleSheets] Project plan submission failed:", sheetErr);
+    throw new Error("We couldn't save your project plan. Please try again or contact us by phone or WhatsApp.");
   }
 
+  const result = await res.json().catch(() => null);
+  if (!res.ok || result?.success !== true) {
+    throw new Error(
+      typeof result?.error === "string"
+        ? result.error
+        : "We couldn't save your project plan. Please try again or contact us by phone or WhatsApp."
+    );
+  }
+
+  saveLocalPlan(planResponse);
+  trackLeadEvent("form_submit", { form: "planner", location: payload.location });
   return planResponse;
 }
 
