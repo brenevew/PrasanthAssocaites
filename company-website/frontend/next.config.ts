@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/services/turnkey-construction",
+        destination: "/services/turnkey-design-build-coimbatore",
+        permanent: true,
+      },
+      {
         // The Tiruppur page was removed; send its traffic to the Nilgiris page.
         source: "/service-areas/:path*",
         destination: "/locations/nilgiris-ooty",

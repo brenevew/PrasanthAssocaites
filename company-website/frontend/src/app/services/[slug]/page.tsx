@@ -16,7 +16,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 interface Props { params: Promise<{ slug: string }> }
 
 // Services whose canonical page is /services/<slug>. The turnkey service has its
-// own page, so /services/turnkey-construction must 404 rather than duplicate it.
+// own page; next.config redirects its short alias to that canonical URL.
 const hasLandingPage = (slug: string) =>
   services.some((service) => service.slug === slug) && getServicePath(slug) === `/services/${slug}`;
 

@@ -21,14 +21,30 @@ const THIN_WORDS = 300;
 
 const issues = []; // { level: "error" | "warn", page, message }
 const add = (level, page, message) => issues.push({ level, page, message });
+const checked = new Map();
 
 async function get(url) {
-  try {
-    const res = await fetch(url, { headers: { "User-Agent": UA }, redirect: "manual", signal: AbortSignal.timeout(15000) });
-    return { status: res.status, location: res.headers.get("location"), robots: res.headers.get("x-robots-tag"), body: res.status === 200 ? await res.text() : "" };
-  } catch (e) {
-    return { status: 0, body: "", error: String(e) };
+  // Reuse successful sitemap checks when validating inbound links. Re-fetching
+  // every page doubles the crawl load and can trigger hosting throttles.
+  if (checked.has(url)) return checked.get(url);
+  let result;
+  const transient = [];
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(url, { headers: { "User-Agent": UA }, redirect: "manual", signal: AbortSignal.timeout(15000) });
+      result = { status: res.status, location: res.headers.get("location"), robots: res.headers.get("x-robots-tag"), body: res.status === 200 ? await res.text() : "" };
+    } catch (e) {
+      result = { status: 0, body: "", error: String(e) };
+    }
+    if (result.status !== 0 && result.status !== 429 && result.status < 500) break;
+    transient.push(result.status || "network error");
+    if (attempt < 2) await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
   }
+  if (result.status === 200) {
+    checked.set(url, result);
+    if (transient.length) add("warn", new URL(url).pathname, `transient response (${transient.join(", ")}) recovered on retry; review hosting logs`);
+  }
+  return result;
 }
 
 const decode = (s) =>

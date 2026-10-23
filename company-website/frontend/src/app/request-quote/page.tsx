@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import RequestQuoteClient from "./RequestQuoteClient";
 import { connection } from "next/server";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
+import { notFound } from "next/navigation";
+import { services } from "@/data/services";
 
 export const metadata: Metadata = {
   title: "Request a Construction Quote",
@@ -23,7 +25,17 @@ export const metadata: Metadata = {
   ),
 };
 
-export default async function RequestQuotePage() {
+interface RequestQuotePageProps {
+  searchParams: Promise<{ service?: string | string[] }>;
+}
+
+export default async function RequestQuotePage({ searchParams }: RequestQuotePageProps) {
+  const { service } = await searchParams;
+  const slug = Array.isArray(service) ? service[0] : service;
+  // Validate before the Suspense boundary so invalid services produce a real
+  // 404 with noindex rather than an indexable HTTP 200 error page.
+  if (slug && !services.some((item) => item.slug === slug)) notFound();
+
   // Render per request: the client reads ?service= via useSearchParams, which
   // would otherwise bail out to client-only rendering and ship an empty page
   // (no H1, no content) to crawlers.

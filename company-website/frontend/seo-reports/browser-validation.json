@@ -1,14 +1,13 @@
 {
-  "base": "http://127.0.0.1:3100",
-  "mockSubmissions": true,
+  "base": "http://127.0.0.1:3113",
+  "mockSubmissions": false,
   "results": [
+    "Turnkey alias permanently redirects; unknown quote services return 404 and noindex",
+    "Headings and page content remain visible without JavaScript on home, services, project and contact pages",
     "All four sector filters preserve 8/6/4/4 services",
     "Existing title click opens modal; option choices reach the quote form",
-    "Quote submits successfully to local mock; one privacy-safe conversion event",
     "All 22 service-specific enquiry forms render without browser errors",
-    "New landing-page form submits with correct service attribution",
     "WhatsApp keeps +91 9360337733; WhatsApp and phone events fire once",
-    "Existing contact form submits successfully to the local mock",
     "New pages from all four sectors fit desktop and mobile viewports"
   ],
   "browserErrors": []

@@ -18,14 +18,23 @@ export default function ScrollReveal({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReducedMotion) {
-      if (ref.current) {
-        ref.current.classList.add("revealed");
-      }
+    // Server HTML stays visible without hydration. Only opt offscreen content
+    // into animation after the observer is available; never hide the first paint.
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      element.classList.add("revealed");
+      return;
+    }
+
+    const bounds = element.getBoundingClientRect();
+    if (bounds.top < window.innerHeight && bounds.bottom > 0) {
+      element.classList.add("revealed");
       return;
     }
 
@@ -39,11 +48,13 @@ export default function ScrollReveal({
       { threshold }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
+    element.classList.add("reveal-pending");
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      element.classList.remove("reveal-pending");
+    };
   }, [threshold]);
 
   return (

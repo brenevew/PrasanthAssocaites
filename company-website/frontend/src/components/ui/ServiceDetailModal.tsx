@@ -12,6 +12,7 @@ import {
 import { Service } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
 import { plannableSlugs, designSlugs } from "@/data/serviceCategories";
+import { getServicePath } from "@/data/serviceRoutes";
 import Button from "@/components/ui/Button";
 import OptionCards from "@/components/ui/OptionCards";
 
@@ -194,11 +195,11 @@ export default function ServiceDetailModal({
         {/* CTA Actions Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-border relative z-10">
           <Link
-            href={`/services#${service.slug}`}
+            href={getServicePath(service.slug)}
             onClick={onClose}
             className="text-xs font-semibold text-concrete hover:text-gold-dark transition-colors flex items-center gap-1 self-center sm:self-auto order-2 sm:order-1"
           >
-            <span>View on Services Page</span>
+            <span>View Service Details</span>
             <ArrowRight size={12} />
           </Link>
 

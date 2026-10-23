@@ -7,6 +7,8 @@ const { serviceCategories } = load("src/data/serviceCategories.ts");
 const { serviceSeo, serviceMetadata, serviceSchema } = load("src/lib/serviceSeo.ts");
 const { getServicePath } = load("src/data/serviceRoutes.ts");
 const { SITE_URL, ORG_ID } = load("src/lib/seo.ts");
+const { footerServiceLinks } = load("src/data/navigation.ts");
+const { homeFaqQuestions } = load("src/data/homeFaqs.ts");
 const { coarseLocation, safePagePath, trackLeadEvent } = load("src/lib/analytics.ts");
 const baseline = require("../seo-reports/baseline.json");
 
@@ -49,7 +51,30 @@ test("sitemap includes every service once, retains public pages and omits redire
   for (const service of services) assert.ok(urls.includes(SITE_URL + getServicePath(service.slug)));
   for (const path of ["/", "/locations/coimbatore", "/locations/nilgiris-ooty", "/locations/gudalur", "/projects"]) assert.ok(urls.includes(SITE_URL + path));
   assert.ok(urls.every((url) => !/[?#]/.test(url) && !url.includes("/api/") && !url.includes("/request-design")));
+  assert.ok(!urls.includes(`${SITE_URL}/services/turnkey-construction`));
+  for (const project of load("src/data/projects.ts").projects) {
+    const included = urls.includes(`${SITE_URL}/projects/${project.slug}`);
+    assert.equal(included, load("src/data/projects.ts").hasDetailsPage(project), project.slug);
+  }
   assert.ok(sitemap.every((entry) => entry.lastModified === undefined));
+});
+
+test("footer and FAQ service links reach canonical, indexable landing pages", () => {
+  const urls = new Set(load("src/app/sitemap.ts").default().map((entry) => entry.url));
+  const links = [...footerServiceLinks, ...homeFaqQuestions.flatMap((faq) => faq.links)]
+    .filter((link) => link.href.startsWith("/services"));
+  for (const link of links) {
+    const target = new URL(link.href, SITE_URL);
+    assert.ok(!link.href.startsWith("/services#"), link.href);
+    assert.ok(urls.has(SITE_URL + target.pathname), link.href);
+  }
+});
+
+test("turnkey short URL permanently redirects to the canonical page", async () => {
+  const config = load("next.config.ts").default;
+  const redirect = (await config.redirects()).find((entry) => entry.source === "/services/turnkey-construction");
+  assert.equal(redirect?.destination, getServicePath("turnkey-construction"));
+  assert.equal(redirect?.permanent, true);
 });
 
 test("enquiry analytics discard addresses, free text, arbitrary slugs and URL query data", () => {

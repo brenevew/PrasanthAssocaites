@@ -15,7 +15,7 @@ interface HomeFaqQuestion {
 
 /**
  * Homepage overview. Every link must point at a page that exists; services are
- * anchors on /services. Process and project examples come from process.ts,
+ * linked to their canonical pages. Process and project examples come from process.ts,
  * quality.ts and projects.ts.
  * Price figures are awaiting business revision; do not publish numeric rates here.
  */
@@ -57,7 +57,7 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
     group: "Plans & costs",
     question: "How is the cost of building my house calculated?",
     answer: "We prepare an itemized estimate that lists the agreed work, materials, labour and equipment. Your floor area, site conditions and finish choices affect the cost. When comparing quotes, check whether drawings, electrical and plumbing work, finishes and outdoor work are included. A bill of quantities, or BOQ, breaks the work into quantities and prices.",
-    links: [{ href: "/services#detailed-estimation-costing", label: "Estimates and BOQ" }],
+    links: [{ href: "/services/detailed-estimation-costing", label: "Estimates and BOQ" }],
   },
   {
     group: "Plans & costs",
@@ -72,7 +72,7 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
     group: "Plans & costs",
     question: "Can you prepare the house plan if I already have a builder?",
     answer: "Yes. Architectural design is a separate service. Share your plot measurements, road-facing direction, room list and any Vastu preferences. We can discuss floor plans, elevations and the detailed drawings your builder needs. Agree which structural, electrical and plumbing drawings are included, along with the design revisions.",
-    links: [{ href: "/services#architectural-designs", label: "House plans and design" }],
+    links: [{ href: "/services/architectural-designs", label: "House plans and design" }],
   },
   {
     group: "Plans & costs",
@@ -90,15 +90,15 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
     group: "During construction",
     question: "How will I know the work is progressing properly?",
     answer: "Our construction process includes a dedicated project manager, checks at each stage and regular progress reports. Before handover, the team checks the structure, finishes, electrical and plumbing work against the agreed drawings. If another contractor is building for you, you can separately request our site inspection and bill-review services.",
-    links: [{ href: "/services#construction-work-consulting", label: "Site inspections and contractor bills" }],
+    links: [{ href: "/services/construction-work-consulting", label: "Site inspections and contractor bills" }],
   },
   {
     group: "During construction",
     question: "Can you renovate my old house or update only the interiors?",
     answer: "Yes. You can discuss repairs, a new room layout, kitchen or wardrobe interiors, or a larger renovation. Send photographs and explain what you want to change and whether you will stay in the house during the work. Changes such as removing walls or adding a floor need an engineering assessment first.",
     links: [
-      { href: "/services#renovation", label: "Renovation" },
-      { href: "/services#interior-designs", label: "Interior design" },
+      { href: "/services/renovation", label: "Renovation" },
+      { href: "/services/interior-designs", label: "Interior design" },
     ],
   },
   {
@@ -106,8 +106,8 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
     question: "Can I get a bank valuation report or building stability certificate?",
     answer: "Yes. These are separate services with different purposes. Share the property details and the bank’s or other recipient’s checklist. We can then discuss the documents, inspection and report needed. Confirm the required professional credentials and format with the recipient; the report’s findings depend on the assessment.",
     links: [
-      { href: "/services#bank-valuation-report", label: "Bank valuation reports" },
-      { href: "/services#structural-stability-certificate", label: "Building stability certificates" },
+      { href: "/services/bank-valuation-report", label: "Bank valuation reports" },
+      { href: "/services/structural-stability-certificate", label: "Building stability certificates" },
     ],
   },
   {

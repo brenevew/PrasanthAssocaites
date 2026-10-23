@@ -26,6 +26,26 @@ if (submit) assert.ok(/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(base));
     const page = await context.newPage();
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
+    const alias = await context.request.get(base + "/services/turnkey-construction?utm_source=seo-check", { maxRedirects: 0 });
+    assert.equal(alias.status(), 308);
+    assert.ok(alias.headers().location.includes("/services/turnkey-design-build-coimbatore?utm_source=seo-check"));
+    const invalidQuote = await context.request.get(base + "/request-quote?service=seo-missing-service");
+    assert.equal(invalidQuote.status(), 404);
+    assert.match(await invalidQuote.text(), /name="robots" content="noindex"/);
+    results.push("Turnkey alias permanently redirects; unknown quote services return 404 and noindex");
+
+    const noScript = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1440, height: 1000 } });
+    try {
+      const staticPage = await noScript.newPage();
+      for (const route of ["/", "/services", "/services/architectural-designs", "/projects/pricol", "/contact"]) {
+        await staticPage.goto(base + route, { waitUntil: "networkidle" });
+        assert.equal(await staticPage.locator("h1").count(), 1, route);
+        assert.equal(await staticPage.locator("h1").evaluate((element) => element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })), true, route);
+        assert.equal(await staticPage.locator(".reveal").evaluateAll((elements) => elements.filter((element) => !element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })).length), 0, route);
+      }
+    } finally { await noScript.close(); }
+    results.push("Headings and page content remain visible without JavaScript on home, services, project and contact pages");
+
     await page.goto(base + "/services", { waitUntil: "networkidle" });
     for (const [label, count] of [["Construction", 8], ["Design & Arch", 6], ["Valuation & BOQ", 4], ["Property", 4], ["All Services", 22]]) {
       await page.getByRole("button", { name: label, exact: true }).click();
