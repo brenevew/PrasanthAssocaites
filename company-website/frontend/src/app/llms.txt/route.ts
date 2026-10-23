@@ -3,6 +3,7 @@ import { services } from "@/data/services";
 import { getServicePath } from "@/data/serviceRoutes";
 import { serviceCategories } from "@/data/serviceCategories";
 import { SITE_URL } from "@/lib/seo";
+import { serviceFaqs } from "@/data/serviceFaqs";
 
 /**
  * /llms.txt — a plain-text fact sheet for AI search engines (llmstxt.org).
@@ -20,6 +21,17 @@ export function GET() {
         .map((s) => `- [${s.title}](${SITE_URL}${getServicePath(s.slug)}): ${s.shortDescription}`);
       return `### ${category.label}\n\n${lines.join("\n")}`;
     })
+    .join("\n\n");
+
+  // The same answers shown on each service page, as plain text.
+  const faqSections = Object.entries(serviceFaqs)
+    .map(([slug, faqs]) => {
+      const service = services.find((s) => s.slug === slug);
+      if (!service) return "";
+      const qa = faqs.map((f) => `Q: ${f.q}\nA: ${f.a.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")}`).join("\n\n");
+      return `### ${service.title} (${SITE_URL}${getServicePath(slug)})\n\n${qa}`;
+    })
+    .filter(Boolean)
     .join("\n\n");
 
   const offices = company.offices
@@ -52,6 +64,10 @@ ${offices}
 
 ${serviceSections}
 
+## Common questions by service
+
+${faqSections}
+
 ## Key pages
 
 - [Home](${SITE_URL}/)
@@ -62,6 +78,7 @@ ${serviceSections}
 - [House contractors in Gudalur](${SITE_URL}/locations/gudalur)
 - [Property and investment advisory](${SITE_URL}/property-investment)
 - [Projects](${SITE_URL}/projects)
+- [Blog: articles on plans, approvals, estimates and building in the Nilgiris](${SITE_URL}/blog)
 - [Building planner](${SITE_URL}/plan-home)
 - [About](${SITE_URL}/about)
 

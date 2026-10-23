@@ -1,0 +1,12 @@
+{
+  "base": "http://127.0.0.1:3113",
+  "articleCount": 9,
+  "results": [
+    "9 articles pass HTTP, metadata, schema, project-link and viewport checks at 1440px",
+    "9 articles pass HTTP, metadata, schema, project-link and viewport checks at 390px",
+    "All six supporting completed projects link back to related articles",
+    "All nine article bodies and headings are available without JavaScript",
+    "Unknown article URLs return 404"
+  ],
+  "browserErrors": []
+}

@@ -7,6 +7,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import Link from "next/link";
 import { projects, projectPhotoAlt, hasDetailsPage, projectLocationLink, projectServiceSlug } from "@/data/projects";
 import { getServicePath } from "@/data/serviceRoutes";
+import { blogPosts } from "@/data/blog";
 import CTABanner from "@/components/ui/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -73,6 +74,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const serviceSlug = projectServiceSlug(project);
   const locationLink = projectLocationLink(project);
+  const relatedArticles = blogPosts.filter((post) => post.relatedProjects?.includes(project.slug)).slice(0, 3);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -263,6 +265,24 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {relatedArticles.length > 0 && (
+        <section className="py-14 md:py-20 bg-linen border-y border-border">
+          <div className="container max-w-5xl">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal mb-8">Planning a similar project?</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedArticles.map((post) => (
+                <li key={post.slug}>
+                  <Link href={`/blog/${post.slug}`} className="group block h-full p-6 rounded-3xl bg-white border border-border hover:border-gold transition-colors">
+                    <h3 className="font-heading text-lg font-bold text-charcoal leading-snug group-hover:text-gold-dark">{post.title}</h3>
+                    <p className="mt-3 text-sm text-concrete leading-relaxed">{post.excerpt}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <CTABanner
         headline="Want a similar project?"

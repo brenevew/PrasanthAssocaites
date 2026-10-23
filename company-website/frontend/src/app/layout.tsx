@@ -59,11 +59,22 @@ const organizationSchema = {
       "@type": "GeneralContractor",
       "@id": ORG_ID,
       name: company.name,
-      description: company.description,
+      // Factual entity summary for search and answer engines (the visible tagline is marketing copy).
+      description:
+        "Prasanth Associates is a construction, architecture and engineering firm with a head office in Gandhipuram, Coimbatore and a branch in Gudalur, The Nilgiris. It designs and builds houses, villas and commercial buildings, prepares building plans and approval drawings, and provides estimates, valuations and property services across Coimbatore and the Nilgiris.",
       url: siteUrl,
       logo: `${siteUrl}/images/PrasanthAssociates-logo.png`,
       image: `${siteUrl}${OG_IMAGE.url}`,
       telephone: company.phone.replace(/\s/g, ""),
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: company.phone.replace(/\s/g, ""),
+          email: company.email,
+          areaServed: "IN",
+        },
+      ],
       email: company.email,
       address: {
         "@type": "PostalAddress",

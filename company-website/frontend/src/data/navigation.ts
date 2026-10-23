@@ -19,6 +19,7 @@ export const footerNavItems: NavItem[] = [
   { label: "Projects Portfolio", href: "/projects" },
   { label: "Building Planner Studio", href: "/plan-home" },
   { label: "About Us", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact & Offices", href: "/contact" },
 ];
 

@@ -1,0 +1,73 @@
+{
+  "base": "http://127.0.0.1:3113",
+  "rows": [
+    {
+      "width": 1440,
+      "slug": "coimbatore",
+      "title": "Construction Company in Coimbatore | Prasanth Associates",
+      "description": "Construction company in Coimbatore for houses, villas, commercial buildings and architectural plans. Visit our Gandhipuram office and see our Perur project.",
+      "titleLength": 56,
+      "descriptionLength": 156,
+      "overviewSections": 3,
+      "faqs": 6,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "slug": "gudalur",
+      "title": "Building Contractors in Gudalur | Prasanth Associates",
+      "description": "Building contractors in Gudalur for houses, estate bungalows and commercial projects. View completed local work and contact our Ooty Main Road branch.",
+      "titleLength": 53,
+      "descriptionLength": 150,
+      "overviewSections": 3,
+      "faqs": 7,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "slug": "nilgiris-ooty",
+      "title": "Builders in Ooty, Coonoor & Nilgiris | Prasanth Associates",
+      "description": "Building contractors for Ooty, Coonoor, Kotagiri and Gudalur. House construction, building design and hillside work in the Nilgiris, from our Gudalur branch.",
+      "titleLength": 58,
+      "descriptionLength": 157,
+      "overviewSections": 0,
+      "faqs": 5,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "slug": "coimbatore",
+      "title": "Construction Company in Coimbatore | Prasanth Associates",
+      "description": "Construction company in Coimbatore for houses, villas, commercial buildings and architectural plans. Visit our Gandhipuram office and see our Perur project.",
+      "titleLength": 56,
+      "descriptionLength": 156,
+      "overviewSections": 3,
+      "faqs": 6,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "slug": "gudalur",
+      "title": "Building Contractors in Gudalur | Prasanth Associates",
+      "description": "Building contractors in Gudalur for houses, estate bungalows and commercial projects. View completed local work and contact our Ooty Main Road branch.",
+      "titleLength": 53,
+      "descriptionLength": 150,
+      "overviewSections": 3,
+      "faqs": 7,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "slug": "nilgiris-ooty",
+      "title": "Builders in Ooty, Coonoor & Nilgiris | Prasanth Associates",
+      "description": "Building contractors for Ooty, Coonoor, Kotagiri and Gudalur. House construction, building design and hillside work in the Nilgiris, from our Gudalur branch.",
+      "titleLength": 58,
+      "descriptionLength": 157,
+      "overviewSections": 0,
+      "faqs": 5,
+      "pass": true
+    }
+  ],
+  "javaScriptDisabled": "PASS",
+  "uncaughtErrors": []
+}

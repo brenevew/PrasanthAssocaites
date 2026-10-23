@@ -55,7 +55,7 @@ export default function MobileNav({ isOpen, onClose, onServiceSelect }: MobileNa
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 lg:hidden">
+    <div className="fixed inset-0 z-50 xl:hidden">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-charcoal/80 backdrop-blur-md transition-opacity"

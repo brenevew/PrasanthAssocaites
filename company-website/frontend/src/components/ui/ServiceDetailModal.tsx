@@ -132,7 +132,7 @@ export default function ServiceDetailModal({
               <div className="flex flex-wrap items-center gap-2 mt-2">
                 {spec.sla && (
                   <span className="inline-flex items-center gap-1 text-[10px] font-bold text-gold-dark bg-white border border-border px-2.5 py-0.5 rounded-lg shadow-2xs">
-                    <Clock size={11} className="text-gold-dark" />
+                    <CheckCircle2 size={11} className="text-gold-dark" />
                     <span>{spec.sla}</span>
                   </span>
                 )}
@@ -152,11 +152,11 @@ export default function ServiceDetailModal({
           {service.description}
         </p>
 
-        {/* Key Capabilities Box */}
+        {/* "What's included" box */}
         <div className="bg-linen border border-border rounded-2xl p-4 sm:p-5 mb-6 relative z-10 shadow-inner">
           <h4 className="text-[11px] font-bold uppercase tracking-widest text-gold-dark mb-3 flex items-center gap-2">
             <Sparkles size={12} className="text-gold-dark" />
-            <span>Key Capabilities &amp; Engineering Specifications</span>
+            <span>What&apos;s included</span>
           </h4>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {service.features.map((feature) => (

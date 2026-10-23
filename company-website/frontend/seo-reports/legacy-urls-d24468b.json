@@ -1,0 +1,37 @@
+{
+  "sourceCommit": "d24468b",
+  "sourceFiles": [
+    "src/data/serviceLinks.ts",
+    "src/data/servicePages.ts",
+    "src/data/guides.ts"
+  ],
+  "note": "Published URLs needing migration; unchanged turnkey canonical is excluded.",
+  "urls": [
+    "/guides/how-to-choose-a-builder-nilgiris",
+    "/guides/how-to-choose-a-construction-company-coimbatore",
+    "/services/architectural-house-plans-coimbatore",
+    "/services/bank-property-valuation-coimbatore",
+    "/services/building-estimation-boq-coimbatore",
+    "/services/building-plan-approval-nilgiris",
+    "/services/chartered-engineer-valuation-coimbatore",
+    "/services/commercial-construction-coimbatore",
+    "/services/construction-consulting-coimbatore",
+    "/services/electrical-drawings-coimbatore",
+    "/services/factory-shed-construction-coimbatore",
+    "/services/home-automation-coimbatore",
+    "/services/house-construction-coimbatore",
+    "/services/house-construction-nilgiris",
+    "/services/house-renovation-coimbatore",
+    "/services/interior-design-coimbatore",
+    "/services/land-plot-consultants-coimbatore",
+    "/services/landscape-design-coimbatore",
+    "/services/plumbing-drawings-coimbatore",
+    "/services/property-buying-advisory-coimbatore",
+    "/services/property-investment-consulting-coimbatore",
+    "/services/property-management-coimbatore",
+    "/services/structural-drawings-coimbatore",
+    "/services/structural-stability-certificate-coimbatore",
+    "/services/villa-construction-coimbatore",
+    "/services/villa-construction-nilgiris"
+  ]
+}

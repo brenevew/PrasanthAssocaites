@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { getServicePath } from "@/data/serviceRoutes";
 import { projects, hasDetailsPage } from "@/data/projects";
+import { blogPosts } from "@/data/blog";
 import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -81,5 +82,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...projectRoutes];
+  // Articles carry their real publish date as lastModified.
+  const blogRoutes: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/blog`, changeFrequency: "weekly", priority: 0.7 },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(`${post.datePublished}T00:00:00Z`),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+  ];
+
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...blogRoutes];
 }

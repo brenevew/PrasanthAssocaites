@@ -102,7 +102,8 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-4">
+            {/* Full menu needs ~1230px; below xl it was clipped, so smaller screens use the hamburger. */}
+            <nav className="hidden xl:flex items-center gap-4">
               <ul className="flex items-center gap-1 p-1 rounded-full bg-linen border border-border shadow-inner">
                 {mainNavItems.map((item) => {
                   const isActive = pathname === item.href;
@@ -309,7 +310,7 @@ export default function Header() {
 
             {/* Mobile Hamburger */}
             <button
-              className="lg:hidden w-11 h-11 rounded-full bg-white border border-border shadow-xs flex items-center justify-center text-charcoal hover:text-gold-dark transition-colors focus:outline-none"
+              className="xl:hidden w-11 h-11 rounded-full bg-white border border-border shadow-xs flex items-center justify-center text-charcoal hover:text-gold-dark transition-colors focus:outline-none"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open menu"
             >

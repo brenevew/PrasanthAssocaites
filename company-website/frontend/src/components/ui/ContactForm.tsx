@@ -402,7 +402,7 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
 
         <div className="flex items-center justify-center gap-4 text-[10px] text-concrete pt-0.5">
           <span className="flex items-center gap-1">
-            <span className="text-emerald-600 font-bold">✓</span> 100% Confidential
+            <span className="text-emerald-600 font-bold">✓</span> Kept confidential
           </span>
           <span className="flex items-center gap-1">
             <span className="text-gold font-bold">✓</span> Itemised BoQ

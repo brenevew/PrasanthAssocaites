@@ -5,328 +5,331 @@
     {
       "slug": "residential-construction",
       "title": "Residential Construction",
-      "shortDescription": "Individual custom homes and duplex residences built with 100% Vastu compliance, Fe550D TMT reinforcement, and an itemised BoQ that fixes the price for the agreed scope.",
-      "description": "Every home is a generational landmark. We design and construct custom residences balancing scientific Vastu architecture, spatial efficiency, and engineered durability. From geotechnical soil analysis and heavy RCC foundation casting to premium vitrified finishes and multi-layer waterproofing, every milestone is supervised by senior civil engineers, with the price fixed for the agreed scope.",
+      "shortDescription": "Individual houses built from the first plan to handover, on an itemised BoQ, with our engineers checking every stage on site.",
+      "description": "We build individual houses and duplexes for families in Coimbatore and the Nilgiris. The work starts with a soil test and a plan drawn for your plot, and the price is set by an itemised BoQ before anything is built. Our engineers inspect each stage, from footings to finishing, before the next one begins.",
       "icon": "Home",
       "features": [
-        "100% Vastu-aligned architectural layouts",
-        "Fe550D TMT steel & 53-grade certified cement",
-        "Multi-layer chemical waterproofing on slabs & wet areas",
-        "Branded sanitary & electrical fittings",
-        "Conduit pre-wiring for solar & rainwater percolation pit",
-        "Line-item BoQ that fixes the price for the agreed scope"
+        "Floor plan and 3D elevation for your plot",
+        "Soil test before the foundation is designed",
+        "Help with plan approval",
+        "RCC structure built to structural drawings",
+        "Waterproofing for roof and bathrooms",
+        "Itemised BoQ fixing the price for the scope"
       ]
     },
     {
       "slug": "villa-construction",
       "title": "Villa Construction",
-      "shortDescription": "Signature architectural residences blending double-height living, natural imported marble, private courtyards, and artisan craftsmanship.",
-      "description": "Our villa projects represent the pinnacle of architectural living. Designed for discerning homeowners, each villa is an exclusive statement with expansive glass facades, floating cantilever stairs, hand-picked Italian Statuario marble, and private plunge pools. We coordinate every trade under white-glove supervision to ensure peerless aesthetic and structural perfection.",
+      "shortDescription": "Villas and estate bungalows designed and built by one team, with the architecture, structure and interiors planned together.",
+      "description": "A villa has more going on than a standard house: larger spans, more glass, outdoor living areas and often built-in interiors. We plan the architecture, structure and services together, so these details are drawn, priced and agreed before construction starts. In the Nilgiris we have built estate bungalows on plantation land, including a site that could only be reached across a river.",
       "icon": "Building2",
       "features": [
-        "Double-height living & panoramic glass facades",
-        "Hand-picked Italian marble & aged teakwood joinery",
-        "Private courtyard pools & landscaped timber decks",
-        "Integrated wired smart automation & ambient lighting",
-        "Thermal-break insulation & acoustic ceiling shielding",
-        "Dedicated mastercraft civil engineer & white-glove PM"
+        "Architectural design and 3D views",
+        "Structure designed for larger, open spaces",
+        "Courtyards, terraces and outdoor areas",
+        "Interiors designed with the building",
+        "Smart home wiring planned in advance",
+        "Itemised BoQ and written schedule"
       ]
     },
     {
       "slug": "commercial-construction",
       "title": "Commercial Building & Retail Construction",
-      "shortDescription": "Corporate offices, retail hubs, and mixed-use commercial developments engineered for high footfalls, safety compliance, and maximum rental yields.",
-      "description": "Commercial developments require uncompromising precision, structural speed, and statutory compliance. We engineer corporate towers, retail arcades, and commercial complexes with column-free post-tensioned spans, high-efficiency MEP shafts, certified fire suppression networks, and NBC-compliant life-safety provisions.",
+      "shortDescription": "Shops, showrooms, offices, hotels and schools, built with the architecture, structure and services coordinated from the start.",
+      "description": "Commercial buildings carry more people, heavier services and stricter approval checks than houses. We coordinate the architectural, structural, electrical and plumbing drawings before work starts, so problems are solved on paper rather than on site. Our commercial work includes Sasthapuri Hotels in Gudalur town and Christus Rex Higher Secondary School in Ooty.",
       "icon": "Building",
       "features": [
-        "Column-free post-tensioned large floorplates",
-        "NBC fire suppression & emergency egress networks",
-        "High-capacity passenger & service elevator shafts",
-        "Energy-efficient low-E glass facade glazing",
-        "Basement multi-level parking with rainwater recharge",
-        "Full statutory building approvals & completion sanction"
+        "Layouts planned around how it will be used",
+        "Structural design for commercial loads",
+        "Electrical, plumbing and fire safety plans",
+        "Approval drawings and application support",
+        "Phased work for busy or tight sites",
+        "Itemised BoQ and written schedule"
       ]
     },
     {
       "slug": "turnkey-construction",
       "title": "Turnkey Design and Construction",
-      "shortDescription": "Complete concept-to-key delivery with single-point accountability covering design, government sanctions, civil execution, and interior handover.",
-      "description": "Eliminate the stress of juggling multiple contractors, architects, and government offices. Our turnkey delivery provides full accountability under a single comprehensive contract. We manage land surveying, architectural drafting, municipality plan sanctions, raw material procurement, civil contracting, and final interior commissioning.",
+      "shortDescription": "One contract covering design, approval support, construction and interiors, so you deal with one team from the first plan to the keys.",
+      "description": "Turnkey means we take responsibility for the whole job: drawings, approval support, construction and interiors, under one contract and one schedule. You make the decisions and we coordinate the people and the work. The price is set by an itemised BoQ for the agreed scope before construction starts.",
       "icon": "Key",
       "features": [
-        "Single point of legal & engineering responsibility",
-        "Sanction approvals & municipality plan clearances",
-        "Transparent milestone billing with live app tracking",
-        "Independent stage-by-stage quality audits",
-        "Material testing certificates for all concrete & steel batches",
-        "Written project schedule with agreed handover date"
+        "One contract and one point of contact",
+        "Design, approval support, build, interiors",
+        "Itemised BoQ for the agreed scope",
+        "Payments linked to completed stages",
+        "Engineer inspections at each stage",
+        "Written schedule with a handover date"
       ]
     },
     {
       "slug": "industrial-factory-construction",
       "title": "Industrial & Factory Construction",
-      "shortDescription": "Heavy-duty manufacturing plants, pre-engineered building (PEB) factory sheds, and certified industrial fire networks.",
-      "description": "Engineered for heavy industrial operations, logistics, and manufacturing. We build high-tensile PEB steel sheds, reinforced machinery foundations, heavy load-bearing industrial flooring, and complete fire hydrant/sprinkler protection networks compliant with industrial safety regulations.",
+      "shortDescription": "Factory buildings and pre-engineered (PEB) steel sheds, with foundations and floors designed for your machines.",
+      "description": "A factory building has to suit the work done inside it. We plan the layout around your production flow, design foundations for the machines you will install, and specify floors for the loads and traffic they will carry. We build both RCC factory buildings and pre-engineered steel sheds, with drainage and fire protection planned in.",
       "icon": "Factory",
       "features": [
-        "High-tensile PEB steel structures with 10T crane provisions",
-        "Heavy machinery vibration-damped concrete foundations",
-        "Industrial fire hydrant & automatic sprinkler networks",
-        "Hazardous area ventilation & fume extraction conduits",
-        "Laser-screed heavy-duty VDF flooring with metallic hardeners",
-        "Statutory Factory Inspectorate (DISH) & Fire NOC clearances"
+        "Pre-engineered steel sheds and RCC buildings",
+        "Machine foundations designed for the load",
+        "Industrial floors for heavy traffic",
+        "Drainage and fire protection planning",
+        "Approval drawings and application support",
+        "Itemised BoQ and written schedule"
       ]
     },
     {
       "slug": "smart-homes",
       "title": "Smart Home Automation",
-      "shortDescription": "Intelligent wired and wireless home automation for centralized lighting, biometric security, climate control, and voice-assisted living.",
-      "description": "Smart living designed into the walls from day one. We engineer concealed structured cabling and wireless mesh networks that unify smart lighting scenes, motorized drapery, multi-zone VRV air conditioning, biometric security locks, and perimeter CCTV surveillance into intuitive smartphone and touch-panel controls.",
+      "shortDescription": "Lighting, curtains, climate, door locks and cameras you can control from your phone, planned into the house before the walls are finished.",
+      "description": "Smart home systems work best when the wiring is planned during construction. We design the control points, conduits and network along with your electrical drawings, then install and set up the devices. For existing homes we use wireless devices, so walls do not have to be broken.",
       "icon": "Cpu",
       "features": [
-        "Centralized lighting scene automation & mood presets",
-        "Multi-zone VRV/VRF smart climate regulation",
-        "Biometric keyless access & video door intercom",
-        "Motorized curtain, drape & skylight automation",
-        "Whole-home architectural audio distribution",
-        "Real-time energy consumption monitoring & solar sync"
+        "Lighting scenes and dimming",
+        "Motorised curtains and blinds",
+        "Air conditioning control",
+        "Smart locks, video doorbell and cameras",
+        "Multi-room audio",
+        "Control from one app or by voice"
       ]
     },
     {
       "slug": "renovation",
       "title": "Renovation & Structural Retrofitting",
-      "shortDescription": "Transforming aging properties into contemporary luxury spaces with structural column jacketing, interior modernization, and spatial reorganization.",
-      "description": "Breathe new life and modern value into existing properties. We specialize in non-destructive structural retrofitting, load-bearing redistribution, floorplan modernization, and complete MEP upgrades, preserving architectural heritage while delivering state-of-the-art living comforts.",
+      "shortDescription": "Renovations, layout changes, repairs and floor additions, starting with a check of the existing structure.",
+      "description": "Every renovation starts with what is already there. Our engineers check the existing structure before we remove a wall or add a floor, and tell you plainly what needs strengthening. We then handle the work, from structural repairs and waterproofing to new kitchens, bathrooms and finishes, phased around you if you are living in the building. Our renovation work includes the British-era Director's Building at Manjushree Plantation in the Nilgiris.",
       "icon": "Hammer",
       "features": [
-        "Non-destructive rebound hammer & ultrasonic testing",
-        "RCC column jacketing & structural load redistribution",
-        "Complete spatial floorplan reconfiguration & wall removals",
-        "Plumbing, electrical & waterproofing overhaul",
-        "Contemporary facade facelift & terrace rejuvenation",
-        "Phased scheduling for minimal occupancy disruption"
+        "Structural check before any work",
+        "Column and beam strengthening",
+        "Layout changes and wall removal",
+        "Kitchen, bathroom and finish upgrades",
+        "Waterproofing and leak repairs",
+        "Floor additions after a structural check"
       ]
     },
     {
       "slug": "construction-work-consulting",
       "title": "Construction Consulting & Project Management",
-      "shortDescription": "Independent engineering supervision, BoQ rate validation, contractor billing audits, and quality control checklists for private builders.",
-      "description": "Protect your capital investment with veteran civil engineering oversight. We act as your independent owner's engineer, verifying contractor workmanship, cross-checking raw material test certificates, auditing bill of quantities to prevent overcharging, and resolving complex on-site engineering challenges.",
+      "shortDescription": "Independent site inspections, bill checks and quality advice while another contractor builds for you.",
+      "description": "If you have hired a contractor, we can be your engineers on site. We inspect the work at the stages that matter most, check bills against the BoQ and the work actually done, and tell you in writing what needs correcting. We work for you, not the contractor.",
       "icon": "ClipboardList",
       "features": [
-        "Independent third-party site quality inspections",
-        "Contractor Bill of Quantities (BoQ) rate validation",
-        "Concrete cube test & steel tensile audit verification",
-        "Milestone-based contractor payment certification",
-        "Construction delay diagnosis & recovery planning",
-        "Defect liability checklist & final handover inspection"
+        "Site inspections at key stages",
+        "Steel and concrete checks before pouring",
+        "Contractor bill and BoQ checks",
+        "Material quality advice",
+        "Written inspection reports",
+        "Final handover inspection"
       ]
     },
     {
       "slug": "architectural-designs",
       "title": "Architectural Designs",
-      "shortDescription": "Comprehensive architectural planning, building concepts, spatial design, and detailed blueprint drafting.",
-      "description": "Our architectural team crafts innovative, functional, and aesthetically striking designs tailored to your spatial needs. From conceptual blueprints to structural planning, we translate visions into buildable, sustainable realities.",
+      "shortDescription": "House plans, 3D elevations and approval drawings, drawn for your plot, your family and the rules that apply to it.",
+      "description": "A good plan starts with the plot: its size, road side, setbacks and slope. We draw the floor plan around how your family lives, show you the 3D elevation, and prepare the approval drawings and the working drawings your builder will use. Structural, electrical and plumbing drawings can be prepared alongside, so they all agree.",
       "icon": "Compass",
       "features": [
-        "2D floor plans drawn for your plot",
+        "2D floor plans for your plot",
         "3D front elevation",
-        "Vastu-based room planning on request",
+        "Vastu-based planning on request",
         "Approval (sanction) drawings",
-        "Working drawings for your builder"
+        "Working drawings for construction",
+        "Structural and services drawings"
       ]
     },
     {
       "slug": "interior-designs",
       "title": "Interior Designs",
-      "shortDescription": "Interior design and installation for homes and offices: modular kitchens, wardrobes, ceilings, lighting and storage.",
-      "description": "We create sophisticated indoor environments that blend ergonomics with high-end aesthetic appeal. Our bespoke interior solutions transform raw spaces into beautifully curated living and working environments.",
+      "shortDescription": "Kitchens, wardrobes, ceilings, lighting and storage for homes and offices, designed in 3D and installed by our team.",
+      "description": "We design interiors room by room and show them to you in 3D before anything is made. Once you approve the views, our team makes and installs the kitchen, wardrobes, units and ceilings, so what is built matches what you saw. We design for homes and offices.",
       "icon": "Palette",
       "features": [
-        "Modular kitchens & wardrobes",
-        "False ceiling & lighting design",
-        "TV units, pooja units & storage",
-        "3D views of every room before work starts",
+        "Modular kitchens and wardrobes",
+        "False ceilings and lighting",
+        "TV units, pooja units and storage",
+        "3D views of each room",
+        "Material and finish selection",
         "Supply and installation by our team"
       ]
     },
     {
       "slug": "structural-drawings",
       "title": "Structural Drawings",
-      "shortDescription": "Stamped RCC structural drawings, footing schedules, column layouts, beam and slab reinforcement details ready for site execution.",
-      "description": "Structural drawings translate an architectural concept into something a site team can actually build safely. Our engineers size every member against the soil bearing capacity returned by your SBC test and the load path of the building, then issue fully detailed RCC drawings, footing schedules, column orientation, beam reinforcement cut-lengths, and slab bar-bending schedules. Drawings are formatted for municipal plan sanction and carry the engineer's stamp lenders and approval authorities require.",
+      "shortDescription": "Foundation, column, beam and slab drawings that show the site team exactly how to build the structure safely.",
+      "description": "Structural drawings turn the architectural plan into something a site team can build safely. Our engineers design the footings from the soil test results, then size and detail the columns, beams and slabs, with bar bending schedules for the steel. The drawings are prepared in the format that approval authorities and banks ask for.",
       "icon": "PencilRuler",
       "features": [
-        "Footing & foundation layout schedules",
-        "Column orientation & reinforcement details",
-        "Beam and slab bar-bending schedules (BBS)",
-        "Fe 550D TMT specification with lap and anchorage detailing",
-        "Designed against site-specific SBC and bore log data",
-        "Stamped drawings formatted for DTCP/LPA/CCMC sanction"
+        "Footing and foundation drawings",
+        "Column layout and details",
+        "Beam and slab reinforcement drawings",
+        "Bar bending schedules",
+        "Design based on the soil test",
+        "Drawings ready for approval"
       ]
     },
     {
       "slug": "electrical-drawings",
       "title": "Electrical Drawings",
-      "shortDescription": "Concealed conduit routing, load-calculated distribution boards, earthing layouts, and point-wise electrical schematics.",
-      "description": "An electrical layout drawn after the walls are up is a retrofit, not a design. We prepare point-wise electrical drawings before casting, conduit routing, switchboard elevations, DB positions, and circuit segregation, with distribution boards sized against calculated connected load rather than a rule of thumb. Layouts include dedicated circuits for kitchen, HVAC and utility loads, ELCB/MCB protection schedules, earthing design, and conduit provisioning for solar, inverter and smart-home systems.",
+      "shortDescription": "Switch, socket and light layouts, circuits and earthing, planned before the walls go up.",
+      "description": "Electrical drawings decide where every switch, socket and light goes, and how the circuits and distribution board are arranged. We plan them around how you will use each room, and allow for air conditioners, a car charger, solar or smart home wiring if you want them. Planned early, nothing has to be broken open later.",
       "icon": "Zap",
       "features": [
-        "Point-wise lighting, power & switchboard layouts",
-        "Connected load calculation & DB sizing schedule",
-        "Circuit segregation with ELCB/MCB protection design",
-        "Earthing and lightning protection layouts",
-        "Conduit provisioning for solar, inverter & automation",
-        "Single-line diagrams (SLD) for sanction and EB connection"
+        "Switch, socket and light layouts",
+        "Circuit and distribution board planning",
+        "Earthing layout",
+        "Points for air conditioners and appliances",
+        "Provision for solar and smart home wiring",
+        "Single-line diagram for the EB connection"
       ]
     },
     {
       "slug": "plumbing-drawings",
       "title": "Plumbing Drawings",
-      "shortDescription": "Water supply, drainage and sanitary layouts with CPVC/UPVC routing, slope-calculated waste lines and rainwater harvesting design.",
-      "description": "Plumbing drawings fix the position of every wet point, pipe run and inspection chamber before the first slab is cast, which is what prevents the chased walls and re-laid floors that follow guesswork. We produce water supply schematics on CPVC for hot lines and UPVC for cold and drainage, waste and soil lines drawn to calculated fall, and sump and overhead tank capacities sized against actual occupancy. Rainwater harvesting pits are designed to the recharge norms mandated for your plot area.",
+      "shortDescription": "Water supply, drainage and rainwater harvesting drawings, so every pipe run is fixed before the slab is cast.",
+      "description": "Most leaks and blocked drains come from pipes laid without a plan. Our plumbing drawings fix every wet point, pipe route and inspection chamber before construction, with drains laid to the right slope and tanks sized for the people who will live there. Rainwater harvesting is included.",
       "icon": "Droplets",
       "features": [
-        "Water supply schematics (CPVC hot / UPVC cold)",
-        "Soil, waste & vent lines drawn to calculated slope",
-        "Sump and OHT capacity sized against occupancy",
-        "Inspection chamber and manhole positioning",
-        "Rainwater harvesting and percolation pit design",
-        "Pressure-test and pre-concealment inspection schedule"
+        "Water supply layout, hot and cold",
+        "Drainage lines laid to the right slope",
+        "Sump and overhead tank sizing",
+        "Inspection chamber positions",
+        "Rainwater harvesting",
+        "Pressure test before walls are closed"
       ]
     },
     {
       "slug": "landscaping-designs",
       "title": "Landscaping Designs",
-      "shortDescription": "Garden and outdoor design: planting plans, lawns, pathways, irrigation, outdoor lighting and terrace gardens.",
-      "description": "We harmonize architecture with nature by designing serene outdoor spaces, gardens, and exterior environments. Our landscaping expertise elevates property value and creates refreshing green sanctuaries.",
+      "shortDescription": "Garden layouts, planting, paths, irrigation and outdoor lighting, planned for the local climate and easy upkeep.",
+      "description": "We design gardens and outdoor spaces around how you want to use them and how much upkeep you want. Plants are chosen for the local climate, whether that is Coimbatore's heat or the cooler Nilgiris, and drainage, irrigation and lighting are planned with the layout. Terraces and balconies can be planted too.",
       "icon": "Trees",
       "features": [
-        "Garden layout & planting plan",
-        "Lawns, pathways & driveways",
-        "Drip & sprinkler irrigation",
-        "Outdoor lighting & seating areas",
-        "Terrace & balcony gardens"
+        "Garden layout and planting plan",
+        "Lawns, paths and driveways",
+        "Drip and sprinkler irrigation",
+        "Outdoor lighting and seating",
+        "Terrace and balcony gardens",
+        "Drainage planned with the layout"
       ]
     },
     {
       "slug": "bank-valuation-report",
       "title": "Bank Valuation Report",
-      "shortDescription": "Property valuation reports for home loans, mortgages, commercial financing, and banking compliance.",
-      "description": "We prepare authoritative, bank-approved property valuation and appraisal reports accepted by leading nationalized and private banks. Our registered valuers conduct rigorous on-site inspections, land cost assessments, and structural depreciation analyses to provide precise valuation certifications for home loans, mortgages, asset declarations, and visa processing.",
+      "shortDescription": "Property valuation reports for home loans, mortgages and loans against property, prepared after a site inspection.",
+      "description": "A bank valuation report states what a property is worth and how that value was reached. We check the documents, inspect and measure the property, and prepare the report in the format your bank asks for. The same report can support visa, net worth and family property decisions. Acceptance is decided by the bank, so check which valuers it accepts.",
       "icon": "Landmark",
       "features": [
-        "Home Loan Approvals",
-        "Mortgage & Financing Valuation",
-        "Fair Market Value Assessment",
-        "Depreciation & Land Evaluation",
-        "Signed valuation report",
-        "Tax & Visa Net Worth Reports"
+        "Document check",
+        "Site inspection and measurements",
+        "Land and building valuation",
+        "Report in your bank's format",
+        "Site photographs",
+        "Use for loans, visas and net worth"
       ]
     },
     {
       "slug": "structural-stability-certificate",
       "title": "Structural Stability Certificate",
-      "shortDescription": "Official stability certifications, load audits, and structural safety assessments for residential, industrial, and commercial premises.",
-      "description": "Structural stability inspections and safety certificates prepared by our structural engineers. We verify structural soundness, load-bearing capacities, seismic resilience, and foundation health for factory license renewals, school/college building clearances, commercial occupancy approvals, and vintage building renovations.",
+      "shortDescription": "An engineer's inspection and certificate confirming that a building is structurally safe for its use.",
+      "description": "Schools, factories and some licensing authorities ask for a structural stability certificate. Our structural engineers inspect the building, check its columns, beams, slabs and foundations for distress, test the concrete where needed, and certify whether it is fit for its use. Any repairs needed first are listed in the report.",
       "icon": "ShieldCheck",
       "features": [
-        "Factory & Industrial Clearances",
-        "School & Commercial Approvals",
-        "Load-bearing & NDT Audits",
-        "Seismic Resilience Analysis",
-        "Vintage Building Fitness Report",
-        "Engineer sign-off"
+        "Inspection of the structure",
+        "Crack and corrosion survey",
+        "Concrete testing where needed",
+        "Load review for the building's use",
+        "Repairs listed if needed",
+        "Certificate in the required format"
       ]
     },
     {
       "slug": "detailed-estimation-costing",
       "title": "Detailed Estimation & Costing (BOQ)",
-      "shortDescription": "Itemized quantity surveys, Bill of Quantities (BOQ), material estimation, and budget feasibility forecasts.",
-      "description": "Comprehensive itemized cost estimation and Bill of Quantities (BOQ) prepared with micro-level accuracy. We break down concrete volumes, steel tonnage, brickwork, finishing materials, and labor schedules to protect you against budget overflows and enable transparent contractor tendering.",
+      "shortDescription": "Itemised estimates and bills of quantities that show exactly what a building will cost, item by item.",
+      "description": "A rate per square foot hides what is included. A bill of quantities lists every item of work with its quantity and rate, so you can see what you are paying for, compare contractor quotes fairly and plan your payments. We prepare BOQs from your drawings and check the quantities and rates against standard schedules of rates.",
       "icon": "Calculator",
       "features": [
-        "Line-Item Bill of Quantities (BOQ)",
-        "Material Quantity Take-offs",
-        "Labor & Machinery Schedules",
-        "Budget Overrun Protection",
-        "Contractor Tender Analysis",
-        "Stage-wise Cash Flow Planning"
+        "Itemised bill of quantities",
+        "Material quantities",
+        "Labour and stage-wise costs",
+        "Comparison of contractor quotes",
+        "Cash flow plan by stage",
+        "Checks against standard rates"
       ]
     },
     {
       "slug": "chartered-engineer-valuation",
       "title": "Chartered Engineer & Technical Valuation",
-      "shortDescription": "Technical asset appraisals, machinery valuation, customs certification, and government regulatory clearances.",
-      "description": "Engineer-prepared technical valuation services for industrial machinery, commercial infrastructure, and corporate fixed assets. We deliver legally valid technical documentation for customs clearances, bank collateral, asset liquidation, insurance audits, and legal dispute resolutions.",
+      "shortDescription": "Engineer valuations of machinery, industrial buildings and other fixed assets, for banks, audits, insurance and customs.",
+      "description": "Businesses need technical valuations for bank loans, audits, insurance claims, customs and insolvency matters. We inspect the assets, assess their condition, age and replacement cost, and prepare a report to the requirements of whoever asked for it.",
       "icon": "FileCheck",
       "features": [
-        "Plant & Machinery Valuation",
-        "Customs & EPCG Clearance",
-        "Bank Collateral Assessment",
-        "Insurance Asset Certification",
-        "Mergers & Asset Liquidation",
-        "Legal & Statutory Compliance"
+        "Plant and machinery valuation",
+        "Industrial building valuation",
+        "Reports for bank loans",
+        "Reports for insurance and audits",
+        "Customs and EPCG reports",
+        "Insolvency and asset sale reports"
       ]
     },
     {
       "slug": "property-acquisition-advisory",
       "title": "Property Acquisition Advisory",
-      "shortDescription": "Strategic counsel for identifying, evaluating, and securing high-potential residential and commercial properties.",
-      "description": "Our property acquisition advisory service guides discerning buyers through every stage of the acquisition journey, from market intelligence and location shortlisting to legal due diligence, negotiation strategy, and registration support. We combine deep local market expertise with rigorous technical assessment to ensure every investment decision is informed, protected, and positioned for long-term value appreciation.",
+      "shortDescription": "Help finding and checking a property before you buy: documents, approvals, condition and value.",
+      "description": "Property purchases go wrong most often in the documents. We help you find suitable properties, check the title, encumbrance certificate and approvals before you pay an advance, inspect the building if there is one, and support you through registration. Any concerns are reported to you in writing.",
       "icon": "MapPin",
       "features": [
-        "Market intelligence & location analysis",
-        "Legal title verification & due diligence",
-        "Fair market value negotiation",
-        "DTCP & local planning authority approval verification",
-        "Registration & stamp duty guidance",
-        "Post-acquisition development advisory"
+        "Property search to your brief",
+        "Title and document checks",
+        "Approval checks",
+        "Building condition check",
+        "Value assessment",
+        "Registration support"
       ]
     },
     {
       "slug": "land-plot-transactions",
       "title": "Land & Plot Transactions",
-      "shortDescription": "End-to-end facilitation of premium residential and commercial land acquisitions, sales, and plot development.",
-      "description": "We facilitate seamless land and plot transactions for buyers, sellers, and developers, handling everything from property sourcing, boundary verification, and legal encumbrance checks to negotiation, documentation, and sub-registrar formalities. Our deep knowledge of local zoning laws, DTCP layouts, and municipal bylaws ensures every transaction is legally sound and investment-grade.",
+      "shortDescription": "Support for buying or selling land: title checks, boundary survey, approvals and registration.",
+      "description": "Land deals depend on clean documents and correct boundaries. We check the title chain and encumbrance records, survey the boundaries against the FMB sketch, check zoning and layout approvals, and support the sale deed, registration and mutation.",
       "icon": "Map",
       "features": [
-        "Premium plot sourcing & curation",
-        "Boundary survey & FMB verification",
-        "Encumbrance & title chain audit",
-        "Zoning & land-use compliance check",
-        "Sale deed & registration facilitation",
-        "Plot development feasibility analysis"
+        "Plot search to your brief",
+        "Title chain and EC check",
+        "Boundary survey against the FMB sketch",
+        "Zoning and approval check",
+        "Sale deed and registration support",
+        "Development feasibility check"
       ]
     },
     {
       "slug": "real-estate-investment-consulting",
       "title": "Real Estate Investment Consulting",
-      "shortDescription": "Data-driven advisory for maximizing returns on residential, commercial, and mixed-use property investments.",
-      "description": "Our real estate investment consulting practice delivers institutional-grade market analysis, yield forecasting, and risk assessment for individual investors, NRIs, and corporate entities. We evaluate micro-market dynamics, infrastructure growth corridors, rental yield potential, and capital appreciation trajectories to build conviction behind every property investment decision.",
+      "shortDescription": "Advice on where and what to buy as an investment, based on location, rental demand and risk.",
+      "description": "We help investors, including NRIs, decide where and what to buy. We look at how a location is growing, the rent a property can earn, the risks in the specific property and its documents, and when you might sell. You get our reasoning and the data behind it, not just a recommendation.",
       "icon": "TrendingUp",
       "features": [
-        "Micro-market growth analysis",
-        "Rental yield & ROI forecasting",
-        "NRI investment advisory & compliance",
-        "Infrastructure corridor mapping",
-        "Risk assessment & exit strategy",
-        "Diversified portfolio construction"
+        "Location and growth analysis",
+        "Rental yield estimates",
+        "Property-specific risk check",
+        "NRI investment support",
+        "Exit planning",
+        "Portfolio review"
       ]
     },
     {
       "slug": "property-portfolio-management",
       "title": "Property Portfolio Management",
-      "shortDescription": "Comprehensive stewardship of multi-property holdings, from tenant acquisition and lease management to asset optimization.",
-      "description": "We provide end-to-end portfolio management services for property owners holding multiple residential, commercial, or mixed-use assets. Our team handles tenant sourcing, lease documentation, rent collection, periodic property inspections, maintenance coordination, and strategic disposition planning, allowing owners to realize maximum returns with zero operational burden.",
+      "shortDescription": "Tenants, rent, maintenance and monthly reports for owners who cannot manage their property themselves.",
+      "description": "If you own property you cannot look after yourself, including from abroad, we can manage it for you. We find and screen tenants, collect rent, arrange maintenance and repairs, inspect the property regularly, and send you a monthly report.",
       "icon": "LayoutDashboard",
       "features": [
-        "Tenant sourcing & screening",
-        "Lease documentation & compliance",
-        "Rent collection & disbursement",
-        "Property inspection & maintenance",
-        "Asset performance reporting",
-        "Strategic disposition planning"
+        "Tenant search and screening",
+        "Lease agreements",
+        "Rent collection",
+        "Maintenance and repairs",
+        "Regular inspections",
+        "Monthly owner reports"
       ]
     }
   ],
@@ -1742,5 +1745,6 @@
       "location": null,
       "title": "404: This page could not be found."
     }
-  ]
+  ],
+  "servicesCopyUpdated": "2026-10-23: service copy rewritten in plain English (services pages content task)"
 }

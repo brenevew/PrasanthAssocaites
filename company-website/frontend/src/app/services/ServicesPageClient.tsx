@@ -217,7 +217,7 @@ export default function ServicesPageClient() {
                       <div className="flex flex-wrap items-center gap-2 mb-4">
                         {spec.sla && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-bold text-gold-dark bg-white/80 border border-border/70 px-2 py-0.5 rounded-lg nm-inset">
-                            <Clock size={11} className="text-gold" />
+                            <CheckCircle2 size={11} className="text-gold" />
                             <span>{spec.sla}</span>
                           </span>
                         )}
@@ -235,10 +235,10 @@ export default function ServicesPageClient() {
                       {service.description}
                     </p>
 
-                    {/* Sunken Key Capabilities Box */}
+                    {/* Sunken "What's included" box */}
                     <div className="nm-inset rounded-2xl p-5 mb-6">
                       <h4 className="text-[10px] font-bold uppercase tracking-widest text-charcoal/70 mb-3">
-                        Key Capabilities &amp; Specifications
+                        What&apos;s included
                       </h4>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {service.features.map((feature) => (

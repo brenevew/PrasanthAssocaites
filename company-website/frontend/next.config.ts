@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { legacyRedirects } from "./src/data/legacyRedirects";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -14,6 +15,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...legacyRedirects,
       {
         source: "/services/turnkey-construction",
         destination: "/services/turnkey-design-build-coimbatore",

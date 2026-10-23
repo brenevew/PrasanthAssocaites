@@ -1,0 +1,79 @@
+{
+  "base": "http://127.0.0.1:3113",
+  "rows": [
+    {
+      "width": 1440,
+      "path": "/services/residential-construction",
+      "faqCount": 4,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "path": "/services/villa-construction",
+      "faqCount": 4,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "path": "/services/architectural-designs",
+      "faqCount": 4,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "path": "/services/commercial-construction",
+      "faqCount": 3,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "path": "/services/plumbing-drawings",
+      "faqCount": 3,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "path": "/blog/questions-to-ask-building-contractor-coimbatore-nilgiris",
+      "regionalHeadingsVisible": true,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "path": "/services/residential-construction",
+      "faqCount": 4,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "path": "/services/villa-construction",
+      "faqCount": 4,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "path": "/services/architectural-designs",
+      "faqCount": 4,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "path": "/services/commercial-construction",
+      "faqCount": 3,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "path": "/services/plumbing-drawings",
+      "faqCount": 3,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "path": "/blog/questions-to-ask-building-contractor-coimbatore-nilgiris",
+      "regionalHeadingsVisible": true,
+      "pass": true
+    }
+  ],
+  "javaScriptDisabledRegionalContent": "PASS",
+  "uncaughtErrors": []
+}

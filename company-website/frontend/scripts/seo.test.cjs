@@ -56,7 +56,14 @@ test("sitemap includes every service once, retains public pages and omits redire
     const included = urls.includes(`${SITE_URL}/projects/${project.slug}`);
     assert.equal(included, load("src/data/projects.ts").hasDetailsPage(project), project.slug);
   }
-  assert.ok(sitemap.every((entry) => entry.lastModified === undefined));
+  // Only blog articles carry a date, and it must be the article's real publish date.
+  const { blogPosts } = load("src/data/blog.ts");
+  for (const entry of sitemap) {
+    const post = blogPosts.find((p) => entry.url === `${SITE_URL}/blog/${p.slug}`);
+    if (post) assert.equal(entry.lastModified.toISOString().slice(0, 10), post.datePublished, post.slug);
+    else assert.equal(entry.lastModified, undefined, entry.url);
+  }
+  assert.ok(urls.includes(`${SITE_URL}/blog`));
 });
 
 test("footer and FAQ service links reach canonical, indexable landing pages", () => {
@@ -75,6 +82,46 @@ test("turnkey short URL permanently redirects to the canonical page", async () =
   const redirect = (await config.redirects()).find((entry) => entry.source === "/services/turnkey-construction");
   assert.equal(redirect?.destination, getServicePath("turnkey-construction"));
   assert.equal(redirect?.permanent, true);
+});
+
+test("every retired d24468b URL permanently reaches an indexable replacement without a redirect chain", async () => {
+  const historical = require("../seo-reports/legacy-urls-d24468b.json");
+  const redirects = await load("next.config.ts").default.redirects();
+  const urls = new Set(load("src/app/sitemap.ts").default().map((entry) => entry.url));
+  assert.equal(historical.urls.length, 26);
+  assert.equal(new Set(redirects.map((entry) => entry.source)).size, redirects.length);
+  for (const source of historical.urls) {
+    const redirect = redirects.find((entry) => entry.source === source);
+    assert.ok(redirect, `Missing historical URL: ${source}`);
+    assert.equal(redirect.permanent, true, source);
+    assert.ok(urls.has(SITE_URL + redirect.destination), source);
+    assert.ok(!urls.has(SITE_URL + source), source);
+    assert.ok(!redirects.some((entry) => entry.source === redirect.destination), source);
+    assert.ok(redirect.destination.startsWith(source.startsWith("/guides/") ? "/blog/" : "/services/"), source);
+  }
+});
+
+test("blog metadata and links reference indexable pages and documented completed projects", () => {
+  const { blogPosts } = load("src/data/blog.ts");
+  const { projects, hasDetailsPage } = load("src/data/projects.ts");
+  const urls = new Set(load("src/app/sitemap.ts").default().map((entry) => entry.url));
+  assert.equal(new Set(blogPosts.map((post) => post.slug)).size, blogPosts.length);
+  assert.equal(new Set(blogPosts.map((post) => post.seoTitle)).size, blogPosts.length);
+  assert.equal(new Set(blogPosts.map((post) => post.description)).size, blogPosts.length);
+  for (const post of blogPosts) {
+    assert.ok(urls.has(`${SITE_URL}/blog/${post.slug}`), post.slug);
+    assert.ok(post.description && post.imageAlt, post.slug);
+    for (const slug of post.relatedServices) assert.ok(services.some((service) => service.slug === slug), slug);
+    for (const slug of post.relatedProjects || []) {
+      const project = projects.find((entry) => entry.slug === slug);
+      assert.ok(project && project.status === "completed" && hasDetailsPage(project), `${post.slug}: ${slug}`);
+    }
+    for (const reference of post.references || []) assert.equal(new URL(reference.href).protocol, "https:");
+    const text = post.body.flatMap((block) => "p" in block ? [block.p] : "h2" in block ? [block.h2] : "ul" in block ? block.ul : block.ol).join(" ");
+    for (const [, href] of text.matchAll(/\[[^\]]+\]\((\/[^)]+)\)/g)) {
+      assert.ok(urls.has(SITE_URL + new URL(href, SITE_URL).pathname), `${post.slug}: ${href}`);
+    }
+  }
 });
 
 test("enquiry analytics discard addresses, free text, arbitrary slugs and URL query data", () => {
