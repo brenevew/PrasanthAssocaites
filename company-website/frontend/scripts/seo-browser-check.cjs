@@ -29,10 +29,12 @@ if (submit) assert.ok(/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(base));
     const alias = await context.request.get(base + "/services/turnkey-construction?utm_source=seo-check", { maxRedirects: 0 });
     assert.equal(alias.status(), 308);
     assert.ok(alias.headers().location.includes("/services/turnkey-design-build-coimbatore?utm_source=seo-check"));
-    const invalidQuote = await context.request.get(base + "/request-quote?service=seo-missing-service");
-    assert.equal(invalidQuote.status(), 404);
-    assert.match(await invalidQuote.text(), /name="robots" content="noindex"/);
-    results.push("Turnkey alias permanently redirects; unknown quote services return 404 and noindex");
+    // /request-quote is prerendered (per-request rendering hit Cloudflare's CPU
+    // limit, error 1102), so an unknown service is flagged noindex in the browser.
+    await page.goto(base + "/request-quote?service=seo-missing-service", { waitUntil: "networkidle" });
+    await page.getByRole("heading", { name: "Service not found" }).waitFor();
+    assert.equal(await page.locator('head meta[name="robots"][content="noindex"]').count(), 1);
+    results.push("Turnkey alias permanently redirects; unknown quote services show not-found and noindex");
 
     const noScript = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1440, height: 1000 } });
     try {

@@ -56,12 +56,15 @@ test("sitemap includes every service once, retains public pages and omits redire
     const included = urls.includes(`${SITE_URL}/projects/${project.slug}`);
     assert.equal(included, load("src/data/projects.ts").hasDetailsPage(project), project.slug);
   }
-  // Only blog articles carry a date, and it must be the article's real publish date.
+  // Articles carry their real revision (or publish) date. Other pages carry the
+  // git date of their source files from lastModified.json, or none — never the build time.
   const { blogPosts } = load("src/data/blog.ts");
+  const sourceDates = new Set(Object.values(require("../src/data/lastModified.json")));
   for (const entry of sitemap) {
     const post = blogPosts.find((p) => entry.url === `${SITE_URL}/blog/${p.slug}`);
-    if (post) assert.equal(entry.lastModified.toISOString().slice(0, 10), post.datePublished, post.slug);
-    else assert.equal(entry.lastModified, undefined, entry.url);
+    const date = entry.lastModified?.toISOString().slice(0, 10);
+    if (post) assert.equal(date, post.dateModified ?? post.datePublished, post.slug);
+    else if (entry.url !== `${SITE_URL}/blog`) assert.ok(date === undefined || sourceDates.has(date), entry.url);
   }
   assert.ok(urls.includes(`${SITE_URL}/blog`));
 });
@@ -102,7 +105,7 @@ test("every retired d24468b URL permanently reaches an indexable replacement wit
 });
 
 test("blog metadata and links reference indexable pages and documented completed projects", () => {
-  const { blogPosts } = load("src/data/blog.ts");
+  const { blogPosts, blockText } = load("src/data/blog.ts");
   const { projects, hasDetailsPage } = load("src/data/projects.ts");
   const urls = new Set(load("src/app/sitemap.ts").default().map((entry) => entry.url));
   assert.equal(new Set(blogPosts.map((post) => post.slug)).size, blogPosts.length);
@@ -117,7 +120,7 @@ test("blog metadata and links reference indexable pages and documented completed
       assert.ok(project && project.status === "completed" && hasDetailsPage(project), `${post.slug}: ${slug}`);
     }
     for (const reference of post.references || []) assert.equal(new URL(reference.href).protocol, "https:");
-    const text = post.body.flatMap((block) => "p" in block ? [block.p] : "h2" in block ? [block.h2] : "ul" in block ? block.ul : block.ol).join(" ");
+    const text = post.body.flatMap(blockText).join(" ");
     for (const [, href] of text.matchAll(/\[[^\]]+\]\((\/[^)]+)\)/g)) {
       assert.ok(urls.has(SITE_URL + new URL(href, SITE_URL).pathname), `${post.slug}: ${href}`);
     }

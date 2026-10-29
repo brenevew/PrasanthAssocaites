@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Brand (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3.5 group text-charcoal select-none">
-              <img src="/images/PrasanthAssociates-logo.png" alt="Prasanth Associates Logo" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
+              <img src="/images/PrasanthAssociates-logo.png" alt="Prasanth Associates Logo" width={250} height={320} loading="lazy" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
               <div className="flex flex-col leading-tight">
                 <div className="flex items-center gap-1.5 font-heading">
                   <span className="font-bold text-xl text-charcoal tracking-tight">Prasanth</span>
@@ -44,7 +44,7 @@ export default function Footer() {
                   className="block w-11 h-11 rounded-xl overflow-hidden shadow-xs hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
                   aria-label={`Visit our ${platform} page`}
                 >
-                  <img src={`/images/social/${platform}.svg`} alt="" width={44} height={44} className="w-full h-full" />
+                  <img src={`/images/social/${platform}.svg`} alt="" width={44} height={44} loading="lazy" className="w-full h-full" />
                 </a>
               ))}
             </div>
@@ -115,7 +115,7 @@ export default function Footer() {
                 <span className="w-9 h-9 rounded-xl bg-white border border-border shadow-2xs flex items-center justify-center flex-shrink-0">
                   <Phone size={14} className="text-gold-dark" />
                 </span>
-                <a href={`tel:${company.phone}`} className="text-charcoal hover:text-gold-dark text-sm transition-colors mt-1.5 font-medium">
+                <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="text-charcoal hover:text-gold-dark text-sm transition-colors mt-1.5 font-medium">
                   {company.phone}
                 </a>
               </li>

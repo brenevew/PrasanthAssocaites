@@ -94,13 +94,13 @@ export default function ProjectCard({ project, priority = false }: ProjectCardPr
             <Image
               key={img.src}
               src={img.src}
-              alt={projectPhotoAlt(project, img.src)}
+              alt={projectPhotoAlt(project, img.src, images.length > 1 ? i + 1 : undefined)}
               fill
               className={`object-cover transition-opacity duration-500 ${
                 i === index ? "opacity-100" : "opacity-0"
               }`}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              priority={priority && i === 0}
+              loading={priority && i === 0 ? "eager" : "lazy"}
               {...blurProps(img.src)}
             />
           ) : null

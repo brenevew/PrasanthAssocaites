@@ -109,7 +109,7 @@ export default function ServicesPageClient() {
               <em className="text-gold-dark not-italic">Design</em> Services
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
-              From individual luxury residences to large-scale commercial &amp; industrial developments, delivered with precision, transparency, and architectural distinction.
+              Construction, design, valuation and property services from our offices in Coimbatore and Gudalur. Every quote is an itemised BoQ, with the price fixed for the agreed scope.
             </p>
           </ScrollReveal>
         </div>
@@ -237,9 +237,9 @@ export default function ServicesPageClient() {
 
                     {/* Sunken "What's included" box */}
                     <div className="nm-inset rounded-2xl p-5 mb-6">
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-charcoal/70 mb-3">
+                      <h3 className="text-[10px] font-bold uppercase tracking-widest text-charcoal/70 mb-3">
                         What&apos;s included
-                      </h4>
+                      </h3>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {service.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-2">

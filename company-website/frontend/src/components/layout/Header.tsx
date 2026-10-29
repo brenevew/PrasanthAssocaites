@@ -13,6 +13,7 @@ import { company } from "@/data/company";
 import { mainNavItems } from "@/data/navigation";
 import { serviceCategories, plannableSlugs, designSlugs } from "@/data/serviceCategories";
 import { Service, services } from "@/data/services";
+import { getServicePath } from "@/data/serviceRoutes";
 import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
 import MobileNav from "./MobileNav";
 
@@ -84,6 +85,8 @@ export default function Header() {
               <img
                 src="/images/PrasanthAssociates-logo.png"
                 alt="Prasanth Associates Logo"
+                width={250}
+                height={320}
                 className="w-8 h-8 md:w-9 md:h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]"
               />
               <div className="flex flex-col leading-tight">
@@ -251,11 +254,15 @@ export default function Header() {
                                     {currentServices.map((svc) => {
                                       const SvcIcon = iconMap[svc.icon] || Building2;
 
+                                      // A real link to the service page; a plain click
+                                      // opens the service card instead, as before.
                                       return (
-                                        <button
+                                        <Link
                                           key={svc.slug}
-                                          type="button"
-                                          onClick={() => {
+                                          href={getServicePath(svc.slug)}
+                                          onClick={(e) => {
+                                            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                                            e.preventDefault();
                                             setIsServicesOpen(false);
                                             setSelectedServiceModal(svc);
                                           }}
@@ -276,7 +283,7 @@ export default function Header() {
                                               <ArrowRight size={11} className="group-hover:translate-x-1 transition-transform" />
                                             </div>
                                           </div>
-                                        </button>
+                                        </Link>
                                       );
                                     })}
                                   </div>

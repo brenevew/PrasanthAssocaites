@@ -112,7 +112,7 @@ export default function Lightbox({ images, index, onClose, onNavigate }: Lightbo
             fill
             className="object-contain"
             sizes="100vw"
-            priority
+            loading="eager"
             {...blurProps(current.src)}
           />
         </div>

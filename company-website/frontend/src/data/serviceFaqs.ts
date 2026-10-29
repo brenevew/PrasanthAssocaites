@@ -22,7 +22,7 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
   "residential-construction": [
     {
       q: "What does house construction with Prasanth Associates include?",
-      a: "The agreed scope can cover design, approval drawings, foundation and structure, waterproofing, electrical and plumbing, flooring and finishes. Ask for an itemised estimate with written inclusions, exclusions and the process for changes. Our [builder-selection guide](/blog/questions-to-ask-building-contractor-coimbatore-nilgiris) explains how to compare the proposed scope with completed work.",
+      a: "The agreed scope can cover design, approval drawings, foundation and structure, waterproofing, electrical and plumbing, flooring and finishes. Ask for an itemised estimate with written inclusions, exclusions and the process for changes. Our [builder-selection guide](/blog/questions-to-ask-building-contractor-coimbatore-nilgiris) explains how to compare the proposed scope with completed work. If you are weighing up contract types, see [turnkey, labour contract or item-rate](/blog/turnkey-vs-labour-contract).",
     },
     {
       q: "How long does it take to build a house?",
@@ -62,7 +62,7 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
     },
     {
       q: "Can you build in a busy town centre?",
-      a: "Yes. [Sasthapuri Hotels](/projects/sasthapruri) is a 38,879 sq. ft. commercial building completed in Gudalur in 2016. Its case study records limited working and storage space, phased construction and coordination of material movement. For a new town-centre site, access and storage arrangements need to be assessed for that particular project.",
+      a: "Yes. [Sasthapuri Hotels](/projects/sasthapuri) is a 38,879 sq. ft. commercial building completed in Gudalur in 2016. Its case study records limited working and storage space, phased construction and coordination of material movement. For a new town-centre site, access and storage arrangements need to be assessed for that particular project.",
     },
     {
       q: "Where do you take commercial projects?",

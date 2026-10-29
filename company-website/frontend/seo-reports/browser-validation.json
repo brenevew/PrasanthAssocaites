@@ -1,8 +1,8 @@
 {
-  "base": "http://127.0.0.1:3113",
+  "base": "http://127.0.0.1:3100",
   "mockSubmissions": false,
   "results": [
-    "Turnkey alias permanently redirects; unknown quote services return 404 and noindex",
+    "Turnkey alias permanently redirects; unknown quote services show not-found and noindex",
     "Headings and page content remain visible without JavaScript on home, services, project and contact pages",
     "All four sector filters preserve 8/6/4/4 services",
     "Existing title click opens modal; option choices reach the quote form",

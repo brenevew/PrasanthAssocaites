@@ -3,93 +3,59 @@ import { services } from "@/data/services";
 import { getServicePath } from "@/data/serviceRoutes";
 import { projects, hasDetailsPage } from "@/data/projects";
 import { blogPosts } from "@/data/blog";
+import lastModified from "@/data/lastModified.json";
 import { SITE_URL } from "@/lib/seo";
 
+type PageGroup = keyof typeof lastModified;
+
+// The date of the last commit to a page's source files (scripts/lastmod.mjs),
+// so lastmod changes only when the content does. Omitted rather than guessed.
+function modified(group: PageGroup): Pick<MetadataRoute.Sitemap[number], "lastModified"> {
+  const date = lastModified[group];
+  return date ? { lastModified: new Date(`${date}T00:00:00Z`) } : {};
+}
+
+// changefreq and priority are left out: Google ignores both.
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
 
-  // Core static routes
   const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/`,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/services`,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/property-investment`,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/plan-home`,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/request-quote`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/coimbatore`,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/locations/nilgiris-ooty`,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations/gudalur`,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
+    { url: `${baseUrl}/`, ...modified("home") },
+    { url: `${baseUrl}/services`, ...modified("services") },
+    { url: `${baseUrl}/property-investment`, ...modified("propertyInvestment") },
+    { url: `${baseUrl}/projects`, ...modified("projects") },
+    { url: `${baseUrl}/plan-home`, ...modified("planHome") },
+    { url: `${baseUrl}/about`, ...modified("about") },
+    { url: `${baseUrl}/contact`, ...modified("contact") },
+    { url: `${baseUrl}/request-quote`, ...modified("requestQuote") },
+    { url: `${baseUrl}/locations/coimbatore`, ...modified("coimbatore") },
+    { url: `${baseUrl}/locations/nilgiris-ooty`, ...modified("nilgiris") },
+    { url: `${baseUrl}/locations/gudalur`, ...modified("gudalur") },
   ];
 
-  // Dynamic project routes
   // Only projects with a written case study; placeholder pages are noindex until filled in.
   const projectRoutes: MetadataRoute.Sitemap = projects.filter(hasDetailsPage).map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
     images: [...new Set([project.image, ...project.galleryImages])].map((src) => `${baseUrl}${src}`),
-    changeFrequency: "monthly",
-    priority: 0.75,
+    ...modified("projectPages"),
   }));
 
-  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
-    url: `${baseUrl}${getServicePath(service.slug)}`,
-    changeFrequency: "monthly",
-    priority: 0.9,
-  }));
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => {
+    const path = getServicePath(service.slug);
+    return {
+      url: `${baseUrl}${path}`,
+      ...modified(path === "/services/turnkey-design-build-coimbatore" ? "turnkey" : "servicePages"),
+    };
+  });
 
-  // Articles carry their real publish date as lastModified.
+  // Articles carry their own dates: the revision date when set, else the publish date.
+  const postDate = (post: (typeof blogPosts)[number]) => post.dateModified ?? post.datePublished;
+  const newestPost = blogPosts.map(postDate).sort().at(-1);
   const blogRoutes: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}/blog`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/blog`, ...(newestPost ? { lastModified: new Date(`${newestPost}T00:00:00Z`) } : {}) },
     ...blogPosts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(`${post.datePublished}T00:00:00Z`),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
+      lastModified: new Date(`${postDate(post)}T00:00:00Z`),
     })),
   ];
 

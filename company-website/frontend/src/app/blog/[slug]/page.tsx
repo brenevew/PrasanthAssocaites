@@ -71,6 +71,42 @@ function Block({ block }: { block: BlogBlock }) {
       </p>
     );
   }
+  if ("table" in block) {
+    const { caption, head, rows } = block.table;
+    return (
+      <div className="mb-8 overflow-x-auto rounded-2xl border border-border">
+        <table className="w-full min-w-[520px] text-left text-sm md:text-base">
+          <caption className="caption-top px-4 pt-4 pb-2 text-left text-xs font-bold uppercase tracking-wider text-concrete-light">
+            {caption}
+          </caption>
+          <thead className="bg-linen">
+            <tr>
+              {head.map((cell) => (
+                <th key={cell} scope="col" className="px-4 py-3 font-semibold text-charcoal">{cell}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, r) => (
+              <tr key={r} className="border-t border-border align-top">
+                {row.map((cell, c) =>
+                  c === 0 ? (
+                    <th key={c} scope="row" className="px-4 py-3 font-semibold text-charcoal">
+                      <Inline text={cell} />
+                    </th>
+                  ) : (
+                    <td key={c} className="px-4 py-3 text-concrete leading-relaxed">
+                      <Inline text={cell} />
+                    </td>
+                  )
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
   const items = "ul" in block ? block.ul : block.ol;
   const Tag = "ul" in block ? "ul" : "ol";
   return (
@@ -103,7 +139,16 @@ export default async function BlogPostPage({ params }: Props) {
   const projectCases = projects.filter((project) =>
     post.relatedProjects?.includes(project.slug) && project.status === "completed" && hasDetailsPage(project)
   );
-  const others = blogPosts.filter((entry) => entry.slug !== post.slug).slice(0, 3);
+  // Posts sharing a service with this one first, then the same category, then the rest.
+  const relevance = (entry: (typeof blogPosts)[number]) =>
+    (entry.relatedServices.some((slug) => post.relatedServices.includes(slug)) ? 2 : 0) +
+    (entry.category === post.category ? 1 : 0);
+  const others = blogPosts
+    .filter((entry) => entry.slug !== post.slug)
+    .map((entry, index) => ({ entry, index }))
+    .sort((a, b) => relevance(b.entry) - relevance(a.entry) || a.index - b.index)
+    .slice(0, 3)
+    .map(({ entry }) => entry);
 
   return (
     <>
@@ -118,10 +163,10 @@ export default async function BlogPostPage({ params }: Props) {
               description: post.description,
               image: `${SITE_URL}${post.image}`,
               datePublished: post.datePublished,
-              dateModified: post.datePublished,
+              dateModified: post.dateModified ?? post.datePublished,
               author: { "@id": ORG_ID },
               publisher: { "@id": ORG_ID },
-              mainEntityOfPage: url,
+              mainEntityOfPage: { "@type": "WebPage", "@id": url },
               inLanguage: "en-IN",
               ...(projectCases.length ? {
                 citation: projectCases.map((project) => ({
@@ -146,7 +191,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Hero, matching the project pages */}
       <section className="relative h-[55vh] min-h-[460px] mt-[-104px]">
         <div className="absolute inset-0 z-0">
-          <Image src={post.image} alt={post.imageAlt} fill className="object-cover" priority sizes="100vw" {...blurProps(post.image)} />
+          <Image src={post.image} alt={post.imageAlt} fill className="object-cover" loading="eager" fetchPriority="high" sizes="100vw" {...blurProps(post.image)} />
           <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,26,26,0.92)] via-[rgba(26,26,26,0.45)] to-transparent" />
         </div>
         <div className="container relative z-10 h-full flex flex-col justify-end pb-14 max-w-4xl">

@@ -1,10 +1,7 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
-import RequestQuoteClient from "./RequestQuoteClient";
-import { connection } from "next/server";
+import RequestQuoteClient, { RequestQuoteFromUrl } from "./RequestQuoteClient";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
-import { notFound } from "next/navigation";
-import { services } from "@/data/services";
 
 export const metadata: Metadata = {
   title: "Request a Construction Quote",
@@ -25,31 +22,17 @@ export const metadata: Metadata = {
   ),
 };
 
-interface RequestQuotePageProps {
-  searchParams: Promise<{ service?: string | string[] }>;
-}
-
-export default async function RequestQuotePage({ searchParams }: RequestQuotePageProps) {
-  const { service } = await searchParams;
-  const slug = Array.isArray(service) ? service[0] : service;
-  // Validate before the Suspense boundary so invalid services produce a real
-  // 404 with noindex rather than an indexable HTTP 200 error page.
-  if (slug && !services.some((item) => item.slug === slug)) notFound();
-
-  // Render per request: the client reads ?service= via useSearchParams, which
-  // would otherwise bail out to client-only rendering and ship an empty page
-  // (no H1, no content) to crawlers.
-  await connection();
-
+/**
+ * Prerendered, so Cloudflare serves it from the cache instead of rendering per
+ * request (which hit error 1102, the Worker CPU limit). The static HTML is the
+ * default service's form; RequestQuoteFromUrl swaps in the ?service= one in the
+ * browser. An unknown ?service= shows the "Service not found" card — it can no
+ * longer be a server 404, but the canonical keeps such URLs out of the index.
+ */
+export default function RequestQuotePage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-[var(--canvas-bg)] flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-gold-dark border-t-transparent rounded-full animate-spin" />
-        </div>
-      }
-    >
-      <RequestQuoteClient />
+    <Suspense fallback={<RequestQuoteClient query="" />}>
+      <RequestQuoteFromUrl />
     </Suspense>
   );
 }

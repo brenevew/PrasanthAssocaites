@@ -47,7 +47,7 @@ export function GET() {
 
 - Head office: Gandhipuram, Coimbatore
 - Branch office: Gudalur, The Nilgiris
-- Service area, Coimbatore (head office, Gandhipuram): Coimbatore and surrounding areas, including Saravanampatti, Vadavalli, Thudiyalur, Peelamedu, RS Puram, Kalapatti, Sulur and Mettupalayam
+- Service area, Coimbatore (head office, Gandhipuram): Coimbatore district; the company has built in Gandhipuram and Perur and takes projects across Coimbatore
 - Service area, The Nilgiris (branch office, Gudalur): the whole district; the company has built in Gudalur, Ooty, Coonoor and Kotagiri
 - Every service below is offered in both Coimbatore and the Nilgiris, based on the project's requirements
 - Pricing model: itemized Bill of Quantities (BoQ) signed before construction starts; the price is fixed for the agreed scope

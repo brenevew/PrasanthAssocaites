@@ -86,6 +86,7 @@ means editing these, not a CMS.
 | `services.ts` | `services: Service[]` | The service catalogue. `{ slug, title, shortDescription, description, icon, features[] }` |
 | `serviceCategories.ts` | `serviceCategories`, `plannableSlugs`, `designSlugs` | Groups services into 4 categories by slug list |
 | `serviceQuoteData.ts` | `serviceQuoteSpecs: Record<slug, ServiceQuoteSpec>` | Largest data file. Per-service quote page content: SLA, deliverables, steps, guarantee, and the two option pickers |
+| `servicePageContent.ts` | `servicePageContent: Record<slug, …>` | Four "How it works" steps and three related services per service landing page |
 | `projects.ts` | `projects`, `projectCategories` | Portfolio; drives `/projects` and `/projects/[slug]` |
 | `navigation.ts` | `mainNavItems`, `footerNavItems`, `footerServiceLinks`, `footerLocationLinks`, `footerServiceAreaLinks` | All nav link lists |
 | `testimonials.ts`, `process.ts`, `quality.ts`, `designGallery.ts`, `imageBlur.ts` | — | Homepage/about section content |
@@ -115,14 +116,16 @@ maps renders `undefined` and can crash the page. Add the icon to every map.
 | `/` | Server + client sections | Homepage |
 | `/services` | Server → `ServicesPageClient` | All services, category filter, cards open the detail card |
 | `/services/turnkey-design-build-coimbatore` | Server | Long-form SEO service+city landing page |
+| `/services/[slug]` | Server, static | Landing page for each of the other 21 services. Layout is `components/services/ServiceLanding.tsx`, shared with the turnkey page. Metadata/schema from `lib/serviceSeo.ts`, URLs from `data/serviceRoutes.ts`. See `../Docs/SEO.md` |
 | `/projects`, `/projects/[slug]` | Server → client | Portfolio and detail |
-| `/locations/coimbatore`, `/locations/nilgiris-ooty`, `/locations/gudalur` | Server | Real office locations. Full `LocalBusiness` schema with address |
-| `/service-areas/tiruppur` | Server | Area served **without** an office. Deliberately no address and no `LocalBusiness` schema — see §9 |
+| `/blog`, `/blog/[slug]` | Server, static | Articles from `data/blog.ts`. Paragraphs support `[text](/path)` links. No `dynamicParams = false` (it 404s on Cloudflare) |
+| `/locations/coimbatore`, `/locations/nilgiris-ooty`, `/locations/gudalur` | Server | Real office locations. Full `LocalBusiness` schema with address. Layout is `components/locations/LocationLanding.tsx`; copy and FAQs in `data/locationPages.ts` |
+| `/service-areas/*` | Redirect | The Tiruppur page was removed; `next.config.ts` redirects it (301) to `/locations/nilgiris-ooty` |
 | `/plan-home` | Server → `PlanHomeClient` | Building Planner (two variants) |
 | `/request-quote` | Server → `RequestQuoteClient` | Per-service quote form; reads `?service=&f1=&f2=` |
 | `/contact`, `/about`, `/property-investment` | Server → client | Standard pages |
 | `/how-it-works`, `/request-design` | Server | `permanentRedirect()` (308) to `/about#how-it-works` and `/plan-home` |
-| `/sitemap.xml`, `/robots.txt` | `sitemap.ts`, `robots.ts` | Generated. **New pages must be added to `sitemap.ts` by hand** |
+| `/sitemap.xml`, `/robots.txt` | `sitemap.ts`, `robots.ts` | Generated. **New pages must be added to `sitemap.ts` by hand**, and to a group in `scripts/lastmod.mjs` for their `lastmod` |
 | `/api/upload`, `/api/sync-sheets`, `/api/projects` | Route handlers | See §7 |
 
 ## 6. Design system — "Neu-Glassmorphism"
@@ -208,6 +211,8 @@ secret store — **never commit them**. Template: `frontend/.env.example`.
 | `NEXT_PUBLIC_APP_ENV` | public | no | `development` / `production` |
 | `GOOGLE_SHEETS_WEBHOOK_URL` | server | for forms | Apps Script `/exec` URL |
 | `GOOGLE_SHEETS_SHARED_SECRET` | server | recommended | Must match the `SHARED_SECRET` script property in Apps Script. `openssl rand -hex 24` |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | public, **build-time** | production | GA4 ID `G-NJWX2XYRQZ`. Leave empty in dev; no tag loads without it. See `lib/ga4.ts` |
+| `NEXT_PUBLIC_GA_DEBUG` | public, build-time | no | `true` routes events to GA4 DebugView. Never in production |
 | `NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` | server | multi-replica only | Stable key across replicas or Server Actions break on rolling deploys. `openssl rand -base64 32` |
 
 If credentials are lost: create a new Google Sheet, redeploy
@@ -216,19 +221,36 @@ and set the two `GOOGLE_SHEETS_*` variables. Nothing else depends on secrets.
 
 ## 9. SEO architecture
 
-Deliberate and load-bearing — preserve it when making changes.
+Deliberate and load-bearing — preserve it when making changes. The owner-facing
+guide (all 22 service URLs, claims the site may make, post-deploy checks) is
+`../Docs/SEO.md`. Run `npm run test:seo` after editing service copy; it checks the
+text against `seo-reports/baseline.json`.
 
 - **`layout.tsx`** sets `metadataBase`, a title template `%s | Prasanth Associates`,
-  default OpenGraph, and a site-wide JSON-LD graph (`GeneralContractor` +
-  `WebSite`) built from `company.ts`, listing all 13 service cities in `areaServed`.
+  default OpenGraph, optional Search Console verification
+  (`GOOGLE_SITE_VERIFICATION`), and a site-wide JSON-LD graph (`GeneralContractor` +
+  `WebSite`) built from `company.ts`: geo, hours, `knowsAbout`, an
+  `OfferCatalog` of every service (URLs are `/services#<slug>` anchors), and an
+  `areaServed` limited to places the site's own pages describe serving.
+- **`lib/seo.ts`** holds `SITE_URL`, the shared JSON-LD ids (`ORG_ID`,
+  `COIMBATORE_OFFICE_ID`, `GUDALUR_BRANCH_ID`) and `pageOpenGraph()`;
+  `components/seo/JsonLd.tsx` renders schema safely. The two office nodes are
+  built once in `lib/officeSchema.ts`; the org links them as `subOrganization`.
+  Never re-declare `#organization` on a page — Google merges nodes by `@id`.
+- **`/llms.txt`** is a plain-text fact sheet for AI search, generated from the
+  same data as the pages. `npm run seo:audit` crawls the sitemap for SEO
+  problems; `npm run indexnow` pings Bing after a deploy (key file in `public/`).
 - **Titles** are kept ≤ ~60 characters so Google doesn't truncate the brand.
   The root `page.tsx` must include the brand explicitly — Next does **not** apply
   a layout's title template to a page in the same segment.
 - **Every page sets its own canonical** via `alternates.canonical`.
 - **OpenGraph images**: a page defining its own `openGraph` block *replaces* the
-  parent's rather than merging, so each such page must repeat `images`.
+  parent's rather than merging, so build it with `pageOpenGraph()` (default
+  image `/images/og/og-default.jpg`, 1200×630).
 - **Per-page JSON-LD**: `Service`, `FAQPage`, `BreadcrumbList`, and
-  `HomeAndConstructionBusiness` for real offices. Serialize with
+  `HomeAndConstructionBusiness` for real offices. `FAQPage` is only ever
+  generated from the same array that renders the visible questions (home:
+  `data/homeFaqs.ts` via `HomeFaq`); never add FAQ schema for hidden content. Serialize with
   `JSON.stringify(x).replace(/</g, "\\u003c")`.
 - **Offices vs service areas is an honesty rule, not a style choice.** Pages
   under `/locations/` are real staffed offices and carry a postal address.
@@ -294,12 +316,23 @@ Deliberate and load-bearing — preserve it when making changes.
   `npm run dev` and loading the page, not by reading the diff.
 - **`AGENTS.md` is regenerated by `next dev`.** If it reappears as an uncommitted
   change, commit it with your work rather than reverting.
+- **Keep every page static (`○`/`●` in `next build`).** A page rendered per
+  request (`ƒ`: server `searchParams`, `connection()`, `cookies()`) runs React
+  in the Worker on every hit and trips Cloudflare error 1102 (CPU limit). Read
+  query strings with `useSearchParams()` inside `<Suspense>`, with a fallback
+  that renders the default content — see `projects/page.tsx`.
 - Check `npx tsc --noEmit` and `npx eslint` before considering a change done.
 - Some pre-existing lint warnings (unused imports, `<img>` usage) are expected;
   don't treat them as regressions.
 - **Known dead code**: `components/ui/RequestDesignForm.tsx` is imported nowhere
   (`/request-design` is now a redirect). `nilgirisHubs` in
   `locations/nilgiris-ooty/page.tsx` is defined but never rendered.
-- **Known gaps**: `/privacy` and `/terms` are linked in the footer but return
-  404. `http://` does not redirect to `https://` (fix in Cloudflare →
-  SSL/TLS → Always Use HTTPS, not in code).
+- **Known gaps**: there are no `/privacy` or `/terms` pages (the footer no
+  longer links to them). `http://` → `https://` and `www` → apex both redirect
+  (Cloudflare settings, not code).
+- **Sitemap `lastmod`** comes from `src/data/lastModified.json`, written by
+  `scripts/lastmod.mjs` (run by `npm run build`) from the git date of each page
+  group's source files. Blog posts use `dateModified` in `data/blog.ts`, set
+  only when a post is materially revised.
+- **Cache headers for `public/`** live in `public/_headers`: Cloudflare serves
+  those files as static assets and never applies `next.config.ts` `headers()`.

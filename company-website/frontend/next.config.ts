@@ -3,6 +3,8 @@ import { legacyRedirects } from "./src/data/legacyRedirects";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // Don't advertise the framework in an `x-powered-by` header.
+  poweredByHeader: false,
   images: {
     // Source photos are already WebP at display resolution. Serving WebP only
     // (no AVIF) keeps first-request encoding cheap, which matters because a
@@ -16,6 +18,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       ...legacyRedirects,
+      {
+        // The slug was misspelt; keep the old URL's links and rankings.
+        source: "/projects/sasthapruri",
+        destination: "/projects/sasthapuri",
+        permanent: true,
+      },
       {
         source: "/services/turnkey-construction",
         destination: "/services/turnkey-design-build-coimbatore",

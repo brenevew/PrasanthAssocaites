@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { ArrowRight, Search, X } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -19,6 +20,24 @@ interface ProjectsClientProps {
   initialCategory: ProjectCategory | "all";
   initialSearch: string;
   initialView: ProjectsView;
+}
+
+/**
+ * Seeds the filters from ?category=&q=&view=. useSearchParams() suspends while
+ * the page is prerendered, so the page wraps this in a Suspense boundary whose
+ * fallback is <ProjectsClient> with the default filters — the full grid still
+ * ships in the static HTML.
+ */
+export function ProjectsFromUrl({ allProjects }: { allProjects: Project[] }) {
+  const searchParams = useSearchParams();
+  return (
+    <ProjectsClient
+      allProjects={allProjects}
+      initialCategory={(searchParams.get("category") as ProjectCategory | "all") || "all"}
+      initialSearch={searchParams.get("q") || ""}
+      initialView={searchParams.get("view") === "designs" ? "designs" : "projects"}
+    />
+  );
 }
 
 export default function ProjectsClient({
@@ -156,7 +175,7 @@ export default function ProjectsClient({
                       src={item.image}
                       alt=""
                       fill
-                      priority
+                      loading="eager"
                       className={`object-cover transition-transform duration-700 group-hover:scale-105 ${active ? "" : "saturate-[0.85]"}`}
                       sizes="(max-width: 640px) 50vw, 512px"
                       {...blurProps(item.image)}

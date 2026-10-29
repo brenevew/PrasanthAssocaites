@@ -167,7 +167,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       {
         heading: "Commercial building work and renovation around Gudalur",
         paragraphs: [
-          "Town-centre construction brings a different set of constraints. [Sasthapuri Hotels](/projects/sasthapruri), a 38,879 sq. ft. commercial building completed in Gudalur in 2016, required phased construction, organised storage and coordination within limited working space. If you are planning shops, offices or a hospitality building, explain the intended use, customer access, service requirements and fit-out scope alongside the proposed floor area.",
+          "Town-centre construction brings a different set of constraints. [Sasthapuri Hotels](/projects/sasthapuri), a 38,879 sq. ft. commercial building completed in Gudalur in 2016, required phased construction, organised storage and coordination within limited working space. If you are planning shops, offices or a hospitality building, explain the intended use, customer access, service requirements and fit-out scope alongside the proposed floor area.",
           "For an existing estate building, start with its condition and the changes you need. Our [Manjushree Director's Building renovation](/projects/manjushree) at New Hope, O'Valley, involved a 4,904 sq. ft. British-era building in a plantation setting. An engineer's assessment should inform proposed alterations. Discuss [renovation services](/services/renovation) with the available drawings, photographs and records of earlier work.",
         ],
       },
@@ -222,7 +222,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       },
       {
         q: "What have you built in Gudalur?",
-        a: "Our Gudalur work includes the [Pricol Limited tea bungalow](/projects/pricol), [Sasthapuri Hotels](/projects/sasthapruri) in the town centre and a [2,617 sq. ft. family house](/projects/residential-construction-project) completed in 2025.",
+        a: "Our Gudalur work includes the [Pricol Limited tea bungalow](/projects/pricol), [Sasthapuri Hotels](/projects/sasthapuri) in the town centre and a [2,617 sq. ft. family house](/projects/residential-construction-project) completed in 2025.",
       },
       {
         q: "Do you also work in Ooty, Coonoor and Kotagiri?",

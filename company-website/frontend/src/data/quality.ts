@@ -8,31 +8,31 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Structural Engineering",
     description:
-      "Every project is designed with detailed structural calculations, ensuring foundations, beams, columns, and slabs are engineered for long-term durability and safety.",
+      "Foundations, beams, columns and slabs are sized from structural calculations, and the site follows the approved structural drawings.",
     icon: "Shield",
   },
   {
     title: "Soil Analysis",
     description:
-      "Before construction begins, comprehensive soil testing determines bearing capacity, water table depth, and soil composition to inform foundation design.",
+      "Where the site calls for it, soil testing for bearing capacity and water table depth informs the foundation design before work starts.",
     icon: "Layers",
   },
   {
     title: "Concrete Quality",
     description:
-      "We use design-mix concrete with strict quality protocols, slump tests, cube testing, and proper curing schedules to ensure structural integrity.",
+      "Concrete to the grade in the specification, checked with slump and cube tests, and cured to a set schedule.",
     icon: "Box",
   },
   {
     title: "Steel Reinforcement",
     description:
-      "Steel quality is verified through mill certificates and on-site testing. Bar bending schedules follow approved structural drawings with mandatory cover checks.",
+      "Steel checked against mill certificates, with bar bending schedules taken from the approved structural drawings and cover checked before concreting.",
     icon: "Construction",
   },
   {
     title: "Waterproofing",
     description:
-      "Multi-layer waterproofing systems for basements, terraces, bathrooms, and wet areas, using proven membrane and coating technologies.",
+      "Waterproofing for terraces, bathrooms, wet areas and basements, chosen for the exposure each one faces, including Nilgiris rainfall.",
     icon: "Droplets",
   },
   {
@@ -44,25 +44,25 @@ export const qualityCapabilities: QualityCapability[] = [
   {
     title: "Plumbing & Sanitary",
     description:
-      "CPVC and PPR piping systems, pressure testing, proper gradient calculations, and water-efficient fixtures ensure reliable, long-lasting plumbing infrastructure.",
+      "CPVC and PPR piping, pressure-tested and laid to the drainage gradients in the plumbing drawings.",
     icon: "Pipette",
   },
   {
     title: "HVAC Design",
     description:
-      "For commercial and premium residential projects, HVAC systems are designed for energy efficiency, indoor air quality, and occupant comfort.",
+      "For commercial buildings and homes that need it, HVAC is planned with the layout, so ducts and units are not an afterthought.",
     icon: "Wind",
   },
   {
     title: "Fire Safety",
     description:
-      "Fire-rated construction, sprinkler systems, smoke detectors, and compliant evacuation routes are integrated into the design from the beginning.",
+      "The fire safety measures the building type requires, such as fire-rated construction, detectors and exit routes, are planned into the design.",
     icon: "Flame",
   },
   {
     title: "Energy Efficiency",
     description:
-      "Passive design strategies, orientation, natural ventilation, daylighting, and insulation, reduce energy consumption without compromising comfort.",
+      "Orientation, natural ventilation and daylight are considered in the plan, to reduce the energy a building needs.",
     icon: "Sun",
   },
 ];
@@ -77,37 +77,37 @@ export const differentiators: Differentiator[] = [
   {
     title: "Engineering First",
     description:
-      "Every project is designed around structural integrity and long-term durability. We invest in engineering before construction begins.",
+      "Structural drawings and calculations are prepared before construction begins, and the site works from them.",
     icon: "Compass",
   },
   {
     title: "Transparent Pricing",
     description:
-      "Clear, itemized estimates with documented scope. No hidden costs, no ambiguous line items. You know exactly what you're paying for.",
+      "Clear, itemised estimates with documented scope. The price is fixed for the agreed scope, and every line item says what it covers.",
     icon: "FileText",
   },
   {
     title: "Quality Materials",
     description:
-      "Materials are selected based on performance, durability, and suitability, not lowest cost. Every material is verified before use.",
+      "Materials are named in the BoQ by grade and specification, so you know what goes into the building before work starts.",
     icon: "Gem",
   },
   {
     title: "Experienced Team",
     description:
-      "Architects, structural engineers, project managers, and skilled workers, each bringing expertise to their area of responsibility.",
+      "Architects, structural engineers and site engineers in one team, with offices in Coimbatore and Gudalur.",
     icon: "Users",
   },
   {
     title: "Project Management",
     description:
-      "Professional scheduling, milestone tracking, quality checkpoints, and regular progress reporting keep every project organized and on track.",
+      "Work is planned in stages, with checks at each stage and regular progress updates for the owner.",
     icon: "BarChart3",
   },
   {
     title: "Planned Execution",
     description:
-      "Structured planning, proactive material procurement, and disciplined progress tracking minimize delays and deliver projects on schedule.",
+      "Structured planning, proactive material procurement, and disciplined progress tracking keep work moving against the schedule agreed for your project.",
     icon: "Clock",
   },
 ];

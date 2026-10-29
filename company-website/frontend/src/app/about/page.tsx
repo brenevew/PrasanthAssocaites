@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { company } from "@/data/company";
 import { qualityCapabilities } from "@/data/quality";
 import { ShieldCheck, ArrowRight, Upload, Compass, Send, CheckCircle2, Clock } from "lucide-react";
+import Link from "next/link";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -58,12 +59,12 @@ const howItWorksSteps = [
     number: "03",
     title: "Design Delivery & Project Confirmation",
     description:
-      "Usually within 24 hours, you receive your formal project quotation and design brief via email. Once confirmed, our principal architects proceed with your complete 2D CAD floor plans and 3D visualization assets.",
+      "We usually reply within 24 hours. You then receive your project quotation and design brief by email, and once you confirm, our design team prepares your 2D CAD floor plans and 3D views.",
     icon: Send,
     highlights: [
       "Direct email delivery to your inbox",
       "Line-item transparent design scope",
-      "Dedicated lead architect assignment",
+      "Plans and 3D views prepared in-house",
     ],
   },
 ];
@@ -87,19 +88,20 @@ export default function AboutPage() {
           <ScrollReveal>
             <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.22em] uppercase text-gold-dark nm-raised border border-border px-4 py-1.5 rounded-full shadow-2xs mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-dark" />
-              Established &amp; Trusted
+              Offices in Coimbatore &amp; Gudalur
             </span>
             <h1
               className="font-heading font-bold text-charcoal mb-6 leading-tight"
               style={{ fontSize: "var(--text-h1)" }}
             >
-              Building Beyond
+              Engineers &amp; Builders for
               <br />
-              <em className="text-gold-dark not-italic">The Surface</em>
+              <em className="text-gold-dark not-italic">Coimbatore &amp; the Nilgiris</em>
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
-              An engineering-driven construction and design firm dedicated to creating structures
-              that stand the test of time through rigorous quality control and precise execution.
+              A construction and design firm with a head office in Gandhipuram, Coimbatore and a
+              branch in Gudalur, The Nilgiris. We have built 100+ homes, as well as a school block,
+              a hotel building and estate bungalows.
             </p>
           </ScrollReveal>
         </div>
@@ -111,30 +113,43 @@ export default function AboutPage() {
           <ScrollReveal className="max-w-3xl mx-auto text-center">
             <span className="badge-gold mb-5 inline-flex">
               <span className="w-1 h-1 rounded-full bg-gold inline-block" />
-              Our Philosophy
+              Who We Are
             </span>
             <h2
               className="font-heading font-bold text-charcoal mb-6 leading-tight"
               style={{ fontSize: "var(--text-h2)" }}
             >
-              Engineering is a{" "}
-              <em className="text-gold not-italic">human responsibility</em>
+              Two offices,{" "}
+              <em className="text-gold not-italic">one design and build team</em>
             </h2>
             <div className="space-y-4 text-concrete text-sm md:text-base leading-relaxed mb-7">
               <p>
-                In an industry often marked by project delays, hidden costs, and compromised
-                quality, Prasanth Associates was established with a singular focus: making
-                construction professional, transparent, and strictly engineering-led.
+                Prasanth Associates designs and builds houses, villas and commercial buildings,
+                and prepares the drawings, estimates and valuations that go with them. Architects
+                and engineers work in the same team, so the plans, the BoQ and the site work are
+                prepared together.
               </p>
               <p>
-                We don&apos;t act merely as builders, but as long-term construction partners.
-                From structural soil analysis to final handovers, every decision is guided by
-                structural safety, aesthetic clarity, and lasting value.
+                Our <Link href="/locations/gudalur" className="text-gold-dark underline underline-offset-2">Gudalur branch</Link> on
+                Ooty Main Road works across{" "}
+                <Link href="/locations/nilgiris-ooty" className="text-gold-dark underline underline-offset-2">the Nilgiris</Link>,
+                where we have built in Gudalur, Ooty, Coonoor and Kotagiri. Our{" "}
+                <Link href="/locations/coimbatore" className="text-gold-dark underline underline-offset-2">Coimbatore head office</Link>{" "}
+                in Gandhipuram serves Coimbatore district, including our work in Gandhipuram and Perur.
               </p>
               <p>
-                Our team combines architects, structural engineers, and project managers under
-                one roof, serving residential, villa, commercial, and industrial clients with
-                consistent technical oversight.
+                Our projects include the{" "}
+                <Link href="/projects/pricol" className="text-gold-dark underline underline-offset-2">Pricol Limited tea bungalow</Link>{" "}
+                in Gudalur (12,120 sq. ft., 2015–2017), whose access route crossed a river;{" "}
+                <Link href="/projects/sasthapuri" className="text-gold-dark underline underline-offset-2">Sasthapuri Hotels</Link>,
+                a 38,879 sq. ft. commercial building in Gudalur town (2014–2016); and a 12,000 sq. ft.
+                block for{" "}
+                <Link href="/projects/rex-school" className="text-gold-dark underline underline-offset-2">Christus Rex Higher Secondary School</Link>{" "}
+                in Ooty (2018–2019).
+              </p>
+              <p>
+                Every quote is an itemised Bill of Quantities, and the price is fixed for the
+                agreed scope. Our clients rate us 4.9★ across 65 Google reviews.
               </p>
             </div>
             <Button href="/contact" variant="primary" size="md">
@@ -188,8 +203,8 @@ export default function AboutPage() {
                 How We Deliver <em className="text-gold not-italic">Your Project</em>
               </h2>
               <p className="text-concrete text-xs md:text-sm leading-relaxed mt-2.5">
-                &quot;Your building deserves a considered engineering design, not an automated estimate.&quot;
-                Discover our rigorous 3-step architectural review and delivery process.
+                How a design project runs, from your first sketch to plans and 3D views. Our team
+                reviews every request; nothing is priced automatically.
               </p>
             </div>
           </ScrollReveal>
@@ -271,9 +286,9 @@ export default function AboutPage() {
         <div className="container max-w-6xl">
           <ScrollReveal>
             <SectionHeading
-              badge="Engineering Rigour"
-              title="Built On Technical Excellence"
-              subtitle="Beautiful design requires an unyielding structural foundation. We enforce strict engineering checks across every stage."
+              badge="Engineering Checks"
+              title="What We Plan For on Site"
+              subtitle="The checks below are planned to suit each building's type and scale. Your BoQ lists the ones that apply to your project."
             />
           </ScrollReveal>
 

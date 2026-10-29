@@ -2,7 +2,7 @@
 
 import { trackLeadEvent } from "@/lib/analytics";
 
-import React, { useState, useRef, useMemo, useEffect } from "react";
+import React, { useState, useRef, useMemo, useEffect, useId } from "react";
 import {
   X,
   User,
@@ -204,6 +204,8 @@ interface SimplePlannerFormProps {
 }
 
 export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps) {
+  // Ties each visible label to its input, for screen readers and agents.
+  const fieldId = useId();
   const formTopRef = useRef<HTMLDivElement>(null);
 
   /* Selected Project Type (Residential vs Commercial) */
@@ -645,9 +647,11 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <div>
-                  <label className="block text-[9px] font-bold uppercase text-concrete mb-1">Plot Length &amp; Width (ft) *</label>
+                  <label htmlFor={`${fieldId}-plot-length`} className="block text-[9px] font-bold uppercase text-concrete mb-1">Plot Length &amp; Width (ft) *</label>
                   <div className="flex items-center gap-1">
                     <input
+                      id={`${fieldId}-plot-length`}
+                      aria-label="Plot length (ft)"
                       type="number"
                       required
                       value={plotLength}
@@ -657,6 +661,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                     />
                     <span className="text-concrete font-bold text-xs">×</span>
                     <input
+                      aria-label="Plot width (ft)"
                       type="number"
                       required
                       value={plotWidth}
@@ -668,8 +673,9 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                 </div>
 
                 <div>
-                  <label className="block text-[9px] font-bold uppercase text-concrete mb-1">Project Name (Optional)</label>
+                  <label htmlFor={`${fieldId}-project-name`} className="block text-[9px] font-bold uppercase text-concrete mb-1">Project Name (Optional)</label>
                   <input
+                    id={`${fieldId}-project-name`}
                     type="text"
                     value={projectName}
                     onChange={e => setProjectName(e.target.value)}
@@ -859,8 +865,9 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                           {/* Length & Breadth Inputs */}
                           <div className="grid grid-cols-2 gap-3">
                             <div>
-                              <label className="block text-[9px] font-bold uppercase text-concrete mb-1">Floor Length (ft)</label>
+                              <label htmlFor={`${fieldId}-floor-${fl.id}-length`} className="block text-[9px] font-bold uppercase text-concrete mb-1">Floor Length (ft)</label>
                               <input
+                                id={`${fieldId}-floor-${fl.id}-length`}
                                 type="number"
                                 required
                                 value={fl.length}
@@ -871,8 +878,9 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                             </div>
 
                             <div>
-                              <label className="block text-[9px] font-bold uppercase text-concrete mb-1">Floor Width (ft)</label>
+                              <label htmlFor={`${fieldId}-floor-${fl.id}-width`} className="block text-[9px] font-bold uppercase text-concrete mb-1">Floor Width (ft)</label>
                               <input
+                                id={`${fieldId}-floor-${fl.id}-width`}
                                 type="number"
                                 required
                                 value={fl.breadth}
@@ -1017,8 +1025,9 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                     4. Commercial Building Details
                   </span>
                   <div>
-                    <label className="block text-[9px] font-bold uppercase tracking-wider text-concrete mb-1">Building Category</label>
+                    <label htmlFor={`${fieldId}-commercial-type`} className="block text-[9px] font-bold uppercase tracking-wider text-concrete mb-1">Building Category</label>
                     <select
+                      id={`${fieldId}-commercial-type`}
                       value={commercialType}
                       onChange={e => {
                         const newType = e.target.value;

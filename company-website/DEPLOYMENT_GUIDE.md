@@ -107,6 +107,11 @@ a push to `main` triggers a build — there is no deployment config in this repo
    | `GOOGLE_SHEETS_WEBHOOK_URL` | `https://script.google.com/macros/s/.../exec` | Secret |
    | `GOOGLE_SHEETS_SHARED_SECRET` | the token from step 1 | Secret |
    | `NEXT_PUBLIC_SITE_URL` | `https://prasanthassociates.com` | Plaintext |
+   | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-NJWX2XYRQZ` | Plaintext, **build variable** |
+
+   `NEXT_PUBLIC_*` values are baked into the JavaScript at build time. On
+   Cloudflare they must be available to the **build** (Settings → Build →
+   Variables and secrets), not only as runtime variables, or GA4 won't load.
 
 4. **Redeploy.** Variables are read at deploy time, so an existing deployment
    will not pick them up on its own.

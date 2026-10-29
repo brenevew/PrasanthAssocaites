@@ -20,7 +20,7 @@ const service = services.find((entry) => entry.slug === "turnkey-construction")!
 const faqs: ServiceFaq[] = [
   {
     q: "What does turnkey construction include?",
-    a: "One contract covers the soil test, design, structural and services drawings, help with plan approval, construction and interiors. You deal with one team and one schedule, and the scope is written into an itemised BoQ before any work starts.",
+    a: "One contract covers the soil test, design, structural and services drawings, help with plan approval, construction and interiors. You deal with one team and one schedule, and the scope is written into an itemised BoQ before any work starts. Our [comparison of turnkey, labour and item-rate contracts](/blog/turnkey-vs-labour-contract) shows how this differs from managing a labour contractor yourself.",
   },
   {
     q: "How long does a turnkey house take in Coimbatore?",

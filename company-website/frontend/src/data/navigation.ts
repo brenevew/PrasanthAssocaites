@@ -29,11 +29,15 @@ export const footerServiceLinks: NavItem[] = [
   { label: "Commercial Building Contracting", href: "/services/commercial-construction" },
   { label: "Turnkey Design & Build", href: "/services/turnkey-design-build-coimbatore" },
   { label: "Industrial & Factory Construction", href: "/services/industrial-factory-construction" },
+  { label: "Building Plans & Architectural Design", href: "/services/architectural-designs" },
+  { label: "Structural Drawings", href: "/services/structural-drawings" },
+  { label: "Interior Design", href: "/services/interior-designs" },
   { label: "Structural Stability Certificate", href: "/services/structural-stability-certificate" },
   { label: "Bank Valuation Reports", href: "/services/bank-valuation-report" },
 ];
 
 export const footerLocationLinks: NavItem[] = [
   { label: "Coimbatore (HQ)", href: "/locations/coimbatore" },
+  { label: "Ooty & the Nilgiris", href: "/locations/nilgiris-ooty" },
   { label: "Gudalur", href: "/locations/gudalur" },
 ];

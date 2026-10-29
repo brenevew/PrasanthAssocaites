@@ -36,7 +36,7 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Smart home automation for Coimbatore and Nilgiris properties: lighting, climate control, access security and structured cabling by Prasanth Associates.",
   },
   renovation: {
-    title: "Renovation & Retrofitting in the Nilgiris",
+    title: "House Renovation, Coimbatore & Nilgiris",
     description: "Renovation and structural retrofitting in the Nilgiris and Coimbatore, including layout changes, column strengthening, waterproofing and MEP upgrades.",
   },
   "construction-work-consulting": {
@@ -72,7 +72,7 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Property valuation reports in Coimbatore and the Nilgiris for home loans, mortgages and commercial financing, with site inspection and value assessment.",
   },
   "structural-stability-certificate": {
-    title: "Structural Stability Certificates",
+    title: "Stability Certificates, Coimbatore",
     description: "Structural stability assessments in Coimbatore and the Nilgiris for factories, schools and commercial buildings, including load reviews and inspections.",
   },
   "detailed-estimation-costing": {
@@ -96,7 +96,7 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Real estate investment consulting in Coimbatore and the Nilgiris, covering local market analysis, rental yields, risk assessment and investment planning.",
   },
   "property-portfolio-management": {
-    title: "Property Portfolio Management",
+    title: "Property Management, Coimbatore",
     description: "Property portfolio management in Coimbatore and the Nilgiris: tenant sourcing, leases, rent collection, inspections, maintenance and asset reporting.",
   },
 };

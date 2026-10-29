@@ -3,8 +3,9 @@ import { company } from "@/data/company";
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://prasanthassociates.com").replace(/\/+$/, "");
 
-/** Stable JSON-LD ids, so every page's schema points at the same two entities. */
+/** Stable JSON-LD ids, so every page's schema points at the same entities. */
 export const ORG_ID = `${SITE_URL}#organization`;
+export const COIMBATORE_OFFICE_ID = `${SITE_URL}#coimbatore-office`;
 export const GUDALUR_BRANCH_ID = `${SITE_URL}#gudalur-branch`;
 
 /** 1200×630 JPG: the size and format every social platform previews reliably. */

@@ -128,7 +128,8 @@ export default async function ProjectDetailPage({ params }: Props) {
             alt={projectPhotoAlt(project, project.image)}
             fill
             className="object-cover"
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
             {...blurProps(project.image)}
           />
@@ -148,7 +149,14 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <span className="text-sm font-semibold tracking-wider uppercase text-gold">{project.type}</span>
               )}
               <span className="w-1.5 h-1.5 rounded-full bg-concrete-lighter" />
-              {locationLink ? (
+              {locationLink?.href === "/locations/gudalur" && project.location.endsWith(", The Nilgiris") ? (
+                // Gudalur projects also point at the Nilgiris hub page.
+                <span className="text-sm font-medium text-concrete-lighter">
+                  <Link href={locationLink.href}>{project.location.replace(/, The Nilgiris$/, "")}</Link>
+                  {", "}
+                  <Link href="/locations/nilgiris-ooty">The Nilgiris</Link>
+                </span>
+              ) : locationLink ? (
                 <Link href={locationLink.href} className="text-sm font-medium text-concrete-lighter">
                   {project.location}
                 </Link>
@@ -271,10 +279,11 @@ export default async function ProjectDetailPage({ params }: Props) {
                   <div key={idx} className="relative aspect-[4/3] w-full group">
                     <Image
                       src={img}
-                      alt={projectPhotoAlt(project, img)}
+                      alt={projectPhotoAlt(project, img, idx + 1)}
                       fill
                       className="object-cover border border-border"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      // The gallery column caps each photo at about 400px wide on desktop.
+                      sizes="(max-width: 768px) 100vw, 400px"
                       loading="lazy"
                       {...blurProps(img)}
                     />

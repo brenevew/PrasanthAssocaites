@@ -15,6 +15,11 @@ module.exports = function loadTs(file) {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
   }).outputText;
   const resolve = (id) => {
+    if (id.endsWith(".json")) {
+      // Shaped like an ES module, so `import data from "x.json"` finds `.default`.
+      const data = require(id.startsWith("@/") ? path.resolve(root, "src", id.slice(2)) : path.resolve(path.dirname(absolute), id));
+      return { __esModule: true, default: data, ...data };
+    }
     if (id.startsWith("@/")) return module.exports(`src/${id.slice(2)}.ts`);
     if (id.startsWith(".")) return module.exports(path.resolve(path.dirname(absolute), `${id}.ts`));
     return require(id);

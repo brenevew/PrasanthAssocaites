@@ -129,7 +129,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "sasthapruri",
+    slug: "sasthapuri",
     title: "Sasthapuri Hotels",
     location: "Gudalur, The Nilgiris",
     category: "commercial",
@@ -210,6 +210,7 @@ export const projects: Project[] = [
   {
     slug: "rex-school",
     title: "Christus Rex Higher Secondary School",
+    seoTitle: "Christus Rex HSS School Building, Ooty",
     location: "Kandal, Ooty, The Nilgiris",
     category: "commercial",
     status: "completed",
@@ -323,7 +324,7 @@ export const projects: Project[] = [
       "/images/projects/Renovation/manjushree-residential-building-under-renovation-prasanth-associates-1.webp",
       "/images/projects/Renovation/manjushree-residential-building-under-renovation-prasanth-associates-2.webp",
     ],
-    seoTitle: "Manjushree Director's Building Renovation",
+    seoTitle: "Manjushree Building Renovation, Nilgiris",
     seoDescription:
       "Renovation of the British-era Director's Building at Manjushree Plantation, New Hope, O'Valley in the Nilgiris, set among cardamom plants.",
     shortDescription:
@@ -413,6 +414,7 @@ export const projects: Project[] = [
   {
     slug: "residential-building-perur-coimbatore",
     title: "Residential Building in Perur",
+    seoTitle: "Residential Building, Perur, Coimbatore",
     location: "Perur, Coimbatore",
     category: "residential",
     status: "completed",
@@ -447,14 +449,28 @@ export const projects: Project[] = [
   },
 ];
 
-/** Descriptive alt text for a project photo; marks under-construction and under-renovation shots. */
-export function projectPhotoAlt(project: Pick<Project, "title" | "type">, src: string): string {
+/**
+ * Alt text for a project photo: the project, where it is, and whether the shot
+ * is under construction or renovation. Pass `photo` (1-based) where several
+ * photos of one project appear together, so each gets its own alt.
+ */
+export function projectPhotoAlt(project: Pick<Project, "title" | "location">, src: string, photo?: number): string {
+  // Only the parts of the location the title doesn't already name.
+  const parts = project.location.split(", ").filter((part) => !project.title.includes(part));
+  const place = !parts.length
+    ? ""
+    : parts.length === project.location.split(", ").length
+      ? ` in ${project.location}`
+      : `, ${parts.join(", ")}`;
   const stage = src.includes("under-construction")
-    ? " during construction"
+    ? ", under construction"
     : src.includes("under-renovation")
-      ? " during renovation"
+      ? ", under renovation"
       : "";
-  return `${project.title}, ${project.type.toLowerCase()} by Prasanth Associates${stage}`;
+  const number = photo ? `, photo ${photo}` : "";
+  const alt = `${project.title}${place}${stage}, by Prasanth Associates${number}`;
+  // Keep alt text within ~125 characters; the brand is the part to drop.
+  return alt.length <= 125 ? alt : `${project.title}${place}${stage}${number}`;
 }
 
 export type ProjectArea = "coimbatore" | "gudalur" | "nilgiris";

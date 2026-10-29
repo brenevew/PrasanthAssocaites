@@ -1,6 +1,7 @@
 import { Metadata } from "next";
-import ProjectsClient from "./ProjectsClient";
-import { projects, type ProjectCategory } from "@/data/projects";
+import { Suspense } from "react";
+import ProjectsClient, { ProjectsFromUrl } from "./ProjectsClient";
+import { projects } from "@/data/projects";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -25,29 +26,25 @@ export const metadata: Metadata = {
   ),
 };
 
-interface ProjectsPageProps {
-  searchParams: Promise<{ category?: string; q?: string; view?: string }>;
-}
-
 /**
- * Filters on the server so the grid — and every photo tag — is in the initial
- * HTML. Previously this page read the filters via useSearchParams(), which
- * pushed the whole portfolio behind a client-render bailout: nothing but a
- * "Loading..." string shipped, and photos only began downloading after
- * hydration. The client component re-filters locally to keep search instant.
+ * Prerendered, so Cloudflare serves it from the cache instead of rendering the
+ * whole portfolio per request (which hit error 1102, the Worker CPU limit).
+ * The static HTML holds the unfiltered grid with every photo tag; the
+ * ?category=&q=&view= filters are applied in the browser by ProjectsFromUrl.
  */
-export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
-  const { category, q, view } = await searchParams;
-
-  const initialCategory = (category as ProjectCategory | "all") || "all";
-  const initialSearch = q || "";
-
-  return (
+export default function ProjectsPage() {
+  const unfiltered = (
     <ProjectsClient
       allProjects={projects}
-      initialCategory={initialCategory}
-      initialSearch={initialSearch}
-      initialView={view === "designs" ? "designs" : "projects"}
+      initialCategory="all"
+      initialSearch=""
+      initialView="projects"
     />
+  );
+
+  return (
+    <Suspense fallback={unfiltered}>
+      <ProjectsFromUrl allProjects={projects} />
+    </Suspense>
   );
 }

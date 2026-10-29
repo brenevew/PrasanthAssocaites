@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { company } from "@/data/company";
 import { services } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -17,7 +16,8 @@ import {
   ChevronRight,
   Building2,
 } from "lucide-react";
-import { SITE_URL, pageOpenGraph } from "@/lib/seo";
+import { SITE_URL, ORG_ID, pageOpenGraph } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 
 const iconMap: Record<
   string,
@@ -30,9 +30,9 @@ const iconMap: Record<
 };
 
 export const metadata: Metadata = {
-  title: "Property & Investment Advisory, Coimbatore",
+  title: "Property Advisory, Coimbatore & Nilgiris",
   description:
-    "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and Tamil Nadu.",
+    "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and the Nilgiris.",
   keywords: [
     "property advisory Coimbatore",
     "land transactions Coimbatore",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: pageOpenGraph(
     "/property-investment",
     "Property & Investment Advisory | Prasanth Associates",
-    "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and Tamil Nadu."
+    "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and the Nilgiris."
   ),
 };
 
@@ -68,47 +68,36 @@ export default function PropertyInvestmentPage() {
 
   return (
     <>
-      {/* Schema.org Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "Service",
-                name: "Property & Investment Advisory",
-                provider: {
-                  "@type": "HomeAndConstructionBusiness",
-                  name: company.name,
-                  url: "https://prasanthassociates.com",
-                  telephone: company.phone,
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Service",
+              "@id": `${SITE_URL}/property-investment#service`,
+              name: "Property & Investment Advisory",
+              serviceType: "Real estate advisory",
+              url: `${SITE_URL}/property-investment`,
+              provider: { "@id": ORG_ID },
+              areaServed: [
+                { "@type": "AdministrativeArea", name: "Coimbatore district" },
+                { "@type": "AdministrativeArea", name: "The Nilgiris" },
+              ],
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": `${SITE_URL}/property-investment#breadcrumb`,
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Property & Investment",
+                  item: `${SITE_URL}/property-investment`,
                 },
-                serviceType: "Real Estate Advisory",
-                areaServed: [
-                  { "@type": "City", name: "Coimbatore" },
-                  { "@type": "AdministrativeArea", name: "Tamil Nadu" },
-                ],
-              },
-              {
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                  {
-                    "@type": "ListItem",
-                    position: 1,
-                    name: "Home",
-                    item: "https://prasanthassociates.com",
-                  },
-                  {
-                    "@type": "ListItem",
-                    position: 2,
-                    name: "Property & Investment",
-                    item: "https://prasanthassociates.com/property-investment",
-                  },
-                ],
-              },
-            ],
-          }).replace(/</g, "\\u003c"),
+              ],
+            },
+          ],
         }}
       />
 
@@ -181,9 +170,9 @@ export default function PropertyInvestmentPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-heading font-bold text-charcoal mb-2.5 leading-snug">
+                    <h2 className="text-xl font-heading font-bold text-charcoal mb-2.5 leading-snug">
                       {service.title}
-                    </h3>
+                    </h2>
 
                     {/* SLA & Credential Badges */}
                     {spec && (
@@ -210,9 +199,9 @@ export default function PropertyInvestmentPage() {
 
                     {/* Sunken "What's included" box */}
                     <div className="nm-inset rounded-2xl p-5 mb-6">
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-charcoal/70 mb-3">
+                      <h3 className="text-[10px] font-bold uppercase tracking-widest text-charcoal/70 mb-3">
                         What&apos;s included
-                      </h4>
+                      </h3>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {service.features.map((feature) => (
                           <li key={feature} className="flex items-start gap-2">

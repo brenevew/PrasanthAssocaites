@@ -63,7 +63,21 @@ export default function ServiceLanding({
   const hasProjects = projects.length > 0;
 
   const glance = [
-    { icon: MapPin, label: "Where we work", value: "Coimbatore and the Nilgiris" },
+    {
+      icon: MapPin,
+      label: "Where we work",
+      value: (
+        <>
+          <Link href="/locations/coimbatore" className="underline decoration-gold/50 underline-offset-2 hover:text-gold-dark">
+            Coimbatore
+          </Link>{" "}
+          and{" "}
+          <Link href="/locations/nilgiris-ooty" className="underline decoration-gold/50 underline-offset-2 hover:text-gold-dark">
+            the Nilgiris
+          </Link>
+        </>
+      ),
+    },
     { icon: Building2, label: "Offices", value: company.offices.map((office) => office.label).join(" and ") },
     { icon: FileText, label: "Quote", value: "In writing, before any work starts" },
     { icon: Clock, label: "Reply", value: "Usually within 24 hours" },

@@ -46,22 +46,22 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     credentialLabel: "Coimbatore and the Nilgiris",
     deliverablesHeading: "What We Deliver For Your Home",
     deliverables: [
-      { title: "100% Vastu Floor Plans", desc: "Scientific spatial alignment for entrance, Agni kitchen, master suite, and natural ventilation." },
+      { title: "Vastu-Aligned Floor Plans", desc: "Scientific spatial alignment for entrance, Agni kitchen, master suite, and natural ventilation." },
       { title: "Earthquake-Resilient RCC", desc: "Heavy Fe550D TMT reinforcement, 53-grade branded cement, and engineered foundation footings." },
       { title: "Branded Material Selection", desc: "Premium vitrified tiles, quality sanitary fittings, and washable premium-finish interior paint." },
       { title: "Multi-Layer Waterproofing", desc: "Chemical polymer barrier on roof slab, sunken wet areas, and subterranean foundation." },
       { title: "Pre-Piped Rainwater & Solar", desc: "Integrated groundwater recharge percolation pit and conduit readiness for rooftop solar PV." },
-      { title: "Zero Surprise Pricing", desc: "Legally backed line-item Bill of Quantities fixing every rupee and material specification." },
+      { title: "Price Fixed for the Agreed Scope", desc: "A line-item Bill of Quantities that names every material specification and fixes the price for the scope you sign off." },
     ],
     highlightBox: {
       title: "Transparent Line-Item BoQ, Price Fixed for the Agreed Scope",
       description: "Your contract lists the materials, quantities and milestone payments line by line, so the price only changes if you change the scope.",
-      badges: ["✓ 100% Vastu Compliant", "✓ Fe550D TMT Steel", "✓ Branded Bath & Electricals", "✓ Multi-Layer Waterproofing"],
+      badges: ["✓ Vastu-Aligned Plans", "✓ Fe550D TMT Steel", "✓ Branded Bath & Electricals", "✓ Multi-Layer Waterproofing"],
     },
     steps: [
       { n: "01", title: "Family Lifestyle & Vastu Layout", body: "Detailed discovery of room dimensions, sunlight orientation, ventilation corridors, and Vastu alignment." },
       { n: "02", title: "Transparent BoQ, Fixed for the Agreed Scope", body: "A specification contract that sets your price for the agreed scope, with every item listed and no hidden clauses." },
-      { n: "03", title: "Milestone-Supervised Construction", body: "Stage-by-stage civil execution verified through rigorous multi-point engineer inspection checklists." },
+      { n: "03", title: "Milestone-Supervised Construction", body: "Civil work checked by our engineer at each stage against a written checklist before the next stage starts." },
     ],
     guarantee: {
       title: "Price Fixed for the Agreed Scope",
@@ -106,7 +106,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     ],
     highlightBox: {
       title: "Crafted for Generations of Elevated Living",
-      description: "Every villa is treated as a unique work of architectural art, executed with zero compromise on material authenticity.",
+      description: "Every villa is treated as a unique work of architectural art, built with the materials named in its specification.",
       badges: ["✓ Double-Height Architecture", "✓ Private Swimming Pool", "✓ Italian Marble & Teak", "✓ Landscaped Courtyards"],
     },
     steps: [
@@ -208,7 +208,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Post-Handover Support", desc: "Defects reported after handover are inspected and attended to, under the terms written into your contract." },
     ],
     highlightBox: {
-      title: "Zero Coordination Overhead for the Owner",
+      title: "One Point of Coordination for the Owner",
       description: "You deal with one trusted engineering partner. No managing multiple masonry, carpentry, electrical, and plumbing vendors.",
       badges: ["✓ Itemised BoQ", "✓ Dedicated Project Manager", "✓ Weekly Progress App", "✓ Key Handover"],
     },
@@ -266,7 +266,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     steps: [
       { n: "01", title: "Contract & Drawing Review", body: "Auditing your architectural drawings, contractor bids, and rate quotes to identify vulnerabilities." },
       { n: "02", title: "Scheduled Site Inspection Visits", body: "On-site quality audits during crucial excavation, footing, slab casting, and masonry stages." },
-      { n: "03", title: "Bill Certification & Sign-off", body: "Certifying contractor bills only for work verified accurate to the millimeter with zero overbilling." },
+      { n: "03", title: "Bill Certification & Sign-off", body: "Certifying contractor bills only for work checked against measured work on site." },
     ],
     guarantee: {
       title: "Independent Technical Oversight",
@@ -317,7 +317,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     },
     steps: [
       { n: "01", title: "Structural Audit & Space Assessment", body: "Non-destructive inspection of existing beams, slab health, foundation settlement, and dampness ingress." },
-      { n: "02", title: "Demolition & Retrofit Engineering", body: "Controlled demolition and structural strengthening with zero vibration damage to adjacent structures." },
+      { n: "02", title: "Demolition & Retrofit Engineering", body: "Controlled demolition and structural strengthening planned to protect adjacent structures." },
       { n: "03", title: "Modern Fitout & Handover", body: "New flooring, high-end sanitaryware, modular joinery, fresh facade styling, and handover." },
     ],
     guarantee: {
@@ -781,7 +781,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     ],
     highlightBox: {
       title: "Empaneled with Leading Financial Institutions",
-      description: "Our valuation reports follow strict Indian Banking Association (IBA) and SARFAESI compliance for seamless loan sanction.",
+      description: "Our valuation reports follow Indian Banks' Association (IBA) and SARFAESI guidelines. The loan decision is the bank's.",
       badges: ["✓ Bank Report Format", "✓ Quick Turnaround", "✓ Site Inspection Included", "✓ Visa & Net Worth Purposes"],
     },
     steps: [
@@ -887,7 +887,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     ],
     highlightBox: {
       title: "Never Face Sudden Mid-Project Price Escalations",
-      description: "Over 80% of construction disputes stem from vague contractor contracts. Our detailed BoQ locks down every rupee in advance.",
+      description: "Vague contractor quotes are a common cause of construction disputes. A detailed BoQ sets out every item and its rate before work starts.",
       badges: ["✓ Itemized Quantity Survey", "✓ Steel & Cement Take-offs", "✓ Contractor Bidding Protection", "✓ Cash Flow Milestone Plan"],
     },
     steps: [
@@ -993,7 +993,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     ],
     highlightBox: {
       title: "Every Acquisition Decision Backed by Data & Due Diligence",
-      description: "We ensure zero legal risk and maximum value by conducting rigorous multi-layer verification before you commit a single rupee.",
+      description: "We check title, approvals and boundaries in layers before you commit any money, so you know the risks before you buy.",
       badges: ["✓ Title Chain Verification", "✓ Fair Market Valuation", "✓ DTCP / LPA Approval Check", "✓ Registration Support"],
     },
     steps: [
@@ -1038,7 +1038,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
     credentialLabel: "Against the FMB sketch",
     deliverablesHeading: "Land Transaction Services",
     deliverables: [
-      { title: "Premium Plot Sourcing & Curation", desc: "Access to exclusive off-market DTCP-approved plots in high-growth residential and commercial corridors." },
+      { title: "Plot Sourcing & Shortlisting", desc: "Shortlisting DTCP-approved plots that match your budget and purpose, residential or commercial." },
       { title: "Boundary Survey & FMB Verification", desc: "Surveyor-conducted boundary verification against Field Measurement Book records and revenue maps." },
       { title: "Encumbrance & Title Chain Audit", desc: "30-year EC verification, parent deed tracing, and legal opinion from empaneled property advocates." },
       { title: "Zoning & Land-Use Compliance", desc: "Verification of DTCP layout approval, CRZ restrictions, agricultural land conversion status, and FSI eligibility." },
@@ -1046,7 +1046,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
       { title: "Development Feasibility Analysis", desc: "Assessing plot potential for construction, FAR limits, setback norms, road width, and infrastructure proximity." },
     ],
     highlightBox: {
-      title: "Investment-Grade Land Transactions with Zero Legal Exposure",
+      title: "Land Transactions Checked Before You Commit",
       description: "Every plot we facilitate is checked for title, boundaries and approvals before you commit.",
       badges: ["✓ DTCP Approved Plots", "✓ FMB Boundary Verified", "✓ 30-Year EC Clearance", "✓ Sub-Registrar Support"],
     },
@@ -1136,7 +1136,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
   "property-portfolio-management": {
     slug: "property-portfolio-management",
     badge: "Comprehensive Property Portfolio Management",
-    tagline: "Full-spectrum stewardship of multi-property holdings, maximizing occupancy, rental yields, and asset value with zero owner overhead.",
+    tagline: "Full-spectrum stewardship of multi-property holdings, handling tenants, rent and upkeep so the owner has less to manage.",
     sla: "Monthly reports",
     slaLabel: "Rent, repairs and inspections",
     credentialBadge: "Tenant screening",

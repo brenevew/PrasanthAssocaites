@@ -15,11 +15,11 @@ import ProjectCard from "@/components/ui/ProjectCard";
 import TestimonialsMarquee from "@/components/ui/TestimonialsMarquee";
 import CTABanner from "@/components/ui/CTABanner";
 import HomeFaq from "@/components/ui/HomeFaq";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "Construction Company in Coimbatore & Nilgiris | Prasanth Associates" },
+  title: { absolute: "Prasanth Associates | Builders in Coimbatore & the Nilgiris" },
   description:
     "House construction, building plans, 3D elevations, interior design and engineering services in Coimbatore, Ooty, Coonoor and Gudalur from Prasanth Associates.",
   keywords: [
@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     "house construction Coimbatore",
     "turnkey construction company Coimbatore",
     "civil contractors Tamil Nadu",
-    "best construction company Coimbatore",
     "construction company near me Coimbatore",
     "architects in Coimbatore",
     "interior designers in Coimbatore",
@@ -46,7 +45,7 @@ export const metadata: Metadata = {
   },
   openGraph: pageOpenGraph(
     "/",
-    "Construction Company in Coimbatore & Nilgiris | Prasanth Associates",
+    "Prasanth Associates | Builders in Coimbatore & the Nilgiris",
     "House construction, building plans, 3D elevations, interior design and engineering services in Coimbatore, Ooty, Coonoor and Gudalur from Prasanth Associates."
   ),
 };
@@ -65,7 +64,8 @@ export default function Home() {
             alt="A home built by Prasanth Associates"
             fill
             className="object-cover"
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
             {...blurProps("/images/hero/hero-main.webp")}
           />
@@ -80,30 +80,44 @@ export default function Home() {
 
         <div className="container relative z-10 pt-32 pb-16">
           <div className="max-w-2xl">
-            {/* Eyebrow */}
-            <ScrollReveal>
-              <span className="nm-raised text-gold-dark px-4.5 py-1.5 rounded-full mb-7 inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase border border-border backdrop-blur-md shadow-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-dark inline-block" />
-                Coimbatore&apos;s Premium Construction &amp; Design Firm
-              </span>
-            </ScrollReveal>
-
             {/* Headline */}
-            <ScrollReveal delay={80}>
+            <ScrollReveal>
               <h1
                 className="font-heading font-bold text-charcoal leading-[1.08] mb-7"
-                style={{ fontSize: "var(--text-display)" }}
+                style={{ fontSize: "var(--text-h1)" }}
               >
-                {company.tagline}
-
+                Construction Company in Coimbatore &amp; the Nilgiris
               </h1>
+              <p className="font-heading text-2xl md:text-3xl text-gold-dark font-semibold -mt-3 mb-7">
+                {company.tagline}
+              </p>
             </ScrollReveal>
 
             {/* Subtext */}
             <ScrollReveal delay={160}>
-              <p className="text-lg md:text-xl text-concrete mb-10 leading-relaxed max-w-xl">
+              <p className="text-lg md:text-xl text-concrete mb-7 leading-relaxed max-w-xl">
                 {company.description}
               </p>
+            </ScrollReveal>
+
+            {/* Offices: each chip links to its location page */}
+            <ScrollReveal delay={200} className="mb-8 flex flex-wrap items-center gap-2.5">
+              <span className="basis-full sm:basis-auto text-[11px] font-bold uppercase tracking-widest text-concrete-light sm:mr-1">
+                Our offices
+              </span>
+              {company.offices.map((office) => (
+                <Link
+                  key={office.label}
+                  href={office.label === "Gudalur" ? "/locations/gudalur" : "/locations/coimbatore"}
+                  className="group inline-flex items-center gap-2 rounded-full border border-border bg-white/70 py-1.5 pl-2 pr-3.5 shadow-2xs backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-gold hover:bg-white"
+                >
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/15 text-gold-dark transition-colors group-hover:bg-charcoal group-hover:text-white">
+                    <MapPin size={13} strokeWidth={2.25} />
+                  </span>
+                  <span className="text-sm font-semibold text-charcoal">{office.label}</span>
+                  <span className="hidden sm:inline text-xs text-concrete">{office.badge}</span>
+                </Link>
+              ))}
             </ScrollReveal>
 
             {/* CTAs */}
@@ -180,28 +194,28 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal mb-7 leading-tight"
                 style={{ fontSize: "var(--text-h2)" }}
               >
-                We don&apos;t just construct
+                100+ homes built across
                 <br />
-                <em className="text-gold not-italic">buildings.</em> We build
-                <br />
-                lasting value.
+                <em className="text-gold not-italic">Coimbatore</em> and the Nilgiris
               </h2>
               <div className="space-y-5 text-concrete leading-relaxed mb-8">
                 <p>
-                  At Prasanth Associates, exceptional construction is the result of rigorous
-                  engineering, precise project management, and uncompromising quality control.
+                  Beyond homes, our work includes a 38,879 sq. ft. hotel building in Gudalur town
+                  and a tea bungalow for Pricol Limited whose access route crossed a river.
+                  Architects and engineers work in one team, so the drawings, the estimate and
+                  the site work are planned together.
                 </p>
                 <p>
-                  Whether it&apos;s a luxury villa or a commercial complex, our approach remains
-                  the same, complete transparency from day one, premium materials, and a
-                  commitment to timelines others consider impossible.
+                  Whether it&apos;s a villa or a commercial building, our approach stays the
+                  same: an itemised BoQ with the price fixed for the agreed scope, named
+                  materials, and a written schedule agreed for your project.
                 </p>
               </div>
               <ul className="space-y-3 mb-10">
                 {[
-                  "100% Transparent Cost Estimation",
+                  "Itemised BoQ, Price Fixed for the Agreed Scope",
                   "In-house Architectural & Engineering Team",
-                  "Strict Timeline Adherence",
+                  "Written Schedule Agreed Up Front",
                   "Post-Handover Support",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-charcoal font-semibold text-sm">
@@ -232,7 +246,7 @@ export default function Home() {
             <SectionHeading
               badge="Portfolio"
               title="Selected Projects"
-              subtitle="A curated selection of our finest residential and commercial work, demonstrating our commitment to quality and architectural excellence."
+              subtitle="A tea bungalow, a hotel building and a school from Gudalur and Ooty, each with site photos and notes on how it was built."
             />
           </ScrollReveal>
 
@@ -268,15 +282,14 @@ export default function Home() {
                     className="font-heading font-bold text-charcoal leading-tight"
                     style={{ fontSize: "var(--text-h2)" }}
                   >
-                    Engineering First.
+                    How We
                     <br />
-                    <em className="text-gold not-italic">Quality</em> Always.
+                    <em className="text-gold not-italic">Work</em>
                   </h2>
                   <div className="gold-line" />
                   <p className="text-concrete leading-relaxed">
-                    We don&apos;t just promise quality; we engineer it into every phase of
-                    construction. Here&apos;s why homeowners and developers trust us with
-                    their most valuable assets.
+                    The engineering, the estimate and the site are handled by one team. This is
+                    what that means for your project.
                   </p>
                 </div>
               </ScrollReveal>

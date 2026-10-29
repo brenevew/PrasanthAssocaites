@@ -63,8 +63,18 @@ const inputClass =
 
 const labelClass = "mb-1.5 block text-xs font-bold uppercase tracking-wider text-concrete";
 
-export default function RequestQuoteClient() {
-  const searchParams = useSearchParams();
+/**
+ * Reads ?service=&f1=&f2=. useSearchParams() suspends while the page is
+ * prerendered, so the page wraps this in a Suspense boundary whose fallback is
+ * <RequestQuoteClient query=""> — the default service's form, with its H1 and
+ * copy, is what ships in the static HTML.
+ */
+export function RequestQuoteFromUrl() {
+  return <RequestQuoteClient query={useSearchParams().toString()} />;
+}
+
+export default function RequestQuoteClient({ query }: { query: string }) {
+  const searchParams = useMemo(() => new URLSearchParams(query), [query]);
   const queryService = searchParams.get("service") || FALLBACK_SLUG;
 
   const currentService = useMemo<Service | undefined>(
@@ -148,6 +158,9 @@ export default function RequestQuoteClient() {
   if (!currentService) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center bg-[var(--canvas-bg)] px-4">
+        {/* The page is static, so an unknown ?service= can't be a server 404.
+            React hoists this into <head>; the canonical also points at /request-quote. */}
+        <meta name="robots" content="noindex" />
         <div className="max-w-md rounded-3xl border border-border bg-white p-8 text-center shadow-lg">
           <h1 className="font-heading text-xl font-bold text-charcoal">Service not found</h1>
           <p className="mt-2 text-sm text-concrete">
@@ -465,7 +478,7 @@ export default function RequestQuoteClient() {
                         <Check size={12} className="text-emerald-600" /> Line-item BoQ
                       </span>
                       <span className="flex items-center gap-1">
-                        <Check size={12} className="text-emerald-600" /> Zero obligation
+                        <Check size={12} className="text-emerald-600" /> No obligation
                       </span>
                     </div>
                   </div>

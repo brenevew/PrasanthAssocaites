@@ -9,7 +9,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import { company } from "@/data/company";
-import { SITE_URL, OG_IMAGE, pageOpenGraph, ORG_ID, GUDALUR_BRANCH_ID } from "@/lib/seo";
+import { SITE_URL, OG_IMAGE, pageOpenGraph, ORG_ID, COIMBATORE_OFFICE_ID, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { services } from "@/data/services";
 import { getServicePath } from "@/data/serviceRoutes";
 import { serviceCategories } from "@/data/serviceCategories";
@@ -22,7 +22,8 @@ const inter = Inter({
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  // Only the weights the site uses; nothing is set in font-light (300).
+  weight: ["400", "500", "600", "700"],
   variable: "--font-cormorant",
   display: "swap",
 });
@@ -98,13 +99,12 @@ const organizationSchema = {
           closes: "18:00",
         },
       ],
-      // The Gudalur branch is described in full (geo, hours, FAQ) on its own
-      // location page under this same @id; here it is only linked.
-      department: { "@id": GUDALUR_BRANCH_ID },
+      // Each office is described in full (lib/officeSchema.ts) on its own
+      // location page under these ids; here they are only linked.
+      subOrganization: [{ "@id": COIMBATORE_OFFICE_ID }, { "@id": GUDALUR_BRANCH_ID }],
       // Only places the site's own pages describe serving.
       areaServed: [
         { "@type": "City", name: "Coimbatore" },
-        { "@type": "City", name: "Mettupalayam" },
         { "@type": "AdministrativeArea", name: "The Nilgiris" },
         { "@type": "City", name: "Ooty" },
         { "@type": "City", name: "Coonoor" },

@@ -57,7 +57,7 @@ export const company: CompanyInfo = {
   tagline: "Building Spaces That Last for Generations",
   disciplines: "Engineers | Architects | Real Estate Developers",
   description:
-    "From architectural design to final handover, we deliver thoughtfully engineered homes and commercial spaces with uncompromising quality.",
+    "From architectural design to final handover, we design and build homes and commercial buildings across Coimbatore and the Nilgiris.",
   phone: "+91 94860 38761", // [PLACEHOLDER]
   email: "info@prasanthassociates.com", // [PLACEHOLDER]
   address: {

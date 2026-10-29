@@ -52,7 +52,7 @@ export default function ContactPageClient() {
               {[
                 "Reply Usually Within 24 Hours",
                 "Free Engineering Consultation",
-                "100% Fixed BoQ Pricing",
+                "Itemised BoQ, Fixed for the Agreed Scope",
               ].map((item) => (
                 <span
                   key={item}

@@ -37,6 +37,8 @@ export default function BlogPage() {
               publisher: { "@id": ORG_ID },
               blogPost: posts.map((post) => ({
                 "@type": "BlogPosting",
+                // Same node as the post's own page, not a second, anonymous one.
+                "@id": `${SITE_URL}/blog/${post.slug}#article`,
                 headline: post.title,
                 url: `${SITE_URL}/blog/${post.slug}`,
                 datePublished: post.datePublished,
@@ -86,7 +88,7 @@ export default function BlogPage() {
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        priority={index < 3}
+                        loading={index < 3 ? "eager" : "lazy"}
                         {...blurProps(post.image)}
                       />
                     </div>
