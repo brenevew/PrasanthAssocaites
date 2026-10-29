@@ -1,15 +1,17 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
-import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
+import staticAssetsIncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/static-assets-incremental-cache";
 
-// Pages are pre-rendered at build time and `opennextjs-cloudflare deploy` copies
-// them into R2, so the Worker serves them from the cache instead of rendering
-// every request (which ran into Cloudflare error 1102, "Worker exceeded resource
-// limits"). No page uses `revalidate`, so no tag cache or queue is needed; add
-// them if ISR or `revalidatePath` is ever introduced.
+// Pages are pre-rendered at build time and shipped with the Worker's static
+// assets, so the Worker serves them from that cache instead of rendering every
+// request (which ran into Cloudflare error 1102, "Worker exceeded resource
+// limits"). This cache is read-only: it suits this site because every page is
+// static and none uses `revalidate`. If ISR or `revalidatePath` is ever
+// introduced, switch to the R2 incremental cache (needs R2 enabled on the
+// account and an R2 bucket binding in wrangler.jsonc).
 export default defineCloudflareConfig({
-  incrementalCache: r2IncrementalCache,
-  // Answer cached pages straight from R2 before the Next.js server is loaded
-  // and routed, which is most of the CPU a cache hit otherwise costs. Must be
-  // turned off if Partial Prerendering is ever enabled.
+  incrementalCache: staticAssetsIncrementalCache,
+  // Answer cached pages before the Next.js server is loaded and routed, which
+  // is most of the CPU a cache hit otherwise costs. Must be turned off if
+  // Partial Prerendering is ever enabled.
   enableCacheInterception: true,
 });

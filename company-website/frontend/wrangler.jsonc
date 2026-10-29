@@ -20,15 +20,6 @@
       "service": "prasanthassocaites"
     }
   ],
-  "r2_buckets": [
-    {
-      // Incremental cache for pre-rendered pages (see open-next.config.ts).
-      // Create the bucket before the first deploy:
-      //   npx wrangler r2 bucket create prasanthassocaites-opennext-cache
-      "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "prasanthassocaites-opennext-cache"
-    }
-  ],
   "images": {
     // next/image optimisation through Cloudflare Images.
     "binding": "IMAGES"
