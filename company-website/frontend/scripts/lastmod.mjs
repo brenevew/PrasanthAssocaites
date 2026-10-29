@@ -28,7 +28,7 @@ const groups = {
   projects: ["src/app/projects/page.tsx", "src/app/projects/ProjectsClient.tsx", "src/data/projects.ts", "src/data/designGallery.ts"],
   projectPages: ["src/app/projects/[slug]", "src/data/projects.ts"],
   planHome: ["src/app/plan-home", "src/components/planner"],
-  about: ["src/app/about", "src/data/process.ts"],
+  about: ["src/app/about"],
   contact: ["src/app/contact"],
   requestQuote: ["src/app/request-quote", "src/data/serviceQuoteData.ts"],
   coimbatore: ["src/app/locations/coimbatore", "src/data/locationPages.ts", "src/components/locations"],

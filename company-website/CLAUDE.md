@@ -89,7 +89,7 @@ means editing these, not a CMS.
 | `servicePageContent.ts` | `servicePageContent: Record<slug, …>` | Four "How it works" steps and three related services per service landing page |
 | `projects.ts` | `projects`, `projectCategories` | Portfolio; drives `/projects` and `/projects/[slug]` |
 | `navigation.ts` | `mainNavItems`, `footerNavItems`, `footerServiceLinks`, `footerLocationLinks`, `footerServiceAreaLinks` | All nav link lists |
-| `testimonials.ts`, `process.ts`, `quality.ts`, `designGallery.ts`, `imageBlur.ts` | — | Homepage/about section content |
+| `testimonials.ts`, `quality.ts`, `designGallery.ts`, `imageBlur.ts` | — | Homepage/about section content |
 | `rateCards.ts`, `rateCardsLegacy.ts` | — | Pricing for the planner/estimator |
 | `db/submissions.json` | — | **Dev-only** local lead backup. Not a production store |
 
@@ -324,9 +324,6 @@ text against `seo-reports/baseline.json`.
 - Check `npx tsc --noEmit` and `npx eslint` before considering a change done.
 - Some pre-existing lint warnings (unused imports, `<img>` usage) are expected;
   don't treat them as regressions.
-- **Known dead code**: `components/ui/RequestDesignForm.tsx` is imported nowhere
-  (`/request-design` is now a redirect). `nilgirisHubs` in
-  `locations/nilgiris-ooty/page.tsx` is defined but never rendered.
 - **Known gaps**: there are no `/privacy` or `/terms` pages (the footer no
   longer links to them). `http://` → `https://` and `www` → apex both redirect
   (Cloudflare settings, not code).
