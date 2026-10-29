@@ -51,7 +51,7 @@ export const coimbatoreOfficeEntity = {
 };
 
 // Photos of completed Gudalur projects, all shown on the Gudalur page.
-const gudalurPhotos = ["residential-construction-project", "pricol", "sasthapuri"]
+const gudalurPhotos = ["residential-building-gudalur", "pricol", "sasthapuri"]
   .map((slug) => projects.find((project) => project.slug === slug)?.image)
   .filter((src) => src !== undefined)
   .map((src) => `${SITE_URL}${src}`);

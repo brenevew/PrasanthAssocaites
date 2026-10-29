@@ -97,7 +97,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/projects/Designs/exterior-design-residential-elevation-1.webp",
     imageAlt: "3D front elevation of a two-storey house designed by Prasanth Associates",
     relatedServices: ["architectural-designs", "structural-drawings", "residential-construction"],
-    relatedProjects: ["residential-building-perur-coimbatore", "residential-construction-project"],
+    relatedProjects: ["residential-building-perur-coimbatore", "residential-building-gudalur"],
     references: [{ label: "Bureau of Energy Efficiency: residential building envelope, daylight and ventilation", href: "https://beeindia.gov.in/show_content.php?lang=1&level=2&lid=328&ls_id=202" }],
     body: [
       { p: "Most people come to their first planning meeting with a picture of a house they like and a rough idea of how many bedrooms they want. That is a fine place to start. But a few documents and decisions, gathered beforehand, make the difference between a first draft that fits your plot and one that has to be redrawn." },
@@ -131,7 +131,7 @@ export const blogPosts: BlogPost[] = [
       { p: "If you would like to start before meeting anyone, our [building planner](/plan-home) lets you enter your plot and rooms online, and an architect reviews it. Our offices are in [Coimbatore](/locations/coimbatore) and [Gudalur](/locations/gudalur)." },
       { h2: "How do I plan for natural light and ventilation?" },
       { p: "Discuss daylight and airflow while the room layout is being developed. Bring information about the plot orientation, neighbouring buildings and the rooms you use most. The Bureau of Energy Efficiency includes natural ventilation and daylighting in its residential building envelope guidance; these are design considerations to review together, rather than additions after the drawings are finished." },
-      { p: "Natural light and ventilation were recorded planning considerations in our [3,500 sq. ft. Perur home, completed in 2020](/projects/residential-building-perur-coimbatore), and our [2,617 sq. ft. Gudalur home, built in 2024–2025](/projects/residential-construction-project). Both projects also involved functional room planning and coordination of the structure and building services. They are examples of the questions we work through with a house owner, rather than a single floor plan to copy onto every plot." },
+      { p: "Natural light and ventilation were recorded planning considerations in our [3,500 sq. ft. Perur home, completed in 2020](/projects/residential-building-perur-coimbatore), and our [2,617 sq. ft. Gudalur home, built in 2024–2025](/projects/residential-building-gudalur). Both projects also involved functional room planning and coordination of the structure and building services. They are examples of the questions we work through with a house owner, rather than a single floor plan to copy onto every plot." },
       { h2: "Can I reuse a floor plan from another completed house?" },
       { p: "Use a completed house to explain what you like, then ask the designer to check it against your own plot and requirements. The Perur and Gudalur projects differ in location and built-up area. Their published case studies show planning priorities, not an approved layout for another site. Share your room list, access needs and plot measurements so the design can be developed for your household." },
     ],
@@ -270,7 +270,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "questions-to-ask-building-contractor-coimbatore-nilgiris",
     title: "How do you choose a building contractor in Coimbatore or the Nilgiris?",
-    seoTitle: "Choosing a Builder in Coimbatore & Nilgiris",
+    seoTitle: "Choosing a Builder: Coimbatore & Ooty",
     description: "Questions to ask a builder about completed work, scope, site access and supervision, with examples from our Perur, Gudalur and Nilgiris projects.",
     excerpt: "Compare a contractor's evidence and proposed scope before comparing promises. Questions to take to your first meeting, illustrated by completed projects.",
     category: "Construction",
@@ -278,7 +278,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/projects/Residential/residential-building-construction-perur-prasanth-associates.webp",
     imageAlt: "Completed 3,500 sq. ft. residential building in Perur, Coimbatore, by Prasanth Associates",
     relatedServices: ["residential-construction", "construction-work-consulting", "detailed-estimation-costing"],
-    relatedProjects: ["residential-building-perur-coimbatore", "residential-construction-project", "pricol", "sasthapuri"],
+    relatedProjects: ["residential-building-perur-coimbatore", "residential-building-gudalur", "pricol", "sasthapuri"],
     body: [
       { p: "Start with a contractor's completed work and the scope they propose for your own site. A house in Coimbatore, a plantation bungalow and a commercial building in Gudalur raise different planning questions. A useful first meeting connects the contractor's experience to those questions and records what the appointment will include." },
       { h2: "What should I check when choosing a construction company in Coimbatore?" },
@@ -288,7 +288,7 @@ export const blogPosts: BlogPost[] = [
       { p: "Ask how site levels, drainage, access and weather will be assessed before the programme is agreed. Have the design team identify the permissions applicable to your particular plot and proposed use, including any local constraints. Our [hill-plot planning guide](/blog/building-on-sloping-plot-ooty-gudalur) explains the questions to raise before design." },
       { p: "Request an explanation of material transport, working space and site supervision. At Pricol's Gudalur bungalow, the access route crossed a river; at Sasthapuri Hotels in Gudalur, limited working space required phased work and organised storage. These documented constraints are useful questions for a contractor meeting. For your own site, agree how weather-dependent work and delivery arrangements will be planned, and who will coordinate with you through our [Gudalur branch](/locations/gudalur)." },
       { h2: "Matching completed projects to your building" },
-      { p: "Ask for examples that match your building type, location and site constraints. For a family house, our [Perur project](/projects/residential-building-perur-coimbatore) documents a 3,500 sq. ft. residence completed in 2020. Our [Gudalur residential project](/projects/residential-construction-project) documents a 2,617 sq. ft. home built in 2024–2025. Both describe functional planning, natural light and ventilation, and coordination between design and construction." },
+      { p: "Ask for examples that match your building type, location and site constraints. For a family house, our [Perur project](/projects/residential-building-perur-coimbatore) documents a 3,500 sq. ft. residence completed in 2020. Our [Gudalur residential project](/projects/residential-building-gudalur) documents a 2,617 sq. ft. home built in 2024–2025. Both describe functional planning, natural light and ventilation, and coordination between design and construction." },
       { p: "For a remote estate site, the [Pricol Limited tea bungalow](/projects/pricol) is a more relevant comparison: its access route crossed a river. For commercial work on a busy town site, [Sasthapuri Hotels](/projects/sasthapuri) provides a different example. Look beyond the photograph and ask which constraints the team actually handled." },
       { h2: "What the contractor actually did on those projects" },
       { p: "Ask whether the appointment covered design, structural engineering, construction, building services, supervision or only part of that work. The Pricol and Sasthapuri case studies identify architecture, structural engineering, construction, MEP services and project coordination within our scope. A completed building is useful evidence only when you understand the team's role in delivering it." },
@@ -313,7 +313,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "building-on-sloping-plot-ooty-gudalur",
     title: "Can you build on a sloping plot in Ooty or Gudalur?",
-    seoTitle: "Building on Sloping Plots in the Nilgiris",
+    seoTitle: "Building on Sloping Plots in Nilgiris",
     description: "What to check before designing for a hill plot: terrain, drainage, access and sequencing, illustrated by our completed Ooty school and Gudalur bungalow.",
     excerpt: "A hill plot needs an assessment before a floor plan. Our Ooty school and Gudalur tea bungalow show why terrain, water and access belong in early planning.",
     category: "Construction",
@@ -349,7 +349,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "renovate-old-bungalow-nilgiris",
     title: "Should you renovate or rebuild an old bungalow in the Nilgiris?",
-    seoTitle: "Renovating an Old Bungalow in the Nilgiris",
+    seoTitle: "Renovating an Old Nilgiris Bungalow",
     description: "Questions to resolve before renovating an older bungalow, with evidence from our 4,904 sq. ft. Manjushree Director's Building project in O'Valley.",
     excerpt: "Begin with the building's condition and what you need it to do. Our Manjushree renovation illustrates the importance of assessment and the plantation setting.",
     category: "Construction",
@@ -385,7 +385,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "commercial-building-planning-gudalur",
     title: "What should you plan before constructing a commercial building in Gudalur?",
-    seoTitle: "Commercial Building Planning in Gudalur",
+    seoTitle: "Commercial Building Planning, Gudalur",
     description: "Questions about drawings, MEP, storage and construction phases on a busy town site, illustrated by our completed Sasthapuri Hotels project in Gudalur.",
     excerpt: "A town-centre site needs coordinated drawings and an organised construction sequence. Questions for owners, illustrated by the Sasthapuri Hotels project.",
     category: "Construction",

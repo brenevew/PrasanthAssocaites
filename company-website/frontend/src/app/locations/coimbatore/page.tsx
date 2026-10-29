@@ -5,7 +5,7 @@ import { coimbatoreOfficeEntity, locationWebPage } from "@/lib/officeSchema";
 import LocationLanding from "@/components/locations/LocationLanding";
 
 const SEO_TITLE = "Construction Company in Coimbatore | Prasanth Associates";
-const SEO_DESCRIPTION = "Construction company in Coimbatore for houses, villas, commercial buildings and architectural plans. Visit our Gandhipuram office and see our Perur project.";
+const SEO_DESCRIPTION = "Houses, villas, commercial buildings and architectural plans from our Gandhipuram office in Coimbatore. See our Perur project and get an itemised BoQ quote.";
 
 export const metadata: Metadata = {
   title: { absolute: SEO_TITLE },

@@ -13,7 +13,7 @@ const description =
   "Practical articles on house plans, approvals, estimates, valuation and building in Coimbatore and the Nilgiris, from the team at Prasanth Associates.";
 
 export const metadata: Metadata = {
-  title: "Blog: Building in Coimbatore & the Nilgiris",
+  title: "Building Blog, Coimbatore & Nilgiris",
   description,
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: pageOpenGraph("/blog", "Blog | Prasanth Associates", description),

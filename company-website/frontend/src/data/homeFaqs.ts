@@ -43,7 +43,7 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
     links: [
       { href: "/projects/pricol", label: "View the Pricol tea bungalow" },
       { href: "/projects/residential-building-perur-coimbatore", label: "View the house in Perur, Coimbatore" },
-      { href: "/projects/residential-construction-project", label: "View the house in Gudalur" },
+      { href: "/projects/residential-building-gudalur", label: "View the house in Gudalur" },
       { href: "/projects", label: "Browse all projects" },
     ],
   },

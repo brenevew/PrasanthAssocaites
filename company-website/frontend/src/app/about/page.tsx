@@ -95,7 +95,7 @@ export default function AboutPage() {
               style={{ fontSize: "var(--text-h1)" }}
             >
               Engineers &amp; Builders for
-              <br />
+              <br />{" "}
               <em className="text-gold-dark not-italic">Coimbatore &amp; the Nilgiris</em>
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">

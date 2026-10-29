@@ -25,6 +25,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Renamed to match the other residential slugs (town in the URL).
+        source: "/projects/residential-construction-project",
+        destination: "/projects/residential-building-gudalur",
+        permanent: true,
+      },
+      {
         source: "/services/turnkey-construction",
         destination: "/services/turnkey-design-build-coimbatore",
         permanent: true,

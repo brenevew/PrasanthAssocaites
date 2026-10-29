@@ -69,6 +69,15 @@ test("sitemap includes every service once, retains public pages and omits redire
   assert.ok(urls.includes(`${SITE_URL}/blog`));
 });
 
+test("the footer links every service page once", () => {
+  const hrefs = footerServiceLinks.map((link) => link.href);
+  assert.equal(new Set(hrefs).size, hrefs.length);
+  assert.deepEqual(
+    [...hrefs].sort(),
+    services.map((s) => getServicePath(s.slug)).sort()
+  );
+});
+
 test("footer and FAQ service links reach canonical, indexable landing pages", () => {
   const urls = new Set(load("src/app/sitemap.ts").default().map((entry) => entry.url));
   const links = [...footerServiceLinks, ...homeFaqQuestions.flatMap((faq) => faq.links)]
@@ -85,6 +94,16 @@ test("turnkey short URL permanently redirects to the canonical page", async () =
   const redirect = (await config.redirects()).find((entry) => entry.source === "/services/turnkey-construction");
   assert.equal(redirect?.destination, getServicePath("turnkey-construction"));
   assert.equal(redirect?.permanent, true);
+});
+
+test("the old Gudalur project URL permanently redirects to its renamed page", async () => {
+  const redirects = await load("next.config.ts").default.redirects();
+  const redirect = redirects.find((entry) => entry.source === "/projects/residential-construction-project");
+  assert.equal(redirect?.destination, "/projects/residential-building-gudalur");
+  assert.equal(redirect?.permanent, true);
+  const urls = new Set(load("src/app/sitemap.ts").default().map((entry) => entry.url));
+  assert.ok(urls.has(`${SITE_URL}/projects/residential-building-gudalur`));
+  assert.ok(!urls.has(`${SITE_URL}${redirect.source}`));
 });
 
 test("every retired d24468b URL permanently reaches an indexable replacement without a redirect chain", async () => {

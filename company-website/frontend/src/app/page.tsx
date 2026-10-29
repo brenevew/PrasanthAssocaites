@@ -195,7 +195,7 @@ export default function Home() {
                 style={{ fontSize: "var(--text-h2)" }}
               >
                 100+ homes built across
-                <br />
+                <br />{" "}
                 <em className="text-gold not-italic">Coimbatore</em> and the Nilgiris
               </h2>
               <div className="space-y-5 text-concrete leading-relaxed mb-8">
@@ -283,7 +283,7 @@ export default function Home() {
                     style={{ fontSize: "var(--text-h2)" }}
                   >
                     How We
-                    <br />
+                    <br />{" "}
                     <em className="text-gold not-italic">Work</em>
                   </h2>
                   <div className="gold-line" />

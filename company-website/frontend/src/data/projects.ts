@@ -324,7 +324,7 @@ export const projects: Project[] = [
       "/images/projects/Renovation/manjushree-residential-building-under-renovation-prasanth-associates-1.webp",
       "/images/projects/Renovation/manjushree-residential-building-under-renovation-prasanth-associates-2.webp",
     ],
-    seoTitle: "Manjushree Building Renovation, Nilgiris",
+    seoTitle: "Manjushree Renovation, Nilgiris",
     seoDescription:
       "Renovation of the British-era Director's Building at Manjushree Plantation, New Hope, O'Valley in the Nilgiris, set among cardamom plants.",
     shortDescription:
@@ -349,7 +349,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "residential-construction-project",
+    slug: "residential-building-gudalur",
     title: "Residential Building in Gudalur",
     location: "Gudalur, The Nilgiris",
     category: "residential",
@@ -414,7 +414,7 @@ export const projects: Project[] = [
   {
     slug: "residential-building-perur-coimbatore",
     title: "Residential Building in Perur",
-    seoTitle: "Residential Building, Perur, Coimbatore",
+    seoTitle: "House Built in Perur, Coimbatore",
     location: "Perur, Coimbatore",
     category: "residential",
     status: "completed",

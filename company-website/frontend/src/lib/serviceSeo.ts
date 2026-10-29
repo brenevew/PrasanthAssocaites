@@ -12,11 +12,11 @@ interface ServiceSeoCopy {
 /** Metadata only. Visible service names, descriptions and specifications remain in services.ts. */
 const copy: Record<string, ServiceSeoCopy> = {
   "residential-construction": {
-    title: "House Construction, Coimbatore & Nilgiris",
+    title: "House Construction, Coimbatore & Ooty",
     description: "Custom homes and duplex construction in Coimbatore and the Nilgiris. Explore residential planning, construction and itemised BoQ with Prasanth Associates.",
   },
   "villa-construction": {
-    title: "Villa Construction, Coimbatore & Nilgiris",
+    title: "Villa Construction, Coimbatore & Ooty",
     description: "Explore villa construction in Coimbatore and the Nilgiris, with architectural planning, courtyards and coordinated interiors from Prasanth Associates.",
   },
   "commercial-construction": {
@@ -36,7 +36,7 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Smart home automation for Coimbatore and Nilgiris properties: lighting, climate control, access security and structured cabling by Prasanth Associates.",
   },
   renovation: {
-    title: "House Renovation, Coimbatore & Nilgiris",
+    title: "Home Renovation, Coimbatore & Nilgiris",
     description: "Renovation and structural retrofitting in the Nilgiris and Coimbatore, including layout changes, column strengthening, waterproofing and MEP upgrades.",
   },
   "construction-work-consulting": {
@@ -60,11 +60,11 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Electrical drawings for Coimbatore and Nilgiris buildings: lighting points, conduit routes, distribution boards, earthing and single-line diagrams.",
   },
   "plumbing-drawings": {
-    title: "Plumbing Drawings, Coimbatore & Nilgiris",
+    title: "Plumbing Plans, Coimbatore & Nilgiris",
     description: "Plumbing drawings in Coimbatore and the Nilgiris, including water supply, sanitary drainage, tank sizing, inspection chambers and rainwater harvesting.",
   },
   "landscaping-designs": {
-    title: "Landscape Design, Coimbatore & Nilgiris",
+    title: "Landscape Design, Coimbatore & Ooty",
     description: "Landscape design for Coimbatore and Nilgiris properties. Explore planting plans, lawns, pathways, irrigation, outdoor lighting and terrace gardens.",
   },
   "bank-valuation-report": {
@@ -80,11 +80,11 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Detailed estimation and costing for Coimbatore and Nilgiris projects. Itemised BoQ, material quantities, labour schedules and contractor tender analysis.",
   },
   "chartered-engineer-valuation": {
-    title: "Technical Asset Valuation in Coimbatore",
+    title: "Technical Asset Valuation, Coimbatore",
     description: "Chartered engineer and technical valuation services in Coimbatore and the Nilgiris for machinery, fixed assets, collateral and insurance documentation.",
   },
   "property-acquisition-advisory": {
-    title: "Property Acquisition Advice, Coimbatore",
+    title: "Property Buying Advice, Coimbatore",
     description: "Property acquisition advice in Coimbatore and the Nilgiris, from location analysis and title due diligence to negotiation and registration support.",
   },
   "land-plot-transactions": {

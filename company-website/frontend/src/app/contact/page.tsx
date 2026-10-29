@@ -3,7 +3,7 @@ import ContactPageClient from "./ContactPageClient";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact Us, Coimbatore & Gudalur Offices",
+  title: "Contact: Coimbatore & Gudalur Offices",
   description:
     "Call, email or visit our offices in Gandhipuram, Coimbatore and Gudalur, The Nilgiris. Free consultation for construction and design projects.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: pageOpenGraph(
     "/contact",
-    "Contact Us, Coimbatore & Gudalur Offices | Prasanth Associates",
+    "Contact: Coimbatore & Gudalur Offices | Prasanth Associates",
     "Call, email or visit our offices in Gandhipuram, Coimbatore and Gudalur, The Nilgiris. Free consultation for construction and design projects."
   ),
 };

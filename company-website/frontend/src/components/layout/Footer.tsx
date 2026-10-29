@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { company } from "@/data/company";
-import { footerNavItems, footerServiceLinks, footerLocationLinks } from "@/data/navigation";
+import { footerNavItems, footerServiceGroups, footerLocationLinks } from "@/data/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
@@ -16,8 +16,8 @@ export default function Footer() {
       <div className="container relative z-10 pt-20 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
 
-          {/* Brand (4 cols) */}
-          <div className="lg:col-span-4 space-y-6">
+          {/* Brand (5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3.5 group text-charcoal select-none">
               <img src="/images/PrasanthAssociates-logo.png" alt="Prasanth Associates Logo" width={250} height={320} loading="lazy" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-[0_2px_4px_rgba(11,30,61,0.20)]" />
               <div className="flex flex-col leading-tight">
@@ -67,8 +67,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links (2 cols) */}
-          <div className="lg:col-span-2 space-y-5">
+          {/* Quick Links (3 cols) */}
+          <div className="lg:col-span-3 space-y-5">
             <h4 className="font-heading text-sm font-bold text-gold-dark tracking-widest uppercase">
               Company
             </h4>
@@ -86,27 +86,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services (3 cols) */}
-          <div className="lg:col-span-3 space-y-5">
-            <h4 className="font-heading text-sm font-bold text-gold-dark tracking-widest uppercase">
-              Services
-            </h4>
-            <ul className="space-y-3">
-              {footerServiceLinks.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="text-concrete hover:text-gold-dark transition-colors text-sm font-medium"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact (3 cols) */}
-          <div className="lg:col-span-3 space-y-5">
+          {/* Contact (4 cols) */}
+          <div className="lg:col-span-4 space-y-5">
             <h4 className="font-heading text-sm font-bold text-gold-dark tracking-widest uppercase">
               Contact
             </h4>
@@ -138,6 +119,29 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* All services by sector */}
+        <div className="pt-12 mb-16 border-t border-border grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+          {footerServiceGroups.map((group) => (
+            <div key={group.label} className="space-y-5">
+              <h4 className="font-heading text-sm font-bold text-gold-dark tracking-widest uppercase">
+                {group.label}
+              </h4>
+              <ul className="space-y-3">
+                {group.links.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-concrete hover:text-gold-dark transition-colors text-sm font-medium"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Bottom bar */}

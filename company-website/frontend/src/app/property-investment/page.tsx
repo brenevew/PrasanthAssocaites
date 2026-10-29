@@ -30,7 +30,7 @@ const iconMap: Record<
 };
 
 export const metadata: Metadata = {
-  title: "Property Advisory, Coimbatore & Nilgiris",
+  title: "Property Advice, Coimbatore & Nilgiris",
   description:
     "Property buying advice, land and plot deals, real estate investment consulting and portfolio management in Coimbatore and the Nilgiris.",
   keywords: [

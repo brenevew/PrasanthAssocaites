@@ -30,7 +30,7 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
     },
     {
       q: "Do you build houses in Ooty and the Nilgiris?",
-      a: `Yes. We build houses across Coimbatore and the Nilgiris, including Ooty, Coonoor, Kotagiri and Gudalur. ${offices} For hill plots, discuss levels, drainage, access and the permissions applicable to the site before settling the design. Our [Gudalur residence](/projects/residential-construction-project) is a completed local example.`,
+      a: `Yes. We build houses across Coimbatore and the Nilgiris, including Ooty, Coonoor, Kotagiri and Gudalur. ${offices} For hill plots, discuss levels, drainage, access and the permissions applicable to the site before settling the design. Our [Gudalur residence](/projects/residential-building-gudalur) is a completed local example.`,
     },
     {
       q: "How should I compare house builders in Coimbatore?",

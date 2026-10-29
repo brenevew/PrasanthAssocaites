@@ -154,7 +154,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         heading: "Individual house construction in Gudalur",
         paragraphs: [
           "A house plan needs to respond to your family and the land it will stand on. Bring your plot information, room requirements and available drawings so the discussion can cover access, levels, daylight, ventilation and building services alongside the layout. Our [house construction service](/services/residential-construction) can be discussed as a complete build or alongside drawings you already have.",
-          "Our [Gudalur residential project](/projects/residential-construction-project) is a 2,617 sq. ft. family house built during 2024–2025. The project record describes functional layouts, natural light and ventilation, and coordination of structural, electrical and plumbing work. These are useful points to review when planning your own home, while its design and programme must reflect your particular site.",
+          "Our [Gudalur residential project](/projects/residential-building-gudalur) is a 2,617 sq. ft. family house built during 2024–2025. The project record describes functional layouts, natural light and ventilation, and coordination of structural, electrical and plumbing work. These are useful points to review when planning your own home, while its design and programme must reflect your particular site.",
         ],
       },
       {
@@ -222,7 +222,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       },
       {
         q: "What have you built in Gudalur?",
-        a: "Our Gudalur work includes the [Pricol Limited tea bungalow](/projects/pricol), [Sasthapuri Hotels](/projects/sasthapuri) in the town centre and a [2,617 sq. ft. family house](/projects/residential-construction-project) completed in 2025.",
+        a: "Our Gudalur work includes the [Pricol Limited tea bungalow](/projects/pricol), [Sasthapuri Hotels](/projects/sasthapuri) in the town centre and a [2,617 sq. ft. family house](/projects/residential-building-gudalur) completed in 2025.",
       },
       {
         q: "Do you also work in Ooty, Coonoor and Kotagiri?",
