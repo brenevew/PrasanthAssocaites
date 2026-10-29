@@ -48,6 +48,11 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
   const pageServices = page.services
     .map((slug) => services.find((service) => service.slug === slug))
     .filter((service) => service !== undefined);
+  // Project facts (location, type, area, dates) come from the project records.
+  const caseStudies = (page.caseStudies?.items ?? []).flatMap((item) => {
+    const project = projects.find((entry) => entry.slug === item.slug && hasDetailsPage(entry));
+    return project ? [{ item, project }] : [];
+  });
 
   // Sections alternate canvas and linen backgrounds in the order they render.
   let sectionIndex = 0;
@@ -97,8 +102,11 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
               <span className="badge-gold mb-4 inline-flex">{page.badge}</span>
               <h1 className="font-heading font-bold text-charcoal mb-5 leading-tight text-balance" style={{ fontSize: "var(--text-h1)" }}>{page.heading}</h1>
               <p className="text-base md:text-lg text-concrete leading-relaxed max-w-2xl mb-8">{page.intro}</p>
+              {page.heroNote && (
+                <p className="text-sm font-semibold text-charcoal leading-relaxed max-w-2xl -mt-4 mb-8 border-l-2 border-gold pl-4">{page.heroNote}</p>
+              )}
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-                <Button href="#enquiry" variant="primary">Request a Quote<ArrowRight size={14} /></Button>
+                <Button href="#enquiry" variant="primary">{page.quoteLabel ?? "Request a Quote"}<ArrowRight size={14} /></Button>
                 <Button href={telHref} variant="outline"><Phone size={14} />Call {office.phone}</Button>
                 <a
                   href={whatsappHref}
@@ -106,7 +114,7 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold tracking-wide text-charcoal hover:bg-linen/80 transition-all"
                 >
-                  <MessageCircle size={14} />WhatsApp us
+                  <MessageCircle size={14} />{page.whatsappLabel ?? "WhatsApp us"}
                 </a>
               </div>
             </ScrollReveal>
@@ -140,7 +148,13 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
                   </li>
                   <li className="flex items-center gap-3">
                     <Star size={16} className="text-gold-dark flex-shrink-0" aria-hidden="true" />
-                    <span>{page.googleRating.rating}★ from {page.googleRating.reviews} Google reviews</span>
+                    {page.reviewsLink ? (
+                      <a href={office.mapLink} target="_blank" rel="noopener noreferrer" className="hover:text-gold-dark underline-offset-2 hover:underline">
+                        {page.googleRating.rating}★ from {page.googleRating.reviews} Google reviews
+                      </a>
+                    ) : (
+                      <span>{page.googleRating.rating}★ from {page.googleRating.reviews} Google reviews</span>
+                    )}
                   </li>
                 </ul>
                 <a
@@ -179,6 +193,11 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
               </ScrollReveal>
             ))}
           </ol>
+          {page.conditionsCta && (
+            <div className="mt-10">
+              <Button href="#enquiry" variant="outline">{page.conditionsCta}<ArrowRight size={14} /></Button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -240,6 +259,42 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
         </section>
       )}
 
+      {/* What documented projects involved */}
+      {caseStudies.length > 0 && page.caseStudies && (
+        <section className={`py-16 md:py-24 ${band()}`}>
+          <div className="container">
+            <ScrollReveal>
+              <div className="max-w-2xl mb-10 md:mb-12">
+                <span className="badge-gold mb-3 inline-flex">Project notes</span>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal leading-snug mb-3">{page.caseStudies.heading}</h2>
+                <p className="text-concrete leading-relaxed">{page.caseStudies.intro}</p>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {caseStudies.map(({ item, project }, i) => (
+                <ScrollReveal key={item.slug} delay={(i % 2) * 80}>
+                  <article className="h-full flex flex-col rounded-3xl nm-raised-sm bg-[var(--canvas-bg)] p-6 md:p-7">
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-gold-dark mb-2">
+                      {[project.location, project.type, project.area, project.duration || project.year].filter(Boolean).join(" · ")}
+                    </p>
+                    <h3 className="font-heading text-xl font-bold text-charcoal leading-snug mb-3">{item.heading}</h3>
+                    <div className="space-y-3 text-sm text-concrete leading-relaxed flex-grow">
+                      {item.paragraphs.map((paragraph) => <p key={paragraph}><AnswerText text={paragraph} /></p>)}
+                    </div>
+                    <Link href={`/projects/${project.slug}`} className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal hover:text-gold-dark">
+                      {item.linkLabel}<ArrowRight size={14} />
+                    </Link>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+            <div className="mt-10">
+              <Button href="#enquiry" variant="outline">{page.caseStudies.cta}<ArrowRight size={14} /></Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Services */}
       <section className={`py-16 md:py-24 ${band()}`}>
         <div className="container">
@@ -255,6 +310,25 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
               </Link>
             </div>
           </ScrollReveal>
+          {page.serviceSectors ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {page.serviceSectors.map((sector) => (
+                <div key={sector.heading} className="flex flex-col rounded-2xl neu-glass p-6">
+                  <h3 className="font-heading text-lg font-bold text-charcoal leading-snug mb-2">{sector.heading}</h3>
+                  <p className="text-sm text-concrete leading-relaxed mb-4">{sector.body}</p>
+                  <ul className="mt-auto space-y-2">
+                    {sector.links.map((link) => (
+                      <li key={link.slug}>
+                        <Link href={getServicePath(link.slug)} className="inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal hover:text-gold-dark">
+                          {link.label}<ArrowRight size={12} />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {pageServices.map((service) => {
               const Icon = serviceIcons[service.icon] ?? Building2;
@@ -270,8 +344,75 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
               );
             })}
           </div>
+          )}
         </div>
       </section>
+
+      {/* How a project runs */}
+      {page.process && (
+        <section className={`py-16 md:py-24 ${band()}`}>
+          <div className="container">
+            <ScrollReveal>
+              <div className="max-w-2xl mb-10 md:mb-12">
+                <span className="badge-gold mb-3 inline-flex">How we work</span>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal leading-snug mb-3">{page.process.heading}</h2>
+                <p className="text-concrete leading-relaxed">{page.process.intro}</p>
+              </div>
+            </ScrollReveal>
+            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {page.process.steps.map((step, i) => (
+                <ScrollReveal key={step.title} delay={(i % 4) * 80}>
+                  <li className="h-full rounded-3xl nm-raised-sm bg-[var(--canvas-bg)] p-6">
+                    <span className="font-heading text-4xl font-bold text-gold/50 leading-none select-none" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-heading text-lg font-bold text-charcoal mt-3 mb-2">{step.title}</h3>
+                    <p className="text-sm text-concrete leading-relaxed">{step.body}</p>
+                  </li>
+                </ScrollReveal>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* Itemised BoQ and pricing */}
+      {page.pricing && (
+        <section className={`py-16 md:py-24 ${band()}`}>
+          <div className="container">
+            <div className="grid lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-start">
+              <ScrollReveal>
+                <span className="badge-gold mb-3 inline-flex">Transparent pricing</span>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal leading-snug mb-5">{page.pricing.heading}</h2>
+                <div className="space-y-4 text-concrete leading-relaxed">
+                  {page.pricing.paragraphs.map((paragraph) => <p key={paragraph}><AnswerText text={paragraph} /></p>)}
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={120}>
+                <div className="rounded-3xl neu-glass p-6 md:p-7">
+                  <h3 className="font-heading text-lg font-bold text-charcoal mb-4">{page.pricing.itemsHeading}</h3>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-6 gap-y-2.5">
+                    {page.pricing.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-charcoal">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 flex-shrink-0" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+            </div>
+            <ScrollReveal>
+              <div className="mt-10 max-w-3xl space-y-4 text-concrete leading-relaxed">
+                {page.pricing.afterItems.map((paragraph) => <p key={paragraph}><AnswerText text={paragraph} /></p>)}
+              </div>
+              <div className="mt-8">
+                <Button href="#enquiry" variant="primary">{page.pricing.cta}<ArrowRight size={14} /></Button>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
 
       {/* Questions */}
       <section id="faq" className={`py-16 md:py-24 scroll-mt-32 ${band()}`}>

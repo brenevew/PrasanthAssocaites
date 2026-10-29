@@ -48,7 +48,18 @@ test("location pages have quotable answers that follow the copy rules", () => {
     assert.ok(urls.has(`${SITE_URL}/locations/${slug}`), `${slug} is in the sitemap`);
     assert.ok(page.faqs.length >= 4, `${slug} needs at least 4 FAQs`);
     for (const s of page.services) assert.ok(services.some((service) => service.slug === s), `${slug}: unknown service ${s}`);
-    const copy = [page.intro, page.servicesHeading ?? "", page.servicesIntro ?? "", ...(page.overview ?? []).flatMap((section) => [section.heading, ...section.paragraphs]), ...page.conditions.flatMap((c) => [c.title, c.body]), ...(page.places ?? []).map((p) => p.note)].join(" ");
+    const copy = [
+      page.intro, page.heroNote ?? "", page.servicesHeading ?? "", page.servicesIntro ?? "",
+      ...(page.overview ?? []).flatMap((section) => [section.heading, ...section.paragraphs]),
+      ...page.conditions.flatMap((c) => [c.title, c.body]),
+      ...(page.places ?? []).map((p) => p.note),
+      ...(page.caseStudies ? [page.caseStudies.heading, page.caseStudies.intro, ...page.caseStudies.items.flatMap((item) => [item.heading, ...item.paragraphs])] : []),
+      ...(page.serviceSectors ?? []).flatMap((sector) => [sector.heading, sector.body]),
+      ...(page.process ? [page.process.heading, page.process.intro, ...page.process.steps.flatMap((step) => [step.title, step.body])] : []),
+      ...(page.pricing ? [page.pricing.heading, ...page.pricing.paragraphs, ...page.pricing.items, ...page.pricing.afterItems] : []),
+    ].join(" ");
+    for (const item of page.caseStudies?.items ?? []) assert.ok(urls.has(`${SITE_URL}/projects/${item.slug}`), `${slug}: case study ${item.slug} has no project page`);
+    for (const link of (page.serviceSectors ?? []).flatMap((sector) => sector.links)) assert.ok(urls.has(SITE_URL + getServicePath(link.slug)), `${slug}: sector link ${link.slug}`);
     assert.doesNotMatch(copy, /—| - |₹|\b100%|guarantee|licensed|certified|bespoke|luxury|premium/i, `${slug}: page copy rules`);
     for (const [, href] of copy.matchAll(/\]\((\/[^)]*)\)/g)) assert.ok(urls.has(SITE_URL + href), `${slug}: missing content destination ${href}`);
     for (const { q, a } of page.faqs) {

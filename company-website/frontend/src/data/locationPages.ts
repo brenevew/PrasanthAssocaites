@@ -44,6 +44,30 @@ export interface LocationPage {
   whatsappMessage: string;
   /** The other location page, suggested at the end. */
   other: { href: string; title: string; body: string };
+
+  // Optional sections. Each renders only on pages that set it.
+  /** A short line under the hero intro. */
+  heroNote?: string;
+  /** Hero button labels (defaults: "Request a Quote", "WhatsApp us"). */
+  quoteLabel?: string;
+  whatsappLabel?: string;
+  /** Link the hero rating to the office's Google listing, where the reviews are. */
+  reviewsLink?: boolean;
+  /** A link to the enquiry form under the local-conditions cards. */
+  conditionsCta?: string;
+  /** Written notes on documented projects, each linking to its project page. */
+  caseStudies?: {
+    heading: string;
+    intro: string;
+    items: { slug: string; heading: string; paragraphs: string[]; linkLabel: string }[];
+    cta: string;
+  };
+  /** Shown instead of the service cards: the four sectors, each with its service links. */
+  serviceSectors?: { heading: string; body: string; links: { slug: string; label: string }[] }[];
+  /** How a project runs, stage by stage. */
+  process?: { heading: string; intro: string; steps: { title: string; body: string }[] };
+  /** How the itemised BoQ and the price work. */
+  pricing?: { heading: string; paragraphs: string[]; itemsHeading: string; items: string[]; afterItems: string[]; cta: string };
 }
 
 export const locationPages: Record<LocationPage["slug"], LocationPage> = {
@@ -148,50 +172,86 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
     badge: "Branch office · Ooty Main Road",
     heading: "Building Contractors in Gudalur",
     intro:
-      "Prasanth Associates provides house construction, estate bungalow construction and commercial building services in Gudalur, The Nilgiris. Our branch on Ooty Main Road supports clients with architectural planning, coordinated drawings and construction requirements. Completed local work includes a family residence, the Pricol Limited tea bungalow and Sasthapuri Hotels. Tell us about your site and proposed building so we can discuss the scope, access and planning needs.",
-    overview: [
-      {
-        heading: "Individual house construction in Gudalur",
-        paragraphs: [
-          "A house plan needs to respond to your family and the land it will stand on. Bring your plot information, room requirements and available drawings so the discussion can cover access, levels, daylight, ventilation and building services alongside the layout. Our [house construction service](/services/residential-construction) can be discussed as a complete build or alongside drawings you already have.",
-          "Our [Gudalur residential project](/projects/residential-building-gudalur) is a 2,617 sq. ft. family house built during 2024–2025. The project record describes functional layouts, natural light and ventilation, and coordination of structural, electrical and plumbing work. These are useful points to review when planning your own home, while its design and programme must reflect your particular site.",
-        ],
-      },
-      {
-        heading: "Estate bungalows and construction on difficult-access sites",
-        paragraphs: [
-          "A plantation bungalow can involve access and delivery questions that affect the construction sequence. Our [Pricol Limited tea bungalow](/projects/pricol) in Gudalur is a completed 12,120 sq. ft. building on a tea-estate site reached across a river. Architecture, structural engineering, construction, MEP services and site coordination formed part of the recorded project scope.",
-          "For a new [villa or bungalow project](/services/villa-construction), discuss the approach route, working space and movement of materials before agreeing the programme. Levels, water movement and ground conditions also need professional review. Our [hill-plot planning guide](/blog/building-on-sloping-plot-ooty-gudalur) sets out questions to raise before choosing a layout or foundation approach.",
-        ],
-      },
-      {
-        heading: "Commercial building work and renovation around Gudalur",
-        paragraphs: [
-          "Town-centre construction brings a different set of constraints. [Sasthapuri Hotels](/projects/sasthapuri), a 38,879 sq. ft. commercial building completed in Gudalur in 2016, required phased construction, organised storage and coordination within limited working space. If you are planning shops, offices or a hospitality building, explain the intended use, customer access, service requirements and fit-out scope alongside the proposed floor area.",
-          "For an existing estate building, start with its condition and the changes you need. Our [Manjushree Director's Building renovation](/projects/manjushree) at New Hope, O'Valley, involved a 4,904 sq. ft. British-era building in a plantation setting. An engineer's assessment should inform proposed alterations. Discuss [renovation services](/services/renovation) with the available drawings, photographs and records of earlier work.",
-        ],
-      },
-    ],
-    googleRating: { rating: "4.9", reviews: 42 },
-    conditionsHeading: "What to plan before construction in Gudalur",
+      "Prasanth Associates designs, engineers and builds houses, estate bungalows and commercial buildings in Gudalur and across the Nilgiris. One team coordinates the architecture, structural design and construction, and every project is priced through an itemised BoQ before work begins.",
+    heroNote: "Engineering first, quality always. Structural drawings are ready before construction starts, and the site builds from them.",
+    quoteLabel: "Request an Itemised Construction Quote",
+    whatsappLabel: "Discuss your hill-site project",
+    reviewsLink: true,
+    googleRating: { rating: "4.9", reviews: 45 },
+    conditionsHeading: "Planning for Gudalur's slopes, rain and approvals",
     conditions: [
       {
-        title: "Weather and the construction programme",
-        body: "Ask which construction activities depend on suitable weather and how they will be sequenced. Discuss temporary protection, water management and finish requirements with the site team. The programme should record the conditions it assumes rather than rely on the dates of another completed project.",
+        title: "Land classification and building approvals",
+        body: "Check how the plot is classified in the revenue records before you buy or design. Some land in the Gudalur area falls under Section 17 of the Gudalur Janmam Estates Act, where new construction is restricted. Plots in the Nilgiris hill areas can also need Hill Area Conservation Authority (HACA) clearance and no-objection certificates from departments such as forest and agricultural engineering, as well as planning permission. Under the Tamil Nadu building rules, planning permission does not replace clearances needed under other laws. We check which of these apply to your plot before the design is fixed and prepare the drawings to suit. The authorities make the approval decisions.",
       },
       {
-        title: "Levels, ground conditions and drainage",
-        body: "Where a plot slopes, have its levels and water movement assessed before settling the layout. The engineer should specify the investigations and structural design needed for the proposed building. Foundation or retaining arrangements from another site may not suit your land.",
+        title: "Slope stabilisation and retaining wall engineering",
+        body: "Work on a sloping plot starts with a level survey and an engineer's review of the ground. The engineer decides what soil or geotechnical investigation is needed, then designs the foundations, any retaining walls and the drainage behind them for that site. Drainage is designed with each wall so water cannot build up behind it, and excavation is planned so cut slopes stay safe during work.",
       },
       {
-        title: "Plot documents and application requirements",
-        body: "Provide available land records and the intended building use. Ask the design team to establish the permissions, restrictions and application requirements that apply to your particular plot. Agree the scope of approval support before an application is prepared.",
+        title: "Heavy rainfall and waterproofing",
+        body: "Gudalur gets the full south-west monsoon, roughly June to September, and is one of the wettest parts of the Nilgiris. On the site, that means ground graded away from the building, roof drainage sized for heavy rain, a raised plinth, and drains around foundations and retaining walls. Waterproofing for roofs, wet areas and walls is detailed in the drawings. Roofs, gutters and drains still need checking every year.",
       },
       {
-        title: "Access, storage and material movement",
-        body: "Review the approach route, delivery access and usable working space. The river crossing at Pricol and limited town-site space at Sasthapuri required different arrangements. A new project needs its own plan for moving and storing materials, coordinated with the construction stages.",
+        title: "Getting materials to estate sites",
+        body: "Estate roads can be narrow and steep, and some sites have little room to unload or store materials. At the Pricol Limited tea bungalow, every load of material, every piece of equipment and every worker had to cross a river to reach the site, and deliveries and labour were planned around that. On a new estate project we look at the approach road, vehicle sizes, storage space and the estate's own work before agreeing the construction sequence.",
+      },
+      {
+        title: "Planning for the climate",
+        body: "Cool, damp weather and long monsoon spells mean a house needs good daylight, cross-ventilation and dry rooms. Orientation, window positions, roof overhangs and the walls and roof are decided together with the slope and the views. Our Gudalur family house was planned around functional layouts, natural light and ventilation.",
       },
     ],
+    conditionsCta: "Discuss your hill-site project",
+    places: [
+      { name: "Gudalur", note: "Our branch office is here. Our work in the town includes the Pricol Limited tea bungalow, Sasthapuri Hotels in the town centre and a 2,617 sq. ft. family house." },
+      { name: "O'Valley", note: "Renovation of the British-era Director's Building at Manjushree Plantation, New Hope, in a cardamom plantation setting." },
+      { name: "Ooty", note: "Christus Rex Higher Secondary School at Kandal, school work at Bandi Shola and residential construction in the town." },
+      { name: "Coonoor and Kotagiri", note: "We have built in both towns and take enquiries across them from the Gudalur branch." },
+    ],
+    projectsHeading: "Our work in and around Gudalur",
+    caseStudies: {
+      heading: "Four Nilgiris projects in detail",
+      intro: "How we handled river access, a tight town site, a new family house and an old estate building.",
+      items: [
+        {
+          slug: "pricol",
+          heading: "Pricol Limited tea bungalow, Gudalur",
+          paragraphs: [
+            "A 12,120 sq. ft. bungalow for Pricol Limited inside a working tea plantation. The only way to the site was across a river, so every load of material, every piece of equipment and every worker came in that way.",
+            "One team coordinated the architecture, structural engineering, MEP services and construction. The work was sequenced around deliveries across the river, and the bungalow was completed in 2017.",
+          ],
+          linkLabel: "Explore the Pricol bungalow project",
+        },
+        {
+          slug: "sasthapuri",
+          heading: "Sasthapuri Hotels, Gudalur town centre",
+          paragraphs: [
+            "A 38,879 sq. ft. commercial building in the main town area of Gudalur, in a busy area with little room to work or store materials. Construction ran in phases so different trades could work without crowding the site.",
+            "The architectural, structural and MEP drawings were coordinated to avoid clashes on site, and regular supervision kept the work to the design. Disruption to the neighbourhood was kept low throughout.",
+          ],
+          linkLabel: "View the Sasthapuri Hotels project",
+        },
+        {
+          slug: "residential-building-gudalur",
+          heading: "Family house in Gudalur",
+          paragraphs: [
+            "A 2,617 sq. ft. independent house, our most recent completed house in Gudalur. The planning focused on room layouts and circulation, natural light, ventilation, and coordinating the structural, electrical and plumbing work with the architecture.",
+            "If you are planning an independent house in Gudalur, it is a useful one to look at. Your own house will be designed for your plot, family and budget.",
+          ],
+          linkLabel: "See the Gudalur family house",
+        },
+        {
+          slug: "manjushree",
+          heading: "Manjushree Director's Building, O'Valley",
+          paragraphs: [
+            "Renovation of the 4,904 sq. ft. Director's Building at Manjushree Plantation, New Hope, O'Valley, an older British-era building among cardamom plants below the mountain slopes.",
+            "We assessed the building's existing condition first, then planned the renovation around the building, its setting, access for materials, weather exposure and moisture. The aim was to improve the building while keeping its original character.",
+          ],
+          linkLabel: "Read about the Manjushree renovation",
+        },
+      ],
+      cta: "Discuss a similar project",
+    },
     services: [
       "residential-construction",
       "villa-construction",
@@ -201,40 +261,166 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       "structural-drawings",
     ],
     servicesHeading: "Construction and design services in Gudalur",
-    servicesIntro: "Our Gudalur branch handles enquiries for houses, estate bungalows, commercial buildings and renovation, alongside architectural and structural design. Share your site details to discuss the services needed for your project.",
-    projectsHeading: "Our work in and around Gudalur",
+    servicesIntro: "Every service in our four sectors is available from the Gudalur branch, as a complete project or on its own.",
+    serviceSectors: [
+      {
+        heading: "Civil construction",
+        body: "Independent houses, villas, estate bungalows and commercial buildings, built as a complete turnkey project or to drawings you already have. Older buildings can be renovated and structurally retrofitted, and we can act as your construction consultant on a project built by others.",
+        links: [
+          { slug: "residential-construction", label: "House construction" },
+          { slug: "villa-construction", label: "Villa and bungalow construction" },
+          { slug: "commercial-construction", label: "Commercial building construction" },
+          { slug: "turnkey-construction", label: "Turnkey design and build" },
+          { slug: "renovation", label: "Renovation and structural retrofitting" },
+        ],
+      },
+      {
+        heading: "Design and architecture",
+        body: "Architectural plans, elevations and approval drawings, with structural, electrical and plumbing drawings coordinated for the same building. Design-only work is available if you already have a builder.",
+        links: [
+          { slug: "architectural-designs", label: "Architectural design and planning" },
+          { slug: "structural-drawings", label: "Structural drawings and design" },
+          { slug: "electrical-drawings", label: "Electrical drawings" },
+          { slug: "plumbing-drawings", label: "Plumbing drawings" },
+        ],
+      },
+      {
+        heading: "Estimates and valuation",
+        body: "Itemised estimates and BoQs that measure quantities and set out specifications before you commit, bank valuation reports for home loans, and structural stability certificates for existing buildings.",
+        links: [
+          { slug: "detailed-estimation-costing", label: "Detailed estimate and BoQ" },
+          { slug: "bank-valuation-report", label: "Bank valuation reports" },
+          { slug: "structural-stability-certificate", label: "Structural stability certificates" },
+        ],
+      },
+      {
+        heading: "Property and land",
+        body: "Before buying land in the Nilgiris, check its title, classification and road access. Our property services cover these checks and the purchase.",
+        links: [
+          { slug: "property-acquisition-advisory", label: "Property acquisition advisory" },
+          { slug: "land-plot-transactions", label: "Land and plot transactions" },
+        ],
+      },
+    ],
+    process: {
+      heading: "From site assessment to final handover",
+      intro: "A full turnkey project runs through every stage below. Design-only, estimate-only and consultancy work covers only the stages you engage us for.",
+      steps: [
+        { title: "Initial consultation", body: "We talk through your site, what you want to build, how it will be used and your budget. We usually reply to enquiries within 24 hours." },
+        { title: "Site and feasibility assessment", body: "A site visit looks at access, levels, drainage and ground conditions, and we check the land classification and the approvals that may apply before any design is fixed." },
+        { title: "Architectural and structural planning", body: "Plans, elevations and structural drawings are developed together, so the structure fits the layout you approve. Structural drawings are ready before construction starts." },
+        { title: "Detailed estimate and BoQ", body: "The bill of quantities lists each item of work with its quantity, specification and rate, along with the assumptions, exclusions and any provisional allowances." },
+        { title: "Contract and construction planning", body: "The agreed scope, payment stages, the process for pricing changes and the construction sequence are written down before work starts." },
+        { title: "Construction and quality checks", body: "Work proceeds stage by stage against the drawings, with materials checked on delivery, regular site supervision and progress updates as each stage is completed." },
+        { title: "Final inspection and handover", body: "Completed work is inspected against the agreed scope, outstanding items are closed out, and the building is handed over with the documents agreed in the contract." },
+      ],
+    },
+    pricing: {
+      heading: "How our itemised BoQ pricing works",
+      paragraphs: [
+        "A bill of quantities (BoQ) is an itemised list of every part of the work, with the quantity, specification and rate for each. You can see what the price covers before you sign and compare quotes item by item instead of by a single square-foot rate.",
+        "On a hill site, the costs that vary most are ones a flat plot rarely has, such as excavation in rock or soft ground, deeper foundations, retaining walls and drainage. In a BoQ, each of these is a separate line with its own quantity and rate.",
+      ],
+      itemsHeading: "What a BoQ lists",
+      items: [
+        "Earthwork and excavation",
+        "Foundations",
+        "Reinforced concrete",
+        "Masonry",
+        "Roofing and roof drainage",
+        "Waterproofing",
+        "Electrical works",
+        "Plumbing and sanitary works",
+        "Doors and windows",
+        "Flooring and finishes",
+        "External works and site drainage",
+        "Retaining structures, where needed",
+      ],
+      afterItems: [
+        "Once the BoQ is signed, the price is fixed for that agreed scope and specification. It can change if you change the design or specification, if excavation finds ground conditions different from those assumed, if site access differs from what was planned, or if the rules change. The contract sets out how such changes are priced and approved. Our [guide to reading a construction BoQ](/blog/how-to-read-a-construction-boq) explains what to check before you sign.",
+      ],
+      cta: "Request a Detailed Construction Estimate",
+    },
     faqs: [
       {
-        q: "Where is your Gudalur office?",
-        a: "Our branch is at No. 6, Thiruvalluvar Commercial Complex, near the SBI ATM on Ooty Main Road, Gudalur 643212. It is open Monday to Saturday, 9 am to 6 pm, and serves Gudalur and the rest of the Nilgiris.",
+        q: "Who are the best building contractors in Gudalur for luxury villas?",
+        a: "The best fit is a contractor who can show completed villas or bungalows of a similar size, tells you who prepares the architectural and structural drawings, and quotes with an itemised BoQ. Read their recent Google reviews too. Our Gudalur work includes the 12,120 sq. ft. [Pricol Limited tea bungalow](/projects/pricol), and our Gudalur branch is rated 4.9 on Google. See our [villa and bungalow construction](/services/villa-construction) service.",
       },
       {
-        q: "How much does it cost to build a house in Gudalur?",
-        a: "Cost depends on the proposed floor area, ground conditions, access, structure, finishes and external works. Request an itemised estimate that identifies quantities, specifications, exclusions and provisional items. Agree how changes will be priced. Share your plot information and drawings so the team can discuss what is needed for a project-specific estimate.",
+        q: "How much does turnkey house construction cost per square foot in the Nilgiris?",
+        a: "There is no single per-square-foot rate in the Nilgiris, because hill sites vary far more than flat plots. Cost depends on the specification and finishes, the structural design, the foundations the ground needs, any retaining walls, how easily materials reach the site, and whether design fees, approval work and taxes are included. A square-foot figure without those details is hard to compare. Share your plot details and requirements for a site-specific, itemised BoQ. Our [BoQ guide](/blog/how-to-read-a-construction-boq) shows what to check.",
       },
       {
-        q: "How long does a house take to build in Gudalur?",
-        a: "The programme depends on the design, building size, permissions, access and weather-dependent activities. Ask for a project-specific sequence with the assumptions and client decisions recorded. Our completed Gudalur residence was built during 2024–2025, but those dates describe that project and do not establish a standard duration for another house.",
+        q: "What building approvals (like HACA) are needed to build a home in Gudalur?",
+        a: "It depends on the plot, so start by checking the land's classification. A home needs planning permission from the local body or planning authority. Hill-area plots can also need Hill Area Conservation Authority (HACA) clearance and no-objection certificates from departments such as forest and agricultural engineering, and land under Section 17 of the Gudalur Janmam Estates Act carries further restrictions. We check what applies and can prepare and file the [approval drawings](/services/architectural-designs). The decision rests with the authorities.",
       },
       {
-        q: "Can you build on a sloping plot in Gudalur?",
-        a: "Feasibility depends on the actual plot, proposed building and permissions. Start with a professional review of levels, water movement, ground conditions and access. The engineer should identify the investigations and design needed before a foundation approach is chosen. Our [hill-plot planning guide](/blog/building-on-sloping-plot-ooty-gudalur) explains the questions to discuss.",
+        q: "Can you construct an independent house on a highly sloping plantation plot?",
+        a: "Often yes, after the site has been assessed, though not every steep plot is buildable. Feasibility depends on the slope, the soil and rock, groundwater, access for materials, and whether the land's classification and the hill-area rules allow a house there. A level survey and the soil investigation the engineer specifies come first. Foundations, retaining walls and drainage are then designed for that site. Sometimes the answer is a different position or a smaller footprint. Our [hill-plot guide](/blog/building-on-sloping-plot-ooty-gudalur) lists the questions to ask.",
       },
       {
-        q: "What have you built in Gudalur?",
-        a: "Our Gudalur work includes the [Pricol Limited tea bungalow](/projects/pricol), [Sasthapuri Hotels](/projects/sasthapuri) in the town centre and a [2,617 sq. ft. family house](/projects/residential-building-gudalur) completed in 2025.",
+        q: "What is included in a turnkey house construction contract in Gudalur?",
+        a: "A turnkey contract covers the project from design to handover under one agreement: architectural and structural drawings, approval support where agreed, construction, building services and finishing, priced through an itemised BoQ. Exactly what is in and out, such as interiors, landscaping, compound walls, retaining walls or approval fees, is listed in the contract. Check the exclusions before you sign. See [turnkey design and build](/services/turnkey-design-build-coimbatore).",
+      },
+      {
+        q: "Do you provide architectural and structural design under one team?",
+        a: "Yes. Architectural plans and structural drawings are prepared and coordinated by the same team, with electrical and plumbing drawings coordinated for the same building, as on our [Pricol](/projects/pricol) and [Sasthapuri](/projects/sasthapuri) projects. You can engage us for design only, or for design and construction.",
+      },
+      {
+        q: "How long does it take to build a house in the Nilgiris?",
+        a: "It depends on the size and design of the house, the approvals needed, site access and the monsoon, so ask for a programme written for your project. Weather-dependent work such as excavation, foundations and roof concreting is best scheduled around the heaviest rain. Our Gudalur family house was built during 2024–2025. Your programme will depend on your own project.",
+      },
+      {
+        q: "Can construction continue during heavy monsoon rainfall?",
+        a: "Some of it can. Excavation, foundations, retaining walls and roof concreting are best done outside the heaviest rain. Internal work under a finished roof, such as plastering, electrical and plumbing, can usually continue. Plan the weather-sensitive stages around the south-west monsoon, with temporary cover and drainage on site.",
+      },
+      {
+        q: "What is the cost of building a retaining wall in Gudalur?",
+        a: "It depends on the wall's height and length, the soil and groundwater behind it, the wall type the engineer selects, the drainage it needs and access to the site, so it can only be priced once the wall is designed. A retaining wall holds back soil where ground levels change. On a slope it is often one of the largest items in the estimate. We can design it and show it as a separate line in your [detailed estimate](/services/detailed-estimation-costing).",
+      },
+      {
+        q: "Do you construct tea estate bungalows and holiday homes?",
+        a: "Yes. Our completed work includes the 12,120 sq. ft. [Pricol Limited tea bungalow](/projects/pricol) inside a tea plantation in Gudalur, reached across a river, and the renovation of the [Manjushree Director's Building](/projects/manjushree) at O'Valley. Holiday homes and villas are covered by our [villa and bungalow construction](/services/villa-construction) service.",
+      },
+      {
+        q: "Can you renovate an old British-era bungalow in Ooty or Gudalur?",
+        a: "Yes. Renovation starts with an assessment of the building's condition, structure and moisture problems, and of the changes you need, before any design is fixed. Our renovation of the British-era [Manjushree Director's Building](/projects/manjushree) at O'Valley, a 4,904 sq. ft. building in a plantation setting, followed that approach. See [renovation and retrofitting](/services/renovation) and our guide to [renovating an old Nilgiris bungalow](/blog/renovate-old-bungalow-nilgiris).",
+      },
+      {
+        q: "How do you ensure transparent construction pricing?",
+        a: "We price every project with an itemised BoQ, signed before construction starts. It lists each item of work with its quantity, specification and rate, and states what is excluded. The price is then fixed for that agreed scope, and the contract sets out how any changes are priced and approved.",
+      },
+      {
+        q: "Do you provide structural engineering services without a full construction contract?",
+        a: "Yes. You can engage us for [structural drawings](/services/structural-drawings) for a new building, or a [structural stability certificate](/services/structural-stability-certificate) for an existing one, without a construction contract. On hill sites, the structural design can include the foundations and retaining walls the site needs.",
+      },
+      {
+        q: "What should I check before purchasing land for construction in the Nilgiris?",
+        a: "Check the land's classification and title first: the patta, the encumbrance certificate, and whether it falls under Section 17 or any forest or hill-area restriction that limits building. Then check road access for construction vehicles, the slope and drainage of the plot, water and power, and how much of the plot the hill-area rules let you build on. Our [property acquisition advisory](/services/property-acquisition-advisory) helps you check title and approvals before you buy.",
+      },
+      {
+        q: "How are material transportation and difficult site access handled?",
+        a: "We plan around access before construction starts, looking at the approach road, the size of vehicle it can take, where materials can be unloaded and stored, and how they move on site. Deliveries and labour are then scheduled to the construction sequence. At the [Pricol tea bungalow](/projects/pricol) every load crossed a river to reach the site. At [Sasthapuri Hotels](/projects/sasthapuri) storage space in the town centre was limited.",
+      },
+      {
+        q: "Can I get a detailed BoQ before starting construction?",
+        a: "Yes. You receive a written, itemised BoQ before any work starts, and construction begins once it is agreed and signed. You can also order a [detailed estimate and BoQ](/services/detailed-estimation-costing) on its own to compare contractors' quotes.",
+      },
+      {
+        q: "Do you undertake commercial construction projects in Gudalur?",
+        a: "Yes. Our largest Gudalur project is [Sasthapuri Hotels](/projects/sasthapuri), a 38,879 sq. ft. commercial building in the town centre, completed in 2016 with architecture, structural engineering, MEP services and construction. We take on shops, offices, hotels and other [commercial buildings](/services/commercial-construction).",
+      },
+      {
+        q: "How do you protect hill-station buildings from dampness and water ingress?",
+        a: "We keep water away from the building with site grading and drains, roof drainage sized for monsoon rain, a raised plinth, a damp-proof course at the base of walls, waterproofing of roofs and wet areas, and drainage behind retaining walls. These details are in the drawings. Gutters, drains and roof joints should be checked after each monsoon.",
       },
       {
         q: "Do you also work in Ooty, Coonoor and Kotagiri?",
         a: "Yes. Our Gudalur branch serves enquiries across the Nilgiris, including Ooty, Coonoor and Kotagiri. Our documented Ooty work includes [Christus Rex Higher Secondary School](/projects/rex-school) at Kandal. See our [Nilgiris service-area page](/locations/nilgiris-ooty) for the wider area, and share your exact site location when discussing a project.",
       },
-      {
-        q: "Can you prepare house plans and approval drawings for a Gudalur plot?",
-        a: "Yes. We offer architectural plans, elevations and approval drawings, with structural, electrical and plumbing coordination available for the proposed building. Bring plot documents, measurements, site photographs and your room requirements. The applicable authority and submission requirements need to be checked for the site; preparing drawings does not by itself establish approval.",
-      },
     ],
     formService: "residential-construction",
-    whatsappMessage: "Hello Prasanth Associates, I would like to discuss building a house in Gudalur.",
+    whatsappMessage: "Hello Prasanth Associates, I would like to discuss a building project in Gudalur.",
     other: {
       href: "/locations/nilgiris-ooty",
       title: "Building higher up, in Ooty, Coonoor or Kotagiri?",
