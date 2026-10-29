@@ -63,7 +63,7 @@ export interface LocationPage {
     cta: string;
   };
   /** Shown instead of the service cards: the four sectors, each with its service links. */
-  serviceSectors?: { heading: string; body: string; links: { slug: string; label: string }[] }[];
+  serviceSectors?: { heading: string; body: string; links: { slug: string; label: string; note?: string }[] }[];
   /** How a project runs, stage by stage. */
   process?: { heading: string; intro: string; steps: { title: string; body: string }[] };
   /** How the itemised BoQ and the price work. */
@@ -77,9 +77,13 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
     area: "coimbatore",
     breadcrumb: "Coimbatore",
     badge: "Head office · Gandhipuram",
-    heading: "Construction Company in Coimbatore",
+    heading: "Building Contractors in Coimbatore",
     intro:
-      "Prasanth Associates is a construction company in Coimbatore offering house construction, villa construction, commercial building work and architectural design. From our head office in Gandhipuram on Sathy Road, we help clients develop their building requirements, coordinate drawings and plan construction. Whether you need a house plan or a team to take your project through construction, start with a discussion of your plot, budget and proposed scope.",
+      "Prasanth Associates is a firm of building contractors in Coimbatore, with its head office in Gandhipuram on Sathy Road. We design and build houses, villas and commercial buildings, prepare house plans, structural drawings and estimates, and provide valuation and property services. Every construction project is priced through an itemised BoQ before work starts.",
+    heroNote: "Engineering first, quality always. Structural drawings are ready before construction starts, and the site builds from them.",
+    quoteLabel: "Request a House Construction Estimate",
+    whatsappLabel: "Discuss your project on WhatsApp",
+    reviewsLink: true,
     overview: [
       {
         heading: "House and villa construction in Coimbatore",
@@ -103,22 +107,35 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         ],
       },
     ],
-    googleRating: { rating: "4.9", reviews: 23 },
+    googleRating: { rating: "4.9", reviews: 26 },
     conditionsHeading: "Planning your construction project in Coimbatore",
     conditions: [
       {
-        title: "Plot information and approval responsibilities",
-        body: "Bring available property documents, plot measurements and road details. Establish the authority and application requirements for your site, and agree who prepares and submits the drawings. Record approval support separately from the construction scope.",
+        title: "Which authority approves your plan",
+        body: "Inside Coimbatore Corporation limits, building plans go to the Coimbatore City Municipal Corporation (CCMC). Most plots outside the limits come under the town and country planning department (DTCP) or the local planning authority. Tamil Nadu also has an online self-certification route for some small houses in approved layouts. Your patta, FMB sketch and layout approval show which route your plot takes, and we check this before the drawings are prepared. The authority makes the approval decision.",
       },
       {
-        title: "Ground conditions and structural planning",
-        body: "Ask the engineer what ground information and investigations your proposed building needs. Foundation and structural decisions depend on the actual site and building loads. A house built elsewhere in Coimbatore cannot establish the right design for your plot.",
+        title: "Soil investigation before foundation design",
+        body: "Ground conditions change from plot to plot, and some soils swell when wet and shrink as they dry, which can crack floors and walls. The structural engineer decides what soil investigation your building needs, then designs the foundations for the results and the building loads. Don't rely on the foundation used on a neighbouring plot.",
       },
       {
-        title: "Water, services and site access",
-        body: "Discuss drainage, water storage, rainwater arrangements and utility connections alongside the house plan. The approach road and space for deliveries also need consideration. Resolve these requirements early so the drawings and estimate address the same work.",
+        title: "RCC structure and adding floors",
+        body: "Houses here are usually reinforced concrete (RCC) frames, with each column and beam designed for the load it carries. If you may add a floor later, say so at the start so the columns and foundations are designed for it. An existing building needs a structural check by an engineer before any extension; our renovation service starts with that check.",
+      },
+      {
+        title: "Building on narrow city plots",
+        body: "On a narrow plot, setbacks, site coverage, road width and the height limit decide how much you can build, so the plan starts from those rules. Stairs, parking and daylight need careful placing when the side walls are close to the neighbours. Construction also needs a plan for storing materials and working without blocking the road.",
+      },
+      {
+        title: "Heat, ventilation and rainwater",
+        body: "Coimbatore summers are hot, so orientation, shaded windows, cross-ventilation and roof treatment make a real difference to comfort indoors. Tamil Nadu's building rules require rainwater harvesting structures on building sites, and storm water should be led into the ground where the soil allows. Both are planned in the drawings.",
+      },
+      {
+        title: "Electrical and plumbing coordination",
+        body: "Electrical and plumbing drawings are coordinated with the structure, so pipe and conduit routes, shafts and slab openings are fixed before concrete is poured. This avoids breaking into new slabs and walls later, and lets the estimate price the services work accurately.",
       },
     ],
+    conditionsCta: "Discuss your plot with an engineer",
     services: [
       "residential-construction",
       "turnkey-construction",
@@ -127,9 +144,82 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       "interior-designs",
       "bank-valuation-report",
     ],
-    servicesHeading: "Construction and design services in Coimbatore",
-    servicesIntro: "Discuss a complete build or a separate design, interior or valuation appointment with our Gandhipuram office. The service pages explain the available scope and information to prepare for an enquiry.",
+    servicesHeading: "Construction, design, valuation and property services in Coimbatore",
+    servicesIntro: "All 22 of our services are available from the Gandhipuram office, as a complete project or on their own.",
+    serviceSectors: [
+      {
+        heading: "Civil construction",
+        body: "Houses, villas, shops, offices and factories, built as a complete turnkey project or to drawings you already have.",
+        links: [
+          { slug: "residential-construction", label: "House construction", note: "Individual houses and duplexes, from the first plan to handover." },
+          { slug: "villa-construction", label: "Villa construction", note: "Villas with courtyards, terraces and interiors planned together with the building." },
+          { slug: "commercial-construction", label: "Commercial and retail buildings", note: "Shops, showrooms, offices, hotels and schools, planned around how they will be used." },
+          { slug: "turnkey-construction", label: "Turnkey design and build in Coimbatore", note: "Design, approval support, construction and interiors under one contract." },
+          { slug: "industrial-factory-construction", label: "Factory and industrial shed construction", note: "Factory buildings and PEB steel sheds, with floors and machine foundations designed for the load." },
+          { slug: "smart-homes", label: "Smart home automation", note: "Lighting, curtains, air conditioning, locks and cameras, wired in before the walls are finished." },
+          { slug: "renovation", label: "Renovation and structural retrofitting", note: "Repairs, layout changes, strengthening and floor additions, after a structural check." },
+          { slug: "construction-work-consulting", label: "Construction consulting and site inspection", note: "Independent inspections, steel and concrete checks and bill checks while another contractor builds." },
+        ],
+      },
+      {
+        heading: "Design and architecture",
+        body: "Drawings for approval and for building, with the structural and services drawings coordinated for the same house.",
+        links: [
+          { slug: "architectural-designs", label: "House plans and architectural design", note: "2D floor plans, 3D elevations and approval drawings for your plot." },
+          { slug: "interior-designs", label: "Interior design", note: "Kitchens, wardrobes, ceilings and lighting, designed in 3D and installed by our team." },
+          { slug: "structural-drawings", label: "Structural drawings", note: "Footing, column, beam and slab drawings, with bar bending schedules for the site." },
+          { slug: "electrical-drawings", label: "Electrical drawings", note: "Switch, socket and light layouts, circuits and earthing for each floor." },
+          { slug: "plumbing-drawings", label: "Plumbing drawings", note: "Water supply, drainage, tank sizing and rainwater harvesting layouts." },
+          { slug: "landscaping-designs", label: "Landscape design", note: "Garden layouts, planting, paths, irrigation and outdoor lighting." },
+        ],
+      },
+      {
+        heading: "Estimates and valuation",
+        body: "Reports and estimates for banks, buyers, insurers and anyone comparing contractors' quotes.",
+        links: [
+          { slug: "bank-valuation-report", label: "Bank valuation reports", note: "Property valuations for home loans and loans against property, after a site inspection." },
+          { slug: "structural-stability-certificate", label: "Structural stability certificates", note: "An engineer's inspection and certificate that a building is safe for its use." },
+          { slug: "detailed-estimation-costing", label: "Detailed estimate and BoQ", note: "An itemised bill of quantities, so you know the cost before you build." },
+          { slug: "chartered-engineer-valuation", label: "Plant, machinery and technical valuation", note: "Engineer valuations of machinery and industrial buildings for banks, audits and insurance." },
+        ],
+      },
+      {
+        heading: "Property and investment",
+        body: "Help with buying, selling, investing in and managing property in and around Coimbatore.",
+        links: [
+          { slug: "property-acquisition-advisory", label: "Property buying advice", note: "Document, approval and condition checks before you buy a house or plot." },
+          { slug: "land-plot-transactions", label: "Land and plot transactions", note: "Title and EC checks, boundary survey against the FMB sketch, and registration support." },
+          { slug: "real-estate-investment-consulting", label: "Real estate investment advice", note: "Location, rental yield and risk checks for property bought as an investment, including for NRIs." },
+          { slug: "property-portfolio-management", label: "Property management", note: "Tenants, rent collection, maintenance and monthly reports for owners who live elsewhere." },
+        ],
+      },
+    ],
     projectsHeading: "Our work in Coimbatore",
+    caseStudies: {
+      heading: "Projects in detail",
+      intro: "Our Perur house in Coimbatore, and our largest completed commercial building, in Gudalur.",
+      items: [
+        {
+          slug: "residential-building-perur-coimbatore",
+          heading: "Family house in Perur, Coimbatore",
+          paragraphs: [
+            "A 3,500 sq. ft. house in Perur, completed in 2020. The planning focused on functional floor plans and efficient use of space, natural light and ventilation, and structural design coordinated with the electrical and plumbing work.",
+            "Material selection and construction quality were part of the brief, and the design team worked with the site team through to completion. If you are planning a family house in Coimbatore, it is a useful one to look at.",
+          ],
+          linkLabel: "See the Perur house",
+        },
+        {
+          slug: "sasthapuri",
+          heading: "Sasthapuri Hotels, Gudalur",
+          paragraphs: [
+            "Our largest completed commercial building is in Gudalur: 38,879 sq. ft. for Sasthapuri Hotels in the town centre. We handled the architecture, structural engineering, MEP services and construction.",
+            "The site was in a busy area with little room to store materials, as many central Coimbatore sites are. Construction ran in phases so different trades could work without crowding the site.",
+          ],
+          linkLabel: "View the Sasthapuri Hotels project",
+        },
+      ],
+      cta: "Discuss a similar project",
+    },
     faqs: [
       {
         q: "Where is your Coimbatore office?",
@@ -141,7 +231,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       },
       {
         q: "Do you help with building plan approval in Coimbatore?",
-        a: "Yes. We can prepare approval drawings and assist with the application and follow-up. The authority, document requirements and application route depend on the plot and proposed building, so they need checking for your site. Approval is the authority's decision. Our [plan approval article](/blog/building-plan-approval-coimbatore-nilgiris) explains what to discuss before submission.",
+        a: "Yes. We prepare the approval drawings, file the application and follow it up. Plots inside Coimbatore Corporation limits go to CCMC, most plots outside come under DTCP or the local planning authority, and some small houses in approved layouts can use Tamil Nadu's online self-certification route. The authority makes the decision. Our [plan approval article](/blog/building-plan-approval-coimbatore-nilgiris) lists the documents to prepare.",
       },
       {
         q: "Do you offer turnkey construction in Coimbatore?",
@@ -154,6 +244,22 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       {
         q: "How much does house construction cost in Coimbatore?",
         a: "The cost depends on floor area, structural requirements, site access, material choices and the agreed scope. Compare itemised quantities and specifications, including design fees, application support, interiors and external works where relevant. Our [guide to reading a construction BOQ](/blog/how-to-read-a-construction-boq) explains how to compare quotes beyond a headline square-foot rate.",
+      },
+      {
+        q: "Is rainwater harvesting required for a new house in Coimbatore?",
+        a: "Yes. Tamil Nadu's building rules require rainwater harvesting structures on building sites, and storm water should be led into the ground where the soil allows. The type and size of the system depend on the roof area, the plot and the soil. Our [plumbing drawings](/services/plumbing-drawings) include the rainwater harvesting layout.",
+      },
+      {
+        q: "Do you build factories and industrial sheds around Coimbatore?",
+        a: "Yes. We build factory buildings and pre-engineered (PEB) steel sheds, with machine foundations and floors designed for the loads they will carry. Send the plot location, the building size you need, the machinery and any crane or vehicle access requirements. See [factory and industrial shed construction](/services/industrial-factory-construction).",
+      },
+      {
+        q: "Can I get structural drawings or a valuation without a construction contract?",
+        a: "Yes. [Structural drawings](/services/structural-drawings), [structural stability certificates](/services/structural-stability-certificate), [bank valuation reports](/services/bank-valuation-report) and [detailed estimates](/services/detailed-estimation-costing) are each available on their own from our Gandhipuram office. Tell us what the document is for, such as a bank, an approval or comparing contractors' quotes, so it is prepared in the right form.",
+      },
+      {
+        q: "My house has cracks in the walls or columns. What should I do?",
+        a: "Have an engineer inspect it before you repair or extend. Some cracks are only in the plaster; others point to settlement, corroding steel or overloading, and those need a structural repair. Our [structural stability certificate](/services/structural-stability-certificate) inspection includes a crack and corrosion survey, and [renovation and retrofitting](/services/renovation) covers strengthening where it is needed.",
       },
     ],
     whatsappMessage: "Hello Prasanth Associates, I would like to discuss a building project in Coimbatore.",

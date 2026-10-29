@@ -316,12 +316,13 @@ export default function LocationLanding({ page, entitySchema, parent, extraSchem
                 <div key={sector.heading} className="flex flex-col rounded-2xl neu-glass p-6">
                   <h3 className="font-heading text-lg font-bold text-charcoal leading-snug mb-2">{sector.heading}</h3>
                   <p className="text-sm text-concrete leading-relaxed mb-4">{sector.body}</p>
-                  <ul className="mt-auto space-y-2">
+                  <ul className={sector.links.some((link) => link.note) ? "space-y-3.5" : "mt-auto space-y-2"}>
                     {sector.links.map((link) => (
                       <li key={link.slug}>
                         <Link href={getServicePath(link.slug)} className="inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal hover:text-gold-dark">
                           {link.label}<ArrowRight size={12} />
                         </Link>
+                        {link.note && <p className="text-xs text-concrete leading-relaxed mt-0.5">{link.note}</p>}
                       </li>
                     ))}
                   </ul>

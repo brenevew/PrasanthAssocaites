@@ -54,7 +54,7 @@ test("location pages have quotable answers that follow the copy rules", () => {
       ...page.conditions.flatMap((c) => [c.title, c.body]),
       ...(page.places ?? []).map((p) => p.note),
       ...(page.caseStudies ? [page.caseStudies.heading, page.caseStudies.intro, ...page.caseStudies.items.flatMap((item) => [item.heading, ...item.paragraphs])] : []),
-      ...(page.serviceSectors ?? []).flatMap((sector) => [sector.heading, sector.body]),
+      ...(page.serviceSectors ?? []).flatMap((sector) => [sector.heading, sector.body, ...sector.links.map((link) => link.note ?? "")]),
       ...(page.process ? [page.process.heading, page.process.intro, ...page.process.steps.flatMap((step) => [step.title, step.body])] : []),
       ...(page.pricing ? [page.pricing.heading, ...page.pricing.paragraphs, ...page.pricing.items, ...page.pricing.afterItems] : []),
     ].join(" ");
