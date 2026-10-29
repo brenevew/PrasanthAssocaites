@@ -331,6 +331,16 @@ Set these in **Project Settings → Script Properties**, alongside `SHARED_SECRE
 |----------|--------|
 | `UPLOAD_FOLDER_ID` | Store uploads in an existing Drive folder instead of creating one. Use the ID from the folder's URL. |
 | `PUBLIC_FILE_LINKS` | `true` makes every uploaded file viewable by **anyone with the link**. |
+| `NOTIFY_EMAIL` | Who is emailed about each new enquiry. Defaults to `info@prasanthassociates.com`. Use commas for more than one address. |
+
+> **Email notifications.** Each submission that lands in the Sheet also sends the
+> lead's details to `NOTIFY_EMAIL`, with a link to the row. Replying to that email
+> answers the client directly (when they gave an email address). If sending ever
+> fails, the lead is still saved in the Sheet. After pasting the updated script,
+> run `testEmailNotification` once from the editor (click **Allow** when asked),
+> then deploy a **new version**. Open the `/exec` URL to confirm: the response
+> must include `"notifyEmail"`, otherwise the old version is still live.
+> Gmail limits a free account to about 100 script emails a day.
 
 > **On `PUBLIC_FILE_LINKS`.** It is deliberately **off** by default. These files
 > are client property — site plans, survey documents, photos of their land — and

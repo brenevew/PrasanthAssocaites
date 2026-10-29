@@ -32,12 +32,22 @@
  *                      the link. Default (unset) keeps files private to you —
  *                      share the Drive folder with your team instead.
  *
+ * EMAIL NOTIFICATION
+ *   Every new submission also emails NOTIFY_EMAIL (default
+ *   info@prasanthassociates.com) with the lead's details. Reply goes straight
+ *   to the client. A failed email never blocks the Sheet write.
+ *   SETUP: select testEmailNotification in the editor's function dropdown and
+ *   press Run. Click Allow when Google asks for email permission, then check
+ *   the inbox. After that, deploy a NEW VERSION (see IMPORTANT below).
+ *   NOTIFY_EMAIL   Script property. One address, or several separated by commas.
+ *
  * IMPORTANT: after editing this script you must run Deploy > Manage
  * deployments > edit > Version: New version. Saving alone does not publish.
  * =========================================================================
  */
 
 var ALL_SHEET = "All Inquiries";
+var DEFAULT_NOTIFY_EMAIL = "info@prasanthassociates.com";
 var UPLOAD_FOLDER_NAME = "Prasanth Associates — Form Uploads";
 
 var HEADERS = [
@@ -300,11 +310,23 @@ function doPost(e) {
     // 2. Per-form tab, so each form can be reviewed on its own.
     appendRow_(getOrCreateSheet_(ss, formType), row);
 
+    // 3. Email the team. Isolated so a mail problem can never lose the lead.
+    var emailed = false;
+    var emailError = null;
+    try {
+      emailed = notifyByEmail_(formType, row, rowNumber, ss);
+    } catch (mailErr) {
+      emailError = String(mailErr);
+      console.error("Email notification failed: " + emailError);
+    }
+
     return jsonOut({
       status: "success",
       row: rowNumber,
       refCode: data.refCode || "-",
       formType: formType,
+      emailed: emailed,
+      emailError: emailError,
       attachmentCount: data.attachmentCount || 0
     });
   } catch (error) {
@@ -312,6 +334,63 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
+}
+
+function escapeHtml_(value) {
+  return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/**
+ * Emails the new lead to NOTIFY_EMAIL. `row` is in HEADERS order. Returns true
+ * when a message was sent.
+ */
+function notifyByEmail_(formType, row, rowNumber, ss) {
+  var to = PropertiesService.getScriptProperties().getProperty("NOTIFY_EMAIL") || DEFAULT_NOTIFY_EMAIL;
+  var name = row[3], phone = row[4], email = row[5];
+  var hasEmail = email && email !== "-" && email.indexOf("@") > -1;
+
+  var lines = HEADERS.map(function (label, i) {
+    return { label: label, value: String(row[i]) };
+  });
+
+  var subject = "New " + formType + " enquiry" + (name && name !== "-" ? " from " + name : "") +
+    (row[2] && row[2] !== "-" ? " [" + row[2] + "]" : "");
+
+  var text = lines.map(function (l) { return l.label + ": " + l.value; }).join("\n") +
+    "\n\nSheet: " + ss.getUrl() + "#gid=" + getOrCreateSheet_(ss, ALL_SHEET).getSheetId() + " (row " + rowNumber + ")";
+
+  var html = '<div style="font-family:Arial,sans-serif;font-size:14px;color:#1a1714">' +
+    '<h2 style="margin:0 0 12px">New ' + escapeHtml_(formType) + ' enquiry</h2>' +
+    '<table style="border-collapse:collapse">' +
+    lines.map(function (l) {
+      return '<tr><td style="padding:6px 14px 6px 0;color:#66615b;vertical-align:top;white-space:nowrap">' +
+        escapeHtml_(l.label) + '</td><td style="padding:6px 0;white-space:pre-wrap">' +
+        escapeHtml_(l.value) + '</td></tr>';
+    }).join("") +
+    '</table><p style="margin-top:16px"><a href="' + ss.getUrl() + '#gid=' + getOrCreateSheet_(ss, ALL_SHEET).getSheetId() +
+    '">Open the Google Sheet</a> (row ' + rowNumber + ')</p></div>';
+
+  var options = { to: to, subject: subject, body: text, htmlBody: html, name: "Prasanth Associates Website" };
+  if (hasEmail) options.replyTo = email; // replying answers the client directly
+  MailApp.sendEmail(options);
+  return true;
+}
+
+/**
+ * SETUP CHECK: run this once from the Apps Script editor (function dropdown >
+ * testEmailNotification > Run). It prompts for email permission the first time
+ * and sends a sample enquiry to NOTIFY_EMAIL. Nothing is written to the Sheet.
+ */
+function testEmailNotification() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var row = [
+    Utilities.formatDate(new Date(), "Asia/Kolkata", "dd-MMM-yyyy hh:mm a"),
+    "Contact Us", "TEST", "Test Enquiry", "-", "-", "-", "-", "-",
+    "This is a test of the enquiry email notification. No row was added to the Sheet.", "-"
+  ];
+  notifyByEmail_("Contact Us", row, 0, ss);
+  var to = PropertiesService.getScriptProperties().getProperty("NOTIFY_EMAIL") || DEFAULT_NOTIFY_EMAIL;
+  console.log("Test email sent to " + to + ". Daily email quota remaining: " + MailApp.getRemainingDailyQuota());
 }
 
 /** Health check — open the /exec URL in a browser to confirm the deployment. */
@@ -323,6 +402,7 @@ function doGet() {
     secretConfigured: !!props.getProperty("SHARED_SECRET"),
     uploadsEnabled: true,
     publicFileLinks: props.getProperty("PUBLIC_FILE_LINKS") === "true",
+    notifyEmail: props.getProperty("NOTIFY_EMAIL") || DEFAULT_NOTIFY_EMAIL,
     timestamp: new Date().toISOString()
   });
 }

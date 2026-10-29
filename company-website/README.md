@@ -39,9 +39,9 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 The three enquiry forms are at `/contact`, `/request-quote` and `/plan-home`.
-They work without any configuration — if `GOOGLE_SHEETS_WEBHOOK_URL` is unset,
-submissions succeed and each lead is printed to the terminal instead of being
-written to the Sheet.
+Set `GOOGLE_SHEETS_WEBHOOK_URL` before testing submissions. Forms show success
+only after Google Sheets confirms the lead was saved; missing configuration or
+a failed delivery shows an error and keeps the form available for retry.
 
 Each form also accepts up to 5 image/PDF attachments (plans, sketches, site
 photos) — 2 MB per file, 5 MB per submission — stored in Google Drive with links
