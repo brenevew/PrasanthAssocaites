@@ -69,6 +69,22 @@ test("sitemap includes every service once, retains public pages and omits redire
   assert.ok(urls.includes(`${SITE_URL}/blog`));
 });
 
+test("every service page heading is unique and names where the service is offered", () => {
+  const headings = serviceSeo.map((entry) => entry.h1);
+  assert.equal(new Set(headings).size, headings.length);
+  for (const entry of serviceSeo) {
+    assert.match(entry.h1, /Coimbatore/, entry.slug);
+    if (!["industrial-factory-construction", "turnkey-construction"].includes(entry.slug)) {
+      assert.match(entry.h1, /Ooty/, entry.slug);
+    }
+    assert.doesNotMatch(`${entry.h1} ${entry.title} ${entry.description}`, /Nilgiris/, entry.slug);
+    const district = serviceSchema(services.find((service) => service.slug === entry.slug)).areaServed
+      .find((area) => area.name === "The Nilgiris");
+    assert.equal(district?.["@type"], "AdministrativeArea", entry.slug);
+    assert.ok(entry.h1.length <= 65, `${entry.slug}: heading is ${entry.h1.length} characters`);
+  }
+});
+
 test("the footer links every service page once", () => {
   const hrefs = footerServiceLinks.map((link) => link.href);
   assert.equal(new Set(hrefs).size, hrefs.length);

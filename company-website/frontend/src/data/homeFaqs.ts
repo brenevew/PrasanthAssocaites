@@ -29,10 +29,10 @@ export const homeFaqQuestions: HomeFaqQuestion[] = [
   {
     group: "Getting to know us",
     question: "Where are your offices, and which areas do you cover?",
-    answer: "Our head office is in Gandhipuram, Coimbatore, also known as Kovai, and takes projects across Coimbatore. Our Gudalur branch is on Ooty Main Road in the Nilgiris and covers Ooty, Coonoor, Kotagiri and Gudalur. Send the property address or map location and the work you need so the team can confirm coverage and discuss a site visit.",
+    answer: "Our head office is in Gandhipuram, Coimbatore, also known as Kovai, and takes projects across Coimbatore. Our Gudalur branch is on Ooty Main Road in the Nilgiris district and covers Ooty, Coonoor, Kotagiri and Gudalur. Send the property address or map location and the work you need so the team can confirm coverage and discuss a site visit.",
     links: [
       { href: "/locations/coimbatore", label: "Building in Coimbatore" },
-      { href: "/locations/nilgiris-ooty", label: "Building in Ooty and the Nilgiris" },
+      { href: "/locations/nilgiris-ooty", label: "Building in Ooty, Coonoor and Kotagiri" },
       { href: "/contact", label: "Office addresses and contact details" },
     ],
   },

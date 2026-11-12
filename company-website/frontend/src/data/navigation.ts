@@ -79,6 +79,6 @@ export const footerServiceLinks: NavItem[] = footerServiceGroups.flatMap((group)
 
 export const footerLocationLinks: NavItem[] = [
   { label: "Coimbatore (HQ)", href: "/locations/coimbatore" },
-  { label: "Ooty & the Nilgiris", href: "/locations/nilgiris-ooty" },
+  { label: "Ooty, Coonoor & Kotagiri", href: "/locations/nilgiris-ooty" },
   { label: "Gudalur", href: "/locations/gudalur" },
 ];

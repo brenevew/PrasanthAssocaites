@@ -13,7 +13,7 @@ const OUT = "src/data/lastModified.json";
 
 // Page group -> the source paths its content comes from (relative to frontend/).
 const groups = {
-  home: ["src/app/page.tsx", "src/data/quality.ts", "src/data/testimonials.ts", "src/data/homeFaqs.ts"],
+  home: ["src/app/page.tsx", "src/data/quality.ts", "src/data/testimonials.ts", "src/data/homeFaqs.ts", "src/data/homeLocal.ts"],
   services: ["src/app/services/page.tsx", "src/app/services/ServicesPageClient.tsx", "src/data/services.ts", "src/data/serviceQuoteData.ts"],
   servicePages: [
     "src/app/services/[slug]",

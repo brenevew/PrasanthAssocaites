@@ -4,35 +4,53 @@ import { SITE_URL, pageOpenGraph, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { gudalurBranchEntity, locationWebPage } from "@/lib/officeSchema";
 import LocationLanding from "@/components/locations/LocationLanding";
 
+const SEO_TITLE = "Builders in Ooty, Coonoor & Kotagiri | Prasanth Associates";
 const SEO_DESCRIPTION =
-  "Building contractors for Ooty, Coonoor, Kotagiri and Gudalur. House construction, building design and hillside work in the Nilgiris, from our Gudalur branch.";
+  "Builders in Ooty, Coonoor and Kotagiri for houses, villas, schools and renovation. House plans, hill-area approvals and itemised BoQ from our Gudalur branch.";
 
 export const metadata: Metadata = {
-  title: "Builders in Ooty, Coonoor & Nilgiris",
+  title: { absolute: SEO_TITLE },
   description: SEO_DESCRIPTION,
   keywords: [
-    "builders in Nilgiris",
-    "house construction in Ooty",
-    "hill station builders Ooty",
-    "villa construction Ooty",
-    "hill station builders Tamil Nadu",
-    "civil contractors Nilgiris",
     "builders in Ooty",
     "construction company in Ooty",
-    "house construction in Coonoor",
+    "house builders in Ooty",
+    "house construction cost in Ooty",
     "builders in Coonoor",
-    "house construction in Kotagiri",
-    "building contractors in Kotagiri",
-    "construction company Nilgiris",
+    "construction company in Coonoor",
+    "builders in Kotagiri",
+    "construction company in Kotagiri",
+    "builders in Nilgiris",
+    "building plan approval Nilgiris",
+    "HACA approval",
+    "architects and structural engineers in Ooty",
+    "villa construction Ooty Coonoor Kotagiri",
   ],
   alternates: {
     canonical: `${SITE_URL}/locations/nilgiris-ooty`,
   },
   openGraph: pageOpenGraph(
     "/locations/nilgiris-ooty",
-    "Builders in Ooty, Coonoor & Nilgiris | Prasanth Associates",
+    SEO_TITLE,
     SEO_DESCRIPTION
   ),
+};
+
+// The service this page offers, provided by the Nilgiris branch.
+const serviceSchema = {
+  "@type": "Service",
+  "@id": `${SITE_URL}/locations/nilgiris-ooty#service`,
+  name: "Building construction in Ooty, Coonoor and Kotagiri",
+  serviceType: "Building construction",
+  description: locationPages["nilgiris-ooty"].intro,
+  url: `${SITE_URL}/locations/nilgiris-ooty`,
+  provider: { "@id": GUDALUR_BRANCH_ID },
+  areaServed: [
+    { "@type": "City", name: "Ooty" },
+    { "@type": "City", name: "Coonoor" },
+    { "@type": "City", name: "Kotagiri" },
+    { "@type": "AdministrativeArea", name: "The Nilgiris" },
+  ],
 };
 
 export default function NilgirisOotyLocationPage() {
@@ -43,11 +61,12 @@ export default function NilgirisOotyLocationPage() {
       extraSchema={[
         locationWebPage({
           path: "/locations/nilgiris-ooty",
-          name: "Builders in Ooty, Coonoor & Nilgiris | Prasanth Associates",
+          name: SEO_TITLE,
           description: SEO_DESCRIPTION,
           officeId: GUDALUR_BRANCH_ID,
           isOfficePage: false,
         }),
+        serviceSchema,
       ]}
       parent={{ name: "Locations", href: "/contact" }}
     />

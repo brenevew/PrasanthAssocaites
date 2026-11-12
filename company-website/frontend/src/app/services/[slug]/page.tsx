@@ -4,7 +4,7 @@ import { services } from "@/data/services";
 import { getServicePath } from "@/data/serviceRoutes";
 import { serviceFaqs } from "@/data/serviceFaqs";
 import { projects, projectServiceSlug } from "@/data/projects";
-import { serviceMetadata } from "@/lib/serviceSeo";
+import { serviceMetadata, serviceSeo } from "@/lib/serviceSeo";
 import ServiceLanding from "@/components/services/ServiceLanding";
 
 interface Props { params: Promise<{ slug: string }> }
@@ -35,6 +35,8 @@ export default async function ServicePage({ params }: Props) {
   return (
     <ServiceLanding
       service={service}
+      heading={serviceSeo.find((entry) => entry.slug === slug)?.h1}
+      breadcrumbLabel={service.title}
       faqs={serviceFaqs[slug] ?? []}
       projects={projects.filter((project) => projectServiceSlug(project) === slug).slice(0, 3)}
     />

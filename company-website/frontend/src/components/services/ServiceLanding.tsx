@@ -32,6 +32,8 @@ interface ServiceLandingProps {
   /** Page heading and intro when they differ from the catalogue (e.g. a city page). */
   heading?: string;
   intro?: string;
+  /** Short name for the breadcrumb when the heading is long (default: the heading). */
+  breadcrumbLabel?: string;
   /** Replaces the default Service structured data. */
   schema?: Record<string, unknown>;
   /** Extra section rendered after "How it works". */
@@ -44,7 +46,7 @@ interface ServiceLandingProps {
  * further reading, related services and the quote form.
  */
 export default function ServiceLanding({
-  service, faqs, projects, projectsHeading, heading, intro, schema, children,
+  service, faqs, projects, projectsHeading, heading, intro, breadcrumbLabel, schema, children,
 }: ServiceLandingProps) {
   const slug = service.slug;
   const category = serviceCategories.find((entry) => entry.slugs.includes(slug))!;
@@ -70,10 +72,14 @@ export default function ServiceLanding({
         <>
           <Link href="/locations/coimbatore" className="underline decoration-gold/50 underline-offset-2 hover:text-gold-dark">
             Coimbatore
-          </Link>{" "}
-          and{" "}
+          </Link>
+          ,{" "}
           <Link href="/locations/nilgiris-ooty" className="underline decoration-gold/50 underline-offset-2 hover:text-gold-dark">
-            the Nilgiris
+            Ooty, Coonoor and Kotagiri
+          </Link>
+          , and{" "}
+          <Link href="/locations/gudalur" className="underline decoration-gold/50 underline-offset-2 hover:text-gold-dark">
+            Gudalur
           </Link>
         </>
       ),
@@ -107,7 +113,7 @@ export default function ServiceLanding({
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
               { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-              { "@type": "ListItem", position: 3, name: heading ?? service.title, item: url },
+              { "@type": "ListItem", position: 3, name: breadcrumbLabel ?? heading ?? service.title, item: url },
             ],
           },
         ],
@@ -121,7 +127,7 @@ export default function ServiceLanding({
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-concrete mb-8">
             <Link href="/" className="hover:text-gold-dark">Home</Link><ChevronRight size={12} aria-hidden="true" />
             <Link href="/services" className="hover:text-gold-dark">Services</Link><ChevronRight size={12} aria-hidden="true" />
-            <span aria-current="page" className="text-charcoal">{heading ?? service.title}</span>
+            <span aria-current="page" className="text-charcoal">{breadcrumbLabel ?? heading ?? service.title}</span>
           </nav>
           <div className="grid lg:grid-cols-[1fr_360px] gap-10 lg:gap-14 items-start">
             <ScrollReveal>

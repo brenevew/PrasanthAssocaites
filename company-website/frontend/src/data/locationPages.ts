@@ -107,7 +107,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         ],
       },
     ],
-    googleRating: { rating: "4.9", reviews: 26 },
+    googleRating: { rating: "4.9", reviews: 32 },
     conditionsHeading: "Planning your construction project in Coimbatore",
     conditions: [
       {
@@ -538,12 +538,15 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
     slug: "nilgiris-ooty",
     office: "Gudalur",
     area: "nilgiris",
-    breadcrumb: "Ooty & the Nilgiris",
-    badge: "Nilgiris branch · Gudalur",
-    heading: "Builders in Ooty and the Nilgiris",
+    breadcrumb: "Ooty, Coonoor & Kotagiri",
+    badge: "Gudalur branch · Nilgiris district",
+    heading: "Builders in Ooty, Coonoor and Kotagiri",
     intro:
-      "We build houses, villas, schools and commercial buildings across the Nilgiris from our branch office in Gudalur. We have worked in Ooty, Coonoor, Kotagiri and Gudalur, on sloping plots, plantation land and older buildings that needed careful renovation.",
-    googleRating: { rating: "4.9", reviews: 42 },
+      "Prasanth Associates builds houses, villas, schools and commercial buildings in Ooty, Coonoor and Kotagiri, and across the Nilgiris district, from its branch office in Gudalur. We also prepare house plans and structural drawings, file approval applications and renovate older bungalows. Every construction project is priced through an itemised BoQ before work starts.",
+    quoteLabel: "Request a Construction Quote",
+    whatsappLabel: "Discuss your hill-site project",
+    reviewsLink: true,
+    googleRating: { rating: "4.9", reviews: 45 },
     conditionsHeading: "What building in the hills involves",
     conditions: [
       {
@@ -559,15 +562,19 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         body: "Mist and long monsoons keep walls damp. We plan damp-proofing, roof drainage and ventilation, and choose finishes that cope with it.",
       },
       {
-        title: "Hill area rules",
-        body: "The Nilgiris has its own building rules for hill areas. We check the land classification and what applies to your plot before the design is fixed.",
+        title: "Hill-area approvals",
+        body: "Building plans in the Nilgiris district need planning permission from the local body, and many plots also need Hill Area Conservation Authority (HACA) clearance and no-objection certificates from the forest and agricultural engineering departments. We check the land classification and what applies to your plot before the design is fixed. The authorities make the approval decision.",
+      },
+      {
+        title: "Rain at different times of year",
+        body: "Ooty and Gudalur get most of their rain from the south-west monsoon, roughly June to September. Coonoor and Kotagiri get theirs from the north-east monsoon, from October to December. We schedule excavation, foundations and roof concreting around the wet months in your town.",
       },
     ],
     places: [
-      { name: "Ooty", note: "Christus Rex Higher Secondary School at Kandal, The Oxford Continental School and a family house." },
+      { name: "Ooty", note: "At about 2,240 m, Ooty is the highest and coldest town we build in. Our work here includes Christus Rex Higher Secondary School at Kandal, The Oxford Continental School at Bandi Shola and a family house." },
+      { name: "Coonoor", note: "We have built in Coonoor and take house, villa and renovation projects in and around the town. Most of its rain comes late in the year, from October to December." },
+      { name: "Kotagiri", note: "We have built in Kotagiri and take house and villa projects there. Like Coonoor, it lies on the eastern side of the hills and gets its heaviest rain late in the year." },
       { name: "Gudalur", note: "Our branch office. Projects include the Pricol tea bungalow, Sasthapuri Hotels and the Manjushree renovation at O'Valley.", href: "/locations/gudalur" },
-      { name: "Coonoor", note: "We have built in Coonoor and take house and villa projects in and around the town." },
-      { name: "Kotagiri", note: "We have built in Kotagiri and take house and villa projects in and around the town." },
     ],
     services: [
       "villa-construction",
@@ -577,15 +584,90 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       "architectural-designs",
       "structural-stability-certificate",
     ],
+    servicesHeading: "Construction and design services in Ooty, Coonoor and Kotagiri",
+    servicesIntro: "All 22 of our services are available across the Nilgiris district from the Gudalur branch, as a complete project or on their own.",
+    serviceSectors: [
+      {
+        heading: "Civil construction",
+        body: "Houses, villas, schools and commercial buildings on hill plots, estate land and town sites.",
+        links: [
+          { slug: "residential-construction", label: "House construction", note: "Individual houses on hill plots, from the level survey to handover." },
+          { slug: "villa-construction", label: "Villa and estate bungalow construction", note: "Villas, holiday homes and estate bungalows, with interiors planned alongside the building." },
+          { slug: "commercial-construction", label: "Commercial and school buildings", note: "Shops, hotels, offices and schools, such as our school building at Kandal, Ooty." },
+          { slug: "turnkey-construction", label: "Turnkey design and build", note: "Design, approval support, construction and interiors under one contract." },
+          { slug: "renovation", label: "Renovation of older buildings", note: "Structural checks, repairs and upgrades for older bungalows and estate buildings." },
+          { slug: "industrial-factory-construction", label: "Factory and shed construction", note: "Factory buildings and steel sheds, with floors and foundations designed for the load." },
+          { slug: "smart-homes", label: "Smart home automation", note: "Lighting, locks and cameras you can check from your phone when the house is empty." },
+          { slug: "construction-work-consulting", label: "Construction consulting and site inspection", note: "Independent site inspections and bill checks when another contractor is building for you." },
+        ],
+      },
+      {
+        heading: "Design and architecture",
+        body: "Drawings prepared for hill plots, where levels, drainage and the approval rules shape the plan.",
+        links: [
+          { slug: "architectural-designs", label: "House plans and approval drawings", note: "Floor plans, elevations and approval drawings that follow the plot's levels." },
+          { slug: "structural-drawings", label: "Structural drawings", note: "Foundations, retaining walls and frames designed for the slope and the soil." },
+          { slug: "interior-designs", label: "Interior design", note: "Kitchens, wardrobes and finishes chosen for a cool, damp climate." },
+          { slug: "electrical-drawings", label: "Electrical drawings", note: "Switch, socket and lighting layouts, with points for heaters and geysers." },
+          { slug: "plumbing-drawings", label: "Plumbing drawings", note: "Water supply, drainage and rainwater layouts sized for heavy rain." },
+          { slug: "landscaping-designs", label: "Landscape design", note: "Terraced gardens, drainage and planting suited to the cooler climate." },
+        ],
+      },
+      {
+        heading: "Estimates and valuation",
+        body: "Reports for banks, buyers and owners of existing buildings in the Nilgiris.",
+        links: [
+          { slug: "bank-valuation-report", label: "Bank valuation reports", note: "Property valuations for home loans, after a site inspection." },
+          { slug: "structural-stability-certificate", label: "Structural stability certificates", note: "An engineer's inspection and certificate for an existing building." },
+          { slug: "detailed-estimation-costing", label: "Detailed estimate and BoQ", note: "An itemised estimate that shows retaining walls and site drainage as separate lines." },
+          { slug: "chartered-engineer-valuation", label: "Machinery and technical valuation", note: "Engineer valuations of machinery and industrial buildings for banks, audits and insurance." },
+        ],
+      },
+      {
+        heading: "Property and land",
+        body: "Buying land in the hills needs checks on title, classification and what the rules let you build.",
+        links: [
+          { slug: "property-acquisition-advisory", label: "Property buying advice", note: "Document, approval and condition checks before you buy a house or plot." },
+          { slug: "land-plot-transactions", label: "Land and plot checks", note: "Title and EC checks and a boundary survey before you pay." },
+          { slug: "real-estate-investment-consulting", label: "Property investment advice", note: "Location, rental demand and risk checks for a second home or investment property." },
+          { slug: "property-portfolio-management", label: "Property management", note: "Tenants, upkeep and monthly reports for owners who live outside the Nilgiris." },
+        ],
+      },
+    ],
     projectsHeading: "Our work in the Nilgiris",
+    caseStudies: {
+      heading: "Two Nilgiris projects in detail",
+      intro: "A school building in Ooty and an estate bungalow in Gudalur.",
+      items: [
+        {
+          slug: "rex-school",
+          heading: "Christus Rex Higher Secondary School, Ooty",
+          paragraphs: [
+            "A 12,000 sq. ft. school building on Woodcock Road at Kandal, Ooty. The ground was sloping and uneven, and heavy rain made many site activities depend on the weather.",
+            "We handled the architectural design, structural engineering, MEP services and construction. Work was scheduled to keep rain delays low, with drainage and water management planned for the site, and the building was completed in 2019.",
+          ],
+          linkLabel: "View the Christus Rex school project",
+        },
+        {
+          slug: "pricol",
+          heading: "Pricol Limited tea bungalow, Gudalur",
+          paragraphs: [
+            "A 12,120 sq. ft. estate bungalow for Pricol Limited, built between 2015 and 2017 inside a tea plantation. Materials, equipment and workers all reached the site across a river.",
+            "If you are planning a villa or estate bungalow in Ooty, Coonoor or Kotagiri, this is the project of ours to compare with.",
+          ],
+          linkLabel: "View the Pricol tea bungalow",
+        },
+      ],
+      cta: "Discuss a similar project",
+    },
     faqs: [
       {
         q: "Do you build in Ooty?",
         a: "Yes. Our Ooty work includes [Christus Rex Higher Secondary School](/projects/rex-school), a 12,000 sq. ft. school building at Kandal completed in 2019, and a family house. Ooty projects are handled from our Gudalur branch office.",
       },
       {
-        q: "Where is your Nilgiris office?",
-        a: "Our Nilgiris branch is on Ooty Main Road in Gudalur, at No. 6, Thiruvalluvar Commercial Complex, near the SBI ATM. Our engineers go from there to sites in Ooty, Coonoor, Kotagiri and around Gudalur.",
+        q: "Where is your office for Ooty, Coonoor and Kotagiri?",
+        a: "Our Gudalur branch is on Ooty Main Road in Gudalur, at No. 6, Thiruvalluvar Commercial Complex, near the SBI ATM. Our engineers go from there to sites in Ooty, Coonoor, Kotagiri and around Gudalur.",
       },
       {
         q: "What should I check before building on a hill plot?",
@@ -599,8 +681,32 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         q: "Do you build villas and estate bungalows in the Nilgiris?",
         a: "Yes. One example is the 12,120 sq. ft. [Pricol Limited tea bungalow](/projects/pricol) in Gudalur, on a plantation site reached across a river. See [villa construction](/services/villa-construction) for what the service includes.",
       },
+      {
+        q: "How much does it cost to build a house in Ooty?",
+        a: "House construction cost in Ooty depends on the plot more than on a standard rate. Slope, soil, retaining walls, drainage and the distance materials travel all change the price, along with the size and finishes of the house. We price each project with an itemised BoQ after a site visit, so these items appear as separate lines. Our [BoQ guide](/blog/how-to-read-a-construction-boq) explains how to read one.",
+      },
+      {
+        q: "Do you build in Coonoor and Kotagiri?",
+        a: "Yes. We have built in both towns and take house, villa and renovation projects in and around Coonoor and Kotagiri. Projects there are run from our Gudalur branch, with our engineers travelling to the site. Share the plot location and any drawings you have, and we will arrange a site visit.",
+      },
+      {
+        q: "Who approves building plans in Ooty and the Nilgiris district?",
+        a: "Building plans need planning permission from the local body or planning authority for the area. Many plots in the Nilgiris district also need Hill Area Conservation Authority (HACA) clearance, with no-objection certificates from departments such as forest and agricultural engineering. What applies depends on the land's classification and the building. We check this for your plot and can prepare and file the [approval drawings](/services/architectural-designs). The authorities make the decision.",
+      },
+      {
+        q: "Do you build holiday homes and cottages in the Nilgiris?",
+        a: "Yes. A holiday home or cottage is designed and built like any house, through our [house construction](/services/residential-construction) or [villa construction](/services/villa-construction) service. If you plan to run it as a homestay, tell us at the start, because the intended use can affect the design and the approvals needed.",
+      },
+      {
+        q: "Can I get house plans or structural drawings for an Ooty plot without a construction contract?",
+        a: "Yes. [House plans and approval drawings](/services/architectural-designs) and [structural drawings](/services/structural-drawings) are available on their own for plots in Ooty, Coonoor, Kotagiri and Gudalur. We visit the site to record levels and access first, because a hill plot cannot be planned from a survey sketch alone. You can then build with us or with your own contractor.",
+      },
+      {
+        q: "When is the best time to start building in the Nilgiris?",
+        a: "Plan excavation, foundations and roof concreting for the drier months in your town. Ooty and Gudalur get most of their rain from the south-west monsoon, roughly June to September. Coonoor and Kotagiri get theirs from the north-east monsoon, from October to December. Design and approvals can go ahead during the rains, so the site is ready to start when the weather clears.",
+      },
     ],
-    whatsappMessage: "Hello Prasanth Associates, I would like to discuss a building project in the Nilgiris.",
+    whatsappMessage: "Hello Prasanth Associates, I would like to discuss a building project in Ooty, Coonoor or Kotagiri.",
     other: {
       href: "/locations/coimbatore",
       title: "Building in Coimbatore?",

@@ -11,7 +11,7 @@ import Link from "next/link";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "About Prasanth Associates | Builders, Coimbatore & Nilgiris" },
+  title: { absolute: "About Prasanth Associates | Builders, Coimbatore & Ooty" },
   description:
     "Prasanth Associates is a construction and design firm run by engineers, with offices in Coimbatore and Gudalur, The Nilgiris. See how we work.",
   keywords: [
@@ -96,7 +96,7 @@ export default function AboutPage() {
             >
               Engineers &amp; Builders for
               <br />{" "}
-              <em className="text-gold-dark not-italic">Coimbatore &amp; the Nilgiris</em>
+              <em className="text-gold-dark not-italic">Coimbatore &amp; Ooty</em>
             </h1>
             <p className="text-base md:text-lg text-concrete leading-relaxed max-w-xl mx-auto">
               A construction and design firm with a head office in Gandhipuram, Coimbatore and a
@@ -149,7 +149,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Every quote is an itemised Bill of Quantities, and the price is fixed for the
-                agreed scope. Our clients rate us 4.9★ across 65 Google reviews.
+                agreed scope. Our clients rate us 4.9★ across 77 Google reviews.
               </p>
             </div>
             <Button href="/contact" variant="primary" size="md">

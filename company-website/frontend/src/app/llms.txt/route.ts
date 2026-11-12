@@ -74,7 +74,7 @@ ${faqSections}
 - [All services](${SITE_URL}/services)
 - [Turnkey design and build in Coimbatore](${SITE_URL}/services/turnkey-design-build-coimbatore)
 - [Construction company in Coimbatore](${SITE_URL}/locations/coimbatore)
-- [Builders in The Nilgiris and Ooty](${SITE_URL}/locations/nilgiris-ooty)
+- [Builders in Ooty, Coonoor and Kotagiri](${SITE_URL}/locations/nilgiris-ooty)
 - [House contractors in Gudalur](${SITE_URL}/locations/gudalur)
 - [Property and investment advisory](${SITE_URL}/property-investment)
 - [Projects](${SITE_URL}/projects)

@@ -6,6 +6,8 @@ import { Metadata } from "next";
 import { company } from "@/data/company";
 import { projects } from "@/data/projects";
 import { differentiators } from "@/data/quality";
+import { homeSectors, homeTowns } from "@/data/homeLocal";
+import { getServicePath } from "@/data/serviceRoutes";
 
 import Button from "@/components/ui/Button";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -19,34 +21,32 @@ import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "Prasanth Associates | Builders in Coimbatore & the Nilgiris" },
+  title: { absolute: "Prasanth Associates | Builders in Coimbatore & Ooty" },
   description:
-    "House construction, building plans, 3D elevations, interior design and engineering services in Coimbatore, Ooty, Coonoor and Gudalur from Prasanth Associates.",
+    "Construction company for houses, villas and commercial buildings in Coimbatore, Ooty, Coonoor, Kotagiri and Gudalur. House plans, approvals and itemised BoQ.",
   keywords: [
     "construction company in Coimbatore",
-    "building contractors Coimbatore",
     "builders in Coimbatore",
-    "house construction Coimbatore",
-    "turnkey construction company Coimbatore",
-    "civil contractors Tamil Nadu",
-    "construction company near me Coimbatore",
-    "architects in Coimbatore",
-    "interior designers in Coimbatore",
-    "building plan approval Coimbatore",
-    "villa construction Coimbatore",
+    "house construction in Coimbatore",
     "house construction in Kovai",
-    "builders in Ooty and Coonoor",
     "builders in Ooty",
-    "house construction in Ooty",
-    "building plan approval Nilgiris",
+    "construction company in Ooty",
+    "builders in Coonoor",
+    "builders in Kotagiri",
+    "building contractors in Gudalur",
+    "builders in Nilgiris",
+    "house plans and building plan approval",
+    "structural engineers Coimbatore and Ooty",
+    "bank valuation reports Coimbatore",
+    "structural stability certificate",
   ],
   alternates: {
     canonical: `${SITE_URL}/`,
   },
   openGraph: pageOpenGraph(
     "/",
-    "Prasanth Associates | Builders in Coimbatore & the Nilgiris",
-    "House construction, building plans, 3D elevations, interior design and engineering services in Coimbatore, Ooty, Coonoor and Gudalur from Prasanth Associates."
+    "Prasanth Associates | Builders in Coimbatore & Ooty",
+    "Construction company for houses, villas and commercial buildings in Coimbatore, Ooty, Coonoor, Kotagiri and Gudalur. House plans, approvals and itemised BoQ."
   ),
 };
 
@@ -86,7 +86,7 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal leading-[1.08] mb-7"
                 style={{ fontSize: "var(--text-h1)" }}
               >
-                Construction Company in Coimbatore &amp; the Nilgiris
+                Construction Company in Coimbatore &amp; Ooty
               </h1>
               <p className="font-heading text-2xl md:text-3xl text-gold-dark font-semibold -mt-3 mb-7">
                 {company.tagline}
@@ -179,7 +179,7 @@ export default function Home() {
                 <div className="absolute -bottom-5 -right-5 z-20 neu-glass rounded-2xl px-5 py-4">
                   <p className="text-xs text-concrete font-medium mb-0.5">Google rating</p>
                   <p className="text-2xl font-heading font-bold text-charcoal">4.9 ★</p>
-                  <p className="text-[10px] text-concrete-light">From 65 Google reviews</p>
+                  <p className="text-[10px] text-concrete-light">From 77 Google reviews</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -196,7 +196,7 @@ export default function Home() {
               >
                 100+ homes built across
                 <br />{" "}
-                <em className="text-gold not-italic">Coimbatore</em> and the Nilgiris
+                <em className="text-gold not-italic">Coimbatore</em> and the Nilgiris district
               </h2>
               <div className="space-y-5 text-concrete leading-relaxed mb-8">
                 <p>
@@ -269,6 +269,86 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Services by sector ──────────────────────────────────────── */}
+      <section className="section bg-[var(--canvas-bg)] relative overflow-hidden">
+        <div className="container relative z-10">
+          <ScrollReveal>
+            <SectionHeading
+              badge="Services"
+              title="Construction, design, valuation and property services"
+              subtitle="Every service is available in Coimbatore, Ooty, Coonoor, Kotagiri and Gudalur, as a complete project or on its own."
+            />
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {homeSectors.map((sector, index) => (
+              <ScrollReveal key={sector.id} delay={(index % 2) * 100}>
+                <div className="h-full flex flex-col rounded-3xl neu-glass p-6 md:p-7">
+                  <h3 className="font-heading text-xl font-bold text-charcoal mb-2">{sector.label}</h3>
+                  <p className="text-sm text-concrete leading-relaxed mb-5">{sector.body}</p>
+                  <ul className="space-y-2.5 mb-6">
+                    {sector.links.map((link) => (
+                      <li key={link.slug}>
+                        <Link
+                          href={getServicePath(link.slug)}
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal hover:text-gold-dark"
+                        >
+                          {link.label}
+                          <ArrowRight size={12} />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={`/services#${sector.id}`}
+                    className="mt-auto inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-gold-dark hover:text-charcoal"
+                  >
+                    {sector.allLabel}
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Where we build ──────────────────────────────────────────── */}
+      <section className="section bg-linen relative overflow-hidden border-y border-border">
+        <div className="container relative z-10">
+          <ScrollReveal>
+            <SectionHeading
+              badge="Where we build"
+              title="Builders in Coimbatore, Ooty, Coonoor, Kotagiri and Gudalur"
+              subtitle="Our Gandhipuram office covers Coimbatore, and our Gudalur branch covers the Nilgiris district."
+            />
+          </ScrollReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5">
+            {homeTowns.map((town, index) => (
+              <ScrollReveal
+                key={town.name}
+                delay={(index % 3) * 100}
+                className={index < 2 ? "lg:col-span-3" : "lg:col-span-2"}
+              >
+                <Link
+                  href={town.href}
+                  className="group h-full flex flex-col rounded-2xl bg-white border border-border p-6 shadow-2xs hover:border-gold/70 transition-colors"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <MapPin size={16} className="text-gold-dark" aria-hidden="true" />
+                    <h3 className="font-heading text-lg font-bold text-charcoal">{town.name}</h3>
+                  </div>
+                  <p className="text-sm text-concrete leading-relaxed mb-4">{town.note}</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold text-charcoal group-hover:text-gold-dark">
+                    {town.linkLabel}
+                    <ArrowRight size={12} />
+                  </span>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── 6. Why Choose Us ────────────────────────────────────────── */}
       <section className="section bg-[var(--canvas-bg)] relative overflow-hidden">
         <div className="liquid-glow" style={{ width: 450, height: 450, bottom: "10%", right: "10%", opacity: 0.3 }} />
@@ -328,7 +408,7 @@ export default function Home() {
             <SectionHeading
               badge="Client Voices"
               title="Trusted by Homeowners & Businesses"
-              subtitle="Real words from real clients across Coimbatore, the Nilgiris and beyond."
+              subtitle="Real words from real clients across Coimbatore, the Nilgiris district and beyond."
             />
           </ScrollReveal>
 

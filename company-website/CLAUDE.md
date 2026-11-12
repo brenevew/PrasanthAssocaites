@@ -90,6 +90,7 @@ means editing these, not a CMS.
 | `projects.ts` | `projects`, `projectCategories` | Portfolio; drives `/projects` and `/projects/[slug]` |
 | `navigation.ts` | `mainNavItems`, `footerNavItems`, `footerServiceLinks`, `footerLocationLinks`, `footerServiceAreaLinks` | All nav link lists |
 | `testimonials.ts`, `quality.ts`, `designGallery.ts`, `imageBlur.ts` | — | Homepage/about section content |
+| `homeLocal.ts` | `homeSectors`, `homeTowns` | Home page "services by sector" and "where we build" sections (five towns, each linking to its location page) |
 | `rateCards.ts`, `rateCardsLegacy.ts` | — | Pricing for the planner/estimator |
 | `db/submissions.json` | — | **Dev-only** local lead backup. Not a production store |
 
@@ -240,6 +241,12 @@ text against `seo-reports/baseline.json`.
 - **`/llms.txt`** is a plain-text fact sheet for AI search, generated from the
   same data as the pages. `npm run seo:audit` crawls the sitemap for SEO
   problems; `npm run indexnow` pings Bing after a deploy (key file in `public/`).
+- **Service page headings** come from `h1` in `lib/serviceSeo.ts` (the service name plus
+  "in Coimbatore and Ooty"), not from `services.ts`, whose titles the tests freeze.
+  Breadcrumbs keep the short catalogue name. Keyword ownership per page is in
+  `seo-reports/LOCATION-KEYWORD-STRATEGY-2026-11-12.md`: home owns "construction company",
+  `/locations/coimbatore` "building contractors", `/locations/nilgiris-ooty` Ooty, Coonoor
+  and Kotagiri, `/locations/gudalur` Gudalur.
 - **Titles** are kept ≤ ~60 characters so Google doesn't truncate the brand.
   The root `page.tsx` must include the brand explicitly — Next does **not** apply
   a layout's title template to a page in the same segment.
