@@ -62,7 +62,7 @@ export default function GudalurLocationPage() {
       page={locationPages.gudalur}
       entitySchema={gudalurBranchEntity}
       extraSchema={[webPageSchema, serviceSchema]}
-      parent={{ name: "Nilgiris", href: "/locations/nilgiris-ooty" }}
+      parent={{ name: "Nilgiris District", href: "/locations/nilgiris-ooty" }}
     />
   );
 }
