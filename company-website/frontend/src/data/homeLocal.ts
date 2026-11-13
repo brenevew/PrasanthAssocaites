@@ -102,6 +102,6 @@ export const homeTowns: HomeTown[] = [
     name: "Gudalur",
     note: "Our Gudalur branch is on Ooty Main Road. Our work here includes the Pricol Limited tea bungalow, Sasthapuri Hotels in the town centre and a 2,617 sq. ft. family house.",
     href: "/locations/gudalur",
-    linkLabel: "Building contractors in Gudalur",
+    linkLabel: "Builders in Gudalur",
   },
 ];

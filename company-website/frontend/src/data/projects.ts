@@ -492,7 +492,7 @@ export function projectAreas(project: Pick<Project, "location">): ProjectArea[] 
 export function projectLocationLink(project: Pick<Project, "location">): { href: string; label: string } | null {
   const areas = projectAreas(project);
   if (areas.includes("coimbatore")) return { href: "/locations/coimbatore", label: "Building in Coimbatore" };
-  if (areas.includes("gudalur")) return { href: "/locations/gudalur", label: "Building in Gudalur" };
+  if (areas.includes("gudalur")) return { href: "/locations/gudalur", label: "Builders in Gudalur" };
   if (areas.includes("nilgiris")) return { href: "/locations/nilgiris-ooty", label: "Building in Ooty & the Nilgiris" };
   return null;
 }

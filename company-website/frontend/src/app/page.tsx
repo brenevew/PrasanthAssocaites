@@ -21,7 +21,7 @@ import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
 import { SITE_URL, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: { absolute: "Prasanth Associates | Builders in Coimbatore & Ooty" },
+  title: { absolute: "Prasanth Associates | Builders in Coimbatore, Ooty & Gudalur" },
   description:
     "Construction company for houses, villas and commercial buildings in Coimbatore, Ooty, Coonoor, Kotagiri and Gudalur. House plans, approvals and itemised BoQ.",
   keywords: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   openGraph: pageOpenGraph(
     "/",
-    "Prasanth Associates | Builders in Coimbatore & Ooty",
+    "Prasanth Associates | Builders in Coimbatore, Ooty & Gudalur",
     "Construction company for houses, villas and commercial buildings in Coimbatore, Ooty, Coonoor, Kotagiri and Gudalur. House plans, approvals and itemised BoQ."
   ),
 };
@@ -86,7 +86,7 @@ export default function Home() {
                 className="font-heading font-bold text-charcoal leading-[1.08] mb-7"
                 style={{ fontSize: "var(--text-h1)" }}
               >
-                Construction Company in Coimbatore &amp; Ooty
+                Construction Company in Coimbatore, Ooty &amp; Gudalur
               </h1>
               <p className="font-heading text-2xl md:text-3xl text-gold-dark font-semibold -mt-3 mb-7">
                 {company.tagline}

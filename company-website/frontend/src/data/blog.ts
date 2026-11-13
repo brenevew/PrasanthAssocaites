@@ -81,7 +81,7 @@ export const blogPosts: BlogPost[] = [
         "Coordinate the drawings early. Architectural, structural and services drawings need to agree before the relevant work proceeds on site.",
         "Account for the surroundings. A plantation setting and a busy town plot place different demands on site planning.",
       ] },
-      { p: "If you are planning a house, villa or commercial building anywhere in the Nilgiris, our [Gudalur branch](/locations/gudalur) handles projects across [Ooty, Coonoor, Kotagiri and the rest of the district](/locations/nilgiris-ooty). Bring us your plot details and we will tell you honestly what the site will need." },
+      { p: "If you are planning a house, villa or commercial building anywhere in the Nilgiris, our [builders in Gudalur](/locations/gudalur) handle projects across [Ooty, Coonoor, Kotagiri and the rest of the district](/locations/nilgiris-ooty). Bring us your plot details and we will tell you honestly what the site will need." },
     ],
   },
   {
@@ -343,7 +343,7 @@ export const blogPosts: BlogPost[] = [
         "Information you have about water movement or access difficulties during rain.",
         "Your proposed building use, room requirements and any existing structures.",
       ] },
-      { p: "Our [Ooty and Nilgiris page](/locations/nilgiris-ooty) and [Gudalur branch page](/locations/gudalur) explain where we work. The next step for a hill plot is a discussion based on the actual site, supported by architectural and structural advice." },
+      { p: "Our [Ooty and Nilgiris page](/locations/nilgiris-ooty) and our page for [builders in Gudalur](/locations/gudalur) explain where we work. The next step for a hill plot is a discussion based on the actual site, supported by architectural and structural advice." },
     ],
   },
   {
@@ -411,7 +411,7 @@ export const blogPosts: BlogPost[] = [
       { p: "Agree the site-supervision responsibilities and how questions or changes will be recorded. At Sasthapuri, regular supervision was used to keep execution in line with the planned design. For your building, identify who coordinates a query between the owner, designer and site team, and when your decisions will be needed." },
       { h2: "Can another project's dates tell me how long mine will take?" },
       { p: "They provide context, not a promised duration. Sasthapuri's published 2014–2016 period relates to that building's size, scope and circumstances. A new programme needs its own design brief, access arrangements, construction sequence and approval plan. Discuss those assumptions before agreeing a completion target." },
-      { p: "Use the [Sasthapuri case study](/projects/sasthapuri) alongside our [commercial construction service](/services/commercial-construction) when preparing your brief. Our [Gudalur branch](/locations/gudalur) can discuss the building use, the plot and the design responsibilities you need covered." },
+      { p: "Use the [Sasthapuri case study](/projects/sasthapuri) alongside our [commercial construction service](/services/commercial-construction) when preparing your brief. Our [construction company in Gudalur](/locations/gudalur) can discuss the building use, the plot and the design responsibilities you need covered." },
     ],
   },
   {

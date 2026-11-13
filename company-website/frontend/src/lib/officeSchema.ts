@@ -61,6 +61,8 @@ export const gudalurBranchEntity = {
   "@type": "GeneralContractor",
   "@id": GUDALUR_BRANCH_ID,
   name: `${company.name} - Gudalur Branch Office`,
+  description:
+    "Construction company and builders in Gudalur, The Nilgiris: house construction, estate bungalows, commercial buildings, renovation, interior design and civil engineering.",
   parentOrganization: { "@id": ORG_ID },
   url: `${SITE_URL}/locations/gudalur`, // the branch's own page
   image: gudalurPhotos,

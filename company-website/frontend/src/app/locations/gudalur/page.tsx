@@ -4,22 +4,23 @@ import { SITE_URL, pageOpenGraph, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { gudalurBranchEntity, locationWebPage } from "@/lib/officeSchema";
 import LocationLanding from "@/components/locations/LocationLanding";
 
-const SEO_TITLE = "Building Contractors in Gudalur | Prasanth Associates";
-const SEO_DESCRIPTION = "House construction in Gudalur by turnkey builders: design, structural engineering and an itemised BoQ before work starts. Request your quote today.";
+const SEO_TITLE = "Builders in Gudalur, Nilgiris | Prasanth Associates";
+const SEO_DESCRIPTION = "Builders in Gudalur for house construction, estate bungalows and commercial buildings. A construction company with its own engineers and itemised BoQ pricing.";
 
 export const metadata: Metadata = {
   title: { absolute: SEO_TITLE },
   description: SEO_DESCRIPTION,
   keywords: [
-    "building contractors in Gudalur",
-    "construction company in Gudalur",
-    "house construction in Gudalur",
     "builders in Gudalur",
-    "turnkey builders Gudalur",
-    "building contractors Nilgiris",
-    "estate bungalow construction Nilgiris",
-    "retaining wall construction Gudalur",
-    "HACA building approval Gudalur",
+    "construction company in Gudalur",
+    "building contractors in Gudalur",
+    "house construction in Gudalur",
+    "civil engineers in Gudalur",
+    "interior designers in Gudalur",
+    "house plan approval Gudalur",
+    "estate bungalow builders Gudalur",
+    "builders in Pandalur and Devala",
+    "construction company Nilgiris district",
   ],
   alternates: {
     canonical: `${SITE_URL}/locations/gudalur`,
