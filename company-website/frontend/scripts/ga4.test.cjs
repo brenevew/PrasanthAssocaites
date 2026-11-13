@@ -21,6 +21,9 @@ test("GA4 event names: generate_lead only for successful submissions, no page_vi
   assert.equal(toGa4Event("service_view").name, "service_view");
   assert.equal(toGa4Event("page_view"), null, "GA4 counts page views itself");
   assert.equal(toGa4Event("cta_click"), null);
+  assert.equal(toGa4Event("directions_click").name, "directions_click");
+  assert.equal(toGa4Event("quote_cta_click").name, "quote_cta_click");
+  assert.deepEqual(Object.keys(toGa4Event("directions_click", { page: "/locations/gudalur" }).params).sort(), ["page_location", "service_location"]);
 });
 
 test("every one of the 22 services maps to its name and one of the 4 sectors", () => {

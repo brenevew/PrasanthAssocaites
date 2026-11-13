@@ -62,6 +62,9 @@ const EVENT_MAP: Record<string, string> = {
   service_select: "service_select",
   whatsapp_click: "whatsapp_click",
   phone_click: "phone_click",
+  // Office "Get directions" links and buttons that jump to a quote form.
+  directions_click: "directions_click",
+  quote_cta_click: "quote_cta_click",
   // GA4's recommended lead event. The hooks fire these only after the server
   // confirms a successful submission.
   quote_submit: "generate_lead",

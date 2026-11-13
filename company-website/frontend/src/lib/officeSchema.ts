@@ -48,7 +48,34 @@ export const coimbatoreOfficeEntity = {
   sameAs: [coimbatoreOffice.mapLink],
   openingHoursSpecification: openingHours,
   areaServed: [{ "@type": "AdministrativeArea", name: "Coimbatore district" }],
+  description:
+    "Construction company and building contractors in Coimbatore: house construction, villas, commercial buildings, renovation, house plans, structural engineering, estimates and valuation.",
+  // The services listed on the Coimbatore page, each pointing at its own service page.
+  hasOfferCatalog: officeOfferCatalog("Construction and engineering services in Coimbatore", locationPages.coimbatore),
 };
+
+/** The services a location page lists (its sector links, or else its service cards), as an OfferCatalog. */
+function officeOfferCatalog(name: string, page: (typeof locationPages)[keyof typeof locationPages]) {
+  const slugs = page.serviceSectors
+    ? page.serviceSectors.flatMap((sector) => sector.links.map((link) => link.slug))
+    : page.services;
+  return {
+    "@type": "OfferCatalog",
+    name,
+    itemListElement: slugs.map((slug) => {
+      const service = services.find((entry) => entry.slug === slug)!;
+      return {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          "@id": `${SITE_URL}/services#${slug}`,
+          name: service.title,
+          url: `${SITE_URL}${getServicePath(slug)}`,
+        },
+      };
+    }),
+  };
+}
 
 // Photos of completed Gudalur projects, all shown on the Gudalur page.
 const gudalurPhotos = ["residential-building-gudalur", "pricol", "sasthapuri"]
@@ -91,22 +118,7 @@ export const gudalurBranchEntity = {
     { "@type": "City", name: "Kotagiri" },
   ],
   // The services listed on the Gudalur page, each pointing at its own service page.
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Construction and design services in Gudalur",
-    itemListElement: locationPages.gudalur.services.map((slug) => {
-      const service = services.find((entry) => entry.slug === slug)!;
-      return {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          "@id": `${SITE_URL}/services#${slug}`,
-          name: service.title,
-          url: `${SITE_URL}${getServicePath(slug)}`,
-        },
-      };
-    }),
-  },
+  hasOfferCatalog: officeOfferCatalog("Construction and design services in Gudalur", locationPages.gudalur),
 };
 
 /** A WebPage node tying a location page to the office it describes. */

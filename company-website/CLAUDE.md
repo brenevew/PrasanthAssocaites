@@ -14,6 +14,7 @@ Companion docs, all at the repo root:
 | `DEPLOYMENT_GUIDE.md` | Production deploy, domain, SSL |
 | `GOOGLE_SHEETS_DEPLOYMENT.md` | The form pipeline, end to end (the longest and most important) |
 | `README.md` | Short orientation |
+| `seo-audit/` | Local SEO and Google Maps audit (2026-11-13): listing proposals, competitors, keywords, GA4 plan, ranking-grid spec, owner actions |
 
 > `DEPLOYMENT_GUIDE.md` says "Next.js 15" in its ASCII diagram. That is stale —
 > `package.json` is authoritative.

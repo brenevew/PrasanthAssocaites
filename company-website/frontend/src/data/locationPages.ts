@@ -265,6 +265,18 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         q: "My house has cracks in the walls or columns. What should I do?",
         a: "Have an engineer inspect it before you repair or extend. Some cracks are only in the plaster; others point to settlement, corroding steel or overloading, and those need a structural repair. Our [structural stability certificate](/services/structural-stability-certificate) inspection includes a crack and corrosion survey, and [renovation and retrofitting](/services/renovation) covers strengthening where it is needed.",
       },
+      {
+        q: "Do you have structural engineers in Coimbatore?",
+        a: "Yes. Our structural engineers work from the Gandhipuram office. They prepare [structural drawings](/services/structural-drawings) for new buildings, check existing buildings before an extension or a change of use, and issue [structural stability certificates](/services/structural-stability-certificate). Each is available on its own or as part of a building we construct.",
+      },
+      {
+        q: "Do you take house renovation work in Coimbatore?",
+        a: "Yes. Our [renovation and retrofitting](/services/renovation) work covers repairs, layout changes, kitchen and bathroom upgrades, strengthening and added floors. Every renovation starts with an engineer checking the existing structure, so the changes suit what the building can carry. Send photographs and any old drawings with your enquiry.",
+      },
+      {
+        q: "Can you prepare a building estimate before I choose a contractor?",
+        a: "Yes. A [detailed estimate and BoQ](/services/detailed-estimation-costing) lists every item of work with its quantity and specification, so you can compare contractors' quotes item by item. We prepare it from your drawings, or from our own plans if you have none yet.",
+      },
     ],
     whatsappMessage: "Hello Prasanth Associates, I would like to discuss a building project in Coimbatore.",
     other: {
