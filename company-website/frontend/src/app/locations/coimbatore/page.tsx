@@ -4,21 +4,23 @@ import { SITE_URL, pageOpenGraph, COIMBATORE_OFFICE_ID } from "@/lib/seo";
 import { coimbatoreOfficeEntity, locationWebPage } from "@/lib/officeSchema";
 import LocationLanding from "@/components/locations/LocationLanding";
 
-const SEO_TITLE = "Building Contractors in Coimbatore | Prasanth Associates";
-const SEO_DESCRIPTION = "House construction contractors in Coimbatore: plans, structural drawings, construction and an itemised BoQ from our Gandhipuram office. Request a quote.";
+const SEO_TITLE = "Builders & Contractors in Coimbatore | Prasanth Associates";
+const SEO_DESCRIPTION = "Builders in Coimbatore for house construction, villas and commercial buildings. A construction company in Gandhipuram with its own engineers and itemised BoQ.";
 
 export const metadata: Metadata = {
   title: { absolute: SEO_TITLE },
   description: SEO_DESCRIPTION,
   keywords: [
+    "builders in Coimbatore",
     "building contractors in Coimbatore",
-    "house construction contractors in Coimbatore",
-    "construction services in Coimbatore",
-    "civil contractors Coimbatore",
-    "house construction in Kovai",
-    "building plan approval Coimbatore",
+    "construction company in Coimbatore",
+    "house construction in Coimbatore",
+    "house builders in Coimbatore",
+    "civil engineers in Coimbatore",
+    "builders in Gandhipuram",
+    "house plan approval Coimbatore",
     "structural drawings Coimbatore",
-    "building contractors Gandhipuram",
+    "kovai builders",
   ],
   alternates: {
     canonical: `${SITE_URL}/locations/coimbatore`,

@@ -77,9 +77,9 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
     area: "coimbatore",
     breadcrumb: "Coimbatore",
     badge: "Head office · Gandhipuram",
-    heading: "Building Contractors in Coimbatore",
+    heading: "Builders and Building Contractors in Coimbatore",
     intro:
-      "Prasanth Associates is a firm of building contractors in Coimbatore, with its head office in Gandhipuram on Sathy Road. We design and build houses, villas and commercial buildings, prepare house plans, structural drawings and estimates, and provide valuation and property services. Every construction project is priced through an itemised BoQ before work starts.",
+      "Prasanth Associates is a construction company in Coimbatore, with its head office in Gandhipuram on Sathy Road. As builders in Coimbatore, we take house construction from the first plan to handover, and also build villas and commercial buildings. Our civil engineers prepare house plans, structural drawings and estimates, and we provide valuation and property services. As building contractors, we price every project through an itemised BoQ before work starts.",
     heroNote: "Engineering first, quality always. Structural drawings are ready before construction starts, and the site builds from them.",
     quoteLabel: "Request a House Construction Estimate",
     whatsappLabel: "Discuss your project on WhatsApp",
@@ -145,13 +145,13 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       "bank-valuation-report",
     ],
     servicesHeading: "Construction, design, valuation and property services in Coimbatore",
-    servicesIntro: "All 22 of our services are available from the Gandhipuram office, as a complete project or on their own.",
+    servicesIntro: "Our builders and civil engineers offer all 22 services from the Gandhipuram office, as a complete project or on their own.",
     serviceSectors: [
       {
         heading: "Civil construction",
         body: "Houses, villas, shops, offices and factories, built as a complete turnkey project or to drawings you already have.",
         links: [
-          { slug: "residential-construction", label: "House construction", note: "Individual houses and duplexes, from the first plan to handover." },
+          { slug: "residential-construction", label: "House construction in Coimbatore", note: "Individual houses and duplexes, from the first plan to handover." },
           { slug: "villa-construction", label: "Villa construction", note: "Villas with courtyards, terraces and interiors planned together with the building." },
           { slug: "commercial-construction", label: "Commercial and retail buildings", note: "Shops, showrooms, offices, hotels and schools, planned around how they will be used." },
           { slug: "turnkey-construction", label: "Turnkey design and build in Coimbatore", note: "Design, approval support, construction and interiors under one contract." },
@@ -224,6 +224,10 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       {
         q: "Where is your Coimbatore office?",
         a: "Our head office is on the second floor of Sowma Complex, 2nd Street, Sathy Road, Gandhipuram, Coimbatore 641012. It is open Monday to Saturday, 9 am to 6 pm. Call +91 94860 38761 before you visit so we can make sure an engineer is free to meet you.",
+      },
+      {
+        q: "Do you build houses yourselves, or only design them?",
+        a: "We do both. Prasanth Associates is a construction company in Coimbatore with its own builders, site engineers and designers. We take [house construction in Coimbatore](/services/residential-construction) from the first plan to handover, or build to drawings prepared by another designer. [House plans](/services/architectural-designs), structural drawings and estimates are also available on their own.",
       },
       {
         q: "Which parts of Coimbatore do you work in?",
