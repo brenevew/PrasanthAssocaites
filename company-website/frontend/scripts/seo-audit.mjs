@@ -200,8 +200,8 @@ for (const url of sitemapUrls) {
   }
 }
 
-if (sitemapPaths.has("/services") && catalogServiceCount !== 22) {
-  add("error", "/services", `expected 22 services in the structured-data catalog, found ${catalogServiceCount}`);
+if (sitemapPaths.has("/services") && catalogServiceCount !== 24) {
+  add("error", "/services", `expected 24 services in the structured-data catalog, found ${catalogServiceCount}`);
 }
 
 for (const [title, pages] of titles) if (pages.length > 1) add("error", pages.join(", "), `duplicate title: "${title}"`);

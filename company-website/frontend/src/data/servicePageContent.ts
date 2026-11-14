@@ -37,6 +37,24 @@ export const servicePageContent: Record<string, ServicePageContent> = {
     ],
     related: ["interior-designs", "landscaping-designs", "smart-homes"],
   },
+  "apartment-construction": {
+    steps: [
+      { title: "Site and brief", body: "We look at the plot size, road width, setbacks and the number of floors the rules allow, and agree the unit mix you want." },
+      { title: "Design and approvals", body: "Architectural, structural and services drawings are prepared together, along with the approval drawings for the planning authority." },
+      { title: "Itemised BoQ", body: "The building is priced item by item, including lifts, parking, water and drainage, so the price is fixed for the agreed scope." },
+      { title: "Floor by floor", body: "Our engineers check each floor before the next one is cast, and the building is handed over with the documents agreed in the contract." },
+    ],
+    related: ["structural-drawings", "detailed-estimation-costing", "real-estate-investment-consulting"],
+  },
+  "resort-homestay-construction": {
+    steps: [
+      { title: "Site and business brief", body: "We visit the site and talk through the number of rooms, the guests you expect and how the property will be run day to day." },
+      { title: "Approvals check", body: "We check the land classification and which approvals apply to guest use on that plot before the design is fixed." },
+      { title: "Design and BoQ", body: "Rooms, common areas, kitchens and services are drawn together, then priced line by line in an itemised BoQ." },
+      { title: "Build and handover", body: "Our engineers check each stage on site, and interiors and landscaping can be finished so the property is ready for guests." },
+    ],
+    related: ["interior-designs", "landscaping-designs", "commercial-construction"],
+  },
   "commercial-construction": {
     steps: [
       { title: "Use and site", body: "We start with how the building will be used: visitors, staff, stock, parking and services, along with the site's access." },

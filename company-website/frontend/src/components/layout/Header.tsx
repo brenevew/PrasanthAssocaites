@@ -7,7 +7,7 @@ import {
   ChevronDown, ChevronRight, ArrowRight, Sparkles, Calculator,
   Home, Building2, Building, Key, Factory, Cpu, Hammer, ClipboardList,
   Compass, Palette, Trees, Landmark, ShieldCheck, FileCheck,
-  MapPin, Map, TrendingUp, LayoutDashboard
+  MapPin, Map, TrendingUp, LayoutDashboard, BedDouble, Hotel,
 } from "lucide-react";
 import { company } from "@/data/company";
 import { mainNavItems } from "@/data/navigation";
@@ -18,6 +18,7 @@ import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
 import MobileNav from "./MobileNav";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
+  BedDouble, Hotel,
   Home, Building2, Building, Key, Factory, Cpu, Hammer, ClipboardList,
   Compass, Palette, Trees, Landmark, ShieldCheck, Calculator, FileCheck,
   MapPin, Map, TrendingUp, LayoutDashboard,

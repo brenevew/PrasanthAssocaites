@@ -89,7 +89,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
 
   "villa-construction": {
     slug: "villa-construction",
-    badge: "Bespoke Luxury Villa Construction",
+    badge: "Villa & Bungalow Construction",
     tagline: "Architectural residences blending contemporary aesthetics, private courtyards, and artisan craftsmanship.",
     sla: "Design and build",
     slaLabel: "One team from plan to handover",
@@ -135,6 +135,107 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
         { value: "above-12000", label: "Above 12,000 sq ft (Estate)" },
       ],
       placeholder: "Plot location, bedroom count, private pool preference, double-height ceiling requirements...",
+    },
+  },
+
+  "apartment-construction": {
+    slug: "apartment-construction",
+    badge: "Apartment Construction",
+    tagline: "Apartment blocks built for landowners and clients, and apartment projects we develop ourselves.",
+    sla: "Itemised BoQ",
+    slaLabel: "Price fixed for the agreed scope",
+    credentialBadge: "Build and develop",
+    credentialLabel: "For clients and our own projects",
+    deliverablesHeading: "What We Plan For Your Building",
+    deliverables: [
+      { title: "Unit Mix & Floor Layouts", desc: "Flat sizes and layouts worked out from the plot, the road width and the floors the rules allow." },
+      { title: "Multi-Storey Structure", desc: "Foundations, columns, beams and slabs designed for the full height of the building." },
+      { title: "Parking, Lifts & Stairs", desc: "Vehicle parking, lift wells and staircases planned with the floor layouts, not added later." },
+      { title: "Water, Drainage & Fire Safety", desc: "Supply, sumps, drainage and fire safety layouts sized for every flat in the building." },
+      { title: "Approval Drawings", desc: "Drawings prepared for the planning authority, with support through the application." },
+      { title: "Price Fixed for the Agreed Scope", desc: "A line-item Bill of Quantities that names each specification and fixes the price for the scope you sign off." },
+    ],
+    highlightBox: {
+      title: "Planned Floor by Floor, Priced Line by Line",
+      description: "The structure, services and finishes are drawn and priced before work starts, and each floor is checked before the next is cast.",
+      badges: ["✓ Unit Mix Planning", "✓ Multi-Storey Structure", "✓ Approval Drawings", "✓ Itemised BoQ"],
+    },
+    steps: [
+      { n: "01", title: "Plot & Unit Mix Study", body: "Plot size, road width, setbacks and the number of floors allowed, turned into a unit mix you agree." },
+      { n: "02", title: "Drawings, Approvals & BoQ", body: "Architectural, structural and services drawings, the approval application and an itemised BoQ." },
+      { n: "03", title: "Floor-by-Floor Construction", body: "Each floor checked by our engineer before the next is cast, through to handover." },
+    ],
+    guarantee: {
+      title: "Price Fixed for the Agreed Scope",
+      body: "The itemised BoQ you sign is the price. Changes are only made when you request them, and are priced before the work is done.",
+    },
+    formDefaults: {
+      serviceCategory: "apartment",
+      field1Label: "What Are You Looking For? *",
+      field1Options: [
+        { value: "build-on-my-land", label: "Build Apartments on My Land" },
+        { value: "construct-to-drawings", label: "Construct to Drawings I Have" },
+        { value: "buy-apartment", label: "Buy an Apartment in Your Project" },
+      ],
+      field2Label: "Approximate Number of Floors *",
+      field2Options: [
+        { value: "g-plus-1-2", label: "Ground + 1 to 2 Floors" },
+        { value: "g-plus-3-4", label: "Ground + 3 to 4 Floors" },
+        { value: "g-plus-5-above", label: "Ground + 5 Floors or More" },
+        { value: "not-sure", label: "Not Sure Yet" },
+      ],
+      placeholder: "Plot location and size, road width, number of flats you have in mind, planned start date...",
+    },
+  },
+
+  "resort-homestay-construction": {
+    slug: "resort-homestay-construction",
+    badge: "Resort & Homestay Construction",
+    tagline: "Guest rooms, cottages and common areas planned around the site, the guests and how the property will be run.",
+    sla: "Design and build",
+    slaLabel: "One team from plan to handover",
+    credentialBadge: "Resorts and homestays",
+    credentialLabel: "Completed by our team",
+    deliverablesHeading: "What We Plan For Your Property",
+    deliverables: [
+      { title: "Room & Cottage Layouts", desc: "Rooms, suites or cottages planned for privacy, views, daylight and easy housekeeping." },
+      { title: "Common Areas & Dining", desc: "Reception, dining, kitchen and lounge spaces sized for the guests you expect." },
+      { title: "Approvals Checked Early", desc: "Land classification and the approvals that apply to guest use checked before the design is fixed." },
+      { title: "Hill Site Engineering", desc: "Foundations, retaining walls and drainage designed for slopes and monsoon rain." },
+      { title: "Services for Full Occupancy", desc: "Water, hot water, drainage and electrical loads planned for every room in use." },
+      { title: "Price Fixed for the Agreed Scope", desc: "Every item priced line by line in the BoQ, so the price is fixed for the scope you sign off." },
+    ],
+    highlightBox: {
+      title: "Planned to Run, Not Just to Build",
+      description: "The layout is worked out around how guests arrive, stay and are served, so the building suits the business.",
+      badges: ["✓ Room & Cottage Layouts", "✓ Approvals Checked", "✓ Hill Site Engineering", "✓ Itemised BoQ"],
+    },
+    steps: [
+      { n: "01", title: "Site & Business Brief", body: "Number of rooms, the guests you expect and how the property will be run day to day." },
+      { n: "02", title: "Design, Approvals & BoQ", body: "Drawings, the approvals check and an itemised BoQ before any work starts." },
+      { n: "03", title: "Stage-Checked Construction", body: "Engineer checks at each stage, with interiors and landscaping finished for opening." },
+    ],
+    guarantee: {
+      title: "Price Fixed for the Agreed Scope",
+      body: "The itemised BoQ you sign is the price. Changes are only made when you request them, and are priced before the work is done.",
+    },
+    formDefaults: {
+      serviceCategory: "hospitality",
+      field1Label: "Property Type *",
+      field1Options: [
+        { value: "homestay", label: "Homestay" },
+        { value: "resort", label: "Resort" },
+        { value: "guest-cottages", label: "Guest Cottages" },
+        { value: "convert-existing", label: "Convert an Existing Building" },
+      ],
+      field2Label: "Number of Guest Rooms *",
+      field2Options: [
+        { value: "1-5", label: "1 – 5 Rooms" },
+        { value: "6-15", label: "6 – 15 Rooms" },
+        { value: "16-30", label: "16 – 30 Rooms" },
+        { value: "above-30", label: "More Than 30 Rooms" },
+      ],
+      placeholder: "Site location, number of rooms, dining or kitchen needs, plot slope, planned opening date...",
     },
   },
 
@@ -451,7 +552,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
 
   "architectural-designs": {
     slug: "architectural-designs",
-    badge: "Bespoke Architectural Planning",
+    badge: "Architecture & Building Plans",
     tagline: "Conceptual spatial layouts, 3D architectural elevations, and municipal approval CAD blueprints.",
     sla: "Drawn for your plot",
     slaLabel: "Plans, 3D elevation and approval set",
@@ -1030,7 +1131,7 @@ export const serviceQuoteSpecs: Record<string, ServiceQuoteSpec> = {
 
   "land-plot-transactions": {
     slug: "land-plot-transactions",
-    badge: "Premium Land & Plot Transaction Services",
+    badge: "Real Estate Plots",
     tagline: "End-to-end facilitation of investment-grade land acquisitions and plot sales with comprehensive legal and regulatory verification.",
     sla: "Title and EC check",
     slaLabel: "Before any payment",

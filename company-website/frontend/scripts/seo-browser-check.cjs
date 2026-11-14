@@ -49,7 +49,7 @@ if (submit) assert.ok(/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(base));
     results.push("Headings and page content remain visible without JavaScript on home, services, project and contact pages");
 
     await page.goto(base + "/services", { waitUntil: "networkidle" });
-    for (const [label, count] of [["Construction", 8], ["Design & Arch", 6], ["Valuation & BOQ", 4], ["Property", 4], ["All Services", 22]]) {
+    for (const [label, count] of [["Construction", 10], ["Design & Arch", 6], ["Valuation & BOQ", 4], ["Property", 4], ["All Services", 24]]) {
       await page.getByRole("button", { name: label, exact: true }).click();
       assert.equal(await page.locator('[aria-label^="Configure "]').count(), count);
     }
@@ -87,7 +87,7 @@ if (submit) assert.ok(/^http:\/\/(127\.0\.0\.1|localhost):\d+$/.test(base));
       assert.ok(await page.locator('input[name="name"]').count());
       assert.ok(serviceQuoteSpecs[service.slug]);
     }
-    results.push("All 22 service-specific enquiry forms render without browser errors");
+    results.push("All 24 service-specific enquiry forms render without browser errors");
     await page.goto(base + getServicePath("architectural-designs"), { waitUntil: "networkidle" });
     const views = await page.evaluate(() => window.seoEvents.filter((event) => event.name === "service_view"));
     assert.equal(views.length, 1);

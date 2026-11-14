@@ -60,7 +60,7 @@ test("contact and calculated estimates do not confirm failed or unconfigured del
   }
 });
 
-test("successful enquiries preserve each of the 22 canonical services in the Sheet and local mirror", async () => {
+test("successful enquiries preserve each of the 24 canonical services in the Sheet and local mirror", async () => {
   const { actions, writes, mirrors } = contactHarness({ success: true });
   for (const service of services) {
     const result = await actions.submitContactForm(contactForm({ isEstimate: "true", serviceSlug: service.slug, serviceTitle: "Untrusted client title" }));

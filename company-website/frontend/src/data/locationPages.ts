@@ -2,7 +2,7 @@ import type { ProjectArea } from "./projects";
 
 /**
  * Content for the office location pages (/locations/<slug>), rendered by
- * components/locations/LocationLanding.tsx. The FAQs are mirrored in each page's
+ * components/locations/LocationShowcase.tsx. The FAQs are mirrored in each page's
  * FAQPage structured data.
  *
  * Copy rules (same as the service pages): plain English; only confirmed facts
@@ -145,14 +145,16 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       "bank-valuation-report",
     ],
     servicesHeading: "Construction, design, valuation and property services in Coimbatore",
-    servicesIntro: "Our builders and civil engineers offer all 22 services from the Gandhipuram office, as a complete project or on their own.",
+    servicesIntro: "Our builders and civil engineers offer all 24 services from the Gandhipuram office, as a complete project or on their own.",
     serviceSectors: [
       {
         heading: "Civil construction",
-        body: "Houses, villas, shops, offices and factories, built as a complete turnkey project or to drawings you already have.",
+        body: "Houses, villas, apartments, resorts, shops, offices and factories, built as a complete turnkey project or to drawings you already have.",
         links: [
           { slug: "residential-construction", label: "House construction in Coimbatore", note: "Individual houses and duplexes, from the first plan to handover." },
-          { slug: "villa-construction", label: "Villa construction", note: "Villas with courtyards, terraces and interiors planned together with the building." },
+          { slug: "villa-construction", label: "Villa and bungalow construction", note: "Villas and bungalows with courtyards, terraces and interiors planned together with the building." },
+          { slug: "apartment-construction", label: "Apartments", note: "Apartment blocks built for landowners and clients, and apartment projects we develop ourselves." },
+          { slug: "resort-homestay-construction", label: "Resorts and homestays", note: "Guest houses, homestays and resorts, planned around how the property will be run." },
           { slug: "commercial-construction", label: "Commercial and retail buildings", note: "Shops, showrooms, offices, hotels and schools, planned around how they will be used." },
           { slug: "turnkey-construction", label: "Turnkey design and build in Coimbatore", note: "Design, approval support, construction and interiors under one contract." },
           { slug: "industrial-factory-construction", label: "Factory and industrial shed construction", note: "Factory buildings and PEB steel sheds, with floors and machine foundations designed for the load." },
@@ -165,7 +167,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         heading: "Design and architecture",
         body: "Drawings for approval and for building, with the structural and services drawings coordinated for the same house.",
         links: [
-          { slug: "architectural-designs", label: "House plans and architectural design", note: "2D floor plans, 3D elevations and approval drawings for your plot." },
+          { slug: "architectural-designs", label: "Architecture and house plans", note: "2D floor plans, 3D elevations and approval drawings for your plot." },
           { slug: "interior-designs", label: "Interior design", note: "Kitchens, wardrobes, ceilings and lighting, designed in 3D and installed by our team." },
           { slug: "structural-drawings", label: "Structural drawings", note: "Footing, column, beam and slab drawings, with bar bending schedules for the site." },
           { slug: "electrical-drawings", label: "Electrical drawings", note: "Switch, socket and light layouts, circuits and earthing for each floor." },
@@ -188,7 +190,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         body: "Help with buying, selling, investing in and managing property in and around Coimbatore.",
         links: [
           { slug: "property-acquisition-advisory", label: "Property buying advice", note: "Document, approval and condition checks before you buy a house or plot." },
-          { slug: "land-plot-transactions", label: "Land and plot transactions", note: "Title and EC checks, boundary survey against the FMB sketch, and registration support." },
+          { slug: "land-plot-transactions", label: "Real estate plots", note: "Help buying or selling a plot: title and EC checks, boundary survey against the FMB sketch, and registration support." },
           { slug: "real-estate-investment-consulting", label: "Real estate investment advice", note: "Location, rental yield and risk checks for property bought as an investment, including for NRIs." },
           { slug: "property-portfolio-management", label: "Property management", note: "Tenants, rent collection, maintenance and monthly reports for owners who live elsewhere." },
         ],
@@ -383,14 +385,16 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       "structural-drawings",
     ],
     servicesHeading: "Construction, design and engineering services in Gudalur",
-    servicesIntro: "As builders in Gudalur with our own engineers, we offer all 22 of our services from the branch office, as a complete project or on their own.",
+    servicesIntro: "As builders in Gudalur with our own engineers, we offer all 24 of our services from the branch office, as a complete project or on their own.",
     serviceSectors: [
       {
         heading: "Civil construction",
-        body: "Independent houses, villas, estate bungalows and commercial buildings, built as a complete turnkey project or to drawings you already have. Older buildings can be renovated and structurally retrofitted, and we can act as your construction consultant on a project built by others.",
+        body: "Independent houses, villas, estate bungalows, homestays, resorts, apartments and commercial buildings, built as a complete turnkey project or to drawings you already have. Older buildings can be renovated and structurally retrofitted, and we can act as your construction consultant on a project built by others.",
         links: [
           { slug: "residential-construction", label: "House construction in Gudalur", note: "Individual houses built from the plan to handover, as our 2,617 sq. ft. family house in the town was." },
           { slug: "villa-construction", label: "Villa and estate bungalow construction", note: "Villas and plantation bungalows, such as the Pricol Limited tea bungalow." },
+          { slug: "resort-homestay-construction", label: "Resorts and homestays", note: "Homestays, guest cottages and resorts, with the approvals for guest use checked first." },
+          { slug: "apartment-construction", label: "Apartments", note: "Apartment buildings for landowners, and apartment projects we develop ourselves." },
           { slug: "commercial-construction", label: "Commercial building construction", note: "Shops, hotels and offices in the town, such as Sasthapuri Hotels." },
           { slug: "turnkey-construction", label: "Turnkey design and build", note: "One contract for design, approval support, construction and interiors." },
           { slug: "renovation", label: "Renovation and structural retrofitting", note: "Repairs and upgrades to older houses and estate buildings, after an engineer's check." },
@@ -403,7 +407,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         heading: "Design and architecture",
         body: "Architectural plans, elevations and approval drawings, with structural, electrical and plumbing drawings coordinated for the same building. Design-only work is available if you already have a builder.",
         links: [
-          { slug: "architectural-designs", label: "House plans and plan approval drawings", note: "Floor plans, 3D elevations and the drawings needed for building plan approval." },
+          { slug: "architectural-designs", label: "Architecture, house plans and approval drawings", note: "Floor plans, 3D elevations and the drawings needed for building plan approval." },
           { slug: "structural-drawings", label: "Structural drawings by civil engineers", note: "Foundation, column, beam and retaining wall drawings for your plot." },
           { slug: "interior-designs", label: "Interior design and modular kitchens", note: "Modular kitchens, wardrobes, false ceilings and lighting, designed in 3D and installed." },
           { slug: "electrical-drawings", label: "Electrical drawings", note: "Switch, socket, lighting and earthing layouts for each floor." },
@@ -426,7 +430,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         body: "Before buying land in the Nilgiris district, check its title, classification and road access. Our property services cover these checks and the purchase.",
         links: [
           { slug: "property-acquisition-advisory", label: "Property buying advice", note: "Title, classification and approval checks before you buy land or a house." },
-          { slug: "land-plot-transactions", label: "Land and plot transactions", note: "Boundary survey against the FMB sketch, EC checks and registration support." },
+          { slug: "land-plot-transactions", label: "Real estate plots", note: "Help buying or selling a plot: boundary survey against the FMB sketch, EC checks and registration support." },
           { slug: "real-estate-investment-consulting", label: "Property investment advice", note: "Location and rental checks for property bought as an investment." },
           { slug: "property-portfolio-management", label: "Property management", note: "Tenants, rent and upkeep handled for owners who live away from Gudalur." },
         ],
@@ -510,7 +514,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       },
       {
         q: "Do you construct tea estate bungalows and holiday homes?",
-        a: "Yes. Our completed work includes the 12,120 sq. ft. [Pricol Limited tea bungalow](/projects/pricol) inside a tea plantation in Gudalur, reached across a river, and the renovation of the [Manjushree Director's Building](/projects/manjushree) at O'Valley. Holiday homes and villas are covered by our [villa and bungalow construction](/services/villa-construction) service.",
+        a: "Yes. Our completed work includes the 12,120 sq. ft. [Pricol Limited tea bungalow](/projects/pricol) inside a tea plantation in Gudalur, reached across a river, and the renovation of the [Manjushree Director's Building](/projects/manjushree) at O'Valley. Holiday homes and villas are covered by our [villa and bungalow construction](/services/villa-construction) service, and homestays and resorts by our [resort and homestay construction](/services/resort-homestay-construction) service.",
       },
       {
         q: "Can you renovate an old British-era bungalow in Ooty or Gudalur?",
@@ -625,14 +629,16 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       "structural-stability-certificate",
     ],
     servicesHeading: "Construction and design services in Ooty, Coonoor and Kotagiri",
-    servicesIntro: "All 22 of our services are available across the Nilgiris district from the Gudalur branch, as a complete project or on their own.",
+    servicesIntro: "All 24 of our services are available across the Nilgiris district from the Gudalur branch, as a complete project or on their own.",
     serviceSectors: [
       {
         heading: "Civil construction",
-        body: "Houses, villas, schools and commercial buildings on hill plots, estate land and town sites.",
+        body: "Houses, villas, homestays, resorts, apartments, schools and commercial buildings on hill plots, estate land and town sites.",
         links: [
           { slug: "residential-construction", label: "House construction", note: "Individual houses on hill plots, from the level survey to handover." },
           { slug: "villa-construction", label: "Villa and estate bungalow construction", note: "Villas, holiday homes and estate bungalows, with interiors planned alongside the building." },
+          { slug: "resort-homestay-construction", label: "Resorts and homestays", note: "Homestays, guest cottages and resorts on hill sites, with the approvals for guest use checked first." },
+          { slug: "apartment-construction", label: "Apartments", note: "Apartment buildings for landowners, and apartment projects we develop ourselves." },
           { slug: "commercial-construction", label: "Commercial and school buildings", note: "Shops, hotels, offices and schools, such as our school building at Kandal, Ooty." },
           { slug: "turnkey-construction", label: "Turnkey design and build", note: "Design, approval support, construction and interiors under one contract." },
           { slug: "renovation", label: "Renovation of older buildings", note: "Structural checks, repairs and upgrades for older bungalows and estate buildings." },
@@ -645,7 +651,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         heading: "Design and architecture",
         body: "Drawings prepared for hill plots, where levels, drainage and the approval rules shape the plan.",
         links: [
-          { slug: "architectural-designs", label: "House plans and approval drawings", note: "Floor plans, elevations and approval drawings that follow the plot's levels." },
+          { slug: "architectural-designs", label: "Architecture, house plans and approval drawings", note: "Floor plans, elevations and approval drawings that follow the plot's levels." },
           { slug: "structural-drawings", label: "Structural drawings", note: "Foundations, retaining walls and frames designed for the slope and the soil." },
           { slug: "interior-designs", label: "Interior design", note: "Kitchens, wardrobes and finishes chosen for a cool, damp climate." },
           { slug: "electrical-drawings", label: "Electrical drawings", note: "Switch, socket and lighting layouts, with points for heaters and geysers." },
@@ -668,7 +674,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         body: "Buying land in the hills needs checks on title, classification and what the rules let you build.",
         links: [
           { slug: "property-acquisition-advisory", label: "Property buying advice", note: "Document, approval and condition checks before you buy a house or plot." },
-          { slug: "land-plot-transactions", label: "Land and plot checks", note: "Title and EC checks and a boundary survey before you pay." },
+          { slug: "land-plot-transactions", label: "Real estate plots", note: "Title and EC checks and a boundary survey before you buy or sell a plot." },
           { slug: "real-estate-investment-consulting", label: "Property investment advice", note: "Location, rental demand and risk checks for a second home or investment property." },
           { slug: "property-portfolio-management", label: "Property management", note: "Tenants, upkeep and monthly reports for owners who live outside the Nilgiris district." },
         ],
@@ -735,7 +741,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       },
       {
         q: "Do you build holiday homes and cottages in Ooty, Coonoor and Kotagiri?",
-        a: "Yes. A holiday home or cottage is designed and built like any house, through our [house construction](/services/residential-construction) or [villa construction](/services/villa-construction) service. If you plan to run it as a homestay, tell us at the start, because the intended use can affect the design and the approvals needed.",
+        a: "Yes. A holiday home or cottage is designed and built like any house, through our [house construction](/services/residential-construction) or [villa construction](/services/villa-construction) service. If you plan to run it as a homestay or resort, tell us at the start, because the intended use can affect the design and the approvals needed. Our [resort and homestay construction](/services/resort-homestay-construction) service covers buildings designed for guests.",
       },
       {
         q: "Can I get house plans or structural drawings for an Ooty plot without a construction contract?",

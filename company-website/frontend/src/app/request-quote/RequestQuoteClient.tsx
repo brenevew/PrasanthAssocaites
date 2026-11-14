@@ -11,7 +11,7 @@ import {
   Building2, Landmark, Compass, Calculator, ChevronDown,
   Building, Home, Key, Hammer, Cpu, Factory, Palette,
   Trees, ClipboardList, FileCheck, ArrowRight, Repeat2,
-  PencilRuler, Zap, Droplets,
+  PencilRuler, Zap, Droplets, BedDouble, Hotel,
 } from "lucide-react";
 import { services, type Service } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
@@ -22,6 +22,7 @@ import CostCalculator from "@/components/ui/CostCalculator";
 import OptionCards from "@/components/ui/OptionCards";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
+  BedDouble, Hotel,
   Home, Building2, Building, Key, Hammer, Cpu, Factory, Compass, Palette, Trees, ClipboardList,
   Landmark, ShieldCheck, Calculator, FileCheck,
   MapPin, Map: MapPin, TrendingUp: Building2, LayoutDashboard: Building,

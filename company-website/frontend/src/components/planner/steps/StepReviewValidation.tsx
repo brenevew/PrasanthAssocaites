@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import { PlannerState, EngineeringValidationWarning, StepId } from "../types";
-import { Edit3, FileCheck, AlertTriangle, ArrowRight, User, Loader2, AlertCircle } from "lucide-react";
+import { Edit3, FileCheck, AlertTriangle, ArrowRight, User, Loader2 } from "lucide-react";
 import { saveProjectPlan, buildPayloadFromPlannerState } from "@/services/projectPlanApi";
+import PlanSharePanel from "../PlanSharePanel";
 
 interface StepReviewValidationProps {
   state: PlannerState;
@@ -30,7 +31,9 @@ export default function StepReviewValidation({
   const [phone, setPhone] = useState(state.setup.phone || "");
 
   const [isSaving, setIsSaving] = useState(false);
-  const [saveError, setSaveError] = useState<string | null>(null);
+  // Set when the plan could not be sent to the team: the PDF options appear,
+  // and the submit button stays available to try again.
+  const [saveFailed, setSaveFailed] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<{ name?: string; email?: string; phone?: string }>({});
 
   const validateContact = () => {
@@ -48,7 +51,6 @@ export default function StepReviewValidation({
     if (!validateContact()) return;
 
     setIsSaving(true);
-    setSaveError(null);
 
     try {
       const contactInfo = {
@@ -65,13 +67,10 @@ export default function StepReviewValidation({
       const saved = await saveProjectPlan(payload);
       onGenerateReport(saved.refCode);
     } catch (err: unknown) {
-      console.error("Failed to save project plan:", err);
-      // Even if offline/api down, allow viewing report with fallback ref
-      const msg = err instanceof Error ? err.message : "Could not connect to backend server. Generating offline report...";
-      setSaveError(msg);
-      setTimeout(() => {
-        onGenerateReport();
-      }, 1200);
+      console.warn("Project plan was not sent; offering the PDF share options instead:", err);
+      // Stay on this step: the plan has NOT reached the team. Instead of an
+      // error, offer the same details as a PDF to send on WhatsApp or by email.
+      setSaveFailed(true);
     } finally {
       setIsSaving(false);
     }
@@ -281,11 +280,12 @@ export default function StepReviewValidation({
         </div>
       </div>
 
-      {saveError && (
-        <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-xs flex items-center gap-2">
-          <AlertCircle size={15} className="shrink-0" />
-          <span>{saveError}</span>
-        </div>
+      {saveFailed && (
+        <PlanSharePanel
+          state={state}
+          contact={{ name: clientName.trim(), email: email.trim(), phone: phone.trim() }}
+          onViewReport={() => onGenerateReport()}
+        />
       )}
 
       {/* Back + Primary CTA */}
@@ -316,7 +316,7 @@ export default function StepReviewValidation({
           ) : (
             <>
               <FileCheck size={20} className="text-gold" />
-              <span>Save &amp; Generate Preliminary Building Report</span>
+              <span>{saveFailed ? "Try Submitting Again" : <>Save &amp; Generate Preliminary Building Report</>}</span>
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform text-gold-light" />
             </>
           )}

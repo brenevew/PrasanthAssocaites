@@ -18,22 +18,24 @@ export const homeSectors: HomeSector[] = [
   {
     id: "construction",
     label: "Civil Construction",
-    body: "Houses, villas, commercial buildings and factories, built as a turnkey project or to drawings you already have.",
+    body: "Houses, villas, apartments, resorts, commercial buildings and factories, built as a turnkey project or to drawings you already have.",
     links: [
       { slug: "residential-construction", label: "House construction" },
       { slug: "villa-construction", label: "Villa and bungalow construction" },
+      { slug: "apartment-construction", label: "Apartments" },
+      { slug: "resort-homestay-construction", label: "Resorts and homestays" },
       { slug: "commercial-construction", label: "Commercial building construction" },
       { slug: "turnkey-construction", label: "Turnkey design and build" },
       { slug: "renovation", label: "Renovation and retrofitting" },
     ],
-    allLabel: "All 8 construction services",
+    allLabel: "All 10 construction services",
   },
   {
     id: "design",
     label: "Design & Architecture",
     body: "House plans, 3D elevations and approval drawings, with structural, electrical and plumbing drawings for the same building.",
     links: [
-      { slug: "architectural-designs", label: "House plans and building design" },
+      { slug: "architectural-designs", label: "Architecture and house plans" },
       { slug: "structural-drawings", label: "Structural drawings" },
       { slug: "interior-designs", label: "Interior design" },
       { slug: "landscaping-designs", label: "Landscape design" },
@@ -58,7 +60,7 @@ export const homeSectors: HomeSector[] = [
     body: "Document, approval and boundary checks before you buy land or a house, and management of property you already own.",
     links: [
       { slug: "property-acquisition-advisory", label: "Property buying advice" },
-      { slug: "land-plot-transactions", label: "Land and plot transactions" },
+      { slug: "land-plot-transactions", label: "Real estate plots" },
       { slug: "real-estate-investment-consulting", label: "Property investment advice" },
       { slug: "property-portfolio-management", label: "Property management" },
     ],

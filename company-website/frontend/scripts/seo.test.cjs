@@ -12,18 +12,18 @@ const { homeFaqQuestions } = load("src/data/homeFaqs.ts");
 const { coarseLocation, safePagePath, trackLeadEvent } = load("src/lib/analytics.ts");
 const baseline = require("../seo-reports/baseline.json");
 
-test("all 22 services and four sectors preserve the approved visible content", () => {
-  assert.equal(services.length, 22);
+test("all 24 services and four sectors preserve the approved visible content", () => {
+  assert.equal(services.length, 24);
   assert.deepEqual(services, baseline.services);
   assert.deepEqual(serviceCategories, baseline.sectors);
-  assert.deepEqual(serviceCategories.map((c) => c.slugs.length), [8, 6, 4, 4]);
+  assert.deepEqual(serviceCategories.map((c) => c.slugs.length), [10, 6, 4, 4]);
   const slugs = serviceCategories.flatMap((c) => c.slugs);
-  assert.equal(new Set(slugs).size, 22);
+  assert.equal(new Set(slugs).size, 24);
   assert.deepEqual([...slugs].sort(), services.map((s) => s.slug).sort());
 });
 
 test("service metadata, canonical routes and schema agree with no shared landing pages", () => {
-  for (const key of ["slug", "path", "title", "description"]) assert.equal(new Set(serviceSeo.map((s) => s[key])).size, 22);
+  for (const key of ["slug", "path", "title", "description"]) assert.equal(new Set(serviceSeo.map((s) => s[key])).size, 24);
   assert.equal(getServicePath("turnkey-construction"), "/services/turnkey-design-build-coimbatore");
   for (const service of services) {
     const seo = serviceMetadata(service.slug);

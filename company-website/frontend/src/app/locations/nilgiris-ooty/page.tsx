@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import { locationPages } from "@/data/locationPages";
 import { SITE_URL, pageOpenGraph, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { gudalurBranchEntity, locationWebPage } from "@/lib/officeSchema";
-import LocationLanding from "@/components/locations/LocationLanding";
+import { locationShowcase } from "@/data/locationShowcase";
+import LocationShowcase from "@/components/locations/LocationShowcase";
 
 const SEO_TITLE = "Builders in Ooty, Coonoor & Kotagiri | Prasanth Associates";
 const SEO_DESCRIPTION =
@@ -55,7 +56,8 @@ const serviceSchema = {
 
 export default function NilgirisOotyLocationPage() {
   return (
-    <LocationLanding
+    <LocationShowcase
+      showcase={locationShowcase["nilgiris-ooty"]}
       page={locationPages["nilgiris-ooty"]}
       entitySchema={gudalurBranchEntity}
       extraSchema={[

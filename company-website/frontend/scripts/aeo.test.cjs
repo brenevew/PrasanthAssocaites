@@ -11,7 +11,7 @@ const { SITE_URL } = load("src/lib/seo.ts");
 const landing = services.filter((s) => getServicePath(s.slug) === `/services/${s.slug}`).map((s) => s.slug);
 
 test("every service landing page has its own questions and answers", () => {
-  assert.equal(landing.length, 21);
+  assert.equal(landing.length, 23);
   for (const slug of landing) {
     const faqs = serviceFaqs[slug];
     assert.ok(faqs && faqs.length >= 3, `${slug} needs at least 3 FAQs`);

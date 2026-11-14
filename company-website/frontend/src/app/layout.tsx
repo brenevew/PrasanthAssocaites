@@ -113,7 +113,9 @@ const organizationSchema = {
       ],
       knowsAbout: [
         "House construction",
-        "Villa construction",
+        "Villa and bungalow construction",
+        "Apartment construction",
+        "Resort and homestay construction",
         "Commercial building construction",
         "Factory and PEB shed construction",
         "Turnkey design and build",

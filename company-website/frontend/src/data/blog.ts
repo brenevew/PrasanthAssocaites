@@ -148,7 +148,7 @@ export const blogPosts: BlogPost[] = [
     datePublished: "2026-10-23",
     image: "/images/projects/Residential/residential-building-construction-perur-prasanth-associates.webp",
     imageAlt: "Two-storey house in Perur, Coimbatore, built by Prasanth Associates",
-    relatedServices: ["architectural-designs", "structural-drawings", "turnkey-construction"],
+    relatedServices: ["architectural-designs", "structural-drawings", "turnkey-construction", "apartment-construction"],
     body: [
       { p: "Building plan approval is the step owners worry about most, usually because nobody has explained it simply. The process is not mysterious. It mostly comes down to three questions: who approves your plot, what they need to see, and whether your plot has any special rules." },
       { h2: "Who approves your plan" },
@@ -194,7 +194,7 @@ export const blogPosts: BlogPost[] = [
     datePublished: "2026-10-23",
     image: "/images/projects/Residential/residential-building-under-construction-gudalur-prasanth-associates-3.webp",
     imageAlt: "House under construction in Gudalur, built by Prasanth Associates",
-    relatedServices: ["detailed-estimation-costing", "construction-work-consulting", "residential-construction"],
+    relatedServices: ["detailed-estimation-costing", "construction-work-consulting", "residential-construction", "apartment-construction"],
     body: [
       { p: "A quote that says only a rate per square foot tells you very little. Two builders can quote the same rate and mean completely different houses. A bill of quantities, or BOQ, is the document that shows what you are actually paying for." },
       { h2: "What a BOQ is" },
@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
     datePublished: "2026-10-23",
     image: "/images/projects/Schools/rex-school-building-construction-prasanth-associates.webp",
     imageAlt: "Completed Christus Rex Higher Secondary School building in Kandal, Ooty, by Prasanth Associates",
-    relatedServices: ["architectural-designs", "structural-drawings", "villa-construction"],
+    relatedServices: ["architectural-designs", "structural-drawings", "villa-construction", "resort-homestay-construction"],
     relatedProjects: ["rex-school", "pricol"],
     references: [{ label: "NDMA and BIS: Simplified Guidelines for Earthquake Safety of Buildings, including site selection", href: "https://www.bis.gov.in/wp-content/uploads/2022/11/Simplified_Guidelines_Sep_20211-1.pdf" }],
     body: [
@@ -392,7 +392,7 @@ export const blogPosts: BlogPost[] = [
     datePublished: "2026-10-23",
     image: "/images/projects/Commercial/modern-commercial-building-design-construction-gudalur-sasthapuri-hotels.webp",
     imageAlt: "Completed 38,879 sq. ft. Sasthapuri Hotels commercial building in Gudalur by Prasanth Associates",
-    relatedServices: ["commercial-construction", "structural-drawings", "electrical-drawings", "plumbing-drawings"],
+    relatedServices: ["commercial-construction", "resort-homestay-construction", "structural-drawings", "electrical-drawings", "plumbing-drawings"],
     relatedProjects: ["sasthapuri"],
     references: [{ label: "Bureau of Indian Standards: National Building Code and its integrated approach", href: "https://www.bis.gov.in/standards/national-building-code/?lang=en" }],
     body: [

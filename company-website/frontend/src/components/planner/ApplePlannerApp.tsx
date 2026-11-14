@@ -657,6 +657,7 @@ export default function ApplePlannerApp() {
               <StepBuildingReport
                 state={state}
                 onEdit={() => handleNavigate("review")}
+                onSaved={(savedRefCode) => setState((prev) => ({ ...prev, savedRefCode }))}
               />
             )}
 

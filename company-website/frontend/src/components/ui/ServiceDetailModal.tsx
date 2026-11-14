@@ -7,7 +7,7 @@ import Link from "next/link";
 import {
   X, CheckCircle2, Calculator, ArrowRight, Sparkles, Clock, ShieldCheck,
   Compass, Home, Building2, Building, Key, Factory, Cpu, Hammer, ClipboardList,
-  Palette, Trees, Landmark, FileCheck, MapPin, Map, TrendingUp, LayoutDashboard
+  Palette, Trees, Landmark, FileCheck, MapPin, Map, TrendingUp, LayoutDashboard, BedDouble, Hotel,
 } from "lucide-react";
 import { Service } from "@/data/services";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
@@ -17,6 +17,7 @@ import Button from "@/components/ui/Button";
 import OptionCards from "@/components/ui/OptionCards";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
+  BedDouble, Hotel,
   Home, Building2, Building, Key, Factory, Cpu, Hammer, ClipboardList,
   Compass, Palette, Trees, Landmark, ShieldCheck, Calculator, FileCheck,
   MapPin, Map, TrendingUp, LayoutDashboard, Clock

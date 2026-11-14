@@ -6,7 +6,7 @@ import {
   Factory, Compass, Palette, Trees, ClipboardList, ArrowRight, Sparkles,
   Landmark, ShieldCheck, Calculator, FileCheck, Clock,
   MapPin, Map, TrendingUp, LayoutDashboard,
-  PencilRuler, Zap, Droplets
+  PencilRuler, Zap, Droplets, BedDouble, Hotel,
 } from "lucide-react";
 import { services } from "@/data/services";
 import { getServicePath } from "@/data/serviceRoutes";
@@ -18,6 +18,7 @@ import CTABanner from "@/components/ui/CTABanner";
 import ServiceDetailModal from "@/components/ui/ServiceDetailModal";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
+  BedDouble, Hotel,
   Home, Building2, Building, Key, Hammer, Cpu, Factory, Compass, Palette, Trees, ClipboardList,
   Landmark, ShieldCheck, Calculator, FileCheck,
   MapPin, Map, TrendingUp, LayoutDashboard, Clock,

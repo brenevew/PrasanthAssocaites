@@ -2,8 +2,10 @@
 
 import { trackLeadEvent } from "@/lib/analytics";
 
-import React from "react";
+import React, { useState } from "react";
+import { saveProjectPlan, buildPayloadFromPlannerState } from "@/services/projectPlanApi";
 import { PlannerState } from "../types";
+import PlanSharePanel from "../PlanSharePanel";
 import {
   Printer,
   FileCheck2,
@@ -16,12 +18,17 @@ import {
 interface StepBuildingReportProps {
   state: PlannerState;
   onEdit: () => void;
+  /** Called with the reference code when the plan is submitted from the report. */
+  onSaved?: (refCode: string) => void;
 }
 
 export default function StepBuildingReport({
   state,
   onEdit,
+  onSaved,
 }: StepBuildingReportProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitFailedAgain, setSubmitFailedAgain] = useState(false);
   const plotArea = Math.round(state.plot.length * state.plot.width);
   const footprintArea = Math.round(state.footprint.length * state.footprint.width);
   const totalBuiltUp = state.floors.reduce((sum, fl) => sum + (fl.builtUpSft || footprintArea), 0);
@@ -35,7 +42,31 @@ export default function StepBuildingReport({
     window.print();
   };
 
+  // Only a plan that reached the team has a reference code. Without one the
+  // report is a local draft and must not claim to be saved.
+  const isSaved = Boolean(state.savedRefCode);
   const refCode = state.savedRefCode || state.setup.projectName.toUpperCase().replace(/\s+/g, "_") || "RESIDENTIAL_PROJECT";
+  const contact = { name: state.setup.clientName || "", email: state.setup.email || "", phone: state.setup.phone || "" };
+
+  // Submits online (to the Google Sheet) from the report. Contact details were
+  // entered on the review step; without them, go back there to add them.
+  const handleSubmit = async () => {
+    if (!contact.name.trim() || !contact.phone.trim()) {
+      onEdit();
+      return;
+    }
+    setIsSubmitting(true);
+    setSubmitFailedAgain(false);
+    try {
+      const saved = await saveProjectPlan(buildPayloadFromPlannerState(state, contact));
+      onSaved?.(saved.refCode);
+    } catch (err: unknown) {
+      console.warn("Project plan was not sent from the report:", err);
+      setSubmitFailedAgain(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 animate-fadeIn pb-16">
@@ -73,6 +104,18 @@ export default function StepBuildingReport({
         </div>
       </div>
 
+      {/* Unsent plan: submit online again, or send the same details as a PDF. */}
+      {!isSaved && (
+        <div className="print:hidden space-y-2">
+          <PlanSharePanel state={state} contact={contact} onSubmit={handleSubmit} isSubmitting={isSubmitting} />
+          {submitFailedAgain && (
+            <p role="status" className="text-xs text-amber-800 px-1">
+              Submitting still isn&apos;t going through. Please send the PDF on WhatsApp or by email above.
+            </p>
+          )}
+        </div>
+      )}
+
       {/* ── DOCUMENT SHEET ────────────────────────────────────────────── */}
       <div className="bg-white p-8 md:p-14 rounded-3xl border border-border/80 shadow-2xl space-y-10 font-sans print:shadow-none print:border-none print:p-0">
 
@@ -93,7 +136,14 @@ export default function StepBuildingReport({
           <div className="text-left md:text-right font-mono text-xs text-concrete space-y-0.5">
             <div>Project Ref: <strong className="text-charcoal font-bold">{refCode}</strong></div>
             <div>Date: <strong className="text-charcoal font-bold">{new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</strong></div>
-            <div>Status: <strong className="text-emerald-700 font-bold">Validated &amp; Saved</strong></div>
+            <div>
+              Status:{" "}
+              {isSaved ? (
+                <strong className="text-emerald-700 font-bold">Validated &amp; Saved</strong>
+              ) : (
+                <strong className="text-amber-700 font-bold">Draft, not sent to our team</strong>
+              )}
+            </div>
           </div>
         </div>
 

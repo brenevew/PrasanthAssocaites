@@ -26,8 +26,8 @@ test("GA4 event names: generate_lead only for successful submissions, no page_vi
   assert.deepEqual(Object.keys(toGa4Event("directions_click", { page: "/locations/gudalur" }).params).sort(), ["page_location", "service_location"]);
 });
 
-test("every one of the 22 services maps to its name and one of the 4 sectors", () => {
-  assert.equal(services.length, 22);
+test("every one of the 24 services maps to its name and one of the 4 sectors", () => {
+  assert.equal(services.length, 24);
   const sectors = new Set();
   for (const category of serviceCategories) {
     for (const slug of category.slugs) {

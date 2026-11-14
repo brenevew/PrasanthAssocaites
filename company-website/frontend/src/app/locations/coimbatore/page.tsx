@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import { locationPages } from "@/data/locationPages";
 import { SITE_URL, pageOpenGraph, COIMBATORE_OFFICE_ID } from "@/lib/seo";
 import { coimbatoreOfficeEntity, locationWebPage } from "@/lib/officeSchema";
-import LocationLanding from "@/components/locations/LocationLanding";
+import { locationShowcase } from "@/data/locationShowcase";
+import LocationShowcase from "@/components/locations/LocationShowcase";
 
 const SEO_TITLE = "Builders & Contractors in Coimbatore | Prasanth Associates";
 const SEO_DESCRIPTION = "Builders in Coimbatore for house construction, villas and commercial buildings. A construction company in Gandhipuram with its own engineers and itemised BoQ.";
@@ -46,7 +47,8 @@ const serviceSchema = {
 
 export default function CoimbatoreLocationPage() {
   return (
-    <LocationLanding
+    <LocationShowcase
+      showcase={locationShowcase.coimbatore}
       page={locationPages.coimbatore}
       entitySchema={coimbatoreOfficeEntity}
       extraSchema={[

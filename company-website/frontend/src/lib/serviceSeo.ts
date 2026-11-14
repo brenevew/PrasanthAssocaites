@@ -20,8 +20,18 @@ const copy: Record<string, ServiceSeoCopy> = {
   },
   "villa-construction": {
     title: "Villa Construction, Coimbatore & Ooty",
-    h1: "Villa Construction in Coimbatore and Ooty",
-    description: "Explore villa construction in Coimbatore and Ooty, with architectural planning, courtyards and coordinated interiors from Prasanth Associates.",
+    h1: "Villa and Bungalow Construction in Coimbatore and Ooty",
+    description: "Villa and bungalow construction in Coimbatore and Ooty, with architectural planning, courtyards and coordinated interiors from Prasanth Associates.",
+  },
+  "apartment-construction": {
+    title: "Apartment Construction, Coimbatore",
+    h1: "Apartment Builders in Coimbatore and Ooty",
+    description: "Apartment construction in Coimbatore and Ooty for landowners and clients, and our own apartment projects. Structure, parking, lifts and itemised BoQ.",
+  },
+  "resort-homestay-construction": {
+    title: "Resort & Homestay Construction, Ooty",
+    h1: "Resort and Homestay Construction in Ooty and Coimbatore",
+    description: "Resort, homestay and guest cottage construction in Ooty, Coonoor, Kotagiri and Coimbatore, with room layouts, approval checks and itemised BoQ pricing.",
   },
   "commercial-construction": {
     title: "Commercial Construction in Coimbatore",
@@ -55,8 +65,8 @@ const copy: Record<string, ServiceSeoCopy> = {
   },
   "architectural-designs": {
     title: "Building Plans, Coimbatore & Ooty",
-    h1: "House Plans and Building Design in Coimbatore and Ooty",
-    description: "Architectural designs in Coimbatore and Ooty: 2D floor plans, 3D elevations, approval drawings and working drawings from Prasanth Associates.",
+    h1: "Architecture and House Plans in Coimbatore and Ooty",
+    description: "Architecture and building plans in Coimbatore and Ooty: 2D floor plans, 3D elevations, approval drawings and working drawings from Prasanth Associates.",
   },
   "interior-designs": {
     title: "Interior Design, Coimbatore & Ooty",
@@ -109,9 +119,9 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Property acquisition advice in Coimbatore and Ooty, from location analysis and title due diligence to negotiation and registration support.",
   },
   "land-plot-transactions": {
-    title: "Land & Plot Transactions, Coimbatore",
-    h1: "Land and Plot Transactions in Coimbatore and Ooty",
-    description: "Land and plot transaction support in Coimbatore and Ooty: property sourcing, boundary checks, encumbrance review and registration assistance.",
+    title: "Real Estate Plots, Coimbatore & Ooty",
+    h1: "Real Estate Plots and Land in Coimbatore and Ooty",
+    description: "Help buying or selling real estate plots and land in Coimbatore and Ooty: plot search, title and EC checks, boundary survey and registration support.",
   },
   "real-estate-investment-consulting": {
     title: "Property Investment Advice, Coimbatore",

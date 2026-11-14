@@ -55,6 +55,42 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
       a: "Start with site levels, water movement, approach access and the permissions applicable to the plot. The engineer should identify the investigations needed for the proposed structure. Our [hill-plot guide](/blog/building-on-sloping-plot-ooty-gudalur) uses completed Ooty and Gudalur projects to explain access, drainage and weather questions to discuss before agreeing a design or programme.",
     },
   ],
+  "apartment-construction": [
+    {
+      q: "Do you build apartments for landowners?",
+      a: "Yes. We construct apartment buildings for landowners and clients, from the plans and approval drawings to handover, priced through an itemised BoQ. We also develop apartment projects of our own.",
+    },
+    {
+      q: "What should I check before building apartments on my plot?",
+      a: "Check the plot size, road width, setbacks and the number of floors the planning rules allow, because these decide how many units the plot can hold. Parking, water supply and drainage also need to fit. We check these first and prepare the [architectural](/services/architectural-designs) and [structural drawings](/services/structural-drawings).",
+    },
+    {
+      q: "Do you sell apartments?",
+      a: `We develop some apartment projects ourselves. Call or message us to ask which are available. ${offices}`,
+    },
+    {
+      q: "How is an apartment building priced?",
+      a: "Through an itemised BoQ that lists each item of work, including the structure, lifts, parking, water, drainage and finishes, with quantities and rates. The price is then fixed for the agreed scope. Our [BoQ guide](/blog/how-to-read-a-construction-boq) explains what to check before you sign.",
+    },
+  ],
+  "resort-homestay-construction": [
+    {
+      q: "Do you build resorts and homestays?",
+      a: `Yes. We design and build resorts, homestays and guest cottages. Our completed work includes resort and homestay projects, and [Sasthapuri Hotels](/projects/sasthapuri), a 38,879 sq. ft. commercial building in Gudalur town. ${offices}`,
+    },
+    {
+      q: "What approvals does a resort or homestay need?",
+      a: "It depends on the land and the intended use, so check before the design is fixed. A building run for guests can need different permissions from a private house, and hill plots in the Nilgiris district can also need Hill Area Conservation Authority (HACA) clearance. We check what applies to your plot and prepare the [approval drawings](/services/architectural-designs). The authorities make the decision.",
+    },
+    {
+      q: "Can I turn my house or bungalow into a homestay?",
+      a: "Often, after an engineer has checked the building. We look at the structure, bathrooms and services, escape routes and parking, and whether the change of use needs a fresh approval. Our [renovation](/services/renovation) service covers the building work.",
+    },
+    {
+      q: "Do you build resorts in Ooty, Coonoor and Kotagiri?",
+      a: "Yes. Our Gudalur branch handles projects across the Nilgiris district, including Ooty, Coonoor and Kotagiri. On a hill site, the slope, drainage, monsoon rain and access road are planned before the layout. Our [hill-plot guide](/blog/building-on-sloping-plot-ooty-gudalur) explains what to check.",
+    },
+  ],
   "commercial-construction": [
     {
       q: "What kinds of commercial buildings do you construct?",

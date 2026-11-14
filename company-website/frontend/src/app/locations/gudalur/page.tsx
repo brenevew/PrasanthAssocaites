@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import { locationPages } from "@/data/locationPages";
 import { SITE_URL, pageOpenGraph, GUDALUR_BRANCH_ID } from "@/lib/seo";
 import { gudalurBranchEntity, locationWebPage } from "@/lib/officeSchema";
-import LocationLanding from "@/components/locations/LocationLanding";
+import { locationShowcase } from "@/data/locationShowcase";
+import LocationShowcase from "@/components/locations/LocationShowcase";
 
 const SEO_TITLE = "Builders in Gudalur, Nilgiris | Prasanth Associates";
 const SEO_DESCRIPTION = "Builders in Gudalur for house construction, estate bungalows and commercial buildings. A construction company with its own engineers and itemised BoQ pricing.";
@@ -59,7 +60,8 @@ const serviceSchema = {
 
 export default function GudalurLocationPage() {
   return (
-    <LocationLanding
+    <LocationShowcase
+      showcase={locationShowcase.gudalur}
       page={locationPages.gudalur}
       entitySchema={gudalurBranchEntity}
       extraSchema={[webPageSchema, serviceSchema]}

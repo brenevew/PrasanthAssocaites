@@ -19,9 +19,9 @@
     },
     {
       "slug": "villa-construction",
-      "title": "Villa Construction",
+      "title": "Villa & Bungalow Construction",
       "shortDescription": "Villas and estate bungalows designed and built by one team, with the architecture, structure and interiors planned together.",
-      "description": "A villa has more going on than a standard house: larger spans, more glass, outdoor living areas and often built-in interiors. We plan the architecture, structure and services together, so these details are drawn, priced and agreed before construction starts. In the Nilgiris we have built estate bungalows on plantation land, including a site that could only be reached across a river.",
+      "description": "A villa or bungalow has more going on than a standard house: larger spans, more glass, outdoor living areas and often built-in interiors. We plan the architecture, structure and services together, so these details are drawn, priced and agreed before construction starts. In the Nilgiris we have built estate bungalows on plantation land, including a site that could only be reached across a river.",
       "icon": "Building2",
       "features": [
         "Architectural design and 3D views",
@@ -30,6 +30,36 @@
         "Interiors designed with the building",
         "Smart home wiring planned in advance",
         "Itemised BoQ and written schedule"
+      ]
+    },
+    {
+      "slug": "apartment-construction",
+      "title": "Apartments",
+      "shortDescription": "Apartment buildings constructed for landowners and clients, and apartment projects we develop ourselves.",
+      "description": "We build apartment blocks for landowners and clients, from the plans and approvals to the finished building, and we also develop apartment projects of our own. A multi-storey building needs the structure, staircases, lifts, parking, water and drainage planned together, so these are drawn and priced in an itemised BoQ before construction starts. Our engineers check each floor before the next one goes up.",
+      "icon": "Hotel",
+      "features": [
+        "Apartment layouts and unit mix",
+        "Structure designed for several floors",
+        "Parking, lift and staircase planning",
+        "Water, drainage and fire safety layouts",
+        "Approval drawings and support",
+        "Itemised BoQ and floor-by-floor checks"
+      ]
+    },
+    {
+      "slug": "resort-homestay-construction",
+      "title": "Hospitality Resorts & Homestays",
+      "shortDescription": "Resorts, homestays and guest cottages designed and built around the site, the guests and the approvals that apply to their use.",
+      "description": "A resort or homestay is a building run as a business, so the layout has to work for guests, staff and housekeeping as well as for the site. We plan the rooms, common areas, kitchens and services together, and check early which approvals apply to the intended use. Our completed work includes resorts and homestays, and Sasthapuri Hotels in Gudalur town.",
+      "icon": "BedDouble",
+      "features": [
+        "Room, suite and cottage layouts",
+        "Dining, kitchen and service areas",
+        "Approvals checked for guest use",
+        "Slope, drainage and access planning",
+        "Interiors designed with the building",
+        "Itemised BoQ for each phase"
       ]
     },
     {
@@ -124,7 +154,7 @@
     },
     {
       "slug": "architectural-designs",
-      "title": "Architectural Designs",
+      "title": "Architecture",
       "shortDescription": "House plans, 3D elevations and approval drawings, drawn for your plot, your family and the rules that apply to it.",
       "description": "A good plan starts with the plot: its size, road side, setbacks and slope. We draw the floor plan around how your family lives, show you the 3D elevation, and prepare the approval drawings and the working drawings your builder will use. Structural, electrical and plumbing drawings can be prepared alongside, so they all agree.",
       "icon": "Compass",
@@ -289,8 +319,8 @@
     },
     {
       "slug": "land-plot-transactions",
-      "title": "Land & Plot Transactions",
-      "shortDescription": "Support for buying or selling land: title checks, boundary survey, approvals and registration.",
+      "title": "Real Estate Plots",
+      "shortDescription": "Support for buying or selling a plot or land: title checks, boundary survey, approvals and registration.",
       "description": "Land deals depend on clean documents and correct boundaries. We check the title chain and encumbrance records, survey the boundaries against the FMB sketch, check zoning and layout approvals, and support the sale deed, registration and mutation.",
       "icon": "Map",
       "features": [
@@ -338,12 +368,14 @@
       "id": "construction",
       "label": "Civil Construction",
       "shortLabel": "Construction",
-      "description": "Custom residential, villas, commercial complexes & industrial structures",
+      "description": "Custom residential, villas, apartments, resorts, commercial complexes & industrial structures",
       "iconName": "Hammer",
-      "badge": "8 Services",
+      "badge": "10 Services",
       "slugs": [
         "residential-construction",
         "villa-construction",
+        "apartment-construction",
+        "resort-homestay-construction",
         "commercial-construction",
         "turnkey-construction",
         "industrial-factory-construction",
@@ -1746,5 +1778,5 @@
       "title": "404: This page could not be found."
     }
   ],
-  "servicesCopyUpdated": "2026-10-23: service copy rewritten in plain English (services pages content task)"
+  "servicesCopyUpdated": "2026-11-14: added Apartments and Hospitality Resorts & Homestays; renamed Villa & Bungalow Construction, Architecture, Real Estate Plots"
 }
