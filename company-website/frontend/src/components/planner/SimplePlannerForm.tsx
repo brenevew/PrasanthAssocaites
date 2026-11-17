@@ -28,6 +28,8 @@ import {
 import { serviceCategories, type ServiceItem } from "@/data/rateCards";
 import { signaturePackages } from "@/data/rateCardsLegacy";
 import { saveProjectPlan, ProjectPlanPayload, ProjectPlanResponse } from "@/services/projectPlanApi";
+import ResidenceInput from "@/components/ui/ResidenceInput";
+import { RESIDENCE_LABEL } from "@/data/residence";
 import ImageUpload from "@/components/ui/ImageUpload";
 import type { Attachment } from "@/lib/attachments";
 
@@ -223,6 +225,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [residence, setResidence] = useState("");
 
   /* Plot Length, Width & Reference Title */
   const [plotLength, setPlotLength] = useState("0");
@@ -476,6 +479,7 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
         name,
         email,
         phone,
+        residence: residence || undefined,
         projectType: selectedProjectType,
         commercialType: selectedProjectType === "Commercial" ? commercialType : undefined,
         commercialDetails: selectedProjectType === "Commercial"
@@ -630,6 +634,17 @@ export default function SimplePlannerForm({ forcedType }: SimplePlannerFormProps
                   onChange={e => setPhone(e.target.value)}
                   placeholder="Phone Number *"
                   className="px-3 py-2 bg-white border border-border text-charcoal text-xs rounded-xl focus:border-gold focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3">
+                <label htmlFor={`${fieldId}-residence`} className="text-[10px] font-bold uppercase text-concrete whitespace-nowrap">
+                  {RESIDENCE_LABEL} (optional)
+                </label>
+                <ResidenceInput
+                  id={`${fieldId}-residence`}
+                  value={residence}
+                  onChange={setResidence}
+                  className="w-full sm:flex-1 px-3 py-2 bg-white border border-border text-charcoal text-xs rounded-xl focus:border-gold focus:outline-none"
                 />
               </div>
             </div>

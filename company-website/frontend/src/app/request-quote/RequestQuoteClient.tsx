@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
   Sparkles, CheckCircle2, ShieldCheck, Clock, Award,
-  MapPin, Phone, User, Mail, MessageSquare, Send, Check,
+  MapPin, Phone, User, Mail, MessageSquare, Send, Check, Globe,
   Building2, Landmark, Compass, Calculator, ChevronDown,
   Building, Home, Key, Hammer, Cpu, Factory, Palette,
   Trees, ClipboardList, FileCheck, ArrowRight, Repeat2,
@@ -20,6 +20,8 @@ import ImageUpload from "@/components/ui/ImageUpload";
 import type { Attachment } from "@/lib/attachments";
 import CostCalculator from "@/components/ui/CostCalculator";
 import OptionCards from "@/components/ui/OptionCards";
+import ResidenceInput from "@/components/ui/ResidenceInput";
+import { RESIDENCE_LABEL } from "@/data/residence";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>> = {
   BedDouble, Hotel,
@@ -404,6 +406,16 @@ export default function RequestQuoteClient({ query }: { query: string }) {
                         {result?.errors?.location && (
                           <p className="mt-1.5 text-xs text-red-600">{result.errors.location}</p>
                         )}
+                      </div>
+
+                      <div>
+                        <label htmlFor="residence" className={labelClass}>
+                          {RESIDENCE_LABEL} <span className="font-normal text-concrete">(optional)</span>
+                        </label>
+                        <div className="relative">
+                          <Globe size={15} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-concrete-light" />
+                          <ResidenceInput id="residence" className={inputClass} />
+                        </div>
                       </div>
 
                       <div>

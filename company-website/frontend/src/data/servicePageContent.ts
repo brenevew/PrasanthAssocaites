@@ -16,6 +16,30 @@ export interface ServicePageContent {
   steps: [ServiceStep, ServiceStep, ServiceStep, ServiceStep];
   /** Slugs of other services worth reading next. */
   related: [string, string, string];
+  /**
+   * Completed projects to show on this service page in addition to those
+   * matched by project category (projects.ts slugs), and a heading for them.
+   */
+  projects?: string[];
+  projectsHeading?: string;
+  /**
+   * Optional guide for a specific audience, shown after the steps. Paragraphs
+   * may link with [text](/path). Same copy rules as the rest of this file.
+   */
+  guide?: {
+    badge: string;
+    heading: string;
+    intro: string;
+    sections: { heading: string; paragraphs: string[] }[];
+  };
+  /** Optional place-by-place notes (one card per town), shown after the guide. */
+  towns?: {
+    heading: string;
+    intro: string;
+    items: { name: string; heading: string; body: string }[];
+    /** A closing line under the cards; may link with [text](/path). */
+    note?: string;
+  };
 }
 
 export const servicePageContent: Record<string, ServicePageContent> = {
@@ -54,6 +78,72 @@ export const servicePageContent: Record<string, ServicePageContent> = {
       { title: "Build and handover", body: "Our engineers check each stage on site, and interiors and landscaping can be finished so the property is ready for guests." },
     ],
     related: ["interior-designs", "landscaping-designs", "commercial-construction"],
+    // Pricol is filed as a villa, but the owner describes it as a homestay-style
+    // estate bungalow (2026-11-17), so it is shown here too.
+    projects: ["pricol"],
+    projectsHeading: "Homestay-style work we have completed",
+    // For NRIs and OCI cardholders in the UK, USA and Australia, worded around
+    // how they search: "can i buy property in ooty", "can oci buy land in india",
+    // "is homestay legal in india", "homestay license in tamil nadu".
+    guide: {
+      badge: "Building from abroad",
+      heading: "Building a homestay in Ooty from the UK, USA or Australia",
+      intro: "If you live in the UK, the USA or Australia and want to build a homestay, guest cottages or a small resort in Ooty, Coonoor or Kotagiri, these are the questions to settle before you buy land or fix a design.",
+      sections: [
+        {
+          heading: "Can NRIs and OCI cardholders buy property in Ooty?",
+          paragraphs: [
+            "Non-resident Indians (NRIs) and Overseas Citizens of India (OCI cardholders) can buy residential and commercial property in India, including in Ooty and the rest of the Nilgiris district, without prior approval from the Reserve Bank of India. Under FEMA rules they cannot buy agricultural land, plantation property or farmhouses.",
+            "Much of the land around Coonoor and Kotagiri is tea estate or farmland, so check how the plot is classified in the revenue records before you pay a deposit. Foreign citizens who do not hold an OCI card face tighter rules. Confirm your own position with a lawyer or chartered accountant, and use our [property buying advice](/services/property-acquisition-advisory) for the title and classification checks.",
+          ],
+        },
+        {
+          heading: "Is a homestay legal in the Nilgiris district?",
+          paragraphs: [
+            "Yes, when the building is approved for guests. A house approved as a residence cannot simply be let to guests: a homestay, cottage or resort needs planning permission for that use, and hill-area plots in the Nilgiris district usually need Hill Area Conservation Authority (HACA) clearance as well. Registering the homestay with the tourism department, and any licence from the local body, are separate steps that do not replace building approval.",
+            "In 2025 the district administration began sealing homestays and cottages that were running without the required approvals, following Madras High Court directions. We check what applies to your plot before the design is fixed and prepare the [approval drawings](/services/architectural-designs). The authorities make the approval decision.",
+          ],
+        },
+        {
+          heading: "How the project runs while you live overseas",
+          paragraphs: [
+            "You do not need to be in India for every stage. We visit the plot, check its access, levels and drainage, and send you the findings, the drawings and the itemised BoQ by email or WhatsApp, so you can review every line before you agree the price. During construction you receive progress updates as each stage is completed.",
+            "If you cannot travel to sign documents, a relative or another person you trust can act for you under a power of attorney. Once the building is finished, our [property management](/services/property-portfolio-management) service can look after it for owners who live away.",
+          ],
+        },
+      ],
+    },
+    // Worded around local searches: "homestay in ooty for family / with kitchen",
+    // "homestay in coonoor tea estate", "luxury homestay in kotagiri",
+    // "land for sale in manjoor ooty". Built in Ooty, Coonoor and Kotagiri;
+    // Manjoor is served from the Gudalur branch (no project there yet).
+    towns: {
+      heading: "Building a homestay in Ooty, Coonoor, Kotagiri and Manjoor",
+      intro: "Each part of the Nilgiris district asks something different of a homestay: the plot, the rain, the access road and what guests come for.",
+      items: [
+        {
+          name: "Ooty",
+          heading: "Homestay construction in Ooty",
+          body: "Ooty is the district's main tourist town, and guests here look for family rooms, rooms for couples and stays with a kitchen, so settle the room mix before the layout. Plots in and around the town are often small and steep, which means terraced cottages, parking and the approach road are planned first. Ooty gets most of its rain from June to September.",
+        },
+        {
+          name: "Coonoor",
+          heading: "Homestay construction in Coonoor",
+          body: "Coonoor draws guests who want a quieter stay among the tea estates. Much of the land around it is estate or plantation land, which non-residents cannot buy and which may need a change of land use before a homestay can be built. Coonoor gets most of its rain from October to December, so heavy site work is planned around those months.",
+        },
+        {
+          name: "Kotagiri",
+          heading: "Homestay construction in Kotagiri",
+          body: "Kotagiri, on the eastern side of the hills and around Kodanad, suits private cottages and luxury stays with space around them. Many plots for sale are classified as farmland, so check the classification before you buy. Like Coonoor, Kotagiri gets most of its rain from October to December.",
+        },
+        {
+          name: "Manjoor",
+          heading: "Homestay construction in Manjoor",
+          body: "Manjoor (also spelt Manjur) lies about 34 km from Ooty, on the road towards Mulli and the Kerala border, and suits quiet stays away from the busier towns. Access roads are narrow and materials travel further, so deliveries and storage are planned before work starts. Check how close the plot is to forest land, and design drainage and damp-proofing for heavy monsoon rain and mist.",
+        },
+      ],
+      note: "We have built in Ooty, Coonoor and Kotagiri, and our Gudalur branch takes projects across the district, including Manjoor. Our guide to [building a homestay in Ooty as an NRI](/blog/building-homestay-ooty-nri) covers land, approvals and costs in more detail.",
+    },
   },
   "commercial-construction": {
     steps: [

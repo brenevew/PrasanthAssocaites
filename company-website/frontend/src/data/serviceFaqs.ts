@@ -76,7 +76,7 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
   "resort-homestay-construction": [
     {
       q: "Do you build resorts and homestays?",
-      a: `Yes. We design and build resorts, homestays and guest cottages. Our completed work includes resort and homestay projects, and [Sasthapuri Hotels](/projects/sasthapuri), a 38,879 sq. ft. commercial building in Gudalur town. ${offices}`,
+      a: `Yes. We design and build resorts, homestays and guest cottages. Our completed work includes the [Pricol Limited tea bungalow](/projects/pricol), a 12,120 sq. ft. homestay-style estate bungalow in Gudalur, and [Sasthapuri Hotels](/projects/sasthapuri), a 38,879 sq. ft. commercial building in Gudalur town. More homestay and resort projects are now in the approval stage. ${offices}`,
     },
     {
       q: "What approvals does a resort or homestay need?",
@@ -89,6 +89,30 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
     {
       q: "Do you build resorts in Ooty, Coonoor and Kotagiri?",
       a: "Yes. Our Gudalur branch handles projects across the Nilgiris district, including Ooty, Coonoor and Kotagiri. On a hill site, the slope, drainage, monsoon rain and access road are planned before the layout. Our [hill-plot guide](/blog/building-on-sloping-plot-ooty-gudalur) explains what to check.",
+    },
+    {
+      q: "Do you build homestays in Manjoor?",
+      a: "Yes. Our Gudalur branch takes homestay and cottage projects across the Nilgiris district, including Manjoor (also spelt Manjur) on the road towards Mulli. Narrow access roads, longer material deliveries, nearby forest land and heavy monsoon rain all shape the plan, so we visit the plot before the design is fixed and price the work through an itemised BoQ.",
+    },
+    {
+      q: "Can NRIs and OCI cardholders build a homestay in Ooty?",
+      a: "Yes, on land they are allowed to own. NRIs and OCI cardholders can buy residential and commercial property in India, but not agricultural land, plantation property or farmhouses. Check the plot's classification first, then the approvals for guest use. We can design and build the homestay while you live in the UK, the USA or Australia, sending you the drawings, the itemised BoQ and progress updates.",
+    },
+    {
+      q: "Can outsiders buy property in Ooty?",
+      a: "Yes. People from outside the Nilgiris district or outside Tamil Nadu can buy property in Ooty, Coonoor and Kotagiri. What limits a purchase is the land itself: its classification, title, road access and the hill-area rules on what can be built there. Non-residents also cannot buy agricultural or plantation land. Our [property buying advice](/services/property-acquisition-advisory) covers these checks before you pay.",
+    },
+    {
+      q: "How do I get a homestay licence in Tamil Nadu?",
+      a: "Start with the building, not the licence. Registering a homestay with the tourism department and getting a licence from the local body only work for a building approved for guest use, and in the Nilgiris district that usually includes HACA clearance. Check the current registration steps with the tourism department and your local body. We prepare the [approval drawings](/services/architectural-designs) for the building itself.",
+    },
+    {
+      q: "How much does it cost to build a homestay or resort in Ooty?",
+      a: "It depends on the number of rooms, the specification, the slope and soil, retaining walls and drainage, how far materials travel, and services sized for every room in use. A square-foot rate from a flat city plot does not carry over to a hill site. We price each project with an itemised BoQ after a site visit, so you can compare it line by line. Our [BoQ guide](/blog/how-to-read-a-construction-boq) explains how to read one.",
+    },
+    {
+      q: "Can you help me buy a resort or homestay that is for sale in Ooty?",
+      a: "We do not list property for sale, but we can check one before you buy. Our [property buying advice](/services/property-acquisition-advisory) covers title, classification and approval checks, and our engineers can inspect the structure and whether the building is approved for guests. A [structural stability certificate](/services/structural-stability-certificate) is available for an existing building.",
     },
   ],
   "commercial-construction": [
@@ -341,6 +365,10 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
     {
       q: "Do you advise NRIs investing in property?",
       a: "Yes. We help with choosing and checking property, documentation and, if needed, managing the property after purchase through our property management service.",
+    },
+    {
+      q: "Can NRIs in the UK, USA or Australia invest in a homestay in the Nilgiris district?",
+      a: "Yes, on land that non-residents are allowed to own, which rules out agricultural and plantation land. Check the plot's classification and the approvals for guest use before you buy. We can check the property, then design and build the homestay through our [resort and homestay construction](/services/resort-homestay-construction) service while you live abroad.",
     },
     {
       q: "Which markets do you advise on?",

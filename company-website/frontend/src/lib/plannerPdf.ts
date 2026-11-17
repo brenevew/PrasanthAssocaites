@@ -13,6 +13,8 @@ export interface PlanContact {
   name: string;
   email: string;
   phone: string;
+  /** Optional "Where do you live now?" answer. */
+  residence?: string;
 }
 
 const yesNo = (value: boolean) => (value ? "Yes" : "No");
@@ -50,6 +52,7 @@ export function plannerSummaryText(state: PlannerState, contact: PlanContact): s
     `Name: ${contact.name || "-"}`,
     `Mobile: ${contact.phone || "-"}`,
     contact.email ? `Email: ${contact.email}` : null,
+    contact.residence ? `Lives in: ${contact.residence}` : null,
     `Project: ${state.setup.projectName || "Residential project"}`,
     `Location: ${state.setup.location || "Not given"}`,
     `Plot: ${state.plot.width} x ${state.plot.length} ${state.plot.unit} (${t.plotArea.toLocaleString("en-IN")} ${unit})`,
@@ -113,6 +116,7 @@ export function buildPlannerPdf(state: PlannerState, contact: PlanContact, date 
   pdf.row("Name", contact.name);
   pdf.row("Mobile", contact.phone);
   pdf.row("Email", contact.email);
+  if (contact.residence) pdf.row("Lives in", contact.residence);
 
   pdf.heading("1. Project");
   pdf.row("Project name", state.setup.projectName || "Residential project");

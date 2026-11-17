@@ -46,7 +46,7 @@ export default function StepBuildingReport({
   // report is a local draft and must not claim to be saved.
   const isSaved = Boolean(state.savedRefCode);
   const refCode = state.savedRefCode || state.setup.projectName.toUpperCase().replace(/\s+/g, "_") || "RESIDENTIAL_PROJECT";
-  const contact = { name: state.setup.clientName || "", email: state.setup.email || "", phone: state.setup.phone || "" };
+  const contact = { name: state.setup.clientName || "", email: state.setup.email || "", phone: state.setup.phone || "", residence: state.setup.residence };
 
   // Submits online (to the Google Sheet) from the report. Contact details were
   // entered on the review step; without them, go back there to add them.

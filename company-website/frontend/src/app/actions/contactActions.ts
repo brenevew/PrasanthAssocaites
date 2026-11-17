@@ -1,6 +1,7 @@
 "use server";
 
 import { sendToGoogleSheet } from "@/lib/googleSheets";
+import { cleanResidence } from "@/data/residence";
 import { generateRefCode, saveSubmission } from "@/lib/db";
 import type { Attachment } from "@/lib/attachments";
 import { rateLimit, getClientIpFromHeaders } from "@/lib/rateLimit";
@@ -39,6 +40,8 @@ export async function submitContactForm(formData: FormData): Promise<ActionResul
     const timeline = formData.get("timeline")?.toString().trim();
     const serviceSlug = formData.get("serviceSlug")?.toString().trim();
     const service = services.find((item) => item.slug === serviceSlug);
+    // Optional "Where do you live now?"; only values from the list are kept.
+    const residence = cleanResidence(formData.get("residence")?.toString());
 
     if (serviceSlug && !service) {
       return { success: false, message: "Please choose a valid service and try again." };
@@ -105,6 +108,7 @@ export async function submitContactForm(formData: FormData): Promise<ActionResul
 
     // ── Sync to Google Sheet (the system of record) ──
     const detailsArray = [
+      residence ? `Lives in: ${residence}` : null,
       service ? `Service: ${service.title} (${service.slug})` : null,
       message ? `Message: ${message}` : null,
       timeline ? `Timeline: ${timeline}` : null,

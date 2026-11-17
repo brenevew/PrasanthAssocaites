@@ -24,6 +24,8 @@ export interface ProjectSetupData {
   clientName?: string;
   email?: string;
   phone?: string;
+  /** Optional "Where do you live now?" free-text answer (see data/residence.ts). */
+  residence?: string;
 }
 
 export interface PlotData {

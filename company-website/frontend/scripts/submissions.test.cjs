@@ -181,3 +181,26 @@ test("sync endpoint returns failure status and rejects oversized details instead
   assert.equal(oversized.status, 413);
   assert.equal(writes, 1);
 });
+
+test("overseas phone formats pass the planner check; malformed numbers do not", () => {
+  const { isValidPhone } = load("src/lib/phone.ts");
+  for (const ok of ["+91 94860 38761", "9486038761", "+44 7700 900123", "+44 (0)20 7946 0958", "+1 (415) 555-0123", "+1 415.555.0123", "+61 0412 345 678", "+971 50 123 4567"]) {
+    assert.equal(isValidPhone(ok), true, ok);
+  }
+  for (const bad of ["", "12345", "phone me", "+1 415 555 0123 ext 9", "+44 7700 900123 9999 1234"]) {
+    assert.equal(isValidPhone(bad), false, bad);
+  }
+});
+
+test("'Where do you live now?' reaches the Sheet details as cleaned free text", async () => {
+  const { actions, writes } = contactHarness({ success: true });
+  assert.equal((await actions.submitContactForm(contactForm({ residence: "  London,   UK " }))).success, true);
+  assert.ok(writes.at(-1).details.includes("Lives in: London, UK"));
+  assert.equal((await actions.submitContactForm(contactForm({ residence: "<script>alert(1)</script> Dubai" }))).success, true);
+  assert.ok(!writes.at(-1).details.includes("<"), "markup is stripped");
+  assert.equal((await actions.submitContactForm(contactForm({ residence: "=+@!!" }))).success, true);
+  assert.ok(!(writes.at(-1).details || "").includes("Lives in"), "nothing usable, nothing recorded");
+  const { cleanResidence } = load("src/data/residence.ts");
+  assert.equal(cleanResidence("x".repeat(200)).length, 60);
+  assert.equal(cleanResidence("Chennai, தமிழ்நாடு"), "Chennai, தமிழ்நாடு");
+});

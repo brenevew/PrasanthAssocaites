@@ -1,11 +1,14 @@
 import type { PlannerState } from "@/components/planner/types";
 import type { Attachment } from "@/lib/attachments";
 import { trackLeadEvent } from "@/lib/analytics";
+import { cleanResidence } from "@/data/residence";
 
 export interface ProjectPlanPayload {
   name: string;
   email: string;
   phone: string;
+  /** Optional "Where do you live now?" answer; recorded as "Lives in: ..." in the details. */
+  residence?: string;
   projectType: "Residential" | "Commercial" | string;
   commercialType?: string;
   commercialDetails?: {
@@ -171,8 +174,9 @@ export async function saveProjectPlan(payload: ProjectPlanPayload): Promise<Proj
   // The team must receive the plan before it is treated as submitted locally.
   const {
     name, phone, email, projectType, commercialType, location,
-    estimatedFee, attachments, ...requirements
+    estimatedFee, attachments, residence, ...requirements
   } = payload;
+  const livesIn = cleanResidence(residence);
 
   let res: Response;
   try {
@@ -190,7 +194,7 @@ export async function saveProjectPlan(payload: ProjectPlanPayload): Promise<Proj
         estimatedBudget: estimatedFee,
         // Keep every requirement, including floor/room configurations and the
         // individual services. Contact fields have their own Sheet columns.
-        details: JSON.stringify(requirements, null, 2),
+        details: (livesIn ? `Lives in: ${livesIn}\n\n` : "") + JSON.stringify(requirements, null, 2),
         attachments: attachments || [],
       }),
     });
@@ -264,7 +268,7 @@ export async function getProjectPlanByRefCode(refCode: string): Promise<ProjectP
  */
 export function buildPayloadFromPlannerState(
   state: PlannerState,
-  contact: { name: string; email: string; phone: string }
+  contact: { name: string; email: string; phone: string; residence?: string }
 ): ProjectPlanPayload {
   const footprintArea = Math.round(state.footprint.length * state.footprint.width);
   const totalBuiltUp = state.floors.reduce((acc, f) => acc + (f.builtUpSft || footprintArea), 0);
@@ -285,6 +289,7 @@ export function buildPayloadFromPlannerState(
     name: contact.name,
     email: contact.email,
     phone: contact.phone,
+    residence: cleanResidence(contact.residence),
     projectType: state.setup.projectType,
     commercialType: state.setup.commercialType,
     projectName:

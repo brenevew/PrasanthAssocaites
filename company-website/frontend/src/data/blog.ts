@@ -479,6 +479,95 @@ export const blogPosts: BlogPost[] = [
       { p: "Bring your plot documents and any drawings to our [Coimbatore office](/locations/coimbatore) or [Gudalur branch](/locations/gudalur). We will explain how a turnkey contract would work for your house, or what you need in place if you prefer to manage a labour or item-rate contractor yourself." },
     ],
   },
+  {
+    slug: "building-homestay-ooty-nri",
+    title: "Building a homestay in Ooty as an NRI: land, approvals and costs",
+    seoTitle: "Building a Homestay in Ooty as an NRI",
+    description: "A guide for NRIs and OCI cardholders in the UK, USA and Australia on buying land, approvals and costs for a homestay in Ooty, Coonoor, Kotagiri or Manjoor.",
+    excerpt: "Who can buy what, which approvals a homestay needs in the Nilgiris district, what decides the cost, and how to run the project while you live overseas.",
+    category: "Approvals",
+    datePublished: "2026-11-17",
+    image: "/images/projects/Renovation/manjushree-residential-building-renovation-prasanth-associates.webp",
+    imageAlt: "Renovated British-era Director's Building at Manjushree Plantation, O'Valley, in the Nilgiris district, by Prasanth Associates",
+    relatedServices: ["resort-homestay-construction", "property-acquisition-advisory", "architectural-designs", "detailed-estimation-costing"],
+    relatedProjects: ["pricol", "manjushree", "sasthapuri"],
+    body: [
+      { p: "Yes, an NRI or OCI cardholder can build a homestay in Ooty, Coonoor, Kotagiri or Manjoor, but only on land they are allowed to own and only in a building approved for guests. Most problems start before construction: a plot bought without checking its classification, or a house approved as a residence and then let to guests. This guide covers the land, the approvals, the cost and how to run the project from the UK, the USA or Australia." },
+
+      { h2: "Can an NRI or OCI cardholder buy land for a homestay in Ooty?" },
+      { p: "Non-resident Indians (NRIs) and Overseas Citizens of India (OCI cardholders) can buy residential and commercial property in India without prior approval from the Reserve Bank of India. Under FEMA rules, they cannot buy agricultural land, plantation property or farmhouses." },
+      { ul: [
+        "Allowed: a house, a plot classified for residential or commercial use, or an existing building.",
+        "Not allowed: agricultural land, tea or coffee estate land, and farmhouses, unless the land's use has formally been changed in the revenue records.",
+        "Inherited property follows its own rules, so take advice before you sell or rebuild on it.",
+      ] },
+      { p: "Foreign citizens who do not hold an OCI card face tighter rules. Payments should go through normal banking channels, such as your NRE or NRO account. Confirm your own position with a lawyer or chartered accountant before you sign anything; our [property buying advice](/services/property-acquisition-advisory) covers the title and classification checks on the plot itself." },
+
+      { h2: "Check the land before you fall for the view" },
+      { p: "Much of the land for sale around Coonoor, Kotagiri and Manjoor is tea estate or farmland. A plot can have a beautiful view and still be unusable for a homestay. Check these before you pay a deposit." },
+      { table: {
+        caption: "What to check on a plot for a homestay",
+        head: ["Check", "Why it matters"],
+        rows: [
+          ["Classification in the revenue records (patta and chitta)", "Agricultural or plantation land cannot be bought by non-residents, and a homestay needs land that allows that use."],
+          ["Title and encumbrance certificate", "Shows who owns the land and whether there are loans or claims on it."],
+          ["Boundary survey against the FMB sketch", "Hill plots are often irregular, and boundaries on the ground do not always match the records."],
+          ["Road access for construction vehicles", "Narrow estate roads limit the size of lorry that can reach the site, which affects cost and programme."],
+          ["Distance from reserve forest and streams", "Forest boundaries and water courses can restrict what you can build and where."],
+          ["Slope, soil and water movement", "These decide the foundations, retaining walls and drainage, often the largest costs on a hill site."],
+        ],
+      } },
+      { p: "Our [land and plot checks](/services/land-plot-transactions) cover the survey and document checks, and our [hill-plot guide](/blog/building-on-sloping-plot-ooty-gudalur) explains the site questions in more detail." },
+
+      { h2: "Which approvals does a homestay need in the Nilgiris district?" },
+      { p: "A homestay needs approval for the building and, separately, registration for the business. One does not replace the other." },
+      { ol: [
+        "Planning permission from the local body or planning authority, for a building used by guests rather than as a private residence.",
+        "Hill Area Conservation Authority (HACA) clearance, which most plots in the Nilgiris district need.",
+        "No-objection certificates from departments such as forest and agricultural engineering, where the plot calls for them.",
+        "Registration with the Tamil Nadu Department of Tourism, which has had guidelines for registering and classifying bed and breakfast and homestay establishments since 2022.",
+        "Any licence the local body requires to run the business.",
+      ] },
+      { p: "In 2025 the Nilgiris district administration began sealing homestays, cottages and bed and breakfast units that were running without the required approvals, following Madras High Court directions. A residential building approval, or a listing on a booking website, does not make a homestay legal. We check what applies to your plot before the design is fixed and prepare the [approval drawings](/services/architectural-designs); the authorities make the decision, and the registration steps should be confirmed with the tourism department at the time you apply." },
+
+      { h2: "Ooty, Coonoor, Kotagiri or Manjoor: how the location changes the building" },
+      { table: {
+        caption: "Planning a homestay in four Nilgiris locations",
+        head: ["Location", "What guests look for", "What to plan for"],
+        rows: [
+          ["Ooty", "Family rooms, rooms for couples, and stays with a kitchen, close to the town.", "Small, steep plots; parking and access designed first; most rain from June to September."],
+          ["Coonoor", "Quieter stays among the tea estates.", "Estate and plantation land that non-residents cannot buy; most rain from October to December."],
+          ["Kotagiri", "Private cottages and luxury stays, including around Kodanad.", "Farmland classification on many plots for sale; most rain from October to December."],
+          ["Manjoor (also spelt Manjur)", "Quiet stays away from the busier towns, about 34 km from Ooty.", "Narrow access roads, longer material deliveries, forest close by, and heavy monsoon rain and mist."],
+        ],
+      } },
+      { p: "We have built in Ooty, Coonoor and Kotagiri, and our Gudalur branch takes projects across the district, including Manjoor. Our homestay-style work includes the 12,120 sq. ft. [Pricol Limited tea bungalow](/projects/pricol), an estate bungalow inside a tea plantation in Gudalur, and more homestay and resort projects are now in the approval stage. Our [resort and homestay construction](/services/resort-homestay-construction) page covers each location in more detail." },
+
+      { h2: "What decides the cost of building a homestay in Ooty?" },
+      { p: "There is no reliable square-foot rate for a homestay on a hill site, because the plot moves the price more than the building does. These are the items that change it most." },
+      { ul: [
+        "The number of rooms and bathrooms, and whether each room has its own bathroom.",
+        "The specification and finishes, from flooring to hot water.",
+        "The slope and soil: excavation, foundations and retaining walls.",
+        "Drainage for heavy monsoon rain, around the building and behind retaining walls.",
+        "How far materials travel, and the size of vehicle the road can take.",
+        "Services sized for every room in use at once: water storage, hot water, drainage and electrical load.",
+        "Common areas such as a dining room, kitchen, parking and landscaping.",
+      ] },
+      { p: "Access can matter as much as the building. At the [Pricol Limited tea bungalow](/projects/pricol), every load of material, every piece of equipment and every worker had to cross a river to reach the site, so deliveries were planned before construction started. A remote estate plot needs the same thinking at the estimate stage." },
+      { p: "We price each project through an itemised BoQ after a site visit, with each item listed with its quantity, specification and rate. From abroad, that lets you compare quotes line by line instead of by a single rate. Our [guide to reading a construction BoQ](/blog/how-to-read-a-construction-boq) explains what to check before you sign." },
+
+      { h2: "Running the project while you live in the UK, USA or Australia" },
+      { p: "You do not need to be in India for every stage. We visit the plot, check its access, levels and drainage, and send you the findings, the drawings and the itemised BoQ by email or WhatsApp. During construction you receive progress updates as each stage is completed." },
+      { p: "If you cannot travel to sign documents, a relative or another person you trust can act for you under a power of attorney. Agree the scope, the payment stages and how changes are priced in writing before work starts. Once the building is finished, our [property management](/services/property-portfolio-management) service can look after it for owners who live away." },
+
+      { h2: "Can you turn an existing bungalow into a homestay?" },
+      { p: "Often, after an engineer has checked the building. The structure, bathrooms, services, escape routes and parking all need to suit guests, and the change of use usually needs a fresh approval. Our renovation of the British-era [Director's Building at Manjushree Plantation](/projects/manjushree) in O'Valley started with an assessment of the existing building before any design was fixed, which is the right order for a conversion too. Our guide on whether to [renovate or rebuild an old bungalow](/blog/renovate-old-bungalow-nilgiris) covers the decision." },
+
+      { h2: "Your next step" },
+      { p: "Send us the plot location, the land documents you have and the number of rooms you have in mind. We will tell you what to check first and arrange a site visit. See our [resort and homestay construction](/services/resort-homestay-construction) service, or our page for [builders in Ooty, Coonoor and Kotagiri](/locations/nilgiris-ooty)." },
+    ],
+  },
 ];
 
 /** Reading time in minutes, at about 200 words a minute. */

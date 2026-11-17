@@ -5,6 +5,8 @@ import { getServicePath } from "@/data/serviceRoutes";
 import { SITE_URL, ORG_ID, OG_IMAGE, pageOpenGraph } from "@/lib/seo";
 
 interface ServiceSeoCopy {
+  /** Optional schema.org Audience: who the service is aimed at, and where they live. */
+  audience?: { audienceType: string; countries: string[] };
   title: string;
   /** Page heading with the place names people search with. Falls back to the catalogue name. */
   h1?: string;
@@ -29,8 +31,12 @@ const copy: Record<string, ServiceSeoCopy> = {
     description: "Apartment construction in Coimbatore and Ooty for landowners and clients, and our own apartment projects. Structure, parking, lifts and itemised BoQ.",
   },
   "resort-homestay-construction": {
+    audience: {
+      audienceType: "Non-resident Indians and OCI cardholders building a homestay or resort in the Nilgiris district",
+      countries: ["United Kingdom", "United States", "Australia"],
+    },
     title: "Resort & Homestay Construction, Ooty",
-    h1: "Resort and Homestay Construction in Ooty and Coimbatore",
+    h1: "Resort and Homestay Construction in Ooty",
     description: "Resort, homestay and guest cottage construction in Ooty, Coonoor, Kotagiri and Coimbatore, with room layouts, approval checks and itemised BoQ pricing.",
   },
   "commercial-construction": {
@@ -170,6 +176,7 @@ export function serviceMetadata(slug: string): Metadata {
 
 export function serviceSchema(service: Service) {
   const seo = serviceSeo.find((entry) => entry.slug === service.slug);
+  const audience = copy[service.slug]?.audience;
   return {
     "@type": "Service",
     // Preserve entity identity used by the original hub and business catalog.
@@ -188,5 +195,13 @@ export function serviceSchema(service: Service) {
       { "@type": "City", name: "Kotagiri" },
       { "@type": "City", name: "Gudalur" },
     ],
+    // Where the work is done stays in areaServed; where the clients live goes here.
+    ...(audience && {
+      audience: {
+        "@type": "Audience",
+        audienceType: audience.audienceType,
+        geographicArea: audience.countries.map((name) => ({ "@type": "Country", name })),
+      },
+    }),
   };
 }

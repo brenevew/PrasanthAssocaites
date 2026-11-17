@@ -73,7 +73,9 @@ test("every service page heading is unique and names where the service is offere
   const headings = serviceSeo.map((entry) => entry.h1);
   assert.equal(new Set(headings).size, headings.length);
   for (const entry of serviceSeo) {
-    assert.match(entry.h1, /Coimbatore/, entry.slug);
+    // Resorts and homestays are a hill-station service: the owner chose an
+    // Ooty-only heading for it (2026-11-17). Its description and schema still cover Coimbatore.
+    if (entry.slug !== "resort-homestay-construction") assert.match(entry.h1, /Coimbatore/, entry.slug);
     if (!["industrial-factory-construction", "turnkey-construction"].includes(entry.slug)) {
       assert.match(entry.h1, /Ooty/, entry.slug);
     }

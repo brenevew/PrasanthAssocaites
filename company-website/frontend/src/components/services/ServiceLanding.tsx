@@ -216,6 +216,64 @@ export default function ServiceLanding({
         </section>
       )}
 
+      {/* Audience guide (e.g. building from abroad), where the service has one */}
+      {content?.guide && (
+        <section className="py-16 md:py-24 bg-[var(--canvas-bg)] border-b border-border">
+          <div className="container">
+            <ScrollReveal>
+              <div className="max-w-3xl mb-10 md:mb-12">
+                <span className="badge-gold mb-3 inline-flex">{content.guide.badge}</span>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal leading-snug mb-3">{content.guide.heading}</h2>
+                <p className="text-concrete leading-relaxed">{content.guide.intro}</p>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+              {content.guide.sections.map((section, i) => (
+                <ScrollReveal key={section.heading} delay={i * 80}>
+                  <article className="h-full rounded-3xl neu-glass p-6 md:p-7">
+                    <h3 className="font-heading text-lg font-bold text-charcoal leading-snug mb-3">{section.heading}</h3>
+                    <div className="space-y-3 text-sm text-concrete leading-relaxed">
+                      {section.paragraphs.map((paragraph) => <p key={paragraph}><AnswerText text={paragraph} /></p>)}
+                    </div>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Place-by-place notes, where the service has them */}
+      {content?.towns && (
+        <section className="py-16 md:py-24 bg-linen border-b border-border">
+          <div className="container">
+            <ScrollReveal>
+              <div className="max-w-3xl mb-10 md:mb-12">
+                <span className="badge-gold mb-3 inline-flex">Where we build</span>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-charcoal leading-snug mb-3">{content.towns.heading}</h2>
+                <p className="text-concrete leading-relaxed">{content.towns.intro}</p>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {content.towns.items.map((town, i) => (
+                <ScrollReveal key={town.name} delay={(i % 2) * 80}>
+                  <article className="h-full rounded-2xl bg-white border border-border p-6 shadow-2xs">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin size={16} className="text-gold-dark" aria-hidden="true" />
+                      <h3 className="font-heading text-lg font-bold text-charcoal">{town.heading}</h3>
+                    </div>
+                    <p className="text-sm text-concrete leading-relaxed">{town.body}</p>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+            {content.towns.note && (
+              <p className="mt-8 max-w-3xl text-sm text-concrete leading-relaxed"><AnswerText text={content.towns.note} /></p>
+            )}
+          </div>
+        </section>
+      )}
+
       {children}
 
       {/* Completed work */}

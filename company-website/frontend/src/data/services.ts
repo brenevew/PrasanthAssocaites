@@ -76,7 +76,7 @@ export const services: Service[] = [
     shortDescription:
       "Resorts, homestays and guest cottages designed and built around the site, the guests and the approvals that apply to their use.",
     description:
-      "A resort or homestay is a building run as a business, so the layout has to work for guests, staff and housekeeping as well as for the site. We plan the rooms, common areas, kitchens and services together, and check early which approvals apply to the intended use. Our completed work includes resorts and homestays, and Sasthapuri Hotels in Gudalur town.",
+      "A resort or homestay is a building run as a business, so the layout has to work for guests, staff and housekeeping as well as for the site. We plan the rooms, common areas, kitchens and services together, and check early which approvals apply to the intended use. Our completed work includes the Pricol Limited tea bungalow, a homestay-style estate bungalow in Gudalur, and Sasthapuri Hotels in Gudalur town. More homestay and resort projects are in the approval stage.",
     icon: "BedDouble",
     features: [
       "Room, suite and cottage layouts",

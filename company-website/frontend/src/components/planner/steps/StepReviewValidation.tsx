@@ -5,6 +5,9 @@ import { PlannerState, EngineeringValidationWarning, StepId } from "../types";
 import { Edit3, FileCheck, AlertTriangle, ArrowRight, User, Loader2 } from "lucide-react";
 import { saveProjectPlan, buildPayloadFromPlannerState } from "@/services/projectPlanApi";
 import PlanSharePanel from "../PlanSharePanel";
+import ResidenceInput from "@/components/ui/ResidenceInput";
+import { RESIDENCE_LABEL } from "@/data/residence";
+import { isValidPhone } from "@/lib/phone";
 
 interface StepReviewValidationProps {
   state: PlannerState;
@@ -29,6 +32,7 @@ export default function StepReviewValidation({
   const [clientName, setClientName] = useState(state.setup.clientName || "");
   const [email, setEmail] = useState(state.setup.email || "");
   const [phone, setPhone] = useState(state.setup.phone || "");
+  const [residence, setResidence] = useState(state.setup.residence || "");
 
   const [isSaving, setIsSaving] = useState(false);
   // Set when the plan could not be sent to the team: the PDF options appear,
@@ -42,7 +46,8 @@ export default function StepReviewValidation({
     if (!email.trim()) errors.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) errors.email = "Enter a valid email address";
     if (!phone.trim()) errors.phone = "Mobile number is required";
-    else if (!/^[0-9+\-\s]{7,15}$/.test(phone.trim())) errors.phone = "Enter a valid mobile number";
+    // Accepts overseas formats too: "+1 (415) 555-0123", "+971 50 123 4567".
+    else if (!isValidPhone(phone)) errors.phone = "Enter a valid mobile number, with the country code if you live abroad";
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -57,10 +62,11 @@ export default function StepReviewValidation({
         name: clientName.trim(),
         email: email.trim(),
         phone: phone.trim(),
+        residence: residence || undefined,
       };
 
       if (onUpdateSetup) {
-        onUpdateSetup({ clientName, email, phone });
+        onUpdateSetup({ clientName, email, phone, residence: residence || undefined });
       }
 
       const payload = buildPayloadFromPlannerState(state, contactInfo);
@@ -270,7 +276,7 @@ export default function StepReviewValidation({
                 setPhone(e.target.value);
                 if (fieldErrors.phone) setFieldErrors((prev) => ({ ...prev, phone: undefined }));
               }}
-              placeholder="Mobile Number *"
+              placeholder="Mobile Number (with country code) *"
               className={`w-full px-3.5 py-2.5 bg-white border text-charcoal text-xs rounded-xl focus:outline-none ${
                 fieldErrors.phone ? "border-red-400 focus:border-red-500" : "border-border focus:border-gold"
               }`}
@@ -278,12 +284,23 @@ export default function StepReviewValidation({
             {fieldErrors.phone && <p className="mt-1 text-[10px] text-red-600">{fieldErrors.phone}</p>}
           </div>
         </div>
+        <div className="pt-1">
+          <label htmlFor="planner-residence" className="block text-[10px] font-bold uppercase tracking-wider text-concrete mb-1">
+            {RESIDENCE_LABEL} (optional)
+          </label>
+          <ResidenceInput
+            id="planner-residence"
+            value={residence}
+            onChange={setResidence}
+            className="w-full sm:w-1/2 px-3.5 py-2.5 bg-white border border-border text-charcoal text-xs rounded-xl focus:outline-none focus:border-gold"
+          />
+        </div>
       </div>
 
       {saveFailed && (
         <PlanSharePanel
           state={state}
-          contact={{ name: clientName.trim(), email: email.trim(), phone: phone.trim() }}
+          contact={{ name: clientName.trim(), email: email.trim(), phone: phone.trim(), residence: residence || undefined }}
           onViewReport={() => onGenerateReport()}
         />
       )}

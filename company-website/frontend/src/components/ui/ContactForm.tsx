@@ -3,10 +3,12 @@
 import { trackLeadEvent } from "@/lib/analytics";
 
 import { useState, useEffect } from "react";
-import { User, Phone, Mail, Building, MapPin, MessageSquare, Send, CheckCircle, Sparkles, FileText, ChevronDown } from "lucide-react";
+import { User, Phone, Mail, Building, MapPin, MessageSquare, Send, CheckCircle, Sparkles, FileText, ChevronDown, Globe } from "lucide-react";
 import { submitContactForm, type ActionResult } from "@/app/actions/contactActions";
 import { serviceQuoteSpecs } from "@/data/serviceQuoteData";
 import ImageUpload from "@/components/ui/ImageUpload";
+import ResidenceInput from "@/components/ui/ResidenceInput";
+import { RESIDENCE_LABEL } from "@/data/residence";
 import type { Attachment } from "@/lib/attachments";
 
 interface ContactFormProps {
@@ -318,6 +320,16 @@ export default function ContactForm({ isEstimate = false, serviceSlug, serviceTi
                 placeholder="your@email.com"
               />
             </div>
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="residence" className={labelClass}>{RESIDENCE_LABEL} (Optional)</label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-concrete-light">
+              <Globe size={15} strokeWidth={1.5} />
+            </div>
+            <ResidenceInput id="residence" className={`${inputClass} pl-9 py-2.5 text-xs`} />
           </div>
         </div>
 

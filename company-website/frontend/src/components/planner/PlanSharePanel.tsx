@@ -37,8 +37,8 @@ type Shared = "whatsapp" | "email" | "download" | null;
 export default function PlanSharePanel({ state, contact, onSubmit, isSubmitting, onViewReport }: PlanSharePanelProps) {
   // Built once when the panel appears, so every button below works on the
   // first tap; building on click would lose the tap and popups get blocked.
-  const { name, email, phone } = contact;
-  const file = useMemo(() => plannerPdfFile(state, { name, email, phone }), [state, name, email, phone]);
+  const { name, email, phone, residence } = contact;
+  const file = useMemo(() => plannerPdfFile(state, { name, email, phone, residence }), [state, name, email, phone, residence]);
   const [shared, setShared] = useState<Shared>(null);
   // The panel only appears after a client-side action, never in server HTML,
   // so reading navigator during render can't cause a hydration mismatch.

@@ -5,6 +5,7 @@ import { getServicePath } from "@/data/serviceRoutes";
 import { serviceFaqs } from "@/data/serviceFaqs";
 import { projects, projectServiceSlug } from "@/data/projects";
 import { serviceMetadata, serviceSeo } from "@/lib/serviceSeo";
+import { servicePageContent } from "@/data/servicePageContent";
 import ServiceLanding from "@/components/services/ServiceLanding";
 
 interface Props { params: Promise<{ slug: string }> }
@@ -32,13 +33,19 @@ export default async function ServicePage({ params }: Props) {
   const service = services.find((entry) => entry.slug === slug);
   if (!service || !hasLandingPage(slug)) notFound();
 
+  // Projects listed for this service first, then those matched by category.
+  const content = servicePageContent[slug];
+  const listed = (content?.projects ?? []).flatMap((projectSlug) => projects.filter((project) => project.slug === projectSlug));
+  const byCategory = projects.filter((project) => projectServiceSlug(project) === slug && !listed.includes(project));
+
   return (
     <ServiceLanding
       service={service}
       heading={serviceSeo.find((entry) => entry.slug === slug)?.h1}
       breadcrumbLabel={service.title}
       faqs={serviceFaqs[slug] ?? []}
-      projects={projects.filter((project) => projectServiceSlug(project) === slug).slice(0, 3)}
+      projects={[...listed, ...byCategory].slice(0, 3)}
+      projectsHeading={content?.projectsHeading}
     />
   );
 }
