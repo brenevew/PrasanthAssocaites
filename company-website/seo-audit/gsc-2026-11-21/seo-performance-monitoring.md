@@ -1,7 +1,8 @@
 # Performance monitoring plan
 
 Baseline: Search Console, web search, **23 October to 19 November 2026** (`seo-baseline-report.md`).
-Deployment date of this work: **record here: ____________**. All comparisons start from it.
+Deployment date of this work: **21 November 2026** (commit `cb48baf`, verified live the same day). All comparisons start from it.
+First post-deploy comparison window: **5 December 2026 to 1 January 2027** (28 days, starting 14 days after deployment). Second check: around 16 January 2027.
 
 ## 1. Comparison windows
 

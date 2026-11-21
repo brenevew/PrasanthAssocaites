@@ -43,3 +43,17 @@ The other 47 sitemap pages: no difference in any compared field. Word counts inc
 6. Rich Results Test on `/locations/nilgiris-ooty` and `/services/villa-construction` (FAQ counts changed).
 
 Record the deployment date in `seo-performance-monitoring.md`; every comparison starts from it.
+
+## After deployment: 21 November 2026
+
+| Step | Result |
+|---|---|
+| Deployed `cb48baf` to production | Done by the owner |
+| New redirect live | `/blog/building-in-the-nilgiris-lessons-from-three-projects?utm_source=check` → 308 → `/blog/building-in-the-nilgiris-three-projects?utm_source=check` |
+| Changed content live | All 7 new sections and FAQs found in the live HTML; article `lastmod` 2026-11-21 in the live sitemap |
+| `node scripts/seo-migration-verify.cjs https://prasanthassociates.com` | **PASS:** 26 one-hop 308 redirects, query strings kept, canonical destinations, 21 FAQ schemas, server-rendered regional content, real 404s |
+| `node scripts/seo-audit.mjs https://prasanthassociates.com` | 53 pages, 24 services, **0 errors, 0 warnings** |
+| IndexNow (`npm run indexnow` with the 6 changed pages and the redirected URL) | **HTTP 200 for 7 URLs** |
+| Test enquiry on the live site (step 2) | **Owner:** not done here, because it writes to the live Sheet and emails the team |
+| Search Console: request indexing (step 5) | **Owner** (needs a login) |
+| Rich Results Test (step 6) | **Owner** (needs a browser session with Google) |
