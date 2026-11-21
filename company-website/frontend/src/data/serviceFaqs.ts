@@ -217,6 +217,10 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
       a: "Yes. We prepare 3D views of each room for you to review and change. Once you approve them, our team works from those views and drawings on site, and any change is discussed with you first.",
     },
     {
+      q: "Do you design interiors for homes in Coimbatore and Ooty?",
+      a: "Yes. Interiors are designed and installed from our Gandhipuram office for Coimbatore homes, and from our Gudalur branch for homes in Ooty, Coonoor, Kotagiri and Gudalur. In Coimbatore the design is planned around heat, daylight and ventilation; in the cool, damp hills, kitchens, wardrobes and finishes are chosen to cope with moisture. Interiors can be part of a new house or a separate job in an existing one.",
+    },
+    {
       q: "Do you do interiors for offices and cafés too?",
       a: "Yes. Our design work includes office interiors and café interiors as well as homes. Examples are on our projects page under Commercial Interiors.",
     },

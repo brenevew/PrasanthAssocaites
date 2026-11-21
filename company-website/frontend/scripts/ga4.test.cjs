@@ -18,6 +18,8 @@ test("GA4 event names: generate_lead only for successful submissions, no page_vi
   assert.equal(toGa4Event("form_submit").name, "generate_lead");
   assert.equal(toGa4Event("whatsapp_click").name, "whatsapp_click");
   assert.equal(toGa4Event("phone_click").name, "phone_click");
+  assert.equal(toGa4Event("email_click").name, "email_click");
+  assert.deepEqual(Object.keys(toGa4Event("email_click", { page: "/contact" }).params), ["page_location"]);
   assert.equal(toGa4Event("service_view").name, "service_view");
   assert.equal(toGa4Event("page_view"), null, "GA4 counts page views itself");
   assert.equal(toGa4Event("cta_click"), null);

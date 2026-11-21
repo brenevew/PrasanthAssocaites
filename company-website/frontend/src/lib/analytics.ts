@@ -7,7 +7,7 @@ export type EventName =
   | "cta_click" | "form_submit" | "page_view" | "project_view"
   | "service_view" | "filter_change" | "service_select"
   | "quote_submit" | "whatsapp_click" | "phone_click"
-  | "directions_click" | "quote_cta_click";
+  | "directions_click" | "quote_cta_click" | "email_click";
 
 interface EventProperties {
   category?: string;

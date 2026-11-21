@@ -62,6 +62,8 @@ const EVENT_MAP: Record<string, string> = {
   service_select: "service_select",
   whatsapp_click: "whatsapp_click",
   phone_click: "phone_click",
+  // mailto: links (footer, contact page, location pages). The address is never sent.
+  email_click: "email_click",
   // Office "Get directions" links and buttons that jump to a quote form.
   directions_click: "directions_click",
   quote_cta_click: "quote_cta_click",
