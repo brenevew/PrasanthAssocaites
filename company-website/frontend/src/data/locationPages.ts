@@ -88,7 +88,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       {
         heading: "House and villa construction in Coimbatore",
         paragraphs: [
-          "An individual house starts with the way your family will use it. Room sizes, parking, stairs, daylight, ventilation and future requirements all belong in the brief before finishes are selected. Our [residential construction service](/services/residential-construction) brings these requirements together with structural planning and electrical and plumbing coordination. For a villa, discuss outdoor spaces, courtyards and interior requirements while the building layout is being developed.",
+          "An individual house starts with the way your family will use it. Room sizes, parking, stairs, daylight, ventilation and future requirements all belong in the brief before finishes are selected. Our [residential construction service](/services/residential-construction) brings these requirements together with structural planning and electrical and plumbing coordination. For a [villa or bungalow](/services/villa-construction), discuss outdoor spaces, courtyards and interior requirements while the building layout is being developed.",
           "Our [completed residence in Perur](/projects/residential-building-perur-coimbatore) is a 3,500 sq. ft. house completed in 2020. Its case study describes functional space planning, natural light and ventilation, and coordination between the design and construction teams. Use this local example to discuss your priorities, then develop a proposal for the conditions and requirements of your own plot.",
         ],
       },
@@ -149,7 +149,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
     serviceSectors: [
       {
         heading: "Civil construction",
-        body: "Houses, villas, apartments, resorts, shops, offices and factories, built as a complete turnkey project or to drawings you already have.",
+        body: "As civil contractors in Coimbatore, we build houses, villas, apartments, resorts, shops, offices, factories and warehouses, as a complete turnkey project or to drawings you already have.",
         links: [
           { slug: "residential-construction", label: "House construction in Coimbatore", note: "Individual houses and duplexes, from the first plan to handover." },
           { slug: "villa-construction", label: "Villa and bungalow construction", note: "Villas and bungalows with courtyards, terraces and interiors planned together with the building." },
@@ -196,6 +196,22 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         ],
       },
     ],
+    // Added 2026-11-21: the Gudalur page had a process section and this page did
+    // not, although both offices run projects the same way. Steps are written for
+    // Coimbatore plots (CCMC/DTCP route, soil, narrow plots), not copied from Gudalur.
+    process: {
+      heading: "How a construction project runs in Coimbatore",
+      intro: "A house or building project from our Gandhipuram office runs through the stages below. Drawings-only, estimate-only and consultancy work covers only the stages you engage us for.",
+      steps: [
+        { title: "Plot documents and approval route", body: "We start with your patta, FMB sketch and layout approval. They show whether the plot comes under CCMC, DTCP or the local planning authority, and whether a small house can use the online self-certification route." },
+        { title: "Site visit and soil investigation", body: "An engineer visits the plot to note the road width, setbacks, levels and neighbouring buildings, and decides what soil investigation the foundations need." },
+        { title: "Plans, elevation and structural drawings", body: "Floor plans and the elevation are developed with you. Structural, electrical and plumbing drawings are then coordinated with the layout, so slab openings and conduit routes are fixed before concreting." },
+        { title: "Itemised BoQ and agreement", body: "The BoQ lists each item of work with its quantity, specification and rate. The agreement records the scope, the stage payments and how any change is priced and approved." },
+        { title: "Approval application", body: "We prepare the approval drawings, file the application and follow it up. The authority makes the decision, and construction starts once the permission is issued." },
+        { title: "Construction and stage checks", body: "Our engineers check each stage before the next begins and check materials on delivery, and you receive progress updates as each stage is completed." },
+        { title: "Handover", body: "We walk through the finished building with you, close out any outstanding items and hand over the documents agreed in the contract." },
+      ],
+    },
     projectsHeading: "Our work in Coimbatore",
     caseStudies: {
       heading: "Projects in detail",
@@ -256,8 +272,8 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         a: "Yes. Tamil Nadu's building rules require rainwater harvesting structures on building sites, and storm water should be led into the ground where the soil allows. The type and size of the system depend on the roof area, the plot and the soil. Our [plumbing drawings](/services/plumbing-drawings) include the rainwater harvesting layout.",
       },
       {
-        q: "Do you build factories and industrial sheds around Coimbatore?",
-        a: "Yes. We build factory buildings and pre-engineered (PEB) steel sheds, with machine foundations and floors designed for the loads they will carry. Send the plot location, the building size you need, the machinery and any crane or vehicle access requirements. See [factory and industrial shed construction](/services/industrial-factory-construction).",
+        q: "Do you build factories, warehouses and industrial sheds around Coimbatore?",
+        a: "Yes. We build factory buildings, warehouses and pre-engineered (PEB) steel sheds, with machine foundations and floors designed for the loads they will carry. Send the plot location, the building size you need, the machinery or storage use and any crane or vehicle access requirements. See [factory and industrial shed construction](/services/industrial-factory-construction).",
       },
       {
         q: "Can I get structural drawings or a valuation without a construction contract?",
@@ -268,8 +284,8 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
         a: "Have an engineer inspect it before you repair or extend. Some cracks are only in the plaster; others point to settlement, corroding steel or overloading, and those need a structural repair. Our [structural stability certificate](/services/structural-stability-certificate) inspection includes a crack and corrosion survey, and [renovation and retrofitting](/services/renovation) covers strengthening where it is needed.",
       },
       {
-        q: "Do you have structural engineers in Coimbatore?",
-        a: "Yes. Our structural engineers work from the Gandhipuram office. They prepare [structural drawings](/services/structural-drawings) for new buildings, check existing buildings before an extension or a change of use, and issue [structural stability certificates](/services/structural-stability-certificate). Each is available on its own or as part of a building we construct.",
+        q: "Do you have civil and structural engineers in Coimbatore?",
+        a: "Yes. Our civil and structural engineers work from the Gandhipuram office. They visit sites, supervise the buildings we construct, prepare [structural drawings](/services/structural-drawings) for new buildings, check existing buildings before an extension or a change of use, and issue [structural stability certificates](/services/structural-stability-certificate). Drawings and inspections are available on their own or as part of a building we construct.",
       },
       {
         q: "Do you take house renovation work in Coimbatore?",

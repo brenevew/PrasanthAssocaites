@@ -51,6 +51,38 @@ export const servicePageContent: Record<string, ServicePageContent> = {
       { title: "Construction and handover", body: "Our engineers check each stage before the next begins, and we walk through the finished house with you at handover." },
     ],
     related: ["architectural-designs", "interior-designs", "detailed-estimation-costing"],
+    // Added 2026-11-21. The former /services/house-construction-coimbatore and
+    // /services/house-construction-nilgiris pages now redirect here (23 Oct);
+    // the Nilgiris URL still drew 6 clicks at position 10 in Search Console
+    // (23 Oct to 19 Nov) while this page had none at position 27. These cards
+    // keep the regional detail those pages carried, without separate URLs.
+    towns: {
+      heading: "Building a house in Coimbatore, Ooty and Gudalur",
+      intro: "A house on a Coimbatore city plot and a house on a hillside in the Nilgiris district start from different questions. These are the ones we settle first in each place.",
+      items: [
+        {
+          name: "Coimbatore",
+          heading: "House construction in Coimbatore",
+          body: "Plots inside Coimbatore Corporation limits go to CCMC for approval, and most plots outside come under DTCP or the local planning authority. City plots are often narrow, so setbacks, road width and parking shape the plan. Some local soils swell when wet and shrink as they dry, so the engineer specifies the soil investigation before the foundations are designed. Our documented Coimbatore house is a 3,500 sq. ft. home in Perur, completed in 2020.",
+        },
+        {
+          name: "Ooty",
+          heading: "House construction in Ooty",
+          body: "Ooty is the highest and coldest town we build in, at about 2,240 m. A house here starts with a level survey of the slope, then foundations, retaining walls and drainage designed for it. Concrete gains strength more slowly in the cold, so curing takes longer, and most of the rain falls from June to September. Many plots need Hill Area Conservation Authority (HACA) clearance as well as planning permission.",
+        },
+        {
+          name: "Coonoor and Kotagiri",
+          heading: "House construction in Coonoor and Kotagiri",
+          body: "We have built in both towns. They lie on the eastern side of the hills and get most of their rain from the north-east monsoon, October to December, so excavation and roof concreting are planned for the drier months. Much of the land around them is tea estate or farmland, so check the plot's classification before you buy or design.",
+        },
+        {
+          name: "Gudalur",
+          heading: "House construction in Gudalur",
+          body: "Our branch office is in Gudalur, one of the wettest parts of the Nilgiris district, so the drawings include a raised plinth, roof drainage sized for heavy rain and drains around the foundations. Some land around Gudalur falls under Section 17 of the Gudalur Janmam Estates Act, where new construction is restricted. Our 2,617 sq. ft. family house in the town was completed in 2025.",
+        },
+      ],
+      note: "Coimbatore houses are run from our Gandhipuram head office and hill houses from our Gudalur branch, each with its own engineers. Before you buy or design on a slope, read our guide to [building on a sloping plot in Ooty or Gudalur](/blog/building-on-sloping-plot-ooty-gudalur).",
+    },
   },
   "villa-construction": {
     steps: [
@@ -60,6 +92,37 @@ export const servicePageContent: Record<string, ServicePageContent> = {
       { title: "Build and handover", body: "One team builds the structure and the interiors, with engineer checks at each stage and a joint walkthrough at the end." },
     ],
     related: ["interior-designs", "landscaping-designs", "smart-homes"],
+    // Added 2026-11-21. "villa construction company coimbatore" (15 impressions,
+    // position 31.6) and the redirected /services/villa-construction-coimbatore
+    // (31 impressions, position 18.7) showed Coimbatore villa demand, but this
+    // page only described hill villas. One card per area, written for its plots.
+    towns: {
+      heading: "Villa and bungalow construction in Coimbatore, Ooty and Gudalur",
+      intro: "A villa on the plains and a bungalow in the hills are designed around different plots and climates.",
+      items: [
+        {
+          name: "Coimbatore",
+          heading: "Villa construction in Coimbatore",
+          body: "Coimbatore summers are hot, so a villa here is planned around shade and moving air: courtyards, cross-ventilation, shaded windows and roof treatment. Plots are flatter than in the hills, leaving room for gardens, terraces and parking, but setbacks, site coverage and the approved layout still decide the footprint. Tamil Nadu's building rules require rainwater harvesting, which is planned with the landscape.",
+        },
+        {
+          name: "Ooty",
+          heading: "Villa and holiday home construction in Ooty",
+          body: "Villas and holiday homes in Ooty are usually stepped down the slope, with retaining walls and drainage designed together with the building. Views, morning sun and shelter from wind and mist shape the room layout, and finishes are chosen for a cold, damp climate. Check whether the plot needs HACA clearance before the design is fixed.",
+        },
+        {
+          name: "Coonoor and Kotagiri",
+          heading: "Villa construction in Coonoor and Kotagiri",
+          body: "Villas here often sit beside tea estates or on farmland, so the land classification and road access are checked before anything is designed. Heavy site work is planned around the north-east monsoon, from October to December, and damp-proofing, roof drainage and ventilation are detailed in the drawings.",
+        },
+        {
+          name: "Gudalur",
+          heading: "Estate bungalow construction in Gudalur",
+          body: "Around Gudalur, many bungalows stand on plantation or estate land, where access and heavy south-west monsoon rain decide the plan. Our 12,120 sq. ft. Pricol Limited tea bungalow was built inside a working tea plantation, and every load of material crossed a river to reach the site.",
+        },
+      ],
+      note: "Coimbatore villas are run from our Gandhipuram head office and hill villas from our Gudalur branch. To compare villa quotes item by item, see our [guide to reading a construction BoQ](/blog/how-to-read-a-construction-boq).",
+    },
   },
   "apartment-construction": {
     steps: [

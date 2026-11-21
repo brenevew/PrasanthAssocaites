@@ -43,6 +43,10 @@ export const serviceFaqs: Record<string, ServiceFaq[]> = {
       a: "Architectural design, structural engineering, construction and coordinated interiors under one team. Villas usually add features such as double-height living spaces, courtyards, landscaped outdoor areas and smart home wiring, and all of these are planned into the drawings before work starts.",
     },
     {
+      q: "Do you build villas in Coimbatore?",
+      a: "Yes. Villas and bungalows in Coimbatore are designed and built from our head office in Gandhipuram, with the architecture, structure, services and interiors drawn together and priced in an itemised BoQ. Our documented Coimbatore home is a [3,500 sq. ft. house in Perur](/projects/residential-building-perur-coimbatore), completed in 2020. Bring your plot documents and a list of the spaces you want, indoors and out.",
+    },
+    {
       q: "Have you built villas or bungalows in the Nilgiris?",
       a: "Yes. One example is a 12,120 sq. ft. tea bungalow for Pricol Limited inside a tea plantation in Gudalur, built between 2015 and 2017. The site could only be reached across a river, so material transport was planned as carefully as the building.",
     },
