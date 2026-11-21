@@ -25,6 +25,14 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Published at this slug on 19 Oct 2026 and renamed on 23 Oct without a
+        // redirect; Search Console still showed it (10 impressions, 1 click,
+        // 23 Oct to 19 Nov) while it returned 404.
+        source: "/blog/building-in-the-nilgiris-lessons-from-three-projects",
+        destination: "/blog/building-in-the-nilgiris-three-projects",
+        permanent: true,
+      },
+      {
         // Renamed to match the other residential slugs (town in the URL).
         source: "/projects/residential-construction-project",
         destination: "/projects/residential-building-gudalur",

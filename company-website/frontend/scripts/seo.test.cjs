@@ -124,6 +124,22 @@ test("the old Gudalur project URL permanently redirects to its renamed page", as
   assert.ok(!urls.has(`${SITE_URL}${redirect.source}`));
 });
 
+test("renamed project and article URLs permanently redirect to an indexable page in one hop", async () => {
+  const redirects = await load("next.config.ts").default.redirects();
+  const urls = new Set(load("src/app/sitemap.ts").default().map((entry) => entry.url));
+  for (const [source, destination] of [
+    ["/projects/sasthapruri", "/projects/sasthapuri"],
+    ["/blog/building-in-the-nilgiris-lessons-from-three-projects", "/blog/building-in-the-nilgiris-three-projects"],
+  ]) {
+    const redirect = redirects.find((entry) => entry.source === source);
+    assert.equal(redirect?.destination, destination, source);
+    assert.equal(redirect?.permanent, true, source);
+    assert.ok(urls.has(SITE_URL + destination), destination);
+    assert.ok(!urls.has(SITE_URL + source), source);
+    assert.ok(!redirects.some((entry) => entry.source === destination), `${destination} must not redirect again`);
+  }
+});
+
 test("every retired d24468b URL permanently reaches an indexable replacement without a redirect chain", async () => {
   const historical = require("../seo-reports/legacy-urls-d24468b.json");
   const redirects = await load("next.config.ts").default.redirects();
