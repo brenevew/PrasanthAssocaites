@@ -602,7 +602,7 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
     badge: "Gudalur branch · Nilgiris district",
     heading: "Builders in Ooty, Coonoor and Kotagiri",
     intro:
-      "Prasanth Associates builds houses, villas, schools and commercial buildings in Ooty, Coonoor and Kotagiri, and across the Nilgiris district, from its branch office in Gudalur. We also prepare house plans and structural drawings, file approval applications and renovate older bungalows. Every construction project is priced through an itemised BoQ before work starts.",
+      "Prasanth Associates is a construction company serving Ooty, Coonoor and Kotagiri, and the rest of the Nilgiris district, from its branch office in Gudalur. We build houses, villas, schools and commercial buildings, prepare house plans and structural drawings, file approval applications and renovate older bungalows. Every construction project is priced through an itemised BoQ before work starts.",
     quoteLabel: "Request a Construction Quote",
     whatsappLabel: "Discuss your hill-site project",
     reviewsLink: true,
@@ -628,6 +628,11 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       {
         title: "Rain at different times of year",
         body: "Ooty and Gudalur get most of their rain from the south-west monsoon, roughly June to September. Coonoor and Kotagiri get theirs from the north-east monsoon, from October to December. We schedule excavation, foundations and roof concreting around the wet months in your town.",
+      },
+      {
+        // Added 2026-11-21: site access was covered on the Gudalur page only.
+        title: "Access roads and materials",
+        body: "Roads to many plots in Ooty, Coonoor and Kotagiri are narrow and steep, and some sites have little room to unload or store materials. We check the approach road, the largest vehicle it can take and where materials can be kept before agreeing the construction sequence and the delivery plan.",
       },
     ],
     places: [
@@ -758,6 +763,10 @@ export const locationPages: Record<LocationPage["slug"], LocationPage> = {
       {
         q: "Do you build holiday homes and cottages in Ooty, Coonoor and Kotagiri?",
         a: "Yes. A holiday home or cottage is designed and built like any house, through our [house construction](/services/residential-construction) or [villa construction](/services/villa-construction) service. If you plan to run it as a homestay or resort, tell us at the start, because the intended use can affect the design and the approvals needed. Our [resort and homestay construction](/services/resort-homestay-construction) service covers buildings designed for guests.",
+      },
+      {
+        q: "Do you build hotels, resorts and homestays in Ooty and Coonoor?",
+        a: "Yes. Our largest completed commercial building is [Sasthapuri Hotels](/projects/sasthapuri), 38,879 sq. ft. in Gudalur town centre, and the [Pricol Limited tea bungalow](/projects/pricol) is a homestay-style estate bungalow. Guest buildings need planning permission for that use, and hill-area clearance where it applies, so we check the plot first. See [resort and homestay construction](/services/resort-homestay-construction).",
       },
       {
         q: "Can I get house plans or structural drawings for an Ooty plot without a construction contract?",
