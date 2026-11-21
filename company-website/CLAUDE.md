@@ -15,6 +15,7 @@ Companion docs, all at the repo root:
 | `GOOGLE_SHEETS_DEPLOYMENT.md` | The form pipeline, end to end (the longest and most important) |
 | `README.md` | Short orientation |
 | `seo-audit/` | Local SEO and Google Maps audit (2026-11-13): listing proposals, competitors, keywords, GA4 plan, ranking-grid spec, owner actions |
+| `seo-audit/gsc-2026-11-21/` | Search Console baseline (23 Oct–19 Nov), page inventory, keyword-to-page map, change log, regression report, monitoring plan and backlog |
 
 > `DEPLOYMENT_GUIDE.md` says "Next.js 15" in its ASCII diagram. That is stale —
 > `package.json` is authoritative.
